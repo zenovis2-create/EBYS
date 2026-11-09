@@ -2,6 +2,9 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createFlow } from './flow.mjs';
 import { createFakeLlm } from '../llm/router.mjs';
+import { mkdtemp, readFile, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
 
 const now = () => new Date('2026-11-09T10:30:00+09:00');
 
@@ -48,6 +51,31 @@ test('telemetry on fallback without a model has no raw JSON and an English query
   assert.equal(ans.telemetry.rawModelJson, null);
   assert.equal(ans.telemetry.modelCalls.length, 0);
   assert.equal(ans.telemetry.validation.ok, false);
+});
+
+test('local calendar mode persists the confirmed event to the file and reads it back', async (t) => {
+  const dir = await mkdtemp(path.join(tmpdir(), 'ebys-flow-cal-'));
+  t.after(() => rm(dir, { recursive: true, force: true }));
+  const calendarFile = path.join(dir, 'calendar.json');
+  const flow = createFlow({ llm: null, now, calendarMode: 'local', calendarFile });
+  assert.equal(flow.runtime().calendar.kind, 'ebys_local');
+  await flow.ingest({ title: 'synthetic clinic', provenance: 'synthetic', text: '딸: 엄마, 다음 주 화요일 오후 3시에 중앙병원 김 선생님 예약했어요.\n엄마: 그래, 알았다.' });
+  const mem = flow.memories().memories.find((m) => m.kind === 'event');
+  const p = flow.propose({ memoryId: mem.id });
+  const id = p.id ?? p.proposal?.id;
+  const pv = flow.preview({ proposalId: id });
+  assert.ok(!pv.needs_clarification, 'explicit 오후 3시 should be exact');
+  const rec = await flow.confirm({ proposalId: id, previewDigest: pv.previewDigest });
+  assert.equal(rec.displayState, 'completed_external', JSON.stringify({ status: rec.status, verifyLevel: rec.verifyLevel, error: rec.error }));
+  const stored = JSON.parse(await readFile(calendarFile, 'utf8'));
+  assert.ok(JSON.stringify(stored).includes(pv.preview.fields?.startsAt ?? pv.preview.startsAt ?? '15:00'), 'event persisted with the confirmed time');
+  const rb = await flow.readback(rec.recordId);
+  assert.equal(rb.displayState, 'completed_external');
+  assert.equal(flow.notifications().ok, true);
+});
+
+test('unknown calendar mode is refused instead of mislabelled', () => {
+  assert.throws(() => createFlow({ llm: null, now, calendarMode: 'phone' }), /calendar mode/);
 });
 
 test('confirm is refused when the source memory was cancelled after proposing', async () => {

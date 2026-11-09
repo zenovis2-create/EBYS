@@ -34,7 +34,7 @@ Everything under `senior-jarvis/` was created today: contracts, llm router (curs
 | R1 summarizeWindow | exists in core; bridge lineage not proven | independent audit REPORT.md: present, SIMULATED CLOCK, no 2h scheduler |
 | R2 classifyRequest | in progress (sj-memory) | not yet in a passing test |
 | R3 extractJson | adapted | `POST /api/ingest` 11:05, `mode=model`, 40.6 s, 1 memory / 8 verbatim quotes |
-| R4 calendar.local | not implemented | adapters are in-memory simulated + ICS only (audit) |
+| R4 calendar.local | adapted + tested + wired (13:12) | sj-actions: adapters 84/84 (EVIDENCE-EN.md); lead: `app/flow.test.mjs` local-mode test writes a temp file and reads it back; live server `EBYS_CALENDAR=local` wrote `.data/calendar.json` and `GET /api/readback/:id` returned `api_readback` / `completed_external` (`evidence/lead-calendar-local-2026-11-09T04-12-15-270Z.json`). It is a JSON file on this computer, not the phone calendar; reminders are an in-app poll feed (`GET /api/notifications`), not OS notifications. That live run also exposed a core merge bug (stored 2:00 PM for a stated 2:30 PM); sj-memory fixed it, and the 13:28 rerun `evidence/lead-calendar-local-2026-11-09T04-28-35-405Z.json` keeps 2:30 PM, with preview, file and readback agreeing. Independent QA readback is pending |
 | R5 STT | inspected only | not used |
 | R6 speak() | not found in ui (audit) | none |
 | R7 Android mirror | roadmap | none |

@@ -217,6 +217,7 @@ export function createCore({ now = () => new Date(), store = createMemoryStore()
     if (type === 'superseded') stats.superseded.push(target.id); else if (type === 'retracted') stats.retracted.push(target.id); else if (type === 'cancelled') stats.cancelled.push(target.id);
   }
 
+  const RELATED_TYPE_RE = /follow[-_ ]?up|related|pick[-_ ]?up|ride|transport|travel|errand/i;
   const CONDITIONAL_RE = /\b(?:if|unless|in case|depending|maybe|might|possibly|probably|not sure|may be)\b|만약|경우|일지도|할지도|수도 있/i;
   function consolidate(items, ctx) {
     const stats = { created: [], merged: [], superseded: [], retracted: [], cancelled: [], unresolved: [], pending: [] };
@@ -300,15 +301,19 @@ export function createCore({ now = () => new Date(), store = createMemoryStore()
       if (it.kind === 'person') {
         mergeTarget = all().find((m) => m.kind === 'person' && normName(names(m.who)[0] ?? m.summary.en) === normName(it.who[0]?.name ?? it.title.en)) ?? null;
       } else if (it.cue !== 'replace' && (it.kind === 'event' || it.kind === 'task' || it.kind === 'fact')) {
-        const cand = explicit && explicit.kind === it.kind && ACTIVE.has(explicit.status) ? [explicit] : all().filter((m) => ACTIVE.has(m.status) && m.kind === it.kind && !isConstraint(m));
+        // A target LINK is not a revision: a follow-up / related action (pick-up, ride, errand) or any non-agree item whose title is a different
+        // thing must stay its own memory and never rewrite the parent's time. Only agree (restating the same thing) may merge through the link.
+        const linkedOnly = !!explicit && (RELATED_TYPE_RE.test(it.type ?? '') || (it.cue !== 'agree' && Math.max(similarity(explicit.summary.en, it.title.en), similarity(explicit.summary.ko, it.title.ko)) < 0.3));
+        const explicitOk = !!explicit && !linkedOnly && explicit.kind === it.kind && ACTIVE.has(explicit.status);
+        const cand = explicitOk ? [explicit] : all().filter((m) => ACTIVE.has(m.status) && m.kind === it.kind && !isConstraint(m) && !(linkedOnly && m.id === explicit.id));
         for (const m of cand.sort((a, b) => b.meta.seq - a.meta.seq)) {
           const dc = c.matched ? dateCompat(m, c) : { compatible: true, equal: false };
           const sameFacts = threadScore(m, it, draftWho, it.title);
-          const explicitMatch = explicit && explicit.id === m.id;
+          const explicitMatch = explicitOk && explicit.id === m.id;
           const dateOk = dc.compatible && (dc.equal || !c.matched || !memDates(m).size || explicitMatch);
           const strong = explicitMatch || sameFacts > 0.3 || (dc.equal && sameFacts > 0.15);
           if (!dateOk || !strong) continue;
-          if (timesConflict(m, c) && !explicitMatch) { conflictWith = m; continue; }
+          if (timesConflict(m, c)) { conflictWith = m; continue; } // a different clock time is never merged, even through an explicit link
           mergeTarget = m; break;
         }
       }
@@ -374,7 +379,7 @@ export function createCore({ now = () => new Date(), store = createMemoryStore()
   // ------------------------------------------------------------------ query
   const askedFromText = (t) => {
     const a = [];
-    if (/언제|몇\s*시|며칠|무슨\s*요일|\bwhen\b|\bwhen'?s\b|what\s+time|what\s+day|which\s+day|what\s+date|which\s+date|how\s+soon|what'?s the (?:date|time)/i.test(t)) a.push('when');
+    if (/언제|몇\s*시|며칠|무슨\s*요일|\bwhen\b|\bwhen'?s\b|what\s+time|what\s+(?:clock\s+)?time|clock\s+time|part\s+of\s+the\s+day|what\s+hour|which\s+hour|\bam\s+or\s+pm\b|what\s+day|which\s+day|what\s+date|which\s+date|how\s+soon|what'?s the (?:date|time)/i.test(t)) a.push('when');
     if (/어디|장소|\bwhere\b|\bwhere'?s\b|what\s+(?:place|location|address)|which\s+(?:place|location)|\blocation\b|\baddress\b/i.test(t)) a.push('where');
     if (/누구|누가|\bwho\b|\bwho'?s\b|\bwhom\b|\bwhose\b|which\s+(?:person|friend)|\bwith\s+whom\b/i.test(t)) a.push('who');
     if (OTHER_RE.test(t)) a.push('other');
@@ -395,6 +400,11 @@ export function createCore({ now = () => new Date(), store = createMemoryStore()
   // Things the who/when/where/what slots cannot answer (route, how, why, price, phone...). A neighbouring memory is NEVER the answer to these.
   const OTHER_RE = /\b(?:bus|buses|route|routes|train|subway|metro|taxi|parking|directions?|how (?:do|can|to|much|long|far|many|often)|price|cost|fee|phone|email|password|why|reason|weather|menu|recipe)\b|노선|버스|지하철|택시|주차|가격|비용|얼마|전화번호|이메일|왜|어떻게|이유|날씨|방법/i;
   const ROLE_RE = /\b(?:told|tell|said|say|called|call|asked|ask|sent|send|gave|give|bring|brings|bringing|brought|invited?|drives?|driving|wrote|suggested|booked|picks?)\b|말했|알려|전화|가져|데려|초대/i;
+  // Topical grounding for the "undecided is not absent" rescue: content words of the question vs. the memory's own text/quotes/speakers.
+  const NUMW = { one: '1', two: '2', three: '3', four: '4', five: '5', six: '6', seven: '7', eight: '8', nine: '9', ten: '10', eleven: '11', twelve: '12' };
+  const Q_STOP = new Set('what which when who whom where how why part day days does do did can could should will would may might the an of to in on at for is are was were be been before after adding add put go goes going safely safe clock time times hour hours entry calendar am pm mean means meant and or with about this that these those it its me my we us our you your from by as if then there their they them he she his her morning evening afternoon night noon today tomorrow please tell know need needs want name decided decide not yet'.split(' '));
+  const AMBIG_Q_RE = /\b(?:am\s+or\s+pm|a\.m\.\s+or\s+p\.m\.|part\s+of\s+the\s+day|morning\s+or\s+(?:evening|afternoon|night)|clock\s+time|what\s+hour|which\s+hour)\b|오전.{0,6}오후/i;
+  const wordsOf = (s) => String(s ?? '').toLowerCase().normalize('NFKC').replace(/['’]s\b/g, '').split(/[^\p{L}\p{N}]+/u).filter(Boolean).map((w) => NUMW[w] ?? w.replace(/(?<=\p{L}{3})s$/u, ''));
   const KIND_RANK = { event: 0, task: 0, fact: 1, person: 2 };
 
   function answerFrom({ asked: askedIn, memoryIds, modelSlots: modelSlotsIn, notFoundReason, lang, mode, route, negative = false, question = '' }) {
@@ -408,13 +418,37 @@ export function createCore({ now = () => new Date(), store = createMemoryStore()
       let m = S.memories.get(id); let hops = 0;
       while (m && m.status === 'superseded' && m.supersededBy && hops++ < 6) m = S.memories.get(m.supersededBy) ?? null;
       if (!m) continue;
-      if (ACTIVE.has(m.status)) { if (!negative && !found.some((x) => x.id === m.id)) found.push(m); } else if (!inactive.some((x) => x.id === m.id)) inactive.push(m);
+      if (ACTIVE.has(m.status)) { if (!found.some((x) => x.id === m.id)) found.push(m); } else if (!inactive.some((x) => x.id === m.id)) inactive.push(m);
     }
     // events/tasks answer better than a bare person card; keep the model's order inside a rank
     found = found.map((m, i) => ({ m, i })).sort((a, b) => ((KIND_RANK[a.m.kind] ?? 1) - (KIND_RANK[b.m.kind] ?? 1)) || (a.i - b.i)).map((x) => x.m);
     // an unsupported kind of question gets no neighbouring memory as its "answer"
     const otherAsked = (askedOther || OTHER_RE.test(question)) && !(modelSlots?.other && verifyQuote(modelSlots.other.utteranceId, modelSlots.other.quote) && valueBoundToQuote(modelSlots.other.value, modelSlots.other.quote));
     if (otherAsked && !asked.length) { found = []; modelSlots = null; }
+    // The model said "not found" but cited an ACTIVE memory whose asked slot is only undecided (AM/PM not decided, day not fixed):
+    // that is a clarification ("Is that AM or PM?"), never the generic absent sentence. The model's own slots are ignored; AM/PM is never picked.
+    let rescued = false;
+    if (negative) {
+      const want = [...new Set([...asked, ...askedFromText(question).filter((k) => k !== 'other')])].filter((k) => k !== 'what');
+      const isUnd = (m) => want.some((k) => ['ambiguous', 'partial'].includes(m[k]?.state) && verified(m[k].evidence).length);
+      const qTok = [...new Set(wordsOf(question).filter((w) => !Q_STOP.has(w) && w.length > 1))];
+      const memCorpus = (m) => {
+        const us = m.evidence.map((e) => S.utterances.get(e.utteranceId)).filter(Boolean);
+        return new Set(wordsOf([m.summary.en, m.summary.ko, names(m.who).join(' '), m.where.display, m.what.display, ...m.evidence.map((e) => e.quote), ...us.map((u) => u.text), ...us.map((u) => (u.speakerKnown ? u.speakerLabel : ''))].join(' ')));
+      };
+      const overlap = (m) => { const c = memCorpus(m); return qTok.filter((w) => c.has(w)).length; };
+      const blocked = otherAsked && !asked.length;
+      // (1) the model cited the memory itself: it must be topical (or the question is plainly about AM/PM)
+      let und = blocked ? [] : found.filter((m) => isUnd(m) && (overlap(m) >= 1 || AMBIG_Q_RE.test(question)));
+      // (2) the model cited nothing: ground the question in ONE active event whose time is undecided, by >=2 shared content words and a unique best score.
+      //     A question about something no memory mentions ("When is the dentist visit?") shares no words, so it stays absent.
+      if (!und.length && !blocked && want.includes('when')) {
+        const sc = [...S.memories.values()].filter((m) => ACTIVE.has(m.status) && (m.kind === 'event' || m.kind === 'task') && !isConstraint(m) && isUnd(m))
+          .map((m) => ({ m, s: overlap(m) })).filter((x) => x.s >= 2).sort((a, b) => b.s - a.s);
+        if (sc.length && (sc.length === 1 || sc[0].s > sc[1].s)) und = [sc[0].m];
+      }
+      if (und.length) { found = und; rescued = true; } else found = [];
+    }
     const primary = found[0] ?? null;
     const slots = { who: unknownSlot(), when: unknownSlot(), where: unknownSlot(), what: unknownSlot() };
     if (primary) for (const k of ['who', 'when', 'where', 'what']) {
@@ -479,6 +513,7 @@ export function createCore({ now = () => new Date(), store = createMemoryStore()
     if (primary?.meta.pending?.length) caveats.push('change_pending_user_decision');
     if (rejectedSlots.length) caveats.push('model_value_not_in_source');
     if (speakerWho) caveats.push('who_from_speaker_label');
+    if (rescued) caveats.push('model_said_not_found_but_undecided');
     const ans = { found: anyKnown, mode, route, slots, caveats, ...(rejectedSlots.length ? { rejectedSlots } : {}), memoryId: primary?.id ?? null, matches: found.map((m) => ({ memoryId: m.id, kind: m.kind, status: m.status, summary: clone(m.summary), slots: { who: m.who.display ?? null, when: m.when.value ? { ko: m.when.value.displayKo, en: m.when.value.displayEn } : null, where: m.where.display ?? null } })) };
     if (!anyKnown) {
       const unverified = !inactive.length && rejectedSlots.length > 0;

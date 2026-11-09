@@ -217,7 +217,12 @@ const sha = createHash('sha256').update(await readFile(video)).digest('hex');
 const manifest = {
   schemaVersion: 1,
   project: 'EBYS',
-  buildCommit: null,
+  buildCommit: (() => {
+    const head = spawnSync('git', ['rev-parse', 'HEAD'], { cwd: path.join(OUTBOX, '..'), encoding: 'utf8' });
+    if (head.status !== 0) return null;
+    const dirty = spawnSync('git', ['status', '--porcelain'], { cwd: path.join(OUTBOX, '..'), encoding: 'utf8' }).stdout.trim() !== '';
+    return { sha: head.stdout.trim(), workingTreeDirty: dirty };
+  })(),
   sourceSnapshot: runtime.sourceSnapshot,
   appUrl: `${BASE}/?api=live`,
   capturedAt: new Date(t0).toISOString(),

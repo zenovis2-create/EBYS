@@ -94,14 +94,430 @@
           }
         }
       },
-      "status": "PREFLIGHT"
+      "status": "FAIL",
+      "exitCode": 1,
+      "signal": null,
+      "stdout": "{\n  \"status\": \"FAIL\",\n  \"requests\": 8,\n  \"evidenceDir\": \"C:\\\\Users\\\\User\\\\.aside\\\\u\\\\1\\\\research\\\\senior-jarvis-hackathon\\\\senior-jarvis\\\\qa\\\\evidence\\\\2026-11-09T03-57-29-839Z-60184\",\n  \"scenarios\": [\n    {\n      \"id\": \"heldout-ko\",\n      \"checks\": [\n        {\n          \"name\": \"model evidence\",\n          \"status\": \"PASS\",\n          \"detail\": \"Server reports model route cursor-cli; raw JSON and validation retained (provider execution still subject to lead audit)\"\n        },\n        {\n          \"questionId\": \"revised-date\",\n          \"status\": \"PASS\",\n          \"detail\": \"Expected value and verbatim source verified\"\n        },\n        {\n          \"questionId\": \"revised-place\",\n          \"status\": \"PASS\",\n          \"detail\": \"Expected value and verbatim source verified\"\n        },\n        {\n          \"questionId\": \"unanswerable\",\n          \"status\": \"PASS\",\n          \"detail\": \"Unknown answer; no invented known slot\"\n        }\n      ]\n    },\n    {\n      \"id\": \"heldout-en\",\n      \"checks\": [\n        {\n          \"name\": \"model evidence\",\n          \"status\": \"PASS\",\n          \"detail\": \"Server reports model route cursor-cli; raw JSON and validation retained (provider execution still subject to lead audit)\"\n        },\n        {\n          \"questionId\": \"participant\",\n          \"status\": \"PASS\",\n          \"detail\": \"Expected value and verbatim source verified\"\n        },\n        {\n          \"questionId\": \"ambiguous-time\",\n          \"status\": \"FAIL\",\n          \"detail\": \"Expected answer-specific source quote missing\"\n        },\n        {\n          \"questionId\": \"unanswerable\",\n          \"status\": \"PASS\",\n          \"detail\": \"Unknown answer; no invented known slot\"\n        }\n      ]\n    }\n  ]\n}\n",
+      "stderr": "",
+      "evidenceDir": "C:\\Users\\User\\.aside\\u\\1\\research\\senior-jarvis-hackathon\\senior-jarvis\\qa\\evidence\\2026-11-09T03-57-29-839Z-60184",
+      "after": {
+        "requestedAt": "2026-11-09T04:02:40.614Z",
+        "capturedAt": "2026-11-09T04:02:40.632Z",
+        "httpStatus": 200,
+        "raw": "{\"ok\":true,\"data\":{\"data\":\"synthetic\",\"defaultLang\":\"en\",\"timezone\":{\"iana\":\"Asia/Seoul\",\"label\":{\"en\":\"Seoul time\",\"ko\":\"서울 시간\"},\"utcOffset\":\"+09:00\",\"note\":{\"en\":\"EBYS stores calendar times in Seoul time (UTC+9) and always shows the zone next to the time.\",\"ko\":\"EBYS는 달력 시간을 서울 시간(UTC+9)으로 저장하고 시간 옆에 항상 표시합니다.\"}},\"calendar\":{\"kind\":\"simulated\",\"name\":\"Demo Calendar (in this app only, simulated)\",\"permission\":\"not_required\"},\"notifications\":{\"kind\":\"preview\",\"permission\":\"not_applicable\"},\"micCapture\":\"unavailable\",\"speechInput\":\"unavailable\",\"version\":\"actions-0.1.0\",\"mode\":\"simulated\",\"adapters\":[{\"id\":\"calendar.simulated\",\"kind\":\"calendar\",\"mode\":\"simulated\",\"label\":{\"ko\":\"시뮬레이션 달력 (앱 안에서만)\",\"en\":\"Simulated calendar (inside this app only)\"},\"claimStatus\":\"simulated\",\"maxVerifyLevel\":\"none\",\"canReconcile\":true,\"notes\":\"In-memory Demo Calendar. Nothing is written to any phone or account.\"},{\"id\":\"notification.preview\",\"kind\":\"notification\",\"mode\":\"simulated\",\"label\":{\"ko\":\"알림 미리보기 (실제 알림 아님)\",\"en\":\"Notification preview (not a real notification)\"},\"claimStatus\":\"simulated\",\"maxVerifyLevel\":\"none\",\"notes\":\"Pure preview list. No Notification API, no push, no server.\"}],\"faultInjection\":null,\"forbidden\":\"no tel/sms/mailto/emergency actions exist in this layer\",\"model\":{\"route\":\"cursor-cli\",\"model\":\"claude-sonnet-5-5-low\",\"healthy\":true},\"sourceSnapshot\":{\"serverLoaded\":{\"startedAt\":\"2026-11-09T03:51:40.668Z\",\"sha256\":\"8c8e675399c3d4fe5470103e79bc281c1261f7818438eef9d223580ac6c6aeb6\",\"files\":28},\"serverOnDisk\":{\"sha256\":\"8c8e675399c3d4fe5470103e79bc281c1261f7818438eef9d223580ac6c6aeb6\",\"files\":28},\"serverCurrent\":true,\"uiOnDisk\":{\"sha256\":\"9da18d8fb18afc906c89a653ff73cb1ac1ebd8c59dd577baf1fa7fbe4059cf1c\",\"files\":27}}}}",
+        "body": {
+          "ok": true,
+          "data": {
+            "data": "synthetic",
+            "defaultLang": "en",
+            "timezone": {
+              "iana": "Asia/Seoul",
+              "label": {
+                "en": "Seoul time",
+                "ko": "서울 시간"
+              },
+              "utcOffset": "+09:00",
+              "note": {
+                "en": "EBYS stores calendar times in Seoul time (UTC+9) and always shows the zone next to the time.",
+                "ko": "EBYS는 달력 시간을 서울 시간(UTC+9)으로 저장하고 시간 옆에 항상 표시합니다."
+              }
+            },
+            "calendar": {
+              "kind": "simulated",
+              "name": "Demo Calendar (in this app only, simulated)",
+              "permission": "not_required"
+            },
+            "notifications": {
+              "kind": "preview",
+              "permission": "not_applicable"
+            },
+            "micCapture": "unavailable",
+            "speechInput": "unavailable",
+            "version": "actions-0.1.0",
+            "mode": "simulated",
+            "adapters": [
+              {
+                "id": "calendar.simulated",
+                "kind": "calendar",
+                "mode": "simulated",
+                "label": {
+                  "ko": "시뮬레이션 달력 (앱 안에서만)",
+                  "en": "Simulated calendar (inside this app only)"
+                },
+                "claimStatus": "simulated",
+                "maxVerifyLevel": "none",
+                "canReconcile": true,
+                "notes": "In-memory Demo Calendar. Nothing is written to any phone or account."
+              },
+              {
+                "id": "notification.preview",
+                "kind": "notification",
+                "mode": "simulated",
+                "label": {
+                  "ko": "알림 미리보기 (실제 알림 아님)",
+                  "en": "Notification preview (not a real notification)"
+                },
+                "claimStatus": "simulated",
+                "maxVerifyLevel": "none",
+                "notes": "Pure preview list. No Notification API, no push, no server."
+              }
+            ],
+            "faultInjection": null,
+            "forbidden": "no tel/sms/mailto/emergency actions exist in this layer",
+            "model": {
+              "route": "cursor-cli",
+              "model": "claude-sonnet-5-5-low",
+              "healthy": true
+            },
+            "sourceSnapshot": {
+              "serverLoaded": {
+                "startedAt": "2026-11-09T03:51:40.668Z",
+                "sha256": "8c8e675399c3d4fe5470103e79bc281c1261f7818438eef9d223580ac6c6aeb6",
+                "files": 28
+              },
+              "serverOnDisk": {
+                "sha256": "8c8e675399c3d4fe5470103e79bc281c1261f7818438eef9d223580ac6c6aeb6",
+                "files": 28
+              },
+              "serverCurrent": true,
+              "uiOnDisk": {
+                "sha256": "9da18d8fb18afc906c89a653ff73cb1ac1ebd8c59dd577baf1fa7fbe4059cf1c",
+                "files": 27
+              }
+            }
+          }
+        }
+      },
+      "serverStable": true,
+      "uiStable": false,
+      "reportSha256": "c5942b554d0a2fa44a0c27b19eda407e37a6d0d3c963eb01f081fa97d21288e7",
+      "runnerVerdict": "FAIL",
+      "scores": null,
+      "checks": [
+        {
+          "id": "heldout-ko",
+          "checks": [
+            {
+              "name": "model evidence",
+              "status": "PASS",
+              "detail": "Server reports model route cursor-cli; raw JSON and validation retained (provider execution still subject to lead audit)"
+            },
+            {
+              "questionId": "revised-date",
+              "status": "PASS",
+              "detail": "Expected value and verbatim source verified"
+            },
+            {
+              "questionId": "revised-place",
+              "status": "PASS",
+              "detail": "Expected value and verbatim source verified"
+            },
+            {
+              "questionId": "unanswerable",
+              "status": "PASS",
+              "detail": "Unknown answer; no invented known slot"
+            }
+          ]
+        },
+        {
+          "id": "heldout-en",
+          "checks": [
+            {
+              "name": "model evidence",
+              "status": "PASS",
+              "detail": "Server reports model route cursor-cli; raw JSON and validation retained (provider execution still subject to lead audit)"
+            },
+            {
+              "questionId": "participant",
+              "status": "PASS",
+              "detail": "Expected value and verbatim source verified"
+            },
+            {
+              "questionId": "ambiguous-time",
+              "status": "FAIL",
+              "detail": "Expected answer-specific source quote missing"
+            },
+            {
+              "questionId": "unanswerable",
+              "status": "PASS",
+              "detail": "Unknown answer; no invented known slot"
+            }
+          ]
+        }
+      ],
+      "transportFailure": false
+    },
+    {
+      "script": "run-english-first.mjs",
+      "before": {
+        "requestedAt": "2026-11-09T04:02:40.638Z",
+        "capturedAt": "2026-11-09T04:02:40.673Z",
+        "httpStatus": 200,
+        "raw": "{\"ok\":true,\"data\":{\"data\":\"synthetic\",\"defaultLang\":\"en\",\"timezone\":{\"iana\":\"Asia/Seoul\",\"label\":{\"en\":\"Seoul time\",\"ko\":\"서울 시간\"},\"utcOffset\":\"+09:00\",\"note\":{\"en\":\"EBYS stores calendar times in Seoul time (UTC+9) and always shows the zone next to the time.\",\"ko\":\"EBYS는 달력 시간을 서울 시간(UTC+9)으로 저장하고 시간 옆에 항상 표시합니다.\"}},\"calendar\":{\"kind\":\"simulated\",\"name\":\"Demo Calendar (in this app only, simulated)\",\"permission\":\"not_required\"},\"notifications\":{\"kind\":\"preview\",\"permission\":\"not_applicable\"},\"micCapture\":\"unavailable\",\"speechInput\":\"unavailable\",\"version\":\"actions-0.1.0\",\"mode\":\"simulated\",\"adapters\":[{\"id\":\"calendar.simulated\",\"kind\":\"calendar\",\"mode\":\"simulated\",\"label\":{\"ko\":\"시뮬레이션 달력 (앱 안에서만)\",\"en\":\"Simulated calendar (inside this app only)\"},\"claimStatus\":\"simulated\",\"maxVerifyLevel\":\"none\",\"canReconcile\":true,\"notes\":\"In-memory Demo Calendar. Nothing is written to any phone or account.\"},{\"id\":\"notification.preview\",\"kind\":\"notification\",\"mode\":\"simulated\",\"label\":{\"ko\":\"알림 미리보기 (실제 알림 아님)\",\"en\":\"Notification preview (not a real notification)\"},\"claimStatus\":\"simulated\",\"maxVerifyLevel\":\"none\",\"notes\":\"Pure preview list. No Notification API, no push, no server.\"}],\"faultInjection\":null,\"forbidden\":\"no tel/sms/mailto/emergency actions exist in this layer\",\"model\":{\"route\":\"cursor-cli\",\"model\":\"claude-sonnet-5-5-low\",\"healthy\":true},\"sourceSnapshot\":{\"serverLoaded\":{\"startedAt\":\"2026-11-09T03:51:40.668Z\",\"sha256\":\"8c8e675399c3d4fe5470103e79bc281c1261f7818438eef9d223580ac6c6aeb6\",\"files\":28},\"serverOnDisk\":{\"sha256\":\"8c8e675399c3d4fe5470103e79bc281c1261f7818438eef9d223580ac6c6aeb6\",\"files\":28},\"serverCurrent\":true,\"uiOnDisk\":{\"sha256\":\"9da18d8fb18afc906c89a653ff73cb1ac1ebd8c59dd577baf1fa7fbe4059cf1c\",\"files\":27}}}}",
+        "body": {
+          "ok": true,
+          "data": {
+            "data": "synthetic",
+            "defaultLang": "en",
+            "timezone": {
+              "iana": "Asia/Seoul",
+              "label": {
+                "en": "Seoul time",
+                "ko": "서울 시간"
+              },
+              "utcOffset": "+09:00",
+              "note": {
+                "en": "EBYS stores calendar times in Seoul time (UTC+9) and always shows the zone next to the time.",
+                "ko": "EBYS는 달력 시간을 서울 시간(UTC+9)으로 저장하고 시간 옆에 항상 표시합니다."
+              }
+            },
+            "calendar": {
+              "kind": "simulated",
+              "name": "Demo Calendar (in this app only, simulated)",
+              "permission": "not_required"
+            },
+            "notifications": {
+              "kind": "preview",
+              "permission": "not_applicable"
+            },
+            "micCapture": "unavailable",
+            "speechInput": "unavailable",
+            "version": "actions-0.1.0",
+            "mode": "simulated",
+            "adapters": [
+              {
+                "id": "calendar.simulated",
+                "kind": "calendar",
+                "mode": "simulated",
+                "label": {
+                  "ko": "시뮬레이션 달력 (앱 안에서만)",
+                  "en": "Simulated calendar (inside this app only)"
+                },
+                "claimStatus": "simulated",
+                "maxVerifyLevel": "none",
+                "canReconcile": true,
+                "notes": "In-memory Demo Calendar. Nothing is written to any phone or account."
+              },
+              {
+                "id": "notification.preview",
+                "kind": "notification",
+                "mode": "simulated",
+                "label": {
+                  "ko": "알림 미리보기 (실제 알림 아님)",
+                  "en": "Notification preview (not a real notification)"
+                },
+                "claimStatus": "simulated",
+                "maxVerifyLevel": "none",
+                "notes": "Pure preview list. No Notification API, no push, no server."
+              }
+            ],
+            "faultInjection": null,
+            "forbidden": "no tel/sms/mailto/emergency actions exist in this layer",
+            "model": {
+              "route": "cursor-cli",
+              "model": "claude-sonnet-5-5-low",
+              "healthy": true
+            },
+            "sourceSnapshot": {
+              "serverLoaded": {
+                "startedAt": "2026-11-09T03:51:40.668Z",
+                "sha256": "8c8e675399c3d4fe5470103e79bc281c1261f7818438eef9d223580ac6c6aeb6",
+                "files": 28
+              },
+              "serverOnDisk": {
+                "sha256": "8c8e675399c3d4fe5470103e79bc281c1261f7818438eef9d223580ac6c6aeb6",
+                "files": 28
+              },
+              "serverCurrent": true,
+              "uiOnDisk": {
+                "sha256": "9da18d8fb18afc906c89a653ff73cb1ac1ebd8c59dd577baf1fa7fbe4059cf1c",
+                "files": 27
+              }
+            }
+          }
+        }
+      },
+      "status": "BLOCKED",
+      "exitCode": 1,
+      "signal": null,
+      "stdout": "{\"path\":\"/api/runtime\",\"httpStatus\":200,\"elapsedMs\":37,\"route\":null}\n{\"path\":\"/ui/index.html\",\"httpStatus\":200,\"elapsedMs\":2,\"route\":null}\n{\"path\":\"/ui/i18n.js\",\"httpStatus\":200,\"elapsedMs\":3,\"route\":null}\n{\"path\":\"/ui/lib/speech.js\",\"httpStatus\":200,\"elapsedMs\":7,\"route\":null}\n{\"path\":\"/api/ingest\",\"httpStatus\":200,\"elapsedMs\":67434,\"route\":{\"id\":\"cursor-cli\",\"model\":\"claude-sonnet-5-5-low\",\"cached\":false,\"ms\":28410}}\n{\"path\":\"/api/query\",\"httpStatus\":200,\"elapsedMs\":26330,\"route\":{\"id\":\"cursor-cli\",\"model\":\"claude-sonnet-5-5-low\",\"cached\":false,\"ms\":26313}}\n{\"path\":\"/api/query\",\"httpStatus\":200,\"elapsedMs\":22248,\"route\":{\"id\":\"cursor-cli\",\"model\":\"claude-sonnet-5-5-low\",\"cached\":false,\"ms\":22235}}\n{\"path\":\"/api/query\",\"httpStatus\":200,\"elapsedMs\":36369,\"route\":{\"id\":\"cursor-cli\",\"model\":\"claude-sonnet-5-5-low\",\"cached\":false,\"ms\":36351}}\n{\n  \"status\": \"FAIL\",\n  \"scores\": {\n    \"questionsPassed\": 2,\n    \"questionsTotal\": 3,\n    \"liveModelQuestionsPassed\": 2,\n    \"slotChecksPassed\": 4,\n    \"slotChecksTotal\": 5\n  },\n  \"sourceDefaults\": {\n    \"observedAt\": \"2026-11-09T04:02:40.902Z\",\n    \"htmlSha256\": \"607eaf997b9be3d6bf2b40002bf96a74554f5673ef5283e279b324a430f3533a\",\n    \"i18nSha256\": \"3983c8d37c64b65ae1e17542b339aaa33cc7efdef073a4b362ce132fd7bd416a\",\n    \"htmlEnglishLanguage\": \"PASS\",\n    \"initialModuleEnglish\": \"PASS\",\n    \"enUsSpeechMapping\": \"SOURCE_PRESENT_ONLY\",\n    \"browserDefaultVerdict\": \"BLOCKED\"\n  },\n  \"modelEvidence\": {\n    \"status\": \"PASS\",\n    \"detail\": \"Server reports model route cursor-cli; raw JSON and validation retained (provider execution still subject to lead audit)\"\n  },\n  \"evidenceDir\": \"C:\\\\Users\\\\User\\\\.aside\\\\u\\\\1\\\\research\\\\senior-jarvis-hackathon\\\\senior-jarvis\\\\qa\\\\evidence\\\\english-first-2026-11-09T04-02-40-843Z-183348\"\n}\n",
+      "stderr": "",
+      "evidenceDir": "C:\\Users\\User\\.aside\\u\\1\\research\\senior-jarvis-hackathon\\senior-jarvis\\qa\\evidence\\english-first-2026-11-09T04-02-40-843Z-183348",
+      "after": {
+        "requestedAt": "2026-11-09T04:05:13.470Z",
+        "capturedAt": "2026-11-09T04:05:13.488Z",
+        "httpStatus": 200,
+        "raw": "{\"ok\":true,\"data\":{\"data\":\"synthetic\",\"defaultLang\":\"en\",\"timezone\":{\"iana\":\"Asia/Seoul\",\"label\":{\"en\":\"Seoul time\",\"ko\":\"서울 시간\"},\"utcOffset\":\"+09:00\",\"note\":{\"en\":\"EBYS stores calendar times in Seoul time (UTC+9) and always shows the zone next to the time.\",\"ko\":\"EBYS는 달력 시간을 서울 시간(UTC+9)으로 저장하고 시간 옆에 항상 표시합니다.\"}},\"calendar\":{\"kind\":\"simulated\",\"name\":\"Demo Calendar (in this app only, simulated)\",\"permission\":\"not_required\"},\"notifications\":{\"kind\":\"preview\",\"permission\":\"not_applicable\"},\"micCapture\":\"unavailable\",\"speechInput\":\"unavailable\",\"version\":\"actions-0.1.0\",\"mode\":\"simulated\",\"adapters\":[{\"id\":\"calendar.simulated\",\"kind\":\"calendar\",\"mode\":\"simulated\",\"label\":{\"ko\":\"시뮬레이션 달력 (앱 안에서만)\",\"en\":\"Simulated calendar (inside this app only)\"},\"claimStatus\":\"simulated\",\"maxVerifyLevel\":\"none\",\"canReconcile\":true,\"notes\":\"In-memory Demo Calendar. Nothing is written to any phone or account.\"},{\"id\":\"notification.preview\",\"kind\":\"notification\",\"mode\":\"simulated\",\"label\":{\"ko\":\"알림 미리보기 (실제 알림 아님)\",\"en\":\"Notification preview (not a real notification)\"},\"claimStatus\":\"simulated\",\"maxVerifyLevel\":\"none\",\"notes\":\"Pure preview list. No Notification API, no push, no server.\"}],\"faultInjection\":null,\"forbidden\":\"no tel/sms/mailto/emergency actions exist in this layer\",\"model\":{\"route\":\"cursor-cli\",\"model\":\"claude-sonnet-5-5-low\",\"healthy\":true},\"sourceSnapshot\":{\"serverLoaded\":{\"startedAt\":\"2026-11-09T03:51:40.668Z\",\"sha256\":\"8c8e675399c3d4fe5470103e79bc281c1261f7818438eef9d223580ac6c6aeb6\",\"files\":28},\"serverOnDisk\":{\"sha256\":\"507d378e8bb948e87d26a0646b1ff033e0b3791f5fa88b085dd7763b9dedc649\",\"files\":28},\"serverCurrent\":false,\"uiOnDisk\":{\"sha256\":\"9da18d8fb18afc906c89a653ff73cb1ac1ebd8c59dd577baf1fa7fbe4059cf1c\",\"files\":27}}}}",
+        "body": {
+          "ok": true,
+          "data": {
+            "data": "synthetic",
+            "defaultLang": "en",
+            "timezone": {
+              "iana": "Asia/Seoul",
+              "label": {
+                "en": "Seoul time",
+                "ko": "서울 시간"
+              },
+              "utcOffset": "+09:00",
+              "note": {
+                "en": "EBYS stores calendar times in Seoul time (UTC+9) and always shows the zone next to the time.",
+                "ko": "EBYS는 달력 시간을 서울 시간(UTC+9)으로 저장하고 시간 옆에 항상 표시합니다."
+              }
+            },
+            "calendar": {
+              "kind": "simulated",
+              "name": "Demo Calendar (in this app only, simulated)",
+              "permission": "not_required"
+            },
+            "notifications": {
+              "kind": "preview",
+              "permission": "not_applicable"
+            },
+            "micCapture": "unavailable",
+            "speechInput": "unavailable",
+            "version": "actions-0.1.0",
+            "mode": "simulated",
+            "adapters": [
+              {
+                "id": "calendar.simulated",
+                "kind": "calendar",
+                "mode": "simulated",
+                "label": {
+                  "ko": "시뮬레이션 달력 (앱 안에서만)",
+                  "en": "Simulated calendar (inside this app only)"
+                },
+                "claimStatus": "simulated",
+                "maxVerifyLevel": "none",
+                "canReconcile": true,
+                "notes": "In-memory Demo Calendar. Nothing is written to any phone or account."
+              },
+              {
+                "id": "notification.preview",
+                "kind": "notification",
+                "mode": "simulated",
+                "label": {
+                  "ko": "알림 미리보기 (실제 알림 아님)",
+                  "en": "Notification preview (not a real notification)"
+                },
+                "claimStatus": "simulated",
+                "maxVerifyLevel": "none",
+                "notes": "Pure preview list. No Notification API, no push, no server."
+              }
+            ],
+            "faultInjection": null,
+            "forbidden": "no tel/sms/mailto/emergency actions exist in this layer",
+            "model": {
+              "route": "cursor-cli",
+              "model": "claude-sonnet-5-5-low",
+              "healthy": true
+            },
+            "sourceSnapshot": {
+              "serverLoaded": {
+                "startedAt": "2026-11-09T03:51:40.668Z",
+                "sha256": "8c8e675399c3d4fe5470103e79bc281c1261f7818438eef9d223580ac6c6aeb6",
+                "files": 28
+              },
+              "serverOnDisk": {
+                "sha256": "507d378e8bb948e87d26a0646b1ff033e0b3791f5fa88b085dd7763b9dedc649",
+                "files": 28
+              },
+              "serverCurrent": false,
+              "uiOnDisk": {
+                "sha256": "9da18d8fb18afc906c89a653ff73cb1ac1ebd8c59dd577baf1fa7fbe4059cf1c",
+                "files": 27
+              }
+            }
+          }
+        }
+      },
+      "serverStable": false,
+      "uiStable": true,
+      "reportSha256": "d54c02020e56a1fde1abbd2955dfeda3160e1331c4f2136ae9d122cf649c26da",
+      "runnerVerdict": "FAIL",
+      "scores": {
+        "questionsPassed": 2,
+        "questionsTotal": 3,
+        "liveModelQuestionsPassed": 2,
+        "slotChecksPassed": 4,
+        "slotChecksTotal": 5
+      },
+      "checks": [
+        {
+          "id": "revised-lesson",
+          "status": "PASS",
+          "mode": "model",
+          "route": {
+            "id": "cursor-cli",
+            "model": "claude-sonnet-5-5-low",
+            "cached": false,
+            "ms": 26313
+          },
+          "checks": [
+            {
+              "slot": "who",
+              "status": "PASS",
+              "detail": "Expected value and verbatim source verified"
+            },
+            {
+              "slot": "when",
+              "status": "PASS",
+              "detail": "Expected value and verbatim source verified"
+            },
+            {
+              "slot": "where",
+              "status": "PASS",
+              "detail": "Expected value and verbatim source verified"
+            }
+          ]
+        },
+        {
+          "id": "ambiguous-swap",
+          "status": "FAIL",
+          "mode": "model",
+          "route": {
+            "id": "cursor-cli",
+            "model": "claude-sonnet-5-5-low",
+            "cached": false,
+            "ms": 22235
+          },
+          "checks": [
+            {
+              "slot": "when",
+              "status": "FAIL",
+              "detail": "Expected answer-specific source quote missing"
+            }
+          ]
+        },
+        {
+          "id": "unknown-equipment",
+          "status": "PASS",
+          "mode": "model",
+          "route": {
+            "id": "cursor-cli",
+            "model": "claude-sonnet-5-5-low",
+            "cached": false,
+            "ms": 36351
+          },
+          "checks": [
+            {
+              "slot": "unknown",
+              "status": "PASS",
+              "detail": "Unknown answer; no invented known slot"
+            }
+          ]
+        }
+      ],
+      "transportFailure": false
     }
   ],
-  "status": "RUNNING",
+  "status": "BLOCKED",
   "limitations": [
     "No fresh-browser/device/UI E2E, local calendar, notification or action acceptance.",
     "Runtime version/source hashes are recorded separately from semantic answer scores.",
     "UI changes are not silently combined into one stable visual-build claim."
   ],
-  "modelLane": "serial; one invocation of each authorized runner; no QA retries"
+  "modelLane": "serial; one invocation of each authorized runner; no QA retries",
+  "completedAt": "2026-11-09T04:05:13.494Z",
+  "allUiSnapshotsStable": false
 }

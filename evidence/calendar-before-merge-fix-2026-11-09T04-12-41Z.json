@@ -1,0 +1,58 @@
+{
+ "version": 1,
+ "events": [
+  {
+   "title": "Eye check at Riverside Clinic",
+   "allDay": false,
+   "start": "2026-11-12T14:00",
+   "end": "2026-11-12T15:00",
+   "location": "Riverside Clinic",
+   "note": "",
+   "type": "appointment",
+   "source": "EBYS (synthetic demo)",
+   "id": "5f29b6b49f",
+   "uid": "sj-729a66ce0333b2c172d4d958@ebys.local",
+   "intentId": "prop_1",
+   "revision": 1,
+   "sequence": 0,
+   "sessionId": null,
+   "who": null,
+   "startsAt": "2026-11-12T14:00:00+09:00",
+   "endsAt": "2026-11-12T15:00:00+09:00",
+   "reminders": [
+    60
+   ],
+   "createdAt": "2026-11-09T13:12:41+09:00",
+   "updatedAt": "2026-11-09T13:12:41+09:00",
+   "remindersDone": []
+  },
+  {
+   "title": "Hearing check",
+   "allDay": false,
+   "start": "2026-11-11T16:00",
+   "end": "2026-11-11T17:00",
+   "location": "",
+   "note": "",
+   "type": "appointment",
+   "source": "EBYS (synthetic demo)",
+   "id": "f40aecb82d",
+   "uid": "sj-eb10769d61b4aa980fe02892@ebys.local",
+   "intentId": "prop_2",
+   "revision": 2,
+   "sequence": 1,
+   "sessionId": null,
+   "who": "Maria",
+   "startsAt": "2026-11-11T16:00:00+09:00",
+   "endsAt": "2026-11-11T17:00:00+09:00",
+   "reminders": [
+    60
+   ],
+   "createdAt": "2026-11-09T13:24:12+09:00",
+   "updatedAt": "2026-11-09T13:24:12+09:00",
+   "remindersDone": []
+  }
+ ],
+ "tasks": [],
+ "notifications": [],
+ "seq": 0
+}

@@ -1,0 +1,88 @@
+{
+  "requestedAt": "2026-11-09T03:57:29.740Z",
+  "capturedAt": "2026-11-09T03:57:29.771Z",
+  "httpStatus": 200,
+  "raw": "{\"ok\":true,\"data\":{\"data\":\"synthetic\",\"defaultLang\":\"en\",\"timezone\":{\"iana\":\"Asia/Seoul\",\"label\":{\"en\":\"Seoul time\",\"ko\":\"서울 시간\"},\"utcOffset\":\"+09:00\",\"note\":{\"en\":\"EBYS stores calendar times in Seoul time (UTC+9) and always shows the zone next to the time.\",\"ko\":\"EBYS는 달력 시간을 서울 시간(UTC+9)으로 저장하고 시간 옆에 항상 표시합니다.\"}},\"calendar\":{\"kind\":\"simulated\",\"name\":\"Demo Calendar (in this app only, simulated)\",\"permission\":\"not_required\"},\"notifications\":{\"kind\":\"preview\",\"permission\":\"not_applicable\"},\"micCapture\":\"unavailable\",\"speechInput\":\"unavailable\",\"version\":\"actions-0.1.0\",\"mode\":\"simulated\",\"adapters\":[{\"id\":\"calendar.simulated\",\"kind\":\"calendar\",\"mode\":\"simulated\",\"label\":{\"ko\":\"시뮬레이션 달력 (앱 안에서만)\",\"en\":\"Simulated calendar (inside this app only)\"},\"claimStatus\":\"simulated\",\"maxVerifyLevel\":\"none\",\"canReconcile\":true,\"notes\":\"In-memory Demo Calendar. Nothing is written to any phone or account.\"},{\"id\":\"notification.preview\",\"kind\":\"notification\",\"mode\":\"simulated\",\"label\":{\"ko\":\"알림 미리보기 (실제 알림 아님)\",\"en\":\"Notification preview (not a real notification)\"},\"claimStatus\":\"simulated\",\"maxVerifyLevel\":\"none\",\"notes\":\"Pure preview list. No Notification API, no push, no server.\"}],\"faultInjection\":null,\"forbidden\":\"no tel/sms/mailto/emergency actions exist in this layer\",\"model\":{\"route\":\"cursor-cli\",\"model\":\"claude-sonnet-5-5-low\",\"healthy\":true},\"sourceSnapshot\":{\"serverLoaded\":{\"startedAt\":\"2026-11-09T03:51:40.668Z\",\"sha256\":\"8c8e675399c3d4fe5470103e79bc281c1261f7818438eef9d223580ac6c6aeb6\",\"files\":28},\"serverOnDisk\":{\"sha256\":\"8c8e675399c3d4fe5470103e79bc281c1261f7818438eef9d223580ac6c6aeb6\",\"files\":28},\"serverCurrent\":true,\"uiOnDisk\":{\"sha256\":\"0844b682b2c64f321647ea753df670871184bb1da73d68f81ff3babe1b9f5703\",\"files\":27}}}}",
+  "body": {
+    "ok": true,
+    "data": {
+      "data": "synthetic",
+      "defaultLang": "en",
+      "timezone": {
+        "iana": "Asia/Seoul",
+        "label": {
+          "en": "Seoul time",
+          "ko": "서울 시간"
+        },
+        "utcOffset": "+09:00",
+        "note": {
+          "en": "EBYS stores calendar times in Seoul time (UTC+9) and always shows the zone next to the time.",
+          "ko": "EBYS는 달력 시간을 서울 시간(UTC+9)으로 저장하고 시간 옆에 항상 표시합니다."
+        }
+      },
+      "calendar": {
+        "kind": "simulated",
+        "name": "Demo Calendar (in this app only, simulated)",
+        "permission": "not_required"
+      },
+      "notifications": {
+        "kind": "preview",
+        "permission": "not_applicable"
+      },
+      "micCapture": "unavailable",
+      "speechInput": "unavailable",
+      "version": "actions-0.1.0",
+      "mode": "simulated",
+      "adapters": [
+        {
+          "id": "calendar.simulated",
+          "kind": "calendar",
+          "mode": "simulated",
+          "label": {
+            "ko": "시뮬레이션 달력 (앱 안에서만)",
+            "en": "Simulated calendar (inside this app only)"
+          },
+          "claimStatus": "simulated",
+          "maxVerifyLevel": "none",
+          "canReconcile": true,
+          "notes": "In-memory Demo Calendar. Nothing is written to any phone or account."
+        },
+        {
+          "id": "notification.preview",
+          "kind": "notification",
+          "mode": "simulated",
+          "label": {
+            "ko": "알림 미리보기 (실제 알림 아님)",
+            "en": "Notification preview (not a real notification)"
+          },
+          "claimStatus": "simulated",
+          "maxVerifyLevel": "none",
+          "notes": "Pure preview list. No Notification API, no push, no server."
+        }
+      ],
+      "faultInjection": null,
+      "forbidden": "no tel/sms/mailto/emergency actions exist in this layer",
+      "model": {
+        "route": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "healthy": true
+      },
+      "sourceSnapshot": {
+        "serverLoaded": {
+          "startedAt": "2026-11-09T03:51:40.668Z",
+          "sha256": "8c8e675399c3d4fe5470103e79bc281c1261f7818438eef9d223580ac6c6aeb6",
+          "files": 28
+        },
+        "serverOnDisk": {
+          "sha256": "8c8e675399c3d4fe5470103e79bc281c1261f7818438eef9d223580ac6c6aeb6",
+          "files": 28
+        },
+        "serverCurrent": true,
+        "uiOnDisk": {
+          "sha256": "0844b682b2c64f321647ea753df670871184bb1da73d68f81ff3babe1b9f5703",
+          "files": 27
+        }
+      }
+    }
+  }
+}

@@ -7,8 +7,16 @@ import { displayState } from '../contracts/contracts.js';
 
 const fail = (code, message, extra = {}) => ({ ok: false, error: { code, message, retryable: false, ...extra } });
 
-export function createFlow({ llm: baseLlm, now = () => new Date(), calendarMode = 'simulated', adapters = {} } = {}) {
-  const service = createActionService({ now, mode: calendarMode, adapters });
+const CALENDAR_MODES = {
+  simulated: { mode: 'simulated' },
+  local: { mode: 'real', real: 'local' },
+  ics: { mode: 'real', real: 'ics' },
+};
+
+export function createFlow({ llm: baseLlm, now = () => new Date(), calendarMode = 'simulated', calendarFile, adapters = {} } = {}) {
+  const cal = CALENDAR_MODES[calendarMode];
+  if (!cal) throw new TypeError(`calendar mode must be one of ${Object.keys(CALENDAR_MODES).join(', ')}, got ${calendarMode}`);
+  const service = createActionService({ now, ...cal, calendarFile, adapters });
   const calls = [];
   const llm = baseLlm && {
     ...baseLlm,
@@ -118,6 +126,11 @@ export function createFlow({ llm: baseLlm, now = () => new Date(), calendarMode 
     preview,
     confirm,
     records: () => ({ records: service.list().map((r) => ({ ...r, displayState: displayState(r) })) }),
+    readback: async (recordId) => {
+      const rec = await service.readback(recordId);
+      return rec?.ok === false ? rec : { ...rec, displayState: displayState(rec) };
+    },
+    notifications: ({ since = 0 } = {}) => service.dueNotifications(undefined, { since: Number(since) || 0 }),
     summary: (args) => core.summarizeWindow(args),
     remove,
     runtime,

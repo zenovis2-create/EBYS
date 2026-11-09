@@ -131,3 +131,66 @@ test('fallback keyword query also refuses an unsupported question kind', async (
   assert.equal(a.found, false); assert.equal(a.mode, 'fallback');
   assert.equal(a.sentence.en, "I don't have that in your conversations.");
 });
+
+// ---- undecided is not absent (QA REVIEW: 2 FAILs, same bug) ----
+const SWAP = [
+  'Rowan: I also have a plant swap with Devin on 2027-03-12 at 8. We have not decided AM or PM.',
+  'Devin: The kiln in the garage is loud, so bring earplugs.',
+].join('\n');
+const swapExtract = () => ({ items: [
+  item({ ref: 'm1', quote: 'plant swap with Devin on 2027-03-12 at 8', u: 0, title: { ko: '식물 교환', en: "Rowan's plant swap" }, who: [['Devin', 0]], when: [[0, 'on 2027-03-12 at 8']] }),
+] });
+async function swapCore(query) {
+  const core = createCore({ now: () => NOW, llm: fakeLlm({ extract: swapExtract, query }) });
+  const r = await core.ingestText({ title: 'swap', text: SWAP });
+  assert.equal(r.ok, true);
+  return core;
+}
+
+test('model found=false that cites an ACTIVE memory with an undecided time => ambiguous clarification (never AM/PM, never the absent sentence)', async () => {
+  const core = await swapCore((req, p) => {
+    const mem = p.memories.find((m) => m.kind === 'event').id;
+    const q = p.question;
+    // raw shape 1: empty slots, asked names when
+    if (q.startsWith('Before adding')) return { found: false, memoryIds: [mem], asked: ['when'], slots: { who: null, when: null, where: null, what: null }, notFoundReason: "The plant swap with Devin exists but the conversation says AM or PM has not been decided" };
+    // raw shape 2: asked EMPTY, slots omitted, wording that only the text can classify
+    if (q.startsWith('What clock time')) return { found: false, memoryIds: [mem], asked: [], notFoundReason: 'Rowan has a plant swap on 2027-03-12 at 8 but AM/PM is unresolved' };
+    // absent facts must stay absent even when the model cites the neighbouring (ambiguous) memory
+    if (q.startsWith('What is the kiln serial')) return { found: false, memoryIds: [mem], asked: ['what'], slots: {}, notFoundReason: 'no serial number' };
+    if (q.startsWith('Who is the speaker named')) return { found: false, memoryIds: [mem], asked: ['who'], slots: {}, notFoundReason: 'no such speaker' };
+    if (q.startsWith('What is the bus route')) return { found: false, memoryIds: [mem], asked: ['other'], slots: {}, notFoundReason: 'no bus route' };
+    return { found: false, memoryIds: [] };
+  });
+  for (const q of ["Before adding Rowan's plant swap, which part of the day does eight mean?", 'What clock time can safely go on the swap calendar entry?']) {
+    const a = await core.query({ text: q });
+    assert.equal(a.found, true, q); assert.equal(a.mode, 'model', q);
+    assert.equal(a.slots.when.state, 'ambiguous', q);
+    assert.ok(a.slots.when.evidence.length, q);
+    assert.equal(a.clarification.slot, 'when', q);
+    assert.match(a.clarification.prompt.en, /AM or PM/i, q);
+    assert.ok(a.caveats.includes('model_said_not_found_but_undecided'), q);
+    assert.ok(a.caveats.includes('time_ambiguous'), q);
+    assert.ok(!/I don't have that/.test(a.sentence.en), q);
+    // never picked: no option collapses to a single time, no known when
+    assert.ok(a.clarification.options.length >= 2, q);
+    assert.equal(a.slots.when.state === 'known', false);
+  }
+  for (const q of ['What is the kiln serial number?', 'Who is the speaker named Zed?', 'What is the bus route to the swap?', 'Anything else?']) {
+    const a = await core.query({ text: q });
+    assert.equal(a.found, false, q);
+    assert.equal(a.sentence.en, "I don't have that in your conversations.", q);
+  }
+});
+
+test('model found=true with the undecided quote in the when slot also yields the clarification (same user-visible result)', async () => {
+  const core = await swapCore((req, p) => ({ found: true, memoryIds: [], asked: ['when'], slots: { when: { value: '8', quote: 'on 2027-03-12 at 8', utteranceId: p.utterances[0].id } } }));
+  const a = await core.query({ text: 'Which part of the day does eight mean?' });
+  assert.equal(a.found, true); assert.equal(a.slots.when.state, 'ambiguous');
+  assert.match(a.clarification.prompt.en, /AM or PM/i);
+});
+
+test('rescue does not apply when the asked slot (where) is not the undecided one', async () => {
+  const core = await swapCore((req, p) => ({ found: false, memoryIds: [p.memories[0].id], asked: ['where'], slots: {}, notFoundReason: 'no place' }));
+  const a = await core.query({ text: 'Where is the plant swap?' });
+  assert.equal(a.found, false);
+});

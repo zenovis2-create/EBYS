@@ -288,6 +288,12 @@ export function mergeParts(parts) {
   const c = { date: null, dateCandidates: [], time: null, timeCandidates: [], hour: null, minute: 0, ampm: null, daypart: null, flags: [], weekRange: null, matched: false };
   for (const p of parts) {
     if (!p || !p.matched) continue;
+    // An already RESOLVED time is never overwritten by a later, different (or merely ambiguous) clock time: first full-precision reading wins,
+    // and the disagreement is flagged instead of silently shifting the appointment ("2:30 PM" + a later bare "at 2" must stay 14:30).
+    if (c.ampm === 'resolved' && c.time) {
+      const other = p.time ? [p.time] : p.ampm === 'ambiguous' ? p.timeCandidates : [];
+      if (other.length && !other.includes(c.time)) { if (!c.flags.includes('time_conflict')) c.flags.push('time_conflict'); continue; }
+    }
     c.matched = true;
     if (p.date) { c.date = p.date; c.dateCandidates = []; c.weekRange = p.weekRange ?? null; }
     else if (p.dateCandidates.length) { c.date = null; c.dateCandidates = p.dateCandidates; c.weekRange = p.weekRange ?? null; }

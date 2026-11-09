@@ -13,7 +13,7 @@ const PORT = Number(process.env.EBYS_PORT ?? 8787);
 const MAX_BODY = 64 * 1024;
 
 const llm = createCursorLlm({ cwd: ROOT });
-const flow = createFlow({ llm, calendarMode: process.env.EBYS_CALENDAR ?? 'simulated' });
+const flow = createFlow({ llm, calendarMode: process.env.EBYS_CALENDAR ?? 'simulated', calendarFile: process.env.EBYS_CALENDAR_FILE });
 
 // Server-side modules are loaded once; ui/ is served from disk per request. Footage must cite both.
 async function snapshot(dirs, files = []) {
@@ -81,6 +81,8 @@ const routes = [
   ['POST', /^\/api\/preview$/, (b) => flow.preview(b)],
   ['POST', /^\/api\/confirm$/, (b) => flow.confirm(b)],
   ['GET', /^\/api\/records$/, () => flow.records()],
+  ['GET', /^\/api\/readback\/([^/]+)$/, (b, m) => flow.readback(decodeURIComponent(m[1]))],
+  ['GET', /^\/api\/notifications$/, (b, m, url) => flow.notifications({ since: url.searchParams.get('since') })],
   ['POST', /^\/api\/summary$/, (b) => flow.summary(b)],
   ['POST', /^\/api\/delete$/, (b) => flow.remove(b)],
   ['GET', /^\/api\/runtime$/, () => runtime()],
@@ -112,7 +114,7 @@ const server = createServer(async (req, res) => {
         return send(res, 415, JSON.stringify({ ok: false, error: { code: 'json_only', message: 'send application/json' } }));
       }
       const body = req.method === 'POST' ? await readJson(req) : {};
-      const result = await route[2](body, url.pathname.match(route[1]));
+      const result = await route[2](body, url.pathname.match(route[1]), url);
       return sendJson(res, result);
     }
     if (req.method !== 'GET') return send(res, 405, 'method not allowed', 'text/plain');
