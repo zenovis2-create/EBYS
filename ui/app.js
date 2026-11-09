@@ -6,7 +6,8 @@ import { selectApi } from './services/api.js';
 import { modelChipInfo, Btn } from './components.js';
 import { displayStateSource } from './lib/contracts.js';
 import { loadPrefs } from './lib/prefs.js';
-import { Icon, BrandMark } from './lib/icons.js';
+import { Icon } from './lib/icons.js';
+import { renderHome } from './screens/home.js';
 import { renderInput } from './screens/input.js';
 import { renderMemories } from './screens/memories.js';
 import { renderAsk } from './screens/ask.js';
@@ -15,12 +16,12 @@ import { renderPlans } from './screens/plans.js';
 import { renderPrivacy } from './screens/privacy.js';
 import { stopSpeaking, stopListening } from './lib/speech.js';
 
-const SCREENS = { input: renderInput, memories: renderMemories, ask: renderAsk, proposal: renderProposal, plans: renderPlans, privacy: renderPrivacy };
+const SCREENS = { home: renderHome, input: renderInput, memories: renderMemories, ask: renderAsk, proposal: renderProposal, plans: renderPlans, privacy: renderPrivacy };
 const NAV = [
-  { route: 'input', key: 'nav.input', icon: 'home' },
-  { route: 'memories', key: 'nav.memory', icon: 'memories' },
+  { route: 'home', key: 'nav.home', icon: 'home', also: ['input', 'plans', 'proposal'] },
   { route: 'ask', key: 'nav.ask', icon: 'ask' },
-  { route: 'plans', key: 'nav.plans', icon: 'plans', also: ['proposal'] },
+  { route: 'memories', key: 'nav.memory', icon: 'memories' },
+  { route: 'privacy', key: 'nav.settings', icon: 'settings' },
 ];
 
 /** Sample vs live, in plain words. The technical route detail lives in Settings and next to results. */
@@ -35,12 +36,10 @@ function ModePill() {
 
 function AppBar() {
   return h('header', { class: 'appbar' },
-    h('div', { class: 'brand', title: t('app.tagline') }, BrandMark({ size: 44 }), h('span', { class: 'wordmark' }, t('app.name'))),
-    ModePill(),
-    h('button', {
-      type: 'button', class: `iconbtn ${state.route === 'privacy' ? 'iconbtn-on' : ''}`, 'aria-label': t('settings.open'),
-      'aria-current': state.route === 'privacy' ? 'page' : null, onClick: () => go('privacy'),
-    }, Icon('settings', { size: 30 })));
+    h('button', { type: 'button', class: 'brand', title: t('app.tagline'), 'aria-label': `${t('app.name')} · ${t('nav.home')}`, onClick: () => go('home') },
+      h('img', { class: 'brand-icon', src: 'assets/ebys-icon-96.png', width: '40', height: '40', alt: '' }),
+      h('span', { class: 'wordmark' }, t('app.name'))),
+    ModePill());
 }
 
 function PrivacyBar() {
@@ -72,7 +71,7 @@ function render({ focus = false } = {}) {
   const y = window.scrollY;
   document.documentElement.style.setProperty('--scale', String(state.scale));
   document.documentElement.lang = getLang();
-  const main = h('main', { id: 'main', class: `main screen-${state.route}`, tabindex: '-1' }, (SCREENS[state.route] ?? renderInput)());
+  const main = h('main', { id: 'main', class: `main screen-${state.route}`, tabindex: '-1' }, (SCREENS[state.route] ?? renderHome)());
   root.replaceChildren(
     h('div', { class: 'topstack' }, AppBar(), PrivacyBar()), main,
     h('footer', { class: 'foot' },

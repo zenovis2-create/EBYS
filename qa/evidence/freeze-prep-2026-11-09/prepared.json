@@ -1,0 +1,34 @@
+{
+  "Status": "PREPARED_NOT_EXECUTED",
+  "RecordedAtUtc": "2026-11-09T05:36:41.1183771Z",
+  "Owner": "sj-qa",
+  "OutputScope": "qa/ only",
+  "OfflineTestsPassed": 10,
+  "OfflineTestsFailed": 0,
+  "ActualHTTPCalls": 0,
+  "ActualModelCalls": 0,
+  "ActualDeletionCalls": 0,
+  "ActualBrowserCalls": 0,
+  "SignalRequired": "LEAD-READY-FREEZE <server sha12> <ui sha12>",
+  "PlannedSerialModelRequests": 9,
+  "Deadline": "2026-11-09T14:45:00+09:00",
+  "OwnerPrerequisites": "Review meta.sessionId forwarding and named/related deletion receipt purgers before freeze",
+  "Artifacts": [
+    {
+      "Path": "qa/run-freeze-qa.mjs",
+      "SHA256": "1f2baf5dcffe45f6b5233d81d90846a54804d49668bc09ae711e1436d1f4d15b"
+    },
+    {
+      "Path": "qa/freeze-policy.mjs",
+      "SHA256": "783d7f6bfa60533fc4b2261afb0c0132d2a4a30f4615bfc465bad2a41305730b"
+    },
+    {
+      "Path": "qa/freeze-policy.test.mjs",
+      "SHA256": "090a48e81daa43a56e4c48688d1c3023d02b61ae5396be3253a46d1671d71408"
+    },
+    {
+      "Path": "qa/FREEZE-RUNBOOK.md",
+      "SHA256": "65f493e2066ddaa79174ffbe97d0f036cbd37d790cb00807633ae96224bc281a"
+    }
+  ]
+}

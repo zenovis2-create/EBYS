@@ -30,10 +30,25 @@ async function snapshot(dirs, files = []) {
   for (const f of list) h.update(`${f}\0`).update(await readFile(path.join(ROOT, f))).update('\0');
   return { sha256: h.digest('hex'), files: list.length };
 }
-const SERVER_CODE = { dirs: ['core', 'adapters', 'app', 'llm', 'contracts'], files: ['server.mjs'] };
+// The server's own static import graph: files on disk that this process does not import (e.g. unwired work in progress) don't count.
+const IMPORT_RE = /(?:^|[\s;])(?:import|export)\b[^'"`;]*?from\s*['"](\.{1,2}\/[^'"]+)['"]|import\(\s*['"](\.{1,2}\/[^'"]+)['"]\s*\)/g;
+async function importGraph(entry) {
+  const seen = new Set();
+  const visit = async (rel) => {
+    if (seen.has(rel)) return;
+    seen.add(rel);
+    const src = await readFile(path.join(ROOT, rel), 'utf8');
+    for (const m of src.matchAll(IMPORT_RE)) {
+      await visit(path.relative(ROOT, path.resolve(path.dirname(path.join(ROOT, rel)), m[1] ?? m[2])).replaceAll('\\', '/'));
+    }
+  };
+  await visit(entry);
+  return [...seen];
+}
+const SERVER_CODE = { dirs: ['contracts'], files: await importGraph('server.mjs') };
 const loaded = { startedAt: new Date().toISOString(), ...(await snapshot(SERVER_CODE.dirs, SERVER_CODE.files)) };
 async function runtime() {
-  const disk = await snapshot(SERVER_CODE.dirs, SERVER_CODE.files);
+  const disk = await snapshot(SERVER_CODE.dirs, await importGraph('server.mjs'));
   return {
     ...flow.runtime(),
     sourceSnapshot: {

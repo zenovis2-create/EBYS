@@ -1,0 +1,35 @@
+{
+  "source": ".data/calendar.json",
+  "readAt": "2026-11-09T04:42:20.991Z",
+  "sha256": "46b049daeace92495431a11f393db41b3801336edf9413ab0a844713198eb795",
+  "eventCount": 2,
+  "events": [
+    {
+      "title": "Copperplate printmaking lesson with Kai",
+      "allDay": false,
+      "start": "2027-04-19T14:30",
+      "end": "2027-04-19T15:30",
+      "location": "Glass Meadow workshop",
+      "note": "",
+      "type": "appointment",
+      "source": "EBYS (synthetic demo)",
+      "id": "7100f16e8e",
+      "uid": "sj-eb10769d61b4aa980fe02892@ebys.local",
+      "intentId": "prop_2",
+      "revision": 1,
+      "sequence": 0,
+      "sessionId": null,
+      "who": "Kai",
+      "startsAt": "2027-04-19T14:30:00+09:00",
+      "endsAt": "2027-04-19T15:30:00+09:00",
+      "reminders": [
+        60
+      ],
+      "createdAt": "2026-11-09T13:42:20+09:00",
+      "updatedAt": "2026-11-09T13:42:20+09:00",
+      "remindersDone": []
+    }
+  ],
+  "originalEventsPreserved": true,
+  "scope": "Only this QA event copied; other event contents omitted"
+}

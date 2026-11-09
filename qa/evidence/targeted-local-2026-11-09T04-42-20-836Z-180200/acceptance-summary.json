@@ -1,0 +1,440 @@
+{
+  "Status": "PASS_FOR_REQUESTED_TARGETED_API_AND_EBYS_LOCAL_FILE",
+  "QAIdle": true,
+  "Questions": [
+    {
+      "id": "heldout-en/ambiguous-time",
+      "kind": "ambiguity",
+      "expected": {
+        "id": "ambiguous-time",
+        "text": "What clock time can safely go on the seed-swap calendar entry?",
+        "expectedAnswer": "The date is 2027-02-16, but 7 AM versus 7 PM is unresolved. Ask which one; do not silently choose 07:00 or 19:00 and do not execute an action.",
+        "slot": "when",
+        "rule": "ambiguous",
+        "evidenceMustContain": "at 7"
+      },
+      "status": "PASS",
+      "checks": [
+        {
+          "status": "PASS",
+          "detail": "AM/PM remains unresolved with evidence and clarification"
+        }
+      ]
+    },
+    {
+      "id": "heldout-en/unanswerable",
+      "kind": "absent-fact",
+      "expected": {
+        "id": "unanswerable",
+        "text": "What is the name of the person who offered the blue seed tin?",
+        "expectedAnswer": "Unknown. The offer is attributed only to unknown, not Leila or Nikhil.",
+        "rule": "unknown",
+        "evidenceMustContain": "blue seed tin"
+      },
+      "status": "PASS",
+      "checks": [
+        {
+          "status": "PASS",
+          "detail": "Unknown answer; no invented known slot"
+        }
+      ]
+    },
+    {
+      "id": "heldout-ko/unanswerable",
+      "kind": "absent-fact",
+      "expected": {
+        "id": "unanswerable",
+        "text": "도담 씨가 낭독 연습에 갈 때 타기로 한 버스의 노선 번호가 무엇인가요?",
+        "expectedAnswer": "알 수 없음. 대화에 버스 노선 번호가 없다.",
+        "rule": "unknown"
+      },
+      "status": "PASS",
+      "checks": [
+        {
+          "status": "PASS",
+          "detail": "Unknown answer; no invented known slot"
+        }
+      ]
+    },
+    {
+      "id": "english-first/ambiguous-swap",
+      "kind": "ambiguity",
+      "expected": {
+        "id": "ambiguous-swap",
+        "text": "Before adding Rowan's plant swap, which part of the day does eight mean?",
+        "expectedAnswer": "Unknown AM versus PM; explicitly ask the user to choose. The date is March 12, 2027, Asia/Seoul. No default to 08:00 or 20:00.",
+        "checks": [
+          {
+            "slot": "when",
+            "rule": "ambiguous",
+            "evidenceMustContain": "at 8"
+          }
+        ]
+      },
+      "status": "PASS",
+      "checks": [
+        {
+          "status": "PASS",
+          "detail": "AM/PM remains unresolved with evidence and clarification"
+        }
+      ]
+    },
+    {
+      "id": "english-first/unknown-equipment",
+      "kind": "absent-fact",
+      "expected": {
+        "id": "unknown-equipment",
+        "text": "What is the kiln serial number for Rowan and Celeste's pottery lesson?",
+        "expectedAnswer": "Unknown: no kiln serial number is stated.",
+        "checks": [
+          {
+            "rule": "unknown"
+          }
+        ]
+      },
+      "status": "PASS",
+      "checks": [
+        {
+          "status": "PASS",
+          "detail": "Unknown answer; no invented known slot"
+        }
+      ]
+    }
+  ],
+  "Scores": {
+    "ambiguityPassed": 2,
+    "ambiguityTotal": 2,
+    "absentFactPassed": 3,
+    "absentFactTotal": 3,
+    "modelEvidencePassed": 9,
+    "modelEvidenceTotal": 9,
+    "localChecksPassed": 18,
+    "localChecksTotal": 18,
+    "localCalendarPassed": true,
+    "newModelRequests": 0,
+    "inheritedModelEvidenceRecords": 9
+  },
+  "OriginalModelRun": "qa/evidence/targeted-local-2026-11-09T04-36-08-903Z-98516/report.json",
+  "OriginalModelRunHash": "64a86a0741e39863772f6496dbbc5a4bdc030369528f2137d98d23bb7f1ac878",
+  "OriginalModelRunUnchanged": true,
+  "ModelEvidence": [
+    {
+      "Case": "heldout-en/ingest",
+      "HTTP": 200,
+      "Mode": "model",
+      "Route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 28046
+      },
+      "WallMs": 28058,
+      "RawModelJSONPresent": true,
+      "Validation": {
+        "ok": true,
+        "rejected": 0
+      },
+      "Pass": true
+    },
+    {
+      "Case": "heldout-en/ambiguous-time",
+      "HTTP": 200,
+      "Mode": "model",
+      "Route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 27443
+      },
+      "WallMs": 27460,
+      "RawModelJSONPresent": true,
+      "Validation": {
+        "ok": true,
+        "rejected": 0
+      },
+      "Pass": true
+    },
+    {
+      "Case": "heldout-en/unanswerable",
+      "HTTP": 200,
+      "Mode": "model",
+      "Route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 25887
+      },
+      "WallMs": 25892,
+      "RawModelJSONPresent": true,
+      "Validation": {
+        "ok": true,
+        "rejected": 0
+      },
+      "Pass": true
+    },
+    {
+      "Case": "heldout-ko/ingest",
+      "HTTP": 200,
+      "Mode": "model",
+      "Route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 27211
+      },
+      "WallMs": 27224,
+      "RawModelJSONPresent": true,
+      "Validation": {
+        "ok": true,
+        "rejected": 1
+      },
+      "Pass": true
+    },
+    {
+      "Case": "heldout-ko/unanswerable",
+      "HTTP": 200,
+      "Mode": "model",
+      "Route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 44966
+      },
+      "WallMs": 44977,
+      "RawModelJSONPresent": true,
+      "Validation": {
+        "ok": true,
+        "rejected": 0
+      },
+      "Pass": true
+    },
+    {
+      "Case": "english-first/ingest",
+      "HTTP": 200,
+      "Mode": "model",
+      "Route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 30058
+      },
+      "WallMs": 30068,
+      "RawModelJSONPresent": true,
+      "Validation": {
+        "ok": true,
+        "rejected": 0
+      },
+      "Pass": true
+    },
+    {
+      "Case": "english-first/ambiguous-swap",
+      "HTTP": 200,
+      "Mode": "model",
+      "Route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 26144
+      },
+      "WallMs": 26153,
+      "RawModelJSONPresent": true,
+      "Validation": {
+        "ok": true,
+        "rejected": 0
+      },
+      "Pass": true
+    },
+    {
+      "Case": "english-first/unknown-equipment",
+      "HTTP": 200,
+      "Mode": "model",
+      "Route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 37519
+      },
+      "WallMs": 37528,
+      "RawModelJSONPresent": true,
+      "Validation": {
+        "ok": true,
+        "rejected": 0
+      },
+      "Pass": true
+    },
+    {
+      "Case": "local/ingest",
+      "HTTP": 200,
+      "Mode": "model",
+      "Route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 27676
+      },
+      "WallMs": 27695,
+      "RawModelJSONPresent": true,
+      "Validation": {
+        "ok": true,
+        "rejected": 0
+      },
+      "Pass": true
+    }
+  ],
+  "AbsentFactFound": [
+    {
+      "Case": "heldout-en/unanswerable",
+      "Found": false
+    },
+    {
+      "Case": "heldout-ko/unanswerable",
+      "Found": false
+    },
+    {
+      "Case": "english-first/unknown-equipment",
+      "Found": false
+    }
+  ],
+  "Calendar": {
+    "ProposalId": "prop_2",
+    "RecordId": "act_26a12f8f5755",
+    "EventId": "7100f16e8e",
+    "UID": "sj-eb10769d61b4aa980fe02892@ebys.local",
+    "ExpectedStartsAt": "2027-04-19T14:30:00+09:00",
+    "Preview": {
+      "kind": "appointment",
+      "title": "Copperplate printmaking lesson with Kai",
+      "who": "Kai",
+      "startsAt": "2027-04-19T14:30:00+09:00",
+      "endsAt": "2027-04-19T15:30:00+09:00",
+      "durationMin": 60,
+      "where": "Glass Meadow workshop",
+      "reminders": [
+        60
+      ],
+      "tz": "Asia/Seoul"
+    },
+    "ConfirmState": "completed_external",
+    "ConfirmVerifyLevel": "api_readback",
+    "GetReadbackState": "completed_external",
+    "GetReadbackVerifyLevel": "api_readback",
+    "FileEvent": {
+      "title": "Copperplate printmaking lesson with Kai",
+      "allDay": false,
+      "start": "2027-04-19T14:30",
+      "end": "2027-04-19T15:30",
+      "location": "Glass Meadow workshop",
+      "note": "",
+      "type": "appointment",
+      "source": "EBYS (synthetic demo)",
+      "id": "7100f16e8e",
+      "uid": "sj-eb10769d61b4aa980fe02892@ebys.local",
+      "intentId": "prop_2",
+      "revision": 1,
+      "sequence": 0,
+      "sessionId": null,
+      "who": "Kai",
+      "startsAt": "2027-04-19T14:30:00+09:00",
+      "endsAt": "2027-04-19T15:30:00+09:00",
+      "reminders": [
+        60
+      ],
+      "createdAt": "2026-11-09T13:42:20+09:00",
+      "updatedAt": "2026-11-09T13:42:20+09:00",
+      "remindersDone": []
+    },
+    "SourceFileSHA256AtRead": "46b049daeace92495431a11f393db41b3801336edf9413ab0a844713198eb795",
+    "OtherEventsPreserved": true,
+    "PreviewLabel": "Saved to the EBYS calendar on this device (not your phone calendar)",
+    "CalendarLabel": "the EBYS calendar on this device",
+    "ReadbackEnglish": "Saved in the EBYS calendar on this device and read back to check: Appointment: Copperplate printmaking lesson with Kai with Kai, Mon, 19 Apr 2027, 2:30 PM (Seoul time, UTC+9)"
+  },
+  "OriginalProvenance": {
+    "loadedHashStable": true,
+    "startedAtStable": true,
+    "serverCurrentAtEnd": true,
+    "uiHashStable": false,
+    "runtimeVersion": "actions-0.1.0",
+    "before": {
+      "serverLoaded": {
+        "startedAt": "2026-11-09T04:27:25.704Z",
+        "sha256": "4808156bf636ff452157af04ab244c8d9ed56743d7dad4b45a51f33f72a674ba",
+        "files": 28
+      },
+      "serverOnDisk": {
+        "sha256": "4808156bf636ff452157af04ab244c8d9ed56743d7dad4b45a51f33f72a674ba",
+        "files": 28
+      },
+      "serverCurrent": true,
+      "uiOnDisk": {
+        "sha256": "f46d5b0329bded6e5b9958f3eaa56fde3df9b74b2cf94661913d89da40f32e5d",
+        "files": 28
+      }
+    },
+    "after": {
+      "serverLoaded": {
+        "startedAt": "2026-11-09T04:27:25.704Z",
+        "sha256": "4808156bf636ff452157af04ab244c8d9ed56743d7dad4b45a51f33f72a674ba",
+        "files": 28
+      },
+      "serverOnDisk": {
+        "sha256": "4808156bf636ff452157af04ab244c8d9ed56743d7dad4b45a51f33f72a674ba",
+        "files": 28
+      },
+      "serverCurrent": true,
+      "uiOnDisk": {
+        "sha256": "7eb2c14c22b993569914d9a1d5d737c68e3128485f24b8ffd460d825c4f20f3f",
+        "files": 28
+      }
+    }
+  },
+  "FinalProvenance": {
+    "loadedHashStable": true,
+    "startedAtStable": true,
+    "serverCurrentAtEnd": true,
+    "uiHashStable": true,
+    "runtimeVersion": "actions-0.1.0",
+    "before": {
+      "serverLoaded": {
+        "startedAt": "2026-11-09T04:27:25.704Z",
+        "sha256": "4808156bf636ff452157af04ab244c8d9ed56743d7dad4b45a51f33f72a674ba",
+        "files": 28
+      },
+      "serverOnDisk": {
+        "sha256": "4808156bf636ff452157af04ab244c8d9ed56743d7dad4b45a51f33f72a674ba",
+        "files": 28
+      },
+      "serverCurrent": true,
+      "uiOnDisk": {
+        "sha256": "c5fb23d4a74ade39b38f8139573069cabebac0c2e4c2bba0d07c24974fb1a64c",
+        "files": 29
+      }
+    },
+    "after": {
+      "serverLoaded": {
+        "startedAt": "2026-11-09T04:27:25.704Z",
+        "sha256": "4808156bf636ff452157af04ab244c8d9ed56743d7dad4b45a51f33f72a674ba",
+        "files": 28
+      },
+      "serverOnDisk": {
+        "sha256": "4808156bf636ff452157af04ab244c8d9ed56743d7dad4b45a51f33f72a674ba",
+        "files": 28
+      },
+      "serverCurrent": true,
+      "uiOnDisk": {
+        "sha256": "c5fb23d4a74ade39b38f8139573069cabebac0c2e4c2bba0d07c24974fb1a64c",
+        "files": 29
+      }
+    }
+  },
+  "ModelCallsReplayedDuringResume": 0,
+  "ConfirmationPostsAcrossBoth": 1,
+  "ForbiddenDeleteRestartCalls": 0,
+  "Limitations": [
+    "No browser/device/fresh-profile or final UI acceptance; UI changed during original model run",
+    "Original harness stopped before proposing because it looked for top-level sessionId; corrected to meta.sessionId plus ingest memoryIds, preserved original report, resumed existing memory with no new model calls",
+    "Synthetic event remains in EBYS local calendar; not phone/OS/cloud calendar and no OS notifications",
+    "File sessionId=null observed; per-session calendar purge/deletion linkage untested; no deletion invoked",
+    "English readback repeats with Kai with Kai; copy follow-up, separate from exact-field/readback acceptance"
+  ]
+}

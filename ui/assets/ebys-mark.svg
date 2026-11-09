@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="t">
-  <title id="t">EBYS mark: a person with a companion arc at their side</title>
-  <rect width="64" height="64" rx="16" fill="#13284A"/>
-  <circle cx="27" cy="25" r="8.5" fill="#FBF6EC"/>
-  <path d="M12.5 50.5c1.6-9.2 7.4-14 14.5-14s12.9 4.8 14.5 14z" fill="#FBF6EC"/>
-  <path d="M42.5 13.5a21 21 0 0 1 0 37" fill="none" stroke="#E2B65A" stroke-width="5.5" stroke-linecap="round"/>
-  <circle cx="49.5" cy="32" r="3" fill="#E2B65A"/>
-</svg>

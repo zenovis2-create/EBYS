@@ -95,7 +95,7 @@ export function TzNote({ compact = false } = {}) {
   const dev = deviceTimeZone();
   const differs = dev && dev !== 'Asia/Seoul';
   return h('div', { class: `tznote ${differs ? 'tz-differs' : ''}`, role: 'note' },
-    h('span', { 'aria-hidden': 'true' }, '🕒 '), h('span', null, compact ? t('tz.seoul') : t('tz.note')),
+    Icon('clock', { size: 24 }), h('span', null, compact ? t('tz.seoul') : t('tz.note')),
     dev && !compact ? h('span', { class: 'small tz-dev' }, ' ', t('tz.device', { tz: dev }), differs ? ` · ${t('tz.differs')}` : '') : null);
 }
 
@@ -131,10 +131,10 @@ export function openEvidence(evs) {
       ? h('p', { class: 'ev-line' }, text.slice(0, start), h('mark', null, text.slice(start, start + e.quote.length)), text.slice(start + e.quote.length))
       : h('p', { class: 'small' }, t('ev.unknownSource'));
     return h('li', { class: 'ev-item' },
-      u ? h('div', { class: 'ev-speaker' }, t('ev.speaker'), ': ', u.speakerKnown === false ? t('a2.unknownSpeaker') : u.speakerLabel) : null,
+      u ? h('div', { class: 'ev-speaker' }, Icon('person', { size: 24 }), h('span', null, t('ev.speaker'), ': ', u.speakerKnown === false ? t('a2.unknownSpeaker') : u.speakerLabel)) : null,
       h('blockquote', { class: 'ev-quote', lang: langOf(e.quote) }, e.quote),
       h('div', { lang: langOf(text ?? e.quote) }, line),
-      h('div', { class: verified ? 'ev-ok' : 'ev-bad' }, verified ? t('ev.verbatimOk') : t('ev.verbatimBad')),
+      h('div', { class: verified ? 'ev-ok' : 'ev-bad' }, verified ? Icon('check', { size: 24 }) : null, h('span', null, verified ? t('ev.verbatimOk') : t('ev.verbatimBad'))),
       u ? Btn(t('ev.open'), () => {
         dlg.close();
         state.openTranscript = true; state.highlightUtterance = e.utteranceId;

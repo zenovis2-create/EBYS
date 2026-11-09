@@ -16,9 +16,10 @@ const here = dirname(fileURLToPath(import.meta.url));
 const uiRoot = join(here, '..');
 const contractsRoot = join(uiRoot, '..', 'contracts');
 const outDir = join(here, 'screens');
-const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.svg': 'image/svg+xml' };
+const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.json': 'application/json; charset=utf-8' };
 const liveArg = process.argv.find((a) => a.startsWith('--live='))?.slice(7) ?? null;
-const onlyLive = process.argv.includes('--only-live');
+const liveHomeOnly = process.argv.includes('--live-home');
+const onlyLive = process.argv.includes('--only-live') || liveHomeOnly;
 
 const chromePath = ['C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe',
   'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe'].find(existsSync);
@@ -78,7 +79,29 @@ const setTime = (hour, minute) => ev(`(() => { const s=document.querySelector('#
 const body = () => ev('document.body.innerText');
 const shot = async (name) => {
   await mkdir(outDir, { recursive: true });
+  await sleep(450); // let the step entrance (max 400ms) settle so the capture shows the final state
   const r = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true });
+  await writeFile(join(outDir, `${name}.png`), Buffer.from(r.result.data, 'base64'));
+  if (/-en(-|$)/.test(name)) {
+    const leaks = await ev(`(() => {
+      const out = []; const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      for (let n = w.nextNode(); n; n = w.nextNode()) {
+        const el = n.parentElement;
+        if (!/[\\uAC00-\\uD7A3]/.test(n.data) || !el || !el.checkVisibility()) continue;
+        if ((el.closest('[lang]')?.getAttribute('lang') ?? '').startsWith('ko')) continue;
+        out.push(n.data.trim().slice(0, 40));
+      }
+      return out;
+    })()`);
+    check(`English screen has no untagged Korean: ${name}`, leaks.length === 0, leaks.join(' | '));
+  }
+};
+/** Exactly what a 390x844 phone screen shows (no full-page stitching), for capture/QA. */
+const vshot = async (name) => {
+  await mkdir(outDir, { recursive: true });
+  await sleep(450);
+  await ev('window.scrollTo(0, 0)');
+  const r = await send('Page.captureScreenshot', { format: 'png' });
   await writeFile(join(outDir, `${name}.png`), Buffer.from(r.result.data, 'base64'));
 };
 const results = [];
@@ -106,14 +129,20 @@ const navFits = async (label) => {
 };
 
 // Ingest -> memories (sample or live)
+const openSettings = () => ev(`document.querySelectorAll('.nav-item')[3].click()`);
+const toAdd = async () => {
+  if (!(await ev(`!!document.querySelector('#conv-text')`))) { await clickNav('Home'); await ev(`document.querySelector('.act-add').click()`); }
+  await waitFor(`!!document.querySelector('#conv-text')`, 'add screen');
+};
 async function ingestSample(label) {
+  await toAdd();
   await clickText(label);
   await ev(`document.querySelector('#consent').checked || document.querySelector('#consent').click()`);
   await clickText('Read this conversation');
   await waitFor(`document.querySelectorAll('article.mem').length >= 3`, 'memories');
 }
 async function planFromClinicQuestion() {
-  await clickNav('Ask'); await clickText('Who and when is the clinic visit?');
+  await clickNav('Chat'); await clickText('Who and when is the clinic visit?');
   await waitFor(`!!document.querySelector('.answer')`, 'answer');
   await clickText('Make it a plan?');
   await waitFor(`!!document.querySelector('.statecard')`, 'proposal card');
@@ -133,9 +162,31 @@ try {
     check('fresh profile defaults to English (browser launched with --lang=ko-KR)', await ev(`document.documentElement.lang === 'en' && navigator.language.startsWith('ko')`), await ev('navigator.language'));
     check('privacy strip says microphone off', await ev(`document.querySelector('.privacybar')?.textContent.includes('Microphone off')`));
     check('sample mode clearly labelled (pill + honesty footer)', await ev(`document.querySelector('.modepill')?.textContent.includes('Sample · not real AI') && document.querySelector('.honesty')?.textContent.includes('synthetic')`));
-    check('original brand mark + real SVG favicon', await ev(`!!document.querySelector('.appbar svg.brandmark') && document.querySelector('link[rel=icon]').getAttribute('href') === 'assets/ebys-mark.svg'`));
-    check('favicon asset served', await ev(`fetch('assets/ebys-mark.svg').then(r => r.ok && r.headers.get('content-type').includes('svg'))`));
+    check('home: time-aware greeting + "What can I help you with?"', await ev(`/^Good (morning|afternoon|evening)!$/.test(document.querySelector('h1.greeting')?.textContent) && document.querySelector('.help')?.textContent === 'What can I help you with?'`), await ev(`document.querySelector('h1.greeting')?.textContent`));
+    check('home: one prominent "Talk to EBYS" (>= 64px tall, full width)', await ev(`(() => { const b = document.querySelector('.btn-talk'); const r = b?.getBoundingClientRect(); return b?.textContent.trim() === 'Talk to EBYS' && r.height >= 64 && r.width >= 330; })()`));
+    check('home: three working cream actions; no fake call/taxi/reminder/voice action', await ev(`[...document.querySelectorAll('.action')].map(a => a.textContent.trim()).join('|') === 'My plans|Add a memory|Find a memory' && !/call|taxi|119|set a reminder/i.test(document.querySelector('.home').innerText)`));
+    check('home: talk note is honest about voice', await ev(`document.querySelector('.talk-note')?.textContent.includes('only where this browser supports it')`));
+    check('bottom nav is Home / Chat / Memory / Settings', await ev(`[...document.querySelectorAll('.nav-label')].map(e => e.textContent).join('|') === 'Home|Chat|Memory|Settings'`));
+    check('mascot = the exact primary icon (PNG decoded at 512)', await ev(`(() => { const i = document.querySelector('img.mascot'); return i.complete && i.naturalWidth === 512 && i.naturalHeight === 512 && i.getAttribute('src') === 'assets/ebys-icon-512.png'; })()`));
+    check('app bar shows the icon + EBYS wordmark', await ev(`document.querySelector('.appbar img.brand-icon')?.naturalWidth === 96 && document.querySelector('.wordmark')?.textContent === 'EBYS'`));
+    check('favicon 32/192, apple-touch 180 and manifest are wired', await ev(`['link[rel=icon][sizes="32x32"]', 'link[rel=icon][sizes="192x192"]', 'link[rel=apple-touch-icon][sizes="180x180"]', 'link[rel=manifest]'].every(q => !!document.querySelector(q))`));
+    const assetInfo = await ev(`(async () => {
+      const m = await fetch('manifest.json'); const mt = m.headers.get('content-type'); const man = await m.json();
+      const files = ['assets/ebys-icon-32.png', 'assets/ebys-icon-180.png', ...man.icons.map(i => i.src)];
+      const out = [];
+      for (const f of files) { const r = await fetch(f); const b = await createImageBitmap(await r.blob()); out.push(f + ' ' + r.status + ' ' + r.headers.get('content-type') + ' ' + b.width + 'x' + b.height); }
+      return { mt, display: man.display, out };
+    })()`);
+    check('manifest served as JSON; every icon is image/png at its stated size', assetInfo.mt.includes('json') && assetInfo.display === 'browser' && assetInfo.out.every((x) => / 200 image\/png (\d+)x\1$/.test(x)), JSON.stringify(assetInfo));
     await shot('01-home-en'); await noOverflow('home 100%'); await minTap('home'); await primaryTall('home'); await navFits('home 100%');
+    await vshot('01-home-en-390x844');
+    check('home: greeting, Talk and all three actions fit one 390x844 screen above the nav', await ev(`(() => { const nav = document.querySelector('.bottomnav').getBoundingClientRect().top; return [...document.querySelectorAll('.action')].every(a => a.getBoundingClientRect().bottom <= nav) && document.querySelector('.btn-talk').getBoundingClientRect().bottom <= nav; })()`),
+      await ev(`JSON.stringify({ nav: Math.round(document.querySelector('.bottomnav').getBoundingClientRect().top), actions: [...document.querySelectorAll('.action')].map(a => Math.round(a.getBoundingClientRect().bottom)) })`));
+    await ev(`document.querySelector('.btn-talk').click()`);
+    check('"Talk to EBYS" opens Chat with a typed question box', await ev(`!!document.querySelector('#q') && document.querySelector('.nav-on .nav-label')?.textContent === 'Chat'`));
+    await clickNav('Home'); await ev(`document.querySelector('.act-add').click()`);
+    await waitFor(`!!document.querySelector('#conv-text')`, 'add screen');
+    await shot('01b-add-en'); await noOverflow('add 100%'); await primaryTall('add');
     await clickText('Sample 1');
     check('sample text filled (English clinic)', await ev(`document.querySelector('#conv-text').value.includes('Harbor Clinic')`));
     await clickText('Read this conversation');
@@ -157,10 +208,10 @@ try {
     await ev(`document.getElementById('evidence-dialog').close()`);
 
     // 3 Ask
-    await clickNav('Ask');
+    await clickNav('Chat');
     await clickText('Who and when is the clinic visit?');
     await waitFor(`!!document.querySelector('.answer')`, 'answer');
-    check('answer shows ambiguity + caveat, offers a plan, nothing saved', await ev(`!!document.querySelector('.unc-ambiguous') && document.body.innerText.includes('AM or PM must be checked') && document.body.innerText.includes('Make it a plan?') && !document.body.innerText.includes('Saved to calendar')`));
+    check('answer shows ambiguity + caveat, offers a plan, nothing saved', await ev(`!!document.querySelector('.unc-ambiguous') && document.body.innerText.includes('AM or PM must be checked') && document.body.innerText.includes('Make it a plan?') && !document.body.innerText.includes('Saved to the EBYS calendar')`));
     await shot('04-answer-en'); await noOverflow('answer');
     await clickText('What was the medicine name?');
     await waitFor(`document.querySelector('.answer')?.textContent.includes('The speaker is not known')`, 'unknown speaker caveat');
@@ -187,30 +238,36 @@ try {
     check('save refused without AM/PM', await ev(`document.body.innerText.includes('Choose AM or PM') && !!document.querySelector('#f-hour')`));
     await shot('06-clarify-refused-en');
     await clickText('Thu, Nov 12, 3:00 PM');
-    check('tapping the labelled PM candidate selects PM explicitly', await ev(`[...document.querySelectorAll('[aria-pressed=true]')].some(b=>b.textContent.trim().endsWith('PM'))`));
+    check('tapping the labelled PM candidate selects PM explicitly', await ev(`document.querySelector('.btn-toggle[aria-pressed=true]')?.textContent.trim() === 'PM' && document.querySelectorAll('.btn-toggle[aria-pressed=true]').length === 1`));
+    check('the tapped time choice shows a pressed state', await ev(`[...document.querySelectorAll('.choice[aria-pressed=true]')].map(b=>b.textContent).join('|') === 'Thu, Nov 12, 3:00 PM'`));
+    check('choosing a time does not replay the step entrance', await ev(`!document.querySelector('.step-enter')`));
     await clickText('Save and review');
     await waitFor(`document.body.innerText.includes('Is this right?')`, 'confirm step');
+    check('new step plays one calm entrance', await ev(`getComputedStyle(document.querySelector('.step-enter > *')).animationName === 'rise'`));
+    await send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] });
+    check('reduced motion keeps only a short fade (no movement, no stagger)', await ev(`[...document.querySelectorAll('.step-enter > *')].every(el => { const s = getComputedStyle(el); return s.animationName === 'fade' && s.animationDelay === '0s'; })`));
+    await send('Emulation.setEmulatedMedia', { features: [] });
     check('readback has person/date/time/time zone/action', await ev(`['Person','Date','Time','Time zone','Action'].every(k => [...document.querySelectorAll('.rb-row dt')].some(d=>d.textContent===k))`));
     check('readback says Thu Nov 12, 3:00 PM, Seoul time', await ev(`/Thu, Nov 12/.test(document.querySelector('.readback').textContent) && /3:00\\sPM/.test(document.querySelector('.readback').textContent) && document.querySelector('.readback').textContent.includes('Seoul time')`));
     check('simulation stated before confirm (server-style mode label)', await ev(`document.body.innerText.includes('Simulation only')`));
     await shot('07-confirm-en'); await primaryTall('confirm');
     await ev(`(() => { const b=[...document.querySelectorAll('button')].find(x=>x.textContent.includes('Yes, confirm')); b.click(); b.click(); })()`);
     await waitFor(`document.querySelector('.statecard.st-simulated_completed')`, 'result');
-    check('result is simulated, never "saved"', await ev(`document.querySelector('.statecard').textContent.includes('Simulated') && !document.querySelector('.statecard').textContent.includes('Saved to calendar')`));
+    check('result is simulated, never "saved"', await ev(`document.querySelector('.statecard').textContent.includes('Simulated') && !document.querySelector('.statecard').textContent.includes('Saved to the EBYS calendar')`));
     await shot('08-result-simulated-en');
     await clickText('Preview notification');
     check('notification preview labelled preview-only', await ev(`document.querySelector('.notif')?.textContent.includes('not a real notification')`));
     await shot('09-notification-en');
 
     // 5 Plans
-    await clickNav('Plans');
+    await clickNav('Home'); await ev(`document.querySelector('.act-plans').click()`);
     await waitFor(`document.querySelector('h1').textContent.includes('Plans and to-dos')`, 'plans');
     check('plans shows one simulated item (no duplicates)', await ev(`document.querySelectorAll('article.statecard.st-simulated_completed').length === 1`));
     await shot('10-plans-en');
 
     // 6 Cancel truth: a cancelled proposal cannot be confirmed
     await open(''); await ingestSample('Sample 2');
-    await clickNav('Ask');
+    await clickNav('Chat');
     await ev(`(() => { const q=document.querySelector('#q'); q.value='When do I meet Dana at the library?'; q.dispatchEvent(new Event('input')); })()`);
     await clickExact('Ask');
     await waitFor(`document.querySelector('.answer')?.textContent.includes('Make it a plan?')`, 'library answer');
@@ -221,7 +278,7 @@ try {
     await shot('11-cancelled-en');
 
     // 7 Settings: language persists (saved choice), receipt honest
-    await ev(`document.querySelector('.iconbtn').click()`);
+    await openSettings();
     await waitFor(`document.querySelector('h1').textContent.includes('Settings and privacy')`, 'settings');
     check('capability list has roadmap + unverified labels; never calls 119', await ev(`!!document.querySelector('.cap-roadmap') && !!document.querySelector('.cap-unverified') && document.body.innerText.includes('never calls 119')`));
     check('settings show time zone explicitly', await ev(`document.body.innerText.includes('All times are Seoul time (Asia/Seoul, UTC+9)')`));
@@ -229,13 +286,14 @@ try {
     await clickText('한국어 (Korean)');
     await open('');
     check('saved Korean choice persists after reload', await ev(`document.documentElement.lang === 'ko' && document.querySelector('.privacybar').textContent.includes('마이크 꺼짐')`));
-    await shot('13-home-ko'); await navFits('home KO');
-    await ev(`document.querySelector('.iconbtn').click()`);
+    await shot('13-home-ko'); await navFits('home KO'); await vshot('13-home-ko-390x844');
+    check('Korean home: all three actions visible above the nav', await ev(`(() => { const nav = document.querySelector('.bottomnav').getBoundingClientRect().top; return [...document.querySelectorAll('.action')].every(a => a.getBoundingClientRect().bottom <= nav); })()`));
+    await openSettings();
     await clickText('English');
     await open('');
     check('switching back to English persists', await ev(`document.documentElement.lang === 'en'`));
     await ingestSample('Sample 1');
-    await ev(`document.querySelector('.iconbtn').click()`);
+    await openSettings();
     await clickText('Delete everything'); await clickText('Delete everything');
     await waitFor(`!!document.querySelector('.receipt')`, 'receipt');
     check('receipt is partial (export not verified), not "all deleted"', await ev(`document.querySelector('.card .warn-strong')?.textContent.includes('Only partly') && !!document.querySelector('.rc-not_verified')`));
@@ -257,7 +315,7 @@ try {
       await clickText('Yes, confirm');
       await waitFor(`!!document.querySelector('.statecard.${cls}')`, `result ${fault}`);
       const text = await ev(`document.querySelector('.statecard.${cls}').textContent`);
-      check(`fault ${fault} renders ${cls} and never says saved`, text.toLowerCase().includes(word.toLowerCase()) && !/Saved to calendar/i.test(text), text.slice(0, 80));
+      check(`fault ${fault} renders ${cls} and never says saved`, text.toLowerCase().includes(word.toLowerCase()) && !/Saved to the EBYS calendar/i.test(text), text.slice(0, 80));
       await shot(`16-fault-${fault}-en`);
     }
     await open('&fault=real_ok');
@@ -266,12 +324,20 @@ try {
     await clickText('Thu, Nov 12, 3:00 PM'); await clickText('Save and review');
     await waitFor(`document.body.innerText.includes('Is this right?')`, 'confirm');
     await clickText('Yes, confirm'); await waitFor(`!!document.querySelector('.statecard.st-completed_external')`, 'completed_external (TEST fixture)');
-    check('only a verified-real record renders "Saved to calendar (verified)"', await ev(`document.querySelector('.statecard.st-completed_external').textContent.includes('Saved to calendar (verified)')`));
+    check('only a verified-real record renders "Saved to the EBYS calendar on this device (checked)"', await ev(`document.querySelector('.statecard.st-completed_external').textContent.includes('Saved to the EBYS calendar on this device (checked)')`));
     await shot('17-completed-external-TESTONLY-en');
   }
 
   // 10 LIVE English run against the real server (model route; slow)
   if (liveArg) {
+    const before = problems.length;
+    await open('&api=live', liveArg, '/');
+    await vshot('19-live-home-en-390x844');
+    check('LIVE: fresh English UI, Live AI pill', await ev(`document.documentElement.lang === 'en' && document.querySelector('.modepill')?.textContent.includes('Live')`), await ev(`document.querySelector('.modepill')?.textContent + ' / ' + document.querySelector('.modepill')?.title`));
+    check('LIVE: home is the chosen blue mascot hub (served by the real server)', await ev(`document.querySelector('img.mascot')?.naturalWidth === 512 && !!document.querySelector('.btn-talk') && document.querySelectorAll('.action').length === 3`));
+    if (liveHomeOnly) check('LIVE: home loads with no console errors (home-only: nothing is ingested or asked)', problems.length === before, problems.slice(before).join(' || '));
+  }
+  if (liveArg && !liveHomeOnly) {
     const before = problems.length;
     const ref = String(Date.now()).slice(-6);
     const text = [
@@ -282,7 +348,7 @@ try {
       'Tom: Thanks. My son Alex will drive me.',
     ].join('\n');
     await open('&api=live', liveArg, '/');
-    check('LIVE: fresh English UI, Live AI pill', await ev(`document.documentElement.lang === 'en' && document.querySelector('.modepill')?.textContent.includes('Live')`), await ev(`document.querySelector('.modepill')?.textContent + ' / ' + document.querySelector('.modepill')?.title`));
+    await toAdd();
     await ev(`(() => { const t=document.querySelector('#conv-text'); t.value=${JSON.stringify(text)}; t.dispatchEvent(new Event('input')); document.querySelector('#consent').click(); })()`);
     await clickText('Read this conversation');
     const tIngest = await waitFor(`document.querySelectorAll('article.mem').length >= 1 || !!document.querySelector('.errorbox')`, 'live memories', 160000);
@@ -290,7 +356,7 @@ try {
     check('LIVE: new English text became source-linked memories', await ev(`document.querySelectorAll('article.mem').length >= 1 && [...document.querySelectorAll('button')].some(b=>b.textContent.includes('See the source'))`), `${Math.round(tIngest / 1000)}s; ${(memText.match(/Analyzed by[^\n]*/) ?? [''])[0]}`);
     check('LIVE: no [object Object] in memories', !memText.includes('[object Object]'));
     await shot('20-live-memories-en');
-    await clickNav('Ask');
+    await clickNav('Chat');
     await ev(`(() => { const q=document.querySelector('#q'); q.value='When is my hearing check, and who is driving me?'; q.dispatchEvent(new Event('input')); })()`);
     await clickExact('Ask');
     const tAsk = await waitFor(`!!document.querySelector('.answer') || !!document.querySelector('.errorbox')`, 'live answer', 160000);
@@ -321,11 +387,15 @@ try {
         await waitFor(`!!document.querySelector('.state-big') || !!document.querySelector('.errorbox')`, 'live result', 60000);
         const res = await ev(`document.querySelector('.state-big')?.innerText ?? document.querySelector('.errorbox')?.innerText`);
         check('LIVE: result state rendered via displayState (no false "saved")', !!res, res);
+        if (await ev(`!!document.querySelector('.statecard.st-completed_external')`)) {
+          const where = await ev(`document.querySelector('.where-saved')?.innerText ?? ''`);
+          check('LIVE: a verified save also says WHERE it was saved', where.length > 0, where);
+        }
         await shot('25-live-result-en');
       }
     }
     // clean up ONLY this session on the shared server
-    await ev(`document.querySelector('.iconbtn').click()`);
+    await openSettings();
     if (await clickText('Delete the latest conversation')) { await clickText('Delete this conversation only'); await waitFor(`!!document.querySelector('.receipt') || !!document.querySelector('.errorbox')`, 'live receipt', 30000); }
     await shot('26-live-receipt-en');
     check('LIVE: no console errors', problems.length === before, problems.slice(before).join(' || '));

@@ -29,9 +29,14 @@ const staging = path.join(OUTBOX, 'staging', captureId);
 const framesDir = path.join(staging, 'frames');
 await mkdir(framesDir, { recursive: true });
 
-const runtime = (await (await fetch(`${BASE}/api/runtime`)).json()).data;
+// sha256 of the owner's chosen PRIMARY icon (PRIMARY-ICON-OWNER-UPDATE.md), served as ui/assets/ebys-icon-original.png.
+const PRIMARY_ICON_SHA256 = 'f8c2776843cacf50b05ec63a9fe2b7ea4d381cb5be73f8acbed948ba861ae44b';
+const FREEZE_UI_SHA = process.env.EBYS_FREEZE_UI_SHA ?? null;
+const getRuntime = async () => (await (await fetch(`${BASE}/api/runtime`)).json()).data;
+const runtime = await getRuntime();
 const TRIAL = process.env.EBYS_CAPTURE_TRIAL === '1';
 if (!runtime?.sourceSnapshot?.serverCurrent && !TRIAL) throw new Error('server is running stale code (sourceSnapshot.serverCurrent=false); restart it before capturing');
+if (FREEZE_UI_SHA && !runtime.sourceSnapshot.uiOnDisk.sha256.startsWith(FREEZE_UI_SHA) && !TRIAL) throw new Error(`ui on disk ${runtime.sourceSnapshot.uiOnDisk.sha256} is not the frozen UI READY build ${FREEZE_UI_SHA}`);
 
 const profile = await mkdtemp(path.join(tmpdir(), 'ebys-capture-'));
 const port = 9800 + Math.floor(Math.random() * 150);
@@ -58,13 +63,21 @@ const send = (method, params = {}) => new Promise((resolve) => { const id = next
 ws.addEventListener('message', async (m) => {
   const d = JSON.parse(m.data);
   if (d.id && pending.has(d.id)) { pending.get(d.id)(d); pending.delete(d.id); return; }
-  if (d.method === 'Network.requestWillBeSent') sentPaths.push(new URL(d.params.request.url).pathname);
-  if (d.method === 'Network.responseReceived' && /\/api\/(ingest|query|propose|preview|confirm)/.test(d.params.response.url)) {
-    apiCalls.set(d.params.requestId, { url: new URL(d.params.response.url).pathname, status: d.params.response.status });
+  if (d.method === 'Network.requestWillBeSent') {
+    const u = new URL(d.params.request.url);
+    sentPaths.push(u.pathname);
+    if (u.pathname.startsWith('/api/')) {
+      let request = d.params.request.postData ?? null;
+      try { request = request && JSON.parse(request); } catch { /* keep text */ }
+      apiCalls.set(d.params.requestId, { url: u.pathname + u.search, method: d.params.request.method, request, sentAt: new Date().toISOString() });
+    }
   }
+  if (d.method === 'Network.responseReceived' && apiCalls.has(d.params.requestId)) apiCalls.get(d.params.requestId).status = d.params.response.status;
   if (d.method === 'Network.loadingFinished' && apiCalls.has(d.params.requestId)) {
+    const c = apiCalls.get(d.params.requestId);
+    c.finishedAt = new Date().toISOString();
     const r = await send('Network.getResponseBody', { requestId: d.params.requestId });
-    try { apiCalls.get(d.params.requestId).body = JSON.parse(r.result.body); } catch { /* not json */ }
+    try { c.body = JSON.parse(r.result.body); } catch { c.bodyText = r.result?.body ?? null; }
   }
   if (d.method === 'Runtime.exceptionThrown') problems.push(d.params.exceptionDetails.exception?.description ?? d.params.exceptionDetails.text);
 });
@@ -112,6 +125,8 @@ try {
   mark('open-app-fresh-profile');
   check('fresh profile defaults to English (no ?lang)', await ev(`document.documentElement.lang === 'en'`));
   check('live API selected, not fixture', await ev(`!/FIXTURE/.test(document.body.textContent)`));
+  const brand = await ev(`(() => { const i=document.querySelector('.brand-icon'); return i ? { src: i.getAttribute('src'), loaded: i.complete && i.naturalWidth > 0 } : null; })()`);
+  check('header shows the PRIMARY PNG icon (not the old SVG mark)', brand?.loaded && /ebys-icon-\d+\.png$/.test(brand.src), JSON.stringify(brand));
   // Labels come from the app's own dictionary (same module instance), so copy changes don't break the capture.
   const L = await ev(`import('/i18n.js').then(m => Object.fromEntries(['a1.analyze','a2.evidence','a3.makeProposal','a4.clarifyTitle','a4.pm','a4.saveChanges','a4.confirmTitle','a4.yes','nav.ask','home.actAdd'].map(k => [k, m.t(k).split(' · ')[0]])))`);
 
@@ -196,6 +211,23 @@ try {
   await rm(profile, { recursive: true, force: true }).catch(() => {});
 }
 check('no page exceptions', problems.length === 0, problems.join(' | '));
+const runtimeAfter = await getRuntime();
+const snapBefore = runtime.sourceSnapshot;
+const snapAfter = runtimeAfter.sourceSnapshot;
+check('runtime frozen during capture (same loaded server, serverCurrent, same ui on disk)',
+  snapAfter.serverCurrent && snapAfter.serverLoaded.sha256 === snapBefore.serverLoaded.sha256 && snapAfter.serverLoaded.startedAt === snapBefore.serverLoaded.startedAt && snapAfter.uiOnDisk.sha256 === snapBefore.uiOnDisk.sha256,
+  JSON.stringify({ before: { server: snapBefore.serverLoaded.sha256, startedAt: snapBefore.serverLoaded.startedAt, ui: snapBefore.uiOnDisk.sha256 }, after: { server: snapAfter.serverLoaded.sha256, startedAt: snapAfter.serverLoaded.startedAt, current: snapAfter.serverCurrent, ui: snapAfter.uiOnDisk.sha256 } }));
+if (FREEZE_UI_SHA) check('ui is the declared UI READY build', snapBefore.uiOnDisk.sha256.startsWith(FREEZE_UI_SHA), `${snapBefore.uiOnDisk.sha256} vs ${FREEZE_UI_SHA}`);
+const servedOriginal = createHash('sha256').update(Buffer.from(await (await fetch(`${BASE}/assets/ebys-icon-original.png`)).arrayBuffer())).digest('hex');
+check('served primary icon original matches the owner-chosen file', servedOriginal === PRIMARY_ICON_SHA256, servedOriginal);
+await writeFile(path.join(staging, 'runtime-before.json'), JSON.stringify(runtime, null, 2));
+await writeFile(path.join(staging, 'runtime-after.json'), JSON.stringify(runtimeAfter, null, 2));
+const apiRaw = [...apiCalls.values()].filter((c) => !/^\/api\/runtime/.test(c.url));
+await writeFile(path.join(staging, 'api-raw.json'), JSON.stringify({ note: 'every /api request body and full response body as sent/received by the page (telemetry.rawModelJson = the model JSON; telemetry.validation = the validator result)', calls: apiRaw }, null, 2));
+const rawModel = apiRaw.filter((c) => /^\/api\/(ingest|query)/.test(c.url));
+check('raw model JSON and validation objects captured for every ingest/query',
+  rawModel.length >= 2 && rawModel.every((c) => c.body?.data?.telemetry?.rawModelJson && typeof c.body.data.telemetry.validation === 'object' && c.request),
+  `${rawModel.length} model calls`);
 
 // Frames -> constant 30 fps MP4 using real inter-frame timings.
 if (frames.length < 2) throw new Error('no frames captured');
@@ -231,6 +263,10 @@ const manifest = {
     return { sha: head.stdout.trim(), workingTreeDirty: dirty };
   })(),
   sourceSnapshot: runtime.sourceSnapshot,
+  sourceSnapshotAfter: runtimeAfter.sourceSnapshot,
+  frozenUiSha: FREEZE_UI_SHA,
+  primaryIcon: { sha256: servedOriginal, matchesOwnerChoice: servedOriginal === PRIMARY_ICON_SHA256 },
+  apiRaw: { file: 'api-raw.json', sha256: createHash('sha256').update(await readFile(path.join(staging, 'api-raw.json'))).digest('hex') },
   appUrl: `${BASE}/?api=live`,
   capturedAt: new Date(t0).toISOString(),
   sourceMachine: 'windows-zenovis (lead senior-planner)',
@@ -247,7 +283,7 @@ const manifest = {
   modelWaitSegments: timeline.filter((x) => x.modelWait !== undefined).map(({ atSeconds, step }) => ({ atSeconds, step })),
   featureClaims: [
     { name: 'English default on a fresh profile', status: passed('fresh profile defaults to English (no ?lang)') ? 'verified' : 'unverified', evidence: 'timeline.json checks' },
-    { name: 'Real model extraction + recall on new synthetic text', status: allModel ? 'verified' : 'unverified', evidence: 'api-telemetry.json (mode, route, rawModelJson, validation)' },
+    { name: 'Real model extraction + recall on new synthetic text', status: allModel ? 'verified' : 'unverified', evidence: 'api-raw.json (full request/response objects incl. telemetry.rawModelJson and telemetry.validation); api-telemetry.json summary' },
     { name: 'Source evidence (verbatim quote)', status: passed('evidence drawer shows a verbatim quote') ? 'verified' : 'unverified', evidence: 'timeline.json' },
     { name: 'AM/PM clarification, explicit user choice', status: passed('AM/PM not preselected') && passed('answer keeps AM/PM open (no invented time)') ? 'verified' : 'unverified', evidence: 'timeline.json' },
     { name: 'Confirmation before action', status: timeline.some((x) => x.step === 'confirmation-card') ? 'verified' : 'unverified', evidence: 'timeline.json' },

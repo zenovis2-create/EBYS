@@ -5,7 +5,7 @@ import { state, app, go, rerender, noteSession } from '../store.js';
 import { Btn, ErrorBox, langOf } from '../components.js';
 import { runWithProgress } from '../progress.js';
 import { SAMPLES } from '../samples.js';
-import { Icon, BrandMark } from '../lib/icons.js';
+import { Icon } from '../lib/icons.js';
 
 export async function loadMemories() {
   const r = await app.api.memories();
@@ -45,13 +45,11 @@ function modeKey(mode) {
 
 const SAMPLE_LIST = [['sample1', 'a1.sample1'], ['sample2', 'a1.sample2'], ['sample3', 'a1.sample3']];
 
-function Hero() {
+function Intro() {
   const stage = state.memories.length ? (state.plans.size ? 3 : 2) : 1;
-  return h('div', { class: 'hero' },
-    h('p', { class: 'eyebrow' }, t('app.tagline')),
-    h('div', { class: 'hero-top' }, BrandMark({ size: 64, cls: 'hero-mark' }),
-      h('h1', { id: 'screen-title', tabindex: '-1', class: 'hero-title' }, t('home.hello'))),
-    h('p', { class: 'hero-lead' }, t('home.lead')),
+  return h('div', { class: 'intro' },
+    h('h1', { id: 'screen-title', tabindex: '-1' }, t('a1.title')),
+    h('p', { class: 'lead' }, t('home.lead')),
     h('ol', { class: 'path', 'aria-label': t('a1.title') },
       ['home.step1', 'home.step2', 'home.step3'].map((k, i) => h('li', { class: i + 1 < stage ? 'path-done' : i + 1 === stage ? 'path-now' : '', 'aria-current': i + 1 === stage ? 'step' : null },
         h('span', { class: 'path-n', 'aria-hidden': 'true' }, i + 1 < stage ? '✓' : String(i + 1)), h('span', null, t(k))))));
@@ -73,7 +71,7 @@ export function renderInput() {
   };
   const last = state.lastIngest;
   return h('section', { 'aria-labelledby': 'screen-title' },
-    Hero(),
+    Intro(),
     last ? h('div', { class: 'card card-quiet' },
       h('p', { class: last.mode === 'fallback' || last.mode === 'fixture' ? 'warn-strong' : 'ok-strong' }, t(modeKey(last.mode))),
       h('p', null, t('a1.lastMem', { n: last.memoriesCreated })),

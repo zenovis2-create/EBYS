@@ -1,0 +1,52 @@
+/* Scoped to .sjcal only. Uses the app's CSS variables with fallbacks; touches nothing else. */
+.sjcal { position: relative; --c-tap: 3.5rem; /* 56px at 100% */ font-family: var(--font-body, system-ui, sans-serif); color: var(--text, #10282c); font-size: calc(1.125rem * var(--scale, 1)); line-height: 1.4; max-width: 100%; box-sizing: border-box; padding: 0 0 1.5rem; }
+.sjcal *, .sjcal *::before, .sjcal *::after { box-sizing: border-box; }
+.sjcal h1, .sjcal h2, .sjcal h3, .sjcal p, .sjcal ul { margin: 0; padding: 0; }
+.sjcal ul { list-style: none; }
+.sjcal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: .75rem; margin-bottom: .75rem; }
+.sjcal-h1 { font-family: var(--font-display, Georgia, serif); font-size: 1.6em; }
+.sjcal-source { color: var(--muted, #2e4649); font-size: .85em; }
+.sjcal-h2 { font-family: var(--font-display, Georgia, serif); font-size: 1.3em; margin: 1.25rem 0 .5rem; }
+.sjcal-h3 { font-size: 1.05em; margin: .9rem 0 .4rem; }
+
+.sjcal-btn { min-height: var(--c-tap); min-width: var(--c-tap); padding: .4rem .9rem; font: inherit; font-weight: 600; color: var(--primary, #0b4f55); background: var(--paper, #fffdf6); border: 2px solid var(--primary, #0b4f55); border-radius: var(--radius, 18px); cursor: pointer; }
+.sjcal-btn:hover:not(:disabled) { background: var(--sand, #fbefd2); }
+.sjcal-btn:disabled { opacity: .55; cursor: default; }
+.sjcal-btn.primary { color: var(--primary-fg, #fff8e8); background: var(--primary, #0b4f55); }
+.sjcal-btn.danger { color: #fff; background: var(--danger, #8a1c1c); border-color: var(--danger, #8a1c1c); }
+.sjcal-btn.quiet { border-color: var(--line, #5b6b6d); color: var(--text, #10282c); }
+.sjcal-btn:focus-visible, .sjcal-date:focus-visible { outline: 3px solid var(--focus, #c2410c); outline-offset: 2px; }
+
+.sjcal-nav { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin: .5rem 0; }
+.sjcal-month-title, .sjcal-day-title { flex: 1; text-align: center; font-family: var(--font-display, Georgia, serif); font-size: 1.2em; }
+.sjcal-badge { display: inline-block; margin-left: .5rem; padding: 0 .5rem; font-size: .7em; font-family: var(--font-body, sans-serif); color: var(--primary-fg, #fff8e8); background: var(--primary, #0b4f55); border-radius: 999px; vertical-align: middle; }
+
+/* Read-only month grid: 7 columns fit 390px (cells ~48px), so cells are not tap targets. */
+.sjcal-grid { display: grid; gap: 2px; }
+.sjcal-row { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 2px; }
+.sjcal-dow { text-align: center; font-weight: 700; font-size: .8em; padding: .25rem 0; }
+.sjcal-cell { position: relative; min-height: 3rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; background: var(--paper, #fffdf6); border: 1px solid var(--rule, #cfe0e6); border-radius: 10px; }
+.sjcal-cell.out { opacity: .5; }
+.sjcal-cell.today { border: 3px solid var(--primary, #0b4f55); font-weight: 800; }
+.sjcal-cell.sel { background: var(--sand, #fbefd2); }
+.sjcal-num { font-size: 1em; }
+.sjcal-dot { min-width: 1.35rem; padding: 0 .3rem; font-size: .75em; font-weight: 700; line-height: 1.35rem; text-align: center; color: var(--primary-fg, #fff8e8); background: var(--primary, #0b4f55); border-radius: 999px; }
+.sjcal-hint { color: var(--muted, #2e4649); font-size: .85em; margin-top: .4rem; }
+
+.sjcal-tools { display: flex; flex-wrap: wrap; align-items: flex-end; gap: .6rem; margin: .5rem 0 .75rem; }
+.sjcal-datelabel { display: flex; flex-direction: column; font-size: .85em; font-weight: 600; }
+.sjcal-date { min-height: var(--c-tap); font: inherit; padding: .3rem .6rem; border: 2px solid var(--line, #5b6b6d); border-radius: var(--radius, 18px); background: var(--paper, #fffdf6); color: inherit; }
+
+.sjcal-list { display: grid; gap: .6rem; }
+.sjcal-ev { display: flex; flex-direction: column; gap: .5rem; padding: .8rem; background: var(--paper, #fffdf6); border: 1px solid var(--line, #5b6b6d); border-radius: var(--radius, 18px); }
+.sjcal-ev-time { font-weight: 700; color: var(--primary, #0b4f55); }
+.sjcal-ev-title { font-size: 1.1em; font-weight: 700; overflow-wrap: anywhere; }
+.sjcal-ev-meta { color: var(--muted, #2e4649); overflow-wrap: anywhere; }
+.sjcal-ev-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+.sjcal-ask { flex-basis: 100%; font-weight: 700; }
+.sjcal-empty { padding: .8rem; color: var(--muted, #2e4649); background: var(--neutral-bg, #ece7dd); border-radius: var(--radius, 18px); }
+.sjcal-warn { padding: .5rem .7rem; color: var(--warn, #4d3300); background: var(--warn-bg, #fdf0c8); border-radius: 12px; font-size: .9em; }
+.sjcal-error { padding: .7rem; margin-bottom: .6rem; color: var(--danger, #8a1c1c); background: var(--danger-bg, #fdecea); border: 2px solid var(--danger, #8a1c1c); border-radius: 12px; font-weight: 600; }
+.sjcal-live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (min-width: 560px) { .sjcal-ev { flex-direction: row; align-items: center; justify-content: space-between; } .sjcal-ev-main { flex: 1; } }
+@media (prefers-reduced-motion: no-preference) { .sjcal-btn { transition: background .12s; } }

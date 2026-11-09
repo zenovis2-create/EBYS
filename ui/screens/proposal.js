@@ -7,6 +7,7 @@ import { runWithProgress } from '../progress.js';
 import { displayState } from '../lib/contracts.js';
 import { parseIso, composeIso, isDateOnly, formatDate, formatTime, formatWhen, offsetLabel } from '../lib/time.js';
 import { normalizePreview } from '../lib/preview.js';
+import { Icon } from '../lib/icons.js';
 
 const STEP_NO = { review: 1, form: 2, confirm: 3, result: 4, cancelled: 4 };
 
@@ -48,7 +49,11 @@ function RowsTable(rows) {
 function Steps(step) {
   const n = STEP_NO[step] ?? 1;
   return h('ol', { class: 'steps', 'aria-label': t('a4.title') },
-    ['a4.step1', 'a4.step2', 'a4.step3', 'a4.step4'].map((k, i) => h('li', { class: i + 1 === n ? 'step-on' : '', 'aria-current': i + 1 === n ? 'step' : null }, t(k))));
+    ['a4.step1', 'a4.step2', 'a4.step3', 'a4.step4'].map((k, i) => {
+      const [num, ...rest] = t(k).split(' ');
+      return h('li', { class: i + 1 === n ? 'step-on' : '', 'aria-current': i + 1 === n ? 'step' : null },
+        h('span', { class: 'step-n' }, num), ' ', h('span', { class: 'step-t' }, rest.join(' ')));
+    }));
 }
 
 // ---- notification preview (never claims a real notification) ----
@@ -210,18 +215,23 @@ function FormStep(c) {
   return h('div', null,
     h('h2', null, form.mode === 'clarify' ? t('a4.clarifyTitle') : t('a4.edit')),
     form.mode === 'clarify' ? h('p', { class: 'lead' }, t('a4.clarifyLead')) : null,
-    TzNote({ compact: true }),
     f.note ? h('p', { class: 'note', role: 'alert' }, f.note) : null,
-    cands.length ? h('div', null, h('p', { class: 'label' }, t('a4.candidates')),
-      h('div', { class: 'chips chips-wrap' }, cands.map((cd) => h('button', {
-        type: 'button', class: 'chip', onClick: () => {
-          // The chip label itself states AM/PM, so tapping it is the person's explicit choice.
-          // A candidate without a time leaves hour/minute/AM-PM untouched (never defaulted).
-          if (cd.date) form.date = cd.date;
-          if (cd.time) { form.hour12 = cd.time.hour12; form.minute = cd.time.minute; form.ampm = cd.time.ampm; }
-          rerender();
-        },
-      }, cd.label)))) : null,
+    h('div', { class: cands.length ? 'clarify' : '' },
+      TzNote({ compact: true }),
+      cands.length ? h('div', { role: 'group', 'aria-labelledby': 'cand-label' }, h('p', { id: 'cand-label', class: 'label' }, t('a4.candidates')),
+        h('div', { class: 'choice-list' }, cands.map((cd) => {
+          const chosen = (!cd.date || form.date === cd.date)
+            && (!cd.time || (form.hour12 === cd.time.hour12 && form.minute === cd.time.minute && form.ampm === cd.time.ampm));
+          return h('button', {
+            type: 'button', class: `chip choice ${chosen ? 'choice-on' : ''}`, 'aria-pressed': String(chosen), onClick: () => {
+              // The label itself states AM/PM, so tapping it is the person's explicit choice.
+              // A candidate without a time leaves hour/minute/AM-PM untouched (never defaulted).
+              if (cd.date) form.date = cd.date;
+              if (cd.time) { form.hour12 = cd.time.hour12; form.minute = cd.time.minute; form.ampm = cd.time.ampm; }
+              rerender();
+            },
+          }, Icon(chosen ? 'check' : 'clock', { size: 26 }), h('span', null, cd.label));
+        }))) : null),
     form.mode === 'edit' ? h('div', null,
       h('label', { for: 'f-title', class: 'label' }, t('a4.fieldTitle')),
       h('input', { id: 'f-title', class: 'field', type: 'text', value: form.title, onInput: (e) => { form.title = e.target.value; } }),
@@ -369,6 +379,7 @@ function ResultStep(c) {
     h('h2', null, t('a4.resultTitle')),
     h('div', { class: `card statecard st-${key}`, role: success ? 'status' : (key === 'failed' || key === 'permission_denied' || blocked ? 'alert' : 'status') },
       h('div', { class: 'state-big' }, StateBadge(key)),
+      success ? h('p', { class: 'where-saved' }, modeLine(e)) : null,
       success ? h('p', { class: 'small' }, t('a4.readbackBasis'), verifiedAt ? ` ${t('a4.verifiedAt', { t: formatWhen(verifiedAt, getLang()) })}` : '')
         : h('p', { class: 'small' }, t('a4.previewBasis')),
       RowsTable(rows),
@@ -397,8 +408,15 @@ export function renderProposal() {
   const title = h('h1', { id: 'screen-title', tabindex: '-1' }, t('a4.title'));
   if (!c) return h('section', { 'aria-labelledby': 'screen-title' }, title, h('p', null, state.flow ? t('a4.proposalGone') : t('a4.noFlow')), Btn(t('nav.memory'), () => go('memories'), { variant: 'primary' }));
   const body = { review: ReviewStep, form: FormStep, confirm: ConfirmStep, result: ResultStep, cancelled: CancelledStep }[c.f.step] ?? ReviewStep;
-  return h('section', { 'aria-labelledby': 'screen-title' }, title, Steps(c.f.step), body(c));
+  // Every tap re-renders the whole screen, so the entrance plays only when the step itself changes.
+  const stepKey = `${c.f.proposalId}:${c.f.step}`;
+  const entering = stepKey !== lastStepKey;
+  lastStepKey = stepKey;
+  const el = body(c);
+  if (entering) el.classList.add('step-enter');
+  return h('section', { 'aria-labelledby': 'screen-title' }, title, Steps(c.f.step), el);
 }
+let lastStepKey = null;
 
 /** Used by Plans: reopen an existing tracked proposal at the right step. */
 export function reopenProposal(proposalId) {

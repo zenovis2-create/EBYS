@@ -300,14 +300,65 @@ test('CSS keeps 22px base, 56px+ targets, 64px+ primary, visible focus and reduc
   assert.ok(!/user-scalable\s*=\s*no|maximum-scale\s*=\s*1(?!\.)/.test(html), 'zoom must not be disabled');
 });
 
-test('brand assets: original SVG mark + logo exist and the favicon points to them', () => {
-  const mark = readFileSync(join(uiRoot, 'assets', 'ebys-mark.svg'), 'utf8');
-  const logo = readFileSync(join(uiRoot, 'assets', 'ebys-logo.svg'), 'utf8');
-  assert.match(mark, /<svg[^>]+viewBox="0 0 64 64"/); assert.match(mark, /<title/);
-  assert.match(logo, /EVER BY YOUR SIDE/);
-  for (const s of [mark, logo]) assert.ok(!/<script|xlink:href="http|href="http/.test(s), 'SVG must be inert and offline');
+test('source/clarify/confirm cards keep text >= 22px and every animation has a reduced-motion off switch', () => {
+  const css = readFileSync(join(uiRoot, 'styles.css'), 'utf8');
+  const rule = (sel) => css.match(new RegExp(`(^|\\n)${sel.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*{([^}]*)}`))?.[2] ?? '';
+  for (const sel of ['.rb-row dt', '.rb-row dd', '.chip.choice', '.ev-quote', '.readback-sentence']) {
+    const m = rule(sel).match(/font-size:\s*([\d.]+)rem/);
+    assert.ok(m, `${sel} has an explicit rem size`);
+    assert.ok(Number(m[1]) >= 1, `${sel} is ${m[1]}rem (< 22px)`);
+  }
+  for (const [, n, unit] of css.matchAll(/font-size:\s*([\d.]+)(rem|px)/g)) {
+    const px = unit === 'px' ? Number(n) : Number(n) * 22;
+    assert.ok(px >= 18, `font-size ${n}${unit} is under the 18px badge floor (design-ui.md)`);
+  }
+  for (const sel of ['.small', '.tznote', '.honesty']) assert.match(rule(sel), /font-size:\s*1rem/, `${sel} is body text: 22px`);
+  const reduced = css.slice(css.indexOf('@media (prefers-reduced-motion: reduce)'));
+  assert.match(reduced, /\.step-enter > \*[^{]*{\s*animation:\s*fade \d+ms[^;]*;\s*animation-delay:\s*0ms/); // gentler, not zero
+  assert.match(css, /@keyframes fade\s*{\s*from\s*{\s*opacity:\s*0;\s*}\s*to\s*{\s*opacity:\s*1;\s*}\s*}/); // no transform
+  assert.match(reduced, /\.chip\.choice:active[^{]*{\s*transform:\s*none/);
+  assert.match(css, /\.chip\.choice\s*{[^}]*transition:[^}]*120ms ease-out/);
+});
+
+test('home: time-aware greeting; actions are only things that work (no call/taxi/reminder promise)', async () => {
+  const { greetingKey } = await import('../screens/home.js');
+  assert.equal(greetingKey(5), 'home.morning'); assert.equal(greetingKey(11), 'home.morning');
+  assert.equal(greetingKey(12), 'home.afternoon'); assert.equal(greetingKey(17), 'home.afternoon');
+  assert.equal(greetingKey(18), 'home.evening'); assert.equal(greetingKey(0), 'home.evening'); assert.equal(greetingKey(4), 'home.evening');
+  const en = dictionaries.en;
+  assert.equal(en['home.morning'], 'Good morning!'); assert.equal(en['home.help'], 'What can I help you with?'); assert.equal(en['home.talk'], 'Talk to EBYS');
+  assert.deepEqual(['nav.home', 'nav.ask', 'nav.memory', 'nav.settings'].map((k) => en[k]), ['Home', 'Chat', 'Memory', 'Settings']);
+  const src = readFileSync(join(uiRoot, 'screens', 'home.js'), 'utf8');
+  assert.deepEqual([...src.matchAll(/route: '(\w+)'/g)].map((m) => m[1]), ['plans', 'input', 'memories']); // real, working screens
+  for (const k of Object.keys(en).filter((k) => k.startsWith('home.act'))) assert.ok(!/call|taxi|119|remind/i.test(en[k]), `${k} promises something unsupported`);
+  assert.match(en['home.talkNote'], /only where this browser supports it/);
+  assert.match(en['prog.calm'], /a minute or two/);
+  assert.match(en['prog.sample'], /not real AI/);
+});
+
+const pngSize = (buf) => {
+  assert.equal(buf.subarray(0, 8).toString('hex'), '89504e470d0a1a0a', 'PNG signature');
+  return [buf.readUInt32BE(16), buf.readUInt32BE(20)];
+};
+
+test('brand: the exact primary icon PNG is preserved byte-for-byte; square resizes; favicon/apple-touch/manifest wired', async () => {
+  const { createHash } = await import('node:crypto');
+  const original = readFileSync(join(uiRoot, 'assets', 'ebys-icon-original.png'));
+  assert.equal(createHash('sha256').update(original).digest('hex').toUpperCase(), 'F8C2776843CACF50B05EC63A9FE2B7EA4D381CB5BE73F8ACBED948BA861AE44B');
+  assert.deepEqual(pngSize(original), [1254, 1254]);
+  for (const s of [32, 96, 180, 192, 512]) assert.deepEqual(pngSize(readFileSync(join(uiRoot, 'assets', `ebys-icon-${s}.png`))), [s, s], `${s}px variant is square, not cropped or stretched`);
+  const man = JSON.parse(readFileSync(join(uiRoot, 'manifest.json'), 'utf8'));
+  assert.equal(man.short_name, 'EBYS'); assert.equal(man.lang, 'en');
+  assert.equal(man.display, 'browser'); // a web page, not a claimed installed native app
+  for (const i of man.icons) {
+    const [w, hh] = pngSize(readFileSync(join(uiRoot, i.src)));
+    assert.equal(i.sizes, `${w}x${hh}`); assert.equal(i.type, 'image/png');
+  }
   const html = readFileSync(join(uiRoot, 'index.html'), 'utf8');
-  assert.match(html, /rel="icon" type="image\/svg\+xml" href="assets\/ebys-mark\.svg"/);
+  assert.match(html, /rel="icon" type="image\/png" sizes="32x32" href="assets\/ebys-icon-32\.png"/);
+  assert.match(html, /rel="apple-touch-icon" sizes="180x180" href="assets\/ebys-icon-180\.png"/);
+  assert.match(html, /rel="manifest" href="manifest\.json"/);
+  assert.ok(!existsSync(join(uiRoot, 'assets', 'ebys-mark.svg')), 'retired navy person-arc mark is gone');
   assert.match(html, /<title>EBYS/);
   assert.ok(!/Jarvis|\uC790\uBE44\uC2A4/i.test(html));
   for (const lang of ['ko', 'en']) for (const [k, v] of Object.entries(dictionaries[lang])) assert.ok(!/Jarvis|\uC790\uBE44\uC2A4/i.test(v), `${lang}:${k} has old brand`);

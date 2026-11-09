@@ -19,7 +19,7 @@ Verdict key: **AVAILABLE** (seen on this machine) / **UNVERIFIED** (believed pos
 | System toast setting | `PushNotifications\ToastEnabled = 0` | Windows notifications look disabled for the user. A real desktop notification demo would probably not appear. UNVERIFIED, not tested (firing one would be a side effect) |
 | Google / calendar / OAuth / VAPID env vars | none present (names scanned) | no credential for any real calendar API exists on this machine. We do not read other projects' secrets |
 | `adb` | `platform-tools` 37.0.0 is installed (WinGet) and an `adb` server process is **already running** (started 2026-11-03, not by us) | We did NOT run `adb devices`: it talks to a shared server that another project may own, and a client/server version mismatch makes adb restart that server. Needs lead/owner OK. Whether any Android phone is attached is unknown |
-| Network | Wi-Fi `10.225.50.170`; also WSL, Hyper-V Default Switch and a Tailscale address (`100.x`) | A phone on the same Wi-Fi could reach a LAN HTTP server. Tailscale or any tunnel would be an external service, so it is BLOCKED pending owner approval |
+| Network | Wi-Fi (address omitted on purpose); also WSL, Hyper-V Default Switch and a Tailscale interface | A phone on the same Wi-Fi could reach a LAN HTTP server. Tailscale or any tunnel would be an external service, so it is BLOCKED pending owner approval |
 | Node | v24.22.1 | adapters are plain ESM with zero dependencies |
 
 ## 2. Route verdicts

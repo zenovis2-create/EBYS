@@ -2,7 +2,10 @@
 
 Contract: `../../MEDIA-HANDOFF-CONTRACT.md`, `../../MAC-MEDIA-STATUS.md`. Mac root `/Users/a123/projects/ebys-media` (watcher PID 90210, polls every 30 s, stops at 14:30 KST). The parent transfers files from this folder to the Mac inbox, assets first and `manifest.json` last. Windows never edits the Mac project.
 
-## Status: v2 READY for parent transfer (14:06 KST); it supersedes v1 (new brand UI + EBYS local calendar)
+## Status 14:15: NO capture is approved for Mac assembly. Do not transfer v2.
+v2 below was taken while sj-ui was still editing `ui/` (not a frozen runtime), and its `api-telemetry.json` holds summary flags only (not the raw request/response/validation objects). It does show the PRIMARY icon (derived `ebys-icon-96/512.png`; `ui/assets/ebys-icon-original.png` is byte-identical to the owner's file, sha256 `f8c27768…`), but that is not yet the UI READY build. The final capture follows the runtime freeze: sj-ui UI READY + core READY, then one lead server reload, a QA idle targeted retest with before/after serverCurrent/UI hashes, and then a fresh capture with raw API objects. v2 is kept as a rehearsal only.
+
+## v2 rehearsal (14:06 KST), NOT approved: new brand UI in progress + EBYS local calendar
 Folder: `ebys-live-en-2026-11-09T05-03-42-589Z/`. Transfer the `.mp4`, `api-telemetry.json`, `timeline.json` and `checks-summary.json` first, then `manifest.json` last. `REJECTED-*` folders are never deliverable (`REJECTED-ebys-live-en-2026-11-09T05-00-52-643Z` stopped at the new home screen before any API call).
 
 - Video: 109.47 s, 780x1688 (390x844 CSS @2x, portrait), 30 fps H.264, no audio, sha256 `abeed4018ed3467d038decf60c7e40d30024e2cb489b385d78e70907675effb7` (re-hashed and matches the manifest).

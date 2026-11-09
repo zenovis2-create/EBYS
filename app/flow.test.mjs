@@ -74,6 +74,17 @@ test('local calendar mode persists the confirmed event to the file and reads it 
   assert.equal(flow.notifications().ok, true);
 });
 
+test('a duplicate ingest reports no model call of its own', async () => {
+  const flow = createFlow({ llm: createFakeLlm(() => ({ items: [] })), now });
+  const text = '딸: 엄마, 다음 주 화요일 오후 3시에 병원 예약했어요.\n엄마: 그래.';
+  await flow.ingest({ title: 'synthetic', provenance: 'synthetic', text });
+  const again = await flow.ingest({ title: 'synthetic', provenance: 'synthetic', text });
+  assert.equal(again.duplicate, true);
+  assert.equal(again.telemetry.mode, 'duplicate');
+  assert.equal(again.telemetry.validation.ok, false);
+  assert.deepEqual(again.telemetry.modelCalls, []);
+});
+
 test('unknown calendar mode is refused instead of mislabelled', () => {
   assert.throws(() => createFlow({ llm: null, now, calendarMode: 'phone' }), /calendar mode/);
 });

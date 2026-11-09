@@ -1,0 +1,99 @@
+{
+  "capturedAt": "2026-11-09T04:36:08.957Z",
+  "method": "GET",
+  "path": "/api/runtime",
+  "caseId": "runtime-before",
+  "requestedAt": "2026-11-09T04:36:08.906Z",
+  "httpStatus": 200,
+  "raw": "{\"ok\":true,\"data\":{\"data\":\"synthetic\",\"defaultLang\":\"en\",\"timezone\":{\"iana\":\"Asia/Seoul\",\"label\":{\"en\":\"Seoul time\",\"ko\":\"서울 시간\"},\"utcOffset\":\"+09:00\",\"note\":{\"en\":\"EBYS stores calendar times in Seoul time (UTC+9) and always shows the zone next to the time.\",\"ko\":\"EBYS는 달력 시간을 서울 시간(UTC+9)으로 저장하고 시간 옆에 항상 표시합니다.\"}},\"calendar\":{\"kind\":\"ebys_local\",\"name\":\"EBYS calendar on this device (local file; not the phone calendar)\",\"permission\":\"file_write\"},\"notifications\":{\"kind\":\"in_app_poll\",\"permission\":\"not_applicable\",\"note\":\"reminders appear inside EBYS when polled; not an OS or phone notification\"},\"micCapture\":\"unavailable\",\"speechInput\":\"unavailable\",\"version\":\"actions-0.1.0\",\"mode\":\"real\",\"adapters\":[{\"id\":\"calendar.local\",\"kind\":\"calendar\",\"mode\":\"real\",\"label\":{\"ko\":\"이 기기의 EBYS 달력\",\"en\":\"EBYS calendar on this device\"},\"calendarLabel\":{\"ko\":\"이 기기의 EBYS 달력\",\"en\":\"the EBYS calendar on this device\"},\"claimStatus\":\"demonstrated\",\"maxVerifyLevel\":\"api_readback\",\"canReconcile\":true,\"evidence\":\"unit tests write and re-read a JSON file in a temp directory. Only an EBYS-local file is involved: no OS, cloud or phone-side calendar.\",\"notes\":\"Local JSON file; readback = re-read from disk. This is the EBYS app calendar, not the phone calendar.\"},{\"id\":\"notification.preview\",\"kind\":\"notification\",\"mode\":\"simulated\",\"label\":{\"ko\":\"알림 미리보기 (실제 알림 아님)\",\"en\":\"Notification preview (not a real notification)\"},\"claimStatus\":\"simulated\",\"maxVerifyLevel\":\"none\",\"notes\":\"Pure preview list. No Notification API, no push, no server.\"}],\"faultInjection\":null,\"forbidden\":\"no tel/sms/mailto/emergency actions exist in this layer\",\"model\":{\"route\":\"cursor-cli\",\"model\":\"claude-sonnet-5-5-low\",\"healthy\":true},\"sourceSnapshot\":{\"serverLoaded\":{\"startedAt\":\"2026-11-09T04:27:25.704Z\",\"sha256\":\"4808156bf636ff452157af04ab244c8d9ed56743d7dad4b45a51f33f72a674ba\",\"files\":28},\"serverOnDisk\":{\"sha256\":\"4808156bf636ff452157af04ab244c8d9ed56743d7dad4b45a51f33f72a674ba\",\"files\":28},\"serverCurrent\":true,\"uiOnDisk\":{\"sha256\":\"f46d5b0329bded6e5b9958f3eaa56fde3df9b74b2cf94661913d89da40f32e5d\",\"files\":28}}}}",
+  "body": {
+    "ok": true,
+    "data": {
+      "data": "synthetic",
+      "defaultLang": "en",
+      "timezone": {
+        "iana": "Asia/Seoul",
+        "label": {
+          "en": "Seoul time",
+          "ko": "서울 시간"
+        },
+        "utcOffset": "+09:00",
+        "note": {
+          "en": "EBYS stores calendar times in Seoul time (UTC+9) and always shows the zone next to the time.",
+          "ko": "EBYS는 달력 시간을 서울 시간(UTC+9)으로 저장하고 시간 옆에 항상 표시합니다."
+        }
+      },
+      "calendar": {
+        "kind": "ebys_local",
+        "name": "EBYS calendar on this device (local file; not the phone calendar)",
+        "permission": "file_write"
+      },
+      "notifications": {
+        "kind": "in_app_poll",
+        "permission": "not_applicable",
+        "note": "reminders appear inside EBYS when polled; not an OS or phone notification"
+      },
+      "micCapture": "unavailable",
+      "speechInput": "unavailable",
+      "version": "actions-0.1.0",
+      "mode": "real",
+      "adapters": [
+        {
+          "id": "calendar.local",
+          "kind": "calendar",
+          "mode": "real",
+          "label": {
+            "ko": "이 기기의 EBYS 달력",
+            "en": "EBYS calendar on this device"
+          },
+          "calendarLabel": {
+            "ko": "이 기기의 EBYS 달력",
+            "en": "the EBYS calendar on this device"
+          },
+          "claimStatus": "demonstrated",
+          "maxVerifyLevel": "api_readback",
+          "canReconcile": true,
+          "evidence": "unit tests write and re-read a JSON file in a temp directory. Only an EBYS-local file is involved: no OS, cloud or phone-side calendar.",
+          "notes": "Local JSON file; readback = re-read from disk. This is the EBYS app calendar, not the phone calendar."
+        },
+        {
+          "id": "notification.preview",
+          "kind": "notification",
+          "mode": "simulated",
+          "label": {
+            "ko": "알림 미리보기 (실제 알림 아님)",
+            "en": "Notification preview (not a real notification)"
+          },
+          "claimStatus": "simulated",
+          "maxVerifyLevel": "none",
+          "notes": "Pure preview list. No Notification API, no push, no server."
+        }
+      ],
+      "faultInjection": null,
+      "forbidden": "no tel/sms/mailto/emergency actions exist in this layer",
+      "model": {
+        "route": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "healthy": true
+      },
+      "sourceSnapshot": {
+        "serverLoaded": {
+          "startedAt": "2026-11-09T04:27:25.704Z",
+          "sha256": "4808156bf636ff452157af04ab244c8d9ed56743d7dad4b45a51f33f72a674ba",
+          "files": 28
+        },
+        "serverOnDisk": {
+          "sha256": "4808156bf636ff452157af04ab244c8d9ed56743d7dad4b45a51f33f72a674ba",
+          "files": 28
+        },
+        "serverCurrent": true,
+        "uiOnDisk": {
+          "sha256": "f46d5b0329bded6e5b9958f3eaa56fde3df9b74b2cf94661913d89da40f32e5d",
+          "files": 28
+        }
+      }
+    }
+  },
+  "completedAt": "2026-11-09T04:36:08.957Z",
+  "elapsedMs": 51
+}

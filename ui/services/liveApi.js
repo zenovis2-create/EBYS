@@ -49,3 +49,31 @@ export const liveApi = {
   remove: (args, o) => call('POST', '/api/delete', args, o).then((r) => unwrap(r, 'receipt')),
   runtime: (o) => call('GET', '/api/runtime', undefined, o),
 };
+
+
+export const DEFAULT_PHONE_PATHS = Object.freeze({ preview: '/api/phone/preview', confirm: '/api/phone/confirm', readback: '/api/phone/readback/' });
+
+/**
+ * Same-origin HTTP transport for the endpoints main wires (phone-use/CONTRACT.md). Adds no credentials of its own.
+ * `fetchFn` is injectable for tests. Any failure becomes `{ok:false, error:{code:'network'|'http_<n>'|'bad_json'}}`.
+ */
+export function createHttpPhoneTransport({ fetchFn = (...a) => globalThis.fetch(...a), paths = DEFAULT_PHONE_PATHS } = {}) {
+  async function call(url, init) {
+    let res;
+    try { res = await fetchFn(url, { credentials: 'same-origin', ...init }); } catch (e) {
+      return { ok: false, error: { code: 'network', message: String(e?.message ?? e), phase: 'unknown', retryable: true, userHint: { en: "Couldn't reach EBYS. Check your connection." } } };
+    }
+    let body = null;
+    try { body = await res.json(); } catch { body = null; }
+    if (body && typeof body === 'object' && body.ok === false) return body;
+    if (!res.ok) return { ok: false, error: { code: `http_${res.status}`, message: body?.error?.message ?? `HTTP ${res.status}`, phase: 'unknown', retryable: res.status >= 500, userHint: body?.error?.userHint ?? { en: 'EBYS could not do this right now.' } } };
+    if (!body || typeof body !== 'object') return { ok: false, error: { code: 'bad_json', message: 'response was not JSON', phase: 'unknown', retryable: false, userHint: { en: 'EBYS sent an answer we could not read.' } } };
+    return body;
+  }
+  const post = (url, payload) => call(url, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) });
+  return {
+    preview: (task) => post(paths.preview, { task }),
+    confirm: ({ task, previewDigest }) => post(paths.confirm, { task, previewDigest }),
+    readback: (recordId) => call(paths.readback + encodeURIComponent(recordId), { method: 'GET' }),
+  };
+}

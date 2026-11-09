@@ -1,7 +1,7 @@
 // Single in-memory UI state. Nothing is persisted to localStorage/cookies (privacy: data stays in the page).
 
 export const state = {
-  route: 'input',
+  route: 'home',
   scale: 1,
   paused: false,
   voiceOn: false,       // auto read-aloud preference (in memory only; not persisted)

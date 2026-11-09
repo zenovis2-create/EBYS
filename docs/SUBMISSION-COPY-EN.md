@@ -1,36 +1,38 @@
 # EBYS submission copy (English draft)
 
-**DRAFT.** Not submitted. The event form has not arrived. Do not publish or push from this file. This is not the Mac narration or the final description.
+**Historical English copy draft.** The repository is now public: https://github.com/zenovis2-create/EBYS. The official submission was recorded on 2026-11-09 at 15:03 KST using the form description and [90-second demo](https://www.youtube.com/watch?v=_Ante-RR464), not this entire draft.
+
+Claims below are only the facts the lead marked verified.
 
 ## One line
 
-EBYS is a phone-first assistant that keeps who, when, and what from a conversation, shows the source line, and waits for you to confirm or cancel before it saves a plan.
+EBYS reads a synthetic English conversation and answers who, when, and where from the words that were said, then saves a plan only after you confirm it.
 
 ## Hackathon description
 
-EBYS helps when a spoken plan is easy to lose. You paste or select a short conversation. The app pulls out people, times, and tasks and lets you ask who or when in your own words. Each answer points at the line it came from. If a place or time was never said, it stays unknown. A later correction replaces the earlier plan, and the old line remains visible. You can edit, confirm, or cancel. A second confirm does not create a second plan.
+EBYS is for a plan that is easy to lose. A real model (Cursor CLI, Claude Sonnet 5.5) reads a synthetic English conversation. It answers who, when, and where, and each answer uses a verbatim quote from that conversation. If the fact is not there, it says it does not have that. If the time could be morning or evening, it asks “AM or PM?” instead of guessing.
 
-Two things are easy to mix up, so the demo keeps them apart. Live questions can go to a real model on this machine (Cursor CLI). Sample mode does not. It is labelled “Sample · not real AI” and uses synthetic text only. Saving a plan can write the EBYS calendar on this computer, or hand you an `.ics` file. That is not the phone’s own calendar, and it is not an operating-system notification. Watch, 24-hour recording, and safety screens are simulated mockups.
+Every save shows a preview first. Nothing is stored until you confirm. A confirmed appointment is written to the EBYS calendar on this device, which is a local file, and then read back to check. That file is not the phone’s calendar. Reminders stay inside the app. They are not phone notifications.
 
-There is no customer list, no revenue, and no health or emergency claim. EBYS does not call 119.
+The app is English by default. Korean is optional. Times are shown in Seoul time (UTC+9). All data is synthetic.
+
+Watch, 24-hour audio, glasses, safety, and 119 are roadmap and mockup only. They do not work in this build.
 
 ## Truth matrix
 
 | Topic | Say this | Do not say this |
 | --- | --- | --- |
-| Live AI queries | New synthetic English text has been sent through the live Cursor CLI route. A lead capture at 12:00 KST (2026-11-09) recorded five uncached model calls with raw JSON and validation. An earlier English QA run also scored live who/when/where answers. | “Every screen is live AI.” “The model is end-to-end verified in the browser.” |
-| Strict telemetry | Some API responses include route, model, cache flag, latency, raw model JSON, and validation. An independent audit of that one lead file marked those five calls PASS. Earlier QA runs were BLOCKED because raw JSON and validation were missing. | “Telemetry is complete on every path.” Fallback and duplicate ingests have no raw JSON, by design. |
-| Calendar | Default server calendar mode is `simulated`. An EBYS-local file calendar can write `.data/calendar.json` on this computer and read it back. An `.ics` file is a handoff (`handed_off`), not proof the phone saved it. | “It is on the phone calendar.” “The operating system notified you.” |
-| Data | Demo text is synthetic, or it must be explicitly consented. | Real patients, real families, or a live call recording. |
-| Sample mode | A labelled sample path answers without a model. | Treating a sample answer as a live model result. |
-| Source, confirm, cancel | Answers need a source quote. Confirm and cancel are separate. A cancelled proposal must not confirm the old plan. | A guess that fills a missing place, or a green success after a failed save. |
-| UI | Opus 5.5 is redesigning the English mobile UI now. The previous layout is not the finished look. | “The new UI is done” or “judges already saw the final screens.” |
-| Roadmap | Watch, 24-hour audio, and safety are simulated labels. Voice input is not the current MVP path. | A working watch, a medical result, or an emergency call. |
+| Real AI | Cursor CLI with Claude Sonnet 5.5 reads a synthetic English conversation and answers who, when, and where with verbatim source quotes. | Any other model, a live phone call, or a non-synthetic recording. |
+| Missing facts | It says “I don’t have that.” It asks “AM or PM?” instead of guessing. | A filled-in place, person, or time that was never said. |
+| Save | Every save shows a preview and needs an explicit confirmation. | A save with no preview, or a save on the first tap. |
+| Calendar | A confirmed appointment is written to the EBYS calendar on this device (a local file) and read back. Reminders are in-app. | The phone calendar, a cloud calendar, or a phone notification. |
+| Language and time | English by default, Korean optional. Times show Seoul time (UTC+9). | A claim that the interface is Korean-only, or that times are shown in another zone. |
+| Data | All data is synthetic. | Customers, revenue, health outcomes, or real people’s records. |
+| Not in this build | Watch, 24-hour audio, glasses, safety, and 119 are roadmap or mockup only. | That any of those work. |
 
-## Known limits (short)
+## Known limits
 
-- Node 24 or newer, local only. The model route needs the already-authenticated Cursor CLI. Quota or a config-file error can fall back to rules. Fallback is not a model answer.
-- Latency on recorded live calls has been tens of seconds. That is not a speed promise.
-- Phone OS calendar import and OS notifications were not verified on a device.
-- Browser proof of the English-default redesigned UI is still in progress.
-- Strict telemetry is not present on every historical run.
+- The calendar that is verified is the EBYS file on this device, not the phone operating system.
+- Reminders are in-app only.
+- Watch, 24-hour audio, glasses, safety, and 119 are not working features.
+- This copy remains a historical draft, not a claim of broader phone integration or full-product acceptance.

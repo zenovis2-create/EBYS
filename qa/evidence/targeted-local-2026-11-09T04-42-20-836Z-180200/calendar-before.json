@@ -1,0 +1,12 @@
+{
+  "source": ".data/calendar.json",
+  "readAt": "2026-11-09T04:42:20.955Z",
+  "sha256": "d33130c5cda878c3ced6addf50f474e7d202b2208ad1c75ea34f1ea62a8ef9d8",
+  "eventCount": 1,
+  "existingEventHashes": [
+    {
+      "uid": "sj-729a66ce0333b2c172d4d958@ebys.local",
+      "sha256": "3bdc2edf6d74fff3e93a5a6d87f935f61812ff62ba6fbfa098efad61b41c7a21"
+    }
+  ]
+}

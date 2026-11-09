@@ -1,0 +1,158 @@
+{
+  "method": "POST",
+  "path": "/api/confirm",
+  "caseId": "local/confirm",
+  "requestedAt": "2026-11-09T04:42:20.959Z",
+  "payload": {
+    "proposalId": "prop_2",
+    "previewDigest": "2cd884477ace19ec26f5253f4acfecf1d8212e06afe79500a0e60be4be68f86b"
+  },
+  "httpStatus": 200,
+  "raw": "{\"ok\":true,\"data\":{\"recordId\":\"act_26a12f8f5755\",\"intentId\":\"prop_2\",\"revision\":1,\"opKey\":\"prop_2:1\",\"adapterId\":\"calendar.local\",\"mode\":\"real\",\"status\":\"completed\",\"verifyLevel\":\"api_readback\",\"preview\":{\"needs_clarification\":false,\"intentId\":\"prop_2\",\"revision\":1,\"kind\":\"appointment\",\"adapterId\":\"calendar.local\",\"mode\":\"real\",\"previewDigest\":\"2cd884477ace19ec26f5253f4acfecf1d8212e06afe79500a0e60be4be68f86b\",\"fields\":{\"kind\":\"appointment\",\"title\":\"Copperplate printmaking lesson with Kai\",\"who\":\"Kai\",\"startsAt\":\"2027-04-19T14:30:00+09:00\",\"endsAt\":\"2027-04-19T15:30:00+09:00\",\"durationMin\":60,\"where\":\"Glass Meadow workshop\",\"reminders\":[60],\"tz\":\"Asia/Seoul\"},\"display\":{\"when\":{\"ko\":\"2027년 4월 19일 (월) 오후 2:30 (서울 시간)\",\"en\":\"Mon, 19 Apr 2027, 2:30 PM (Seoul time, UTC+9)\"},\"whenParts\":{\"iana\":\"Asia/Seoul\",\"zoneName\":{\"en\":\"Seoul time\",\"ko\":\"서울 시간\"},\"utcOffset\":\"+09:00\",\"utcLabel\":\"UTC+9\",\"weekday\":{\"en\":\"Mon\",\"ko\":\"월\"},\"date\":{\"en\":\"19 Apr 2027\",\"ko\":\"2027년 4월 19일\"},\"time12\":\"2:30 PM\",\"time24\":\"14:30\"},\"where\":{\"ko\":\"Glass Meadow workshop\",\"en\":\"Glass Meadow workshop\"},\"who\":{\"ko\":\"Kai\",\"en\":\"Kai\"},\"reminders\":[{\"ko\":\"1시간 전\",\"en\":\"1 hour before\"}]},\"summary\":{\"ko\":\"Copperplate printmaking lesson with Kai (Kai님) - 2027년 4월 19일 (월) 오후 2:30 (서울 시간)\",\"en\":\"Copperplate printmaking lesson with Kai with Kai - Mon, 19 Apr 2027, 2:30 PM (Seoul time, UTC+9)\"},\"modeLabel\":{\"ko\":\"이 기기의 EBYS 달력에 저장합니다 (휴대폰 달력 아님)\",\"en\":\"Saved to the EBYS calendar on this device (not your phone calendar)\"},\"uncertainty\":[],\"warnings\":[],\"notifications\":[{\"adapterId\":\"notification.preview\",\"mode\":\"simulated\",\"badge\":{\"ko\":\"미리보기\",\"en\":\"PREVIEW\"},\"offsetMin\":60,\"fireAt\":\"2027-04-19T13:30:00+09:00\",\"inPast\":false,\"title\":{\"ko\":\"Copperplate printmaking lesson with Kai\",\"en\":\"Copperplate printmaking lesson with Kai\"},\"body\":{\"ko\":\"1시간 전: Kai님과 Copperplate printmaking lesson with Kai - 2027년 4월 19일 (월) 오후 2:30 (서울 시간)\",\"en\":\"1 hour before: Copperplate printmaking lesson with Kai with Kai - Mon, 19 Apr 2027, 2:30 PM (Seoul time, UTC+9)\"}}],\"payload\":null},\"attempts\":1,\"calendarLabel\":{\"ko\":\"이 기기의 EBYS 달력\",\"en\":\"the EBYS calendar on this device\"},\"timestamps\":{\"createdAt\":\"2026-11-09T13:42:20+09:00\",\"confirmedAt\":\"2026-11-09T13:42:20+09:00\",\"updatedAt\":\"2026-11-09T13:42:20+09:00\"},\"history\":[{\"at\":\"2026-11-09T13:42:20+09:00\",\"status\":\"confirmed\"},{\"at\":\"2026-11-09T13:42:20+09:00\",\"status\":\"executing\"},{\"at\":\"2026-11-09T13:42:20+09:00\",\"status\":\"completed\"}],\"readback\":{\"title\":\"Copperplate printmaking lesson with Kai\",\"startsAt\":\"2027-04-19T14:30:00+09:00\",\"where\":\"Glass Meadow workshop\",\"who\":\"Kai\",\"reminders\":[60]},\"readbackText\":{\"ko\":\"이 기기의 EBYS 달력에 저장하고 다시 읽어 확인했습니다: 일정: Copperplate printmaking lesson with Kai Kai님과, 2027년 4월 19일 (월) 오후 2:30 (서울 시간)\",\"en\":\"Saved in the EBYS calendar on this device and read back to check: Appointment: Copperplate printmaking lesson with Kai with Kai, Mon, 19 Apr 2027, 2:30 PM (Seoul time, UTC+9)\"},\"displayState\":\"completed_external\"}}",
+  "body": {
+    "ok": true,
+    "data": {
+      "recordId": "act_26a12f8f5755",
+      "intentId": "prop_2",
+      "revision": 1,
+      "opKey": "prop_2:1",
+      "adapterId": "calendar.local",
+      "mode": "real",
+      "status": "completed",
+      "verifyLevel": "api_readback",
+      "preview": {
+        "needs_clarification": false,
+        "intentId": "prop_2",
+        "revision": 1,
+        "kind": "appointment",
+        "adapterId": "calendar.local",
+        "mode": "real",
+        "previewDigest": "2cd884477ace19ec26f5253f4acfecf1d8212e06afe79500a0e60be4be68f86b",
+        "fields": {
+          "kind": "appointment",
+          "title": "Copperplate printmaking lesson with Kai",
+          "who": "Kai",
+          "startsAt": "2027-04-19T14:30:00+09:00",
+          "endsAt": "2027-04-19T15:30:00+09:00",
+          "durationMin": 60,
+          "where": "Glass Meadow workshop",
+          "reminders": [
+            60
+          ],
+          "tz": "Asia/Seoul"
+        },
+        "display": {
+          "when": {
+            "ko": "2027년 4월 19일 (월) 오후 2:30 (서울 시간)",
+            "en": "Mon, 19 Apr 2027, 2:30 PM (Seoul time, UTC+9)"
+          },
+          "whenParts": {
+            "iana": "Asia/Seoul",
+            "zoneName": {
+              "en": "Seoul time",
+              "ko": "서울 시간"
+            },
+            "utcOffset": "+09:00",
+            "utcLabel": "UTC+9",
+            "weekday": {
+              "en": "Mon",
+              "ko": "월"
+            },
+            "date": {
+              "en": "19 Apr 2027",
+              "ko": "2027년 4월 19일"
+            },
+            "time12": "2:30 PM",
+            "time24": "14:30"
+          },
+          "where": {
+            "ko": "Glass Meadow workshop",
+            "en": "Glass Meadow workshop"
+          },
+          "who": {
+            "ko": "Kai",
+            "en": "Kai"
+          },
+          "reminders": [
+            {
+              "ko": "1시간 전",
+              "en": "1 hour before"
+            }
+          ]
+        },
+        "summary": {
+          "ko": "Copperplate printmaking lesson with Kai (Kai님) - 2027년 4월 19일 (월) 오후 2:30 (서울 시간)",
+          "en": "Copperplate printmaking lesson with Kai with Kai - Mon, 19 Apr 2027, 2:30 PM (Seoul time, UTC+9)"
+        },
+        "modeLabel": {
+          "ko": "이 기기의 EBYS 달력에 저장합니다 (휴대폰 달력 아님)",
+          "en": "Saved to the EBYS calendar on this device (not your phone calendar)"
+        },
+        "uncertainty": [],
+        "warnings": [],
+        "notifications": [
+          {
+            "adapterId": "notification.preview",
+            "mode": "simulated",
+            "badge": {
+              "ko": "미리보기",
+              "en": "PREVIEW"
+            },
+            "offsetMin": 60,
+            "fireAt": "2027-04-19T13:30:00+09:00",
+            "inPast": false,
+            "title": {
+              "ko": "Copperplate printmaking lesson with Kai",
+              "en": "Copperplate printmaking lesson with Kai"
+            },
+            "body": {
+              "ko": "1시간 전: Kai님과 Copperplate printmaking lesson with Kai - 2027년 4월 19일 (월) 오후 2:30 (서울 시간)",
+              "en": "1 hour before: Copperplate printmaking lesson with Kai with Kai - Mon, 19 Apr 2027, 2:30 PM (Seoul time, UTC+9)"
+            }
+          }
+        ],
+        "payload": null
+      },
+      "attempts": 1,
+      "calendarLabel": {
+        "ko": "이 기기의 EBYS 달력",
+        "en": "the EBYS calendar on this device"
+      },
+      "timestamps": {
+        "createdAt": "2026-11-09T13:42:20+09:00",
+        "confirmedAt": "2026-11-09T13:42:20+09:00",
+        "updatedAt": "2026-11-09T13:42:20+09:00"
+      },
+      "history": [
+        {
+          "at": "2026-11-09T13:42:20+09:00",
+          "status": "confirmed"
+        },
+        {
+          "at": "2026-11-09T13:42:20+09:00",
+          "status": "executing"
+        },
+        {
+          "at": "2026-11-09T13:42:20+09:00",
+          "status": "completed"
+        }
+      ],
+      "readback": {
+        "title": "Copperplate printmaking lesson with Kai",
+        "startsAt": "2027-04-19T14:30:00+09:00",
+        "where": "Glass Meadow workshop",
+        "who": "Kai",
+        "reminders": [
+          60
+        ]
+      },
+      "readbackText": {
+        "ko": "이 기기의 EBYS 달력에 저장하고 다시 읽어 확인했습니다: 일정: Copperplate printmaking lesson with Kai Kai님과, 2027년 4월 19일 (월) 오후 2:30 (서울 시간)",
+        "en": "Saved in the EBYS calendar on this device and read back to check: Appointment: Copperplate printmaking lesson with Kai with Kai, Mon, 19 Apr 2027, 2:30 PM (Seoul time, UTC+9)"
+      },
+      "displayState": "completed_external"
+    }
+  },
+  "completedAt": "2026-11-09T04:42:20.981Z",
+  "elapsedMs": 22
+}

@@ -40,6 +40,10 @@ export function createFlow({ llm: baseLlm, now = () => new Date(), calendarMode 
   function telemetry(result, made) {
     const last = made[made.length - 1];
     const rejected = Number.isInteger(result?.rejected) ? result.rejected : 0;
+    // A duplicate ingest replays the original session's result; this request itself called no model.
+    if (result?.duplicate && made.length === 0) {
+      return { mode: 'duplicate', route: null, modelCalls: [], rawModelJson: null, validation: { ok: false, rejected: 0, reason: 'duplicate_ingest_no_model_call' }, rejected: 0, originalMode: result.mode ?? null };
+    }
     return {
       mode: result?.mode ?? 'none',
       route: result?.route ?? null,
