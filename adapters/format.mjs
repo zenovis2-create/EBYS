@@ -72,15 +72,27 @@ export function displayOffset(min) {
   return { ko: `${min}분 전`, en: `${min} minutes before` };
 }
 
+/**
+ * True when the title already names the person (case-insensitive), so "with <who>" would repeat it
+ * ("Copperplate printmaking lesson with Kai with Kai"). Callers then omit the appended who part.
+ */
+export function titleNamesWho(title, who) {
+  const t = String(title ?? '').trim().toLowerCase();
+  const w = String(who ?? '').trim().toLowerCase();
+  return w !== '' && t.includes(w);
+}
+
 /** Human readback with person, date, time and action. Wording depends on the honest state, never implies success unless verified. */
 export function readbackText(rec) {
   const f = rec.preview?.fields ?? {};
   const dt = displayDateTime(parseExactIso(f.startsAt));
   const action = f.kind === 'reminder' ? { ko: '알림', en: 'Reminder' } : { ko: '일정', en: 'Appointment' };
-  const who = f.who ? { ko: `${f.who}님과`, en: `with ${f.who}` } : { ko: '(상대 미정)', en: '(person unknown)' };
+  const who = !f.who ? { ko: ' (상대 미정)', en: ' (person unknown)' }
+    : titleNamesWho(f.title, f.who) ? { ko: '', en: '' } // the title already says who
+      : { ko: ` ${f.who}님과`, en: ` with ${f.who}` };
   const core = {
-    ko: `${action.ko}: ${f.title} ${who.ko}, ${dt.ko}`,
-    en: `${action.en}: ${f.title} ${who.en}, ${dt.en}`,
+    ko: `${action.ko}: ${f.title}${who.ko}, ${dt.ko}`,
+    en: `${action.en}: ${f.title}${who.en}, ${dt.en}`,
   };
   switch (rec.status) {
     case 'completed':

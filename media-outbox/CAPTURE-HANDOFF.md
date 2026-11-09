@@ -2,7 +2,18 @@
 
 Contract: `../../MEDIA-HANDOFF-CONTRACT.md`, `../../MAC-MEDIA-STATUS.md`. Mac root `/Users/a123/projects/ebys-media` (watcher PID 90210, polls every 30 s, stops at 14:30 KST). The parent transfers files from this folder to the Mac inbox, assets first and `manifest.json` last. Windows never edits the Mac project.
 
-## Status: v1 READY for parent transfer (12:40 KST); independent QA review pending
+## Status: v2 READY for parent transfer (14:06 KST); it supersedes v1 (new brand UI + EBYS local calendar)
+Folder: `ebys-live-en-2026-11-09T05-03-42-589Z/`. Transfer the `.mp4`, `api-telemetry.json`, `timeline.json` and `checks-summary.json` first, then `manifest.json` last. `REJECTED-*` folders are never deliverable (`REJECTED-ebys-live-en-2026-11-09T05-00-52-643Z` stopped at the new home screen before any API call).
+
+- Video: 109.47 s, 780x1688 (390x844 CSS @2x, portrait), 30 fps H.264, no audio, sha256 `abeed4018ed3467d038decf60c7e40d30024e2cb489b385d78e70907675effb7` (re-hashed and matches the manifest).
+- Code alignment: `serverCurrent=true`; server sha `16614e36d095…`, ui sha `a0a28dd4b882…` (sj-ui's redesign working tree, in progress); `buildCommit` `0f46a7b` with a dirty working tree (the redesign `ui/` is not committed yet). Tests on that disk state: `npm test` 220/220, audit 12/12. Server started 14:00 with `EBYS_CALENDAR=local`.
+- Model evidence (`api-telemetry.json`): `/api/ingest` and `/api/query` both `mode=model`, `cursor-cli/claude-sonnet-5-5-low`, `cached=false`, raw JSON present, `validation.ok=true`. `/api/confirm` gave `displayState=completed_external` (written to the EBYS local calendar file and read back).
+- Timeline (seconds): app open 1.8 -> home "Add a memory" 4.5 -> conversation entered 7.0 -> model extraction 7.9–48.2 (wait) -> evidence drawer 51.9 -> question 57.0 -> model query 57.0–89.1 (wait) -> answer with sources + AM/PM kept open 93.2 -> proposal "Not saved yet" 95.7 -> AM/PM clarify 95.7 -> user picks PM 99.2 -> confirmation card 102.9 -> result "Saved in the EBYS calendar on this device and read back to check … 2:00 PM (Seoul time, UTC+9)" 106.6 -> end 108.1. The editor may cut the two model waits but must show them as cuts, not speed them up and present them as instant.
+- Manifest claims (from this run's checks): English default; real model extraction + recall; verbatim source evidence; AM/PM clarification with explicit user choice; confirmation before action; "Saved to the EBYS calendar on this device and read back (local file; not the phone calendar, no phone notification)" verified; watch/24h audio/glasses/safety/119 roadmap.
+- Narration/caption rules for the calendar beat: say "saved to EBYS's own calendar on this device and checked", never "added to your phone calendar" and never "you'll get a phone notification".
+- Known content limits: the proposal names Tom (who relayed the change) as the person; it is the model's reading and is shown as such. 2:00 PM comes from the user's PM choice for the source's "Thursday at 2", not from a guess. The unanswerable-question behaviour is QA-verified (targeted retest 3/3) but is not shown in this footage.
+
+## Superseded: v1 (12:40 KST), old UI and simulated calendar; keep only as a fallback
 Folder: `ebys-live-en-2026-11-09T03-38-19-926Z/`. Transfer the `.mp4`, `api-telemetry.json`, `timeline.json` and `checks-summary.json` first, then `manifest.json` last. Nothing else in `media-outbox/` is deliverable (`tools/` is the capture script; `staging/` is empty).
 
 - Video: 96.47 s, 780x1688 (390x844 CSS @2x, portrait), 30 fps H.264, no audio, sha256 `0e278a761bcb88050961aba035408b621e3f9188774170d7f34121402517c727` (re-hashed and matches the manifest).
@@ -29,11 +40,11 @@ v1 manifest claims (generated from this run's checks): English default verified;
 |---|---|---|
 | Model-backed extraction on new text | verified (KO + EN) | QA english-first 02-26-00 (3/3), QA rerun 02-43-28 (EN 3/3); lead `evidence/lead-live-en-2026-11-09T03-00-24-767Z.json` |
 | Source-linked recall (verbatim quotes) | verified (KO + EN) | same reports |
-| Unknown instead of invented answer | NOT verified: bus-route question returns an unrelated memory (EN + KO) | do not show an unanswerable question in footage until fixed and retested |
+| Unknown instead of invented answer | verified (QA targeted 3/3, 13:48) | `qa/evidence/targeted-local-2026-11-09T04-42-20-836Z-180200/report.json`; not in v2 footage |
 | Runtime/code alignment | available | `/api/runtime` `sourceSnapshot.serverCurrent` + `uiOnDisk.sha256` recorded per capture |
-| AM/PM clarification, no default | pending clean rerun | re-score PASS on stored response only |
-| Confirmation before action | code-tested (fake LLM) | `app/flow.test.mjs`; core GAP2 open |
-| Calendar save | simulated | adapters in-memory + ICS handoff |
+| AM/PM clarification, no default | verified (QA targeted 2/2; v2 footage) | same QA report; v2 `timeline.json` checks |
+| Confirmation before action | verified (v2 footage; QA local checks) | v2 `timeline.json`; QA report |
+| Calendar save | verified as the EBYS calendar on this device (a local file, read back); NOT the phone calendar, and no phone notifications | v2 `api-telemetry.json`; QA local checks 18/18; `evidence/lead-calendar-local-2026-11-09T04-28-35-405Z.json` |
 | Watch, 24h audio, glasses, safety/119 | roadmap | no implementation |
 
 Forbidden in footage: real personal data, real recordings, real 119 calls, any implied validated safety service, an ICS handoff presented as a calendar save, Korean footage presented as English-native proof.

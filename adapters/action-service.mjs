@@ -13,7 +13,7 @@
 import { createHash } from 'node:crypto';
 import { TZ, ACTION_STATUS, VERIFY_LEVEL, demoNow } from '../contracts/contracts.js';
 import { cleanText, findForbiddenOutput } from './safety.mjs';
-import { parseExactIso, toKstIso, displayDateTime, displayParts, displayOffset, readbackText, DEFAULT_LANG } from './format.mjs';
+import { parseExactIso, toKstIso, displayDateTime, displayParts, displayOffset, readbackText, titleNamesWho, DEFAULT_LANG } from './format.mjs';
 import { digestString } from './digest.mjs';
 import { createSimulatedCalendarAdapter, createIcsHandoffAdapter, AdapterError } from './calendar-adapters.mjs';
 import { createLocalCalendarAdapter } from './calendar-local.mjs';
@@ -200,8 +200,8 @@ export function createActionService({ now = demoNow, mode = 'simulated', real = 
         reminders: n.reminders.map(displayOffset),
       },
       summary: {
-        ko: `${n.title}${n.who ? ` (${n.who}님)` : ''} - ${dt.ko}`,
-        en: `${n.title}${n.who ? ` with ${n.who}` : ''} - ${dt.en}`,
+        ko: `${n.title}${n.who && !titleNamesWho(n.title, n.who) ? ` (${n.who}님)` : ''} - ${dt.ko}`,
+        en: `${n.title}${n.who && !titleNamesWho(n.title, n.who) ? ` with ${n.who}` : ''} - ${dt.en}`,
       },
       modeLabel: cd.mode === 'simulated'
         ? { ko: '시뮬레이션: 휴대폰에는 저장되지 않습니다', en: 'Simulation only: nothing will be saved to your phone or calendar' }

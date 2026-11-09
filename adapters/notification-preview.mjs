@@ -1,6 +1,6 @@
 // notification.preview: a PURE list of what reminders would look like. It never sends anything and is not an
 // operating-system notification (mode 'simulated', claimStatus 'simulated'). Owner: sj-actions.
-import { toKstIso, displayOffset, displayDateTime } from './format.mjs';
+import { toKstIso, displayOffset, displayDateTime, titleNamesWho } from './format.mjs';
 
 export function createNotificationPreview() {
   return {
@@ -25,8 +25,8 @@ export function createNotificationPreview() {
           inPast: fireMs < f.nowMs,
           title: { ko: f.title, en: f.title },
           body: {
-            ko: `${off.ko}: ${f.who ? f.who + '님과 ' : ''}${f.title} - ${when.ko}`,
-            en: `${off.en}: ${f.title}${f.who ? ' with ' + f.who : ''} - ${when.en}`,
+            ko: `${off.ko}: ${f.who && !titleNamesWho(f.title, f.who) ? f.who + '님과 ' : ''}${f.title} - ${when.ko}`,
+            en: `${off.en}: ${f.title}${f.who && !titleNamesWho(f.title, f.who) ? ' with ' + f.who : ''} - ${when.en}`,
           },
         };
       });

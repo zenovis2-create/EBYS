@@ -20,7 +20,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { randomBytes } from 'node:crypto';
 import { AdapterError } from './calendar-adapters.mjs';
-import { parseExactIso, toKstIso, displayParts } from './format.mjs';
+import { parseExactIso, toKstIso, displayParts, titleNamesWho } from './format.mjs';
 
 /** 1440 -> '1 day', 60 -> '1 hour', 90 -> '90 minutes' (plain English for the reminder body). */
 function humanMinutes(min) {
@@ -261,7 +261,7 @@ export function createLocalCalendarAdapter({ file = DEFAULT_CALENDAR_FILE, sourc
           if (e.reminded) continue;
           if (nowMs >= at && nowMs < endMs) {
             push({ ...base, id: `cal:${e.uid ?? e.id}:allday`, fireAt: toKstIso(at), offsetMin: null,
-              title: { ko: `오늘: ${e.title}${place}`, en: `Today: ${e.title}${place}` }, body: { ko: e.who ? `${e.who}님과` : '', en: e.who ? `with ${e.who}` : '' } });
+              title: { ko: `오늘: ${e.title}${place}`, en: `Today: ${e.title}${place}` }, body: { ko: e.who && !titleNamesWho(e.title, e.who) ? `${e.who}님과` : '', en: e.who && !titleNamesWho(e.title, e.who) ? `with ${e.who}` : '' } });
             e.reminded = true;
           } else if (nowMs >= endMs) { e.reminded = true; changed = true; }
           continue;
@@ -277,7 +277,7 @@ export function createLocalCalendarAdapter({ file = DEFAULT_CALENDAR_FILE, sourc
         const nearest = Math.min(...due);
         push({ ...base, id: `cal:${e.uid ?? e.id}:${nearest}`, fireAt: toKstIso(startMs - nearest * 60000), offsetMin: nearest,
           title: { ko: `${hhmm} ${e.title}${place}`, en: `${displayParts(startMs).time12} ${e.title}${place}` },
-          body: { ko: `${nearest}분 후 시작${e.who ? ` · ${e.who}님` : ''}`, en: `Starts in ${humanMinutes(nearest)}${e.who ? ` · with ${e.who}` : ''} (Seoul time)` } });
+          body: { ko: `${nearest}분 후 시작${e.who && !titleNamesWho(e.title, e.who) ? ` · ${e.who}님` : ''}`, en: `Starts in ${humanMinutes(nearest)}${e.who && !titleNamesWho(e.title, e.who) ? ` · with ${e.who}` : ''} (Seoul time)` } });
         e.remindersDone = [...new Set([...done, ...due])];
       }
       const today = kstDay(nowMs);

@@ -113,8 +113,15 @@ try {
   check('fresh profile defaults to English (no ?lang)', await ev(`document.documentElement.lang === 'en'`));
   check('live API selected, not fixture', await ev(`!/FIXTURE/.test(document.body.textContent)`));
   // Labels come from the app's own dictionary (same module instance), so copy changes don't break the capture.
-  const L = await ev(`import('/i18n.js').then(m => Object.fromEntries(['a1.analyze','a2.evidence','a3.makeProposal','a4.clarifyTitle','a4.pm','a4.saveChanges','a4.confirmTitle','a4.yes','nav.ask'].map(k => [k, m.t(k).split(' · ')[0]])))`);
+  const L = await ev(`import('/i18n.js').then(m => Object.fromEntries(['a1.analyze','a2.evidence','a3.makeProposal','a4.clarifyTitle','a4.pm','a4.saveChanges','a4.confirmTitle','a4.yes','nav.ask','home.actAdd'].map(k => [k, m.t(k).split(' · ')[0]])))`);
 
+  if (!(await ev(`!!document.querySelector('#conv-text')`))) {
+    await sleep(1500);
+    if (!(await clickText(L['home.actAdd']))) throw new Error(`home "${L['home.actAdd']}" not found`);
+    await waitFor(`!!document.querySelector('#conv-text')`, 'conversation input');
+    await sleep(1200);
+    mark('home-add-a-memory');
+  }
   await ev(`(() => { const t=document.querySelector('#conv-text'); t.value=${JSON.stringify(TEXT)}; t.dispatchEvent(new Event('input', {bubbles:true})); t.scrollIntoView({block:'center'}); })()`);
   await sleep(2500);
   mark('source-conversation-entered', { note: 'new synthetic English conversation, labelled synthetic' });
@@ -244,7 +251,9 @@ const manifest = {
     { name: 'Source evidence (verbatim quote)', status: passed('evidence drawer shows a verbatim quote') ? 'verified' : 'unverified', evidence: 'timeline.json' },
     { name: 'AM/PM clarification, explicit user choice', status: passed('AM/PM not preselected') && passed('answer keeps AM/PM open (no invented time)') ? 'verified' : 'unverified', evidence: 'timeline.json' },
     { name: 'Confirmation before action', status: timeline.some((x) => x.step === 'confirmation-card') ? 'verified' : 'unverified', evidence: 'timeline.json' },
-    { name: 'Calendar action', status: calls.some((c) => c.displayState === 'completed_external') ? 'verified' : 'simulated', evidence: 'api-telemetry.json displayState' },
+    runtime.calendar?.kind === 'ebys_local' && calls.some((c) => c.displayState === 'completed_external')
+      ? { name: 'Saved to the EBYS calendar on this device and read back (local file; not the phone calendar, no phone notification)', status: 'verified', evidence: 'api-telemetry.json displayState completed_external; runtime.calendar' }
+      : { name: 'Calendar action', status: 'simulated', evidence: 'api-telemetry.json displayState' },
     { name: 'Watch, 24h audio, glasses, safety/119', status: 'roadmap', evidence: 'not implemented' },
   ],
   rightsNotes: 'Original EBYS app UI captured by the team; synthetic conversation written for this capture; no third-party media, no real people or recordings.',

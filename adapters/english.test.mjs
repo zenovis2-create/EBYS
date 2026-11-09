@@ -211,3 +211,34 @@ test('English error copy for the failure modes (exact wording, none of it reads 
   const c = await go(createActionService({ now: () => NOW, mode: 'real', calendarFile: corrupt }));
   assert.equal(c.error.userHint.en, 'The calendar file on this device looks damaged, so EBYS left it alone. Please ask for help.');
 });
+
+test('the person is not repeated when the title already names them (case-insensitive); still added otherwise', async () => {
+  const lesson = { title: 'Copperplate printmaking lesson with Kai', person: { displayName: 'Kai', speakerConfidence: 'confirmed' }, reminderOffsetsMin: [60], intentId: 'en_kai' };
+  for (const who of ['Kai', 'kai', 'KAI']) {
+    const s = variants.local();
+    const it = intent({ ...lesson, person: { displayName: who, speakerConfidence: 'confirmed' } });
+    const p = s.preview(it);
+    assert.equal(p.summary.en, 'Copperplate printmaking lesson with Kai - Thu, 12 Nov 2026, 3:30 PM (Seoul time, UTC+9)');
+    assert.doesNotMatch(p.summary.en, /with Kai with/i);
+    assert.doesNotMatch(p.summary.ko, /Kai.*Kai/s, `Korean summary repeats the name: ${p.summary.ko}`);
+    assert.ok(!p.summary.ko.includes('님'), p.summary.ko);
+    assert.match(p.notifications[0].body.en, /^1 hour before: Copperplate printmaking lesson with Kai - /);
+    assert.doesNotMatch(p.notifications[0].body.en, /with Kai with/i);
+    const r = await go(s, it);
+    assert.equal(r.status, 'completed');
+    assert.equal(r.readbackText.en, 'Saved in the EBYS calendar on this device and read back to check: Appointment: Copperplate printmaking lesson with Kai, Thu, 12 Nov 2026, 3:30 PM (Seoul time, UTC+9)');
+    assert.doesNotMatch(r.readbackText.ko, /Kai.*Kai/s, `Korean readback repeats the name: ${r.readbackText.ko}`);
+    const feed = s.dueNotifications('2026-11-12T14:31:00+09:00');
+    assert.equal(feed.notifications.length, 1);
+    assert.equal(feed.notifications[0].body.en, 'Starts in 1 hour (Seoul time)');
+    assert.doesNotMatch(feed.notifications[0].body.ko, /님/);
+  }
+  // a title that does not contain the name keeps the appended person
+  const s = variants.local();
+  const other = intent({ title: 'Copperplate printmaking lesson', person: { displayName: 'Kai', speakerConfidence: 'confirmed' }, intentId: 'en_kai2', reminderOffsetsMin: [60] });
+  assert.equal(s.preview(other).summary.en, 'Copperplate printmaking lesson with Kai - Thu, 12 Nov 2026, 3:30 PM (Seoul time, UTC+9)');
+  assert.match(s.preview(other).summary.ko, /\(Kai님\)/);
+  const r = await go(s, other);
+  assert.match(r.readbackText.en, /Appointment: Copperplate printmaking lesson with Kai, Thu/);
+  assert.equal(s.dueNotifications('2026-11-12T14:31:00+09:00').notifications[0].body.en, 'Starts in 1 hour · with Kai (Seoul time)');
+});
