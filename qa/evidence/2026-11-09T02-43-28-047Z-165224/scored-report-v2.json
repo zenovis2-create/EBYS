@@ -1,0 +1,332 @@
+{
+  "assignment": "T21a",
+  "sourceReport": "C:\\Users\\User\\.aside\\u\\1\\research\\senior-jarvis-hackathon\\senior-jarvis\\qa\\evidence\\2026-11-09T02-43-28-047Z-165224\\report.json",
+  "sourceStartedAt": "2026-11-09T02:43:28.047Z",
+  "sourceReportSha256": "46b6a4a21f6719fc699a534f2ee9ca48f7384dcd2a89fddb5eafb72bea7c0e7c",
+  "evaluatorSha256": "f4fcca03f6fd5c8e0fff682ec141f01ce9aff9cc7d8272c986cfc7353a2e9bee",
+  "scoredAt": "2026-11-09T02:51:40.802Z",
+  "originalOverall": "FAIL",
+  "overall": "FAIL",
+  "rescoreReason": "Corrected QA representation assumptions only: exact instants can be Slot.value.startIso; AM/PM ambiguity can retain a date/hour object with null time/startIso/daypart. Original reports and expected answer keys unchanged. No network calls during rescore.",
+  "scores": {
+    "ingestHttp": {
+      "passed": 2,
+      "expected": 2,
+      "attempted": 2
+    },
+    "queryHttp": {
+      "passed": 6,
+      "expected": 6,
+      "attempted": 6
+    },
+    "queryAcceptance": {
+      "passed": 5,
+      "expected": 6,
+      "PASS": 5,
+      "FAIL": 1,
+      "BLOCKED": 0,
+      "NOT_RUN": 0
+    },
+    "liveModelQueryAcceptance": {
+      "passed": 4,
+      "expected": 6,
+      "fallbackPasses": 1
+    },
+    "requiredModelEvidence": {
+      "passed": 0,
+      "expected": 2,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 2,
+      "NOT_RUN": 0
+    },
+    "reportedLiveCursorCalls": 7,
+    "reportedUncachedCursorCalls": 7
+  },
+  "queryChecks": [
+    {
+      "scenarioId": "heldout-ko",
+      "questionId": "revised-date",
+      "rule": "exact",
+      "status": "PASS",
+      "detail": "Expected value and verbatim source verified",
+      "originalStatus": "PASS",
+      "originalDetail": "Expected value and verbatim source verified",
+      "mode": "fallback",
+      "route": {
+        "id": "fallback-rules",
+        "model": "keyword-search",
+        "error": {
+          "code": "timeout",
+          "message": "no model answer within 90000 ms",
+          "retryable": true
+        }
+      }
+    },
+    {
+      "scenarioId": "heldout-ko",
+      "questionId": "revised-place",
+      "rule": "contains",
+      "status": "PASS",
+      "detail": "Expected value and verbatim source verified",
+      "originalStatus": "PASS",
+      "originalDetail": "Expected value and verbatim source verified",
+      "mode": "model",
+      "route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 40349
+      }
+    },
+    {
+      "scenarioId": "heldout-ko",
+      "questionId": "unanswerable",
+      "rule": "unknown",
+      "status": "FAIL",
+      "detail": "Unanswerable question returned found=true or a known answer slot",
+      "originalStatus": "FAIL",
+      "originalDetail": "Unanswerable question returned found=true or a known answer slot",
+      "mode": "model",
+      "route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 81577
+      }
+    },
+    {
+      "scenarioId": "heldout-en",
+      "questionId": "participant",
+      "rule": "contains",
+      "status": "PASS",
+      "detail": "Expected value and verbatim source verified",
+      "originalStatus": "PASS",
+      "originalDetail": "Expected value and verbatim source verified",
+      "mode": "model",
+      "route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 32769
+      }
+    },
+    {
+      "scenarioId": "heldout-en",
+      "questionId": "ambiguous-time",
+      "rule": "ambiguous",
+      "status": "PASS",
+      "detail": "AM/PM remains unresolved with evidence and clarification",
+      "originalStatus": "PASS",
+      "originalDetail": "AM/PM remains unresolved with evidence and clarification",
+      "mode": "model",
+      "route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 70670
+      }
+    },
+    {
+      "scenarioId": "heldout-en",
+      "questionId": "unanswerable",
+      "rule": "unknown",
+      "status": "PASS",
+      "detail": "Unknown answer; no invented known slot",
+      "originalStatus": "PASS",
+      "originalDetail": "Unknown answer; no invented known slot",
+      "mode": "model",
+      "route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 49074
+      }
+    }
+  ],
+  "modelChecks": [
+    {
+      "scenarioId": "heldout-ko",
+      "name": "model evidence",
+      "status": "BLOCKED",
+      "detail": "Required AI evidence missing: rawModelJson, validation"
+    },
+    {
+      "scenarioId": "heldout-en",
+      "name": "model evidence",
+      "status": "BLOCKED",
+      "detail": "Required AI evidence missing: rawModelJson, validation"
+    }
+  ],
+  "calls": [
+    {
+      "call": 1,
+      "scenarioId": "heldout-ko",
+      "questionId": null,
+      "path": "/api/ingest",
+      "httpStatus": 200,
+      "elapsedMs": 43316,
+      "mode": "model",
+      "duplicate": false,
+      "route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 43247
+      },
+      "rawModelJsonPresent": false,
+      "validationPresent": false,
+      "rejected": 0,
+      "error": null
+    },
+    {
+      "call": 2,
+      "scenarioId": "heldout-ko",
+      "questionId": "revised-date",
+      "path": "/api/query",
+      "httpStatus": 200,
+      "elapsedMs": 90226,
+      "mode": "fallback",
+      "duplicate": false,
+      "route": {
+        "id": "fallback-rules",
+        "model": "keyword-search",
+        "cached": null,
+        "ms": null
+      },
+      "rawModelJsonPresent": false,
+      "validationPresent": false,
+      "rejected": null,
+      "error": null
+    },
+    {
+      "call": 3,
+      "scenarioId": "heldout-ko",
+      "questionId": "revised-place",
+      "path": "/api/query",
+      "httpStatus": 200,
+      "elapsedMs": 40358,
+      "mode": "model",
+      "duplicate": false,
+      "route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 40349
+      },
+      "rawModelJsonPresent": false,
+      "validationPresent": false,
+      "rejected": null,
+      "error": null
+    },
+    {
+      "call": 4,
+      "scenarioId": "heldout-ko",
+      "questionId": "unanswerable",
+      "path": "/api/query",
+      "httpStatus": 200,
+      "elapsedMs": 81586,
+      "mode": "model",
+      "duplicate": false,
+      "route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 81577
+      },
+      "rawModelJsonPresent": false,
+      "validationPresent": false,
+      "rejected": null,
+      "error": null
+    },
+    {
+      "call": 5,
+      "scenarioId": "heldout-en",
+      "questionId": null,
+      "path": "/api/ingest",
+      "httpStatus": 200,
+      "elapsedMs": 65290,
+      "mode": "model",
+      "duplicate": false,
+      "route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 65280
+      },
+      "rawModelJsonPresent": false,
+      "validationPresent": false,
+      "rejected": 0,
+      "error": null
+    },
+    {
+      "call": 6,
+      "scenarioId": "heldout-en",
+      "questionId": "participant",
+      "path": "/api/query",
+      "httpStatus": 200,
+      "elapsedMs": 32781,
+      "mode": "model",
+      "duplicate": false,
+      "route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 32769
+      },
+      "rawModelJsonPresent": false,
+      "validationPresent": false,
+      "rejected": null,
+      "error": null
+    },
+    {
+      "call": 7,
+      "scenarioId": "heldout-en",
+      "questionId": "ambiguous-time",
+      "path": "/api/query",
+      "httpStatus": 200,
+      "elapsedMs": 70677,
+      "mode": "model",
+      "duplicate": false,
+      "route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 70670
+      },
+      "rawModelJsonPresent": false,
+      "validationPresent": false,
+      "rejected": null,
+      "error": null
+    },
+    {
+      "call": 8,
+      "scenarioId": "heldout-en",
+      "questionId": "unanswerable",
+      "path": "/api/query",
+      "httpStatus": 200,
+      "elapsedMs": 49079,
+      "mode": "model",
+      "duplicate": false,
+      "route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 49074
+      },
+      "rawModelJsonPresent": false,
+      "validationPresent": false,
+      "rejected": null,
+      "error": null
+    }
+  ],
+  "limitations": [
+    "API-only test; no phone UI, action-confirmation, permission, deletion or notification acceptance.",
+    "Injection non-execution and cancellation memory states require separate action-ledger/memory inspection; ingest/query responses alone cannot prove absence of side effects.",
+    "Real provider execution requires lead audit of router/model evidence; reported route names alone are not proof.",
+    "No action, confirm, cleanup, reset or deletion endpoints are called; synthetic sessions remain on the lead server.",
+    "A reported model route is an observation, not complete raw-model evidence or independent provider attestation.",
+    "Null cached/ms/route fields mean absent from the response, not false/zero or an inferred route.",
+    "Query failures retain the original status; no retries or server state changes are performed by this scorer."
+  ]
+}

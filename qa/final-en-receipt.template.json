@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "scope": "final-en-local",
+  "runId": "PENDING-lead-ready-reload-and-parent-visual-run",
+  "preparedBy": "sj-qa",
+  "independentReviewer": null,
+  "artifacts": {},
+  "runtime": { "before": null, "after": null },
+  "live": { "report": null, "scenarioIds": ["heldout-en"] },
+  "gates": [
+    { "id": "EN_DEFAULT", "owner": "sj-ui", "status": "NOT_RUN", "evidence": [] },
+    { "id": "EN_FLOW_COPY_VOICE", "owner": "sj-ui", "status": "NOT_RUN", "evidence": [] },
+    { "id": "LIVE_EN_HELDOUT", "owner": "sj-memory", "status": "NOT_RUN", "evidence": [] },
+    { "id": "UNKNOWN_RELEVANCE", "owner": "sj-memory", "status": "NOT_RUN", "evidence": [] },
+    { "id": "GAP12_SYNTHETIC", "owner": "sj-memory", "status": "NOT_RUN", "evidence": [] },
+    { "id": "GAP3_OBJECT_CANDIDATE", "owner": "sj-ui", "status": "NOT_RUN", "evidence": [] },
+    { "id": "CONFIRM_BINDING", "owner": "senior-planner", "status": "NOT_RUN", "evidence": [] },
+    { "id": "LOCAL_CALENDAR_READBACK", "owner": "sj-actions", "status": "NOT_RUN", "evidence": [] },
+    { "id": "CANCEL_IDEMPOTENCY", "owner": "senior-planner", "status": "NOT_RUN", "evidence": [] },
+    { "id": "ERROR_HONESTY", "owner": "sj-actions", "status": "NOT_RUN", "evidence": [] },
+    { "id": "MOBILE_390", "owner": "sj-ui", "status": "NOT_RUN", "evidence": [] },
+    { "id": "KEYBOARD_TARGETS_ZOOM", "owner": "sj-ui", "status": "NOT_RUN", "evidence": [] },
+    { "id": "REDUCED_MOTION", "owner": "sj-ui", "status": "NOT_RUN", "evidence": [] },
+    { "id": "RAW_CAPTURE", "owner": "parent-Aside", "status": "NOT_RUN", "evidence": [] }
+  ]
+}

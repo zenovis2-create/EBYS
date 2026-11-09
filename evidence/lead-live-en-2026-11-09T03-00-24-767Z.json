@@ -1,0 +1,1185 @@
+{
+  "capturedAt": "2026-11-09T03:00:24.767Z",
+  "note": "lead live English check; synthetic text, not a fixture or QA held-out; proves route/telemetry/lang default, not QA scoring",
+  "runtime": {
+    "data": "synthetic",
+    "defaultLang": "en",
+    "timezone": {
+      "iana": "Asia/Seoul",
+      "label": {
+        "en": "Seoul time",
+        "ko": "서울 시간"
+      },
+      "utcOffset": "+09:00",
+      "note": {
+        "en": "EBYS stores calendar times in Seoul time (UTC+9) and always shows the zone next to the time.",
+        "ko": "EBYS는 달력 시간을 서울 시간(UTC+9)으로 저장하고 시간 옆에 항상 표시합니다."
+      }
+    },
+    "calendar": {
+      "kind": "simulated",
+      "name": "Demo Calendar (in this app only, simulated)",
+      "permission": "not_required"
+    },
+    "notifications": {
+      "kind": "preview",
+      "permission": "not_applicable"
+    },
+    "micCapture": "unavailable",
+    "speechInput": "unavailable",
+    "version": "actions-0.1.0",
+    "mode": "simulated",
+    "adapters": [
+      {
+        "id": "calendar.simulated",
+        "kind": "calendar",
+        "mode": "simulated",
+        "label": {
+          "ko": "시뮬레이션 달력 (앱 안에서만)",
+          "en": "Simulated calendar (inside this app only)"
+        },
+        "claimStatus": "simulated",
+        "maxVerifyLevel": "none",
+        "canReconcile": true,
+        "notes": "In-memory Demo Calendar. Nothing is written to any phone or account."
+      },
+      {
+        "id": "notification.preview",
+        "kind": "notification",
+        "mode": "simulated",
+        "label": {
+          "ko": "알림 미리보기 (실제 알림 아님)",
+          "en": "Notification preview (not a real notification)"
+        },
+        "claimStatus": "simulated",
+        "maxVerifyLevel": "none",
+        "notes": "Pure preview list. No Notification API, no push, no server."
+      }
+    ],
+    "faultInjection": null,
+    "forbidden": "no tel/sms/mailto/emergency actions exist in this layer",
+    "model": {
+      "route": "cursor-cli",
+      "model": "claude-sonnet-5-5-low",
+      "healthy": null
+    },
+    "sourceSnapshot": {
+      "serverLoaded": {
+        "startedAt": "2026-11-09T02:59:17.658Z",
+        "sha256": "e31813853092fcd41c0ed3d8c4e573e55ae143e73b67226a58babbc713e6481b",
+        "files": 28
+      },
+      "serverOnDisk": {
+        "sha256": "e31813853092fcd41c0ed3d8c4e573e55ae143e73b67226a58babbc713e6481b",
+        "files": 28
+      },
+      "serverCurrent": true,
+      "uiOnDisk": {
+        "sha256": "49dca39a37764898092267333628d090247ebe57ade5f30c15184853c9cc4d54",
+        "files": 26
+      }
+    }
+  },
+  "calls": [
+    {
+      "method": "POST",
+      "path": "/api/ingest",
+      "request": {
+        "title": "synthetic book club",
+        "text": "Priya: Grandpa, Tom from the library called. The book club moved from Wednesday to Thursday at 2.\nGrandpa: Thursday at 2, got it. Is it still in the community room?\nPriya: No, this time it's at the Oak Street cafe.\nGrandpa: And Martha is bringing the cake, right?\nPriya: Yes, Martha said she'd bring a lemon cake.",
+        "provenance": "synthetic"
+      },
+      "httpStatus": 200,
+      "wallMs": 66260,
+      "body": {
+        "ok": true,
+        "data": {
+          "ok": true,
+          "sessionId": "ses_1",
+          "utterances": [
+            {
+              "id": "utt_1",
+              "sessionId": "ses_1",
+              "speakerId": "spk_priya",
+              "speakerLabel": "Priya",
+              "speakerKnown": true,
+              "text": "Grandpa, Tom from the library called. The book club moved from Wednesday to Thursday at 2.",
+              "startedAt": "2026-11-09T12:00:00+09:00",
+              "lang": "en",
+              "provenance": "synthetic",
+              "segmentKey": "f4c57c4542ce6fe9"
+            },
+            {
+              "id": "utt_2",
+              "sessionId": "ses_1",
+              "speakerId": "spk_grandpa",
+              "speakerLabel": "Grandpa",
+              "speakerKnown": true,
+              "text": "Thursday at 2, got it. Is it still in the community room?",
+              "startedAt": "2026-11-09T12:00:01+09:00",
+              "lang": "en",
+              "provenance": "synthetic",
+              "segmentKey": "bc98695032879ccb"
+            },
+            {
+              "id": "utt_3",
+              "sessionId": "ses_1",
+              "speakerId": "spk_priya",
+              "speakerLabel": "Priya",
+              "speakerKnown": true,
+              "text": "No, this time it's at the Oak Street cafe.",
+              "startedAt": "2026-11-09T12:00:02+09:00",
+              "lang": "en",
+              "provenance": "synthetic",
+              "segmentKey": "aeab49d829bed583"
+            },
+            {
+              "id": "utt_4",
+              "sessionId": "ses_1",
+              "speakerId": "spk_grandpa",
+              "speakerLabel": "Grandpa",
+              "speakerKnown": true,
+              "text": "And Martha is bringing the cake, right?",
+              "startedAt": "2026-11-09T12:00:03+09:00",
+              "lang": "en",
+              "provenance": "synthetic",
+              "segmentKey": "c0d218e3f8ebc152"
+            },
+            {
+              "id": "utt_5",
+              "sessionId": "ses_1",
+              "speakerId": "spk_priya",
+              "speakerLabel": "Priya",
+              "speakerKnown": true,
+              "text": "Yes, Martha said she'd bring a lemon cake.",
+              "startedAt": "2026-11-09T12:00:04+09:00",
+              "lang": "en",
+              "provenance": "synthetic",
+              "segmentKey": "58714dbc74d5b5b9"
+            }
+          ],
+          "memoriesCreated": 3,
+          "memoryIds": [
+            "mem_1",
+            "mem_2",
+            "mem_3"
+          ],
+          "merged": [
+            "mem_1"
+          ],
+          "superseded": [],
+          "retracted": [],
+          "cancelled": [],
+          "unresolved": [
+            {
+              "type": "replace_target_not_found",
+              "ref": "m1",
+              "quote": "The book club moved from Wednesday to Thursday at 2."
+            }
+          ],
+          "needsUserDecision": [],
+          "rejected": 0,
+          "rejectedDetail": [],
+          "route": {
+            "id": "cursor-cli",
+            "model": "claude-sonnet-5-5-low",
+            "cached": false,
+            "ms": 66240
+          },
+          "mode": "model",
+          "telemetry": {
+            "mode": "model",
+            "route": {
+              "id": "cursor-cli",
+              "model": "claude-sonnet-5-5-low",
+              "cached": false,
+              "ms": 66240
+            },
+            "modelCalls": [
+              {
+                "ok": true,
+                "route": "cursor-cli",
+                "model": "claude-sonnet-5-5-low",
+                "cached": false,
+                "ms": 66240
+              }
+            ],
+            "rawModelJson": {
+              "items": [
+                {
+                  "ref": "m1",
+                  "kind": "event",
+                  "type": "appointment",
+                  "owner": null,
+                  "cue": "replace",
+                  "title": {
+                    "ko": "독서 모임 (목요일로 변경)",
+                    "en": "Book club moved to Thursday"
+                  },
+                  "quote": "The book club moved from Wednesday to Thursday at 2.",
+                  "utterance": 0,
+                  "who": [
+                    {
+                      "name": "Tom",
+                      "quote": "Tom from the library",
+                      "utterance": 0
+                    }
+                  ],
+                  "when": [
+                    {
+                      "quote": "Thursday at 2",
+                      "utterance": 0
+                    }
+                  ],
+                  "where": {
+                    "name": "Oak Street cafe",
+                    "quote": "Oak Street cafe",
+                    "utterance": 2
+                  },
+                  "what": null,
+                  "target": null,
+                  "question": "Is the book club on Thursday at 2 AM or 2 PM?",
+                  "missing": [],
+                  "confidence": 0.8
+                },
+                {
+                  "ref": "m2",
+                  "kind": "task",
+                  "type": null,
+                  "owner": "other",
+                  "cue": "none",
+                  "title": {
+                    "ko": "마사가 레몬 케이크 가져오기",
+                    "en": "Martha brings a lemon cake"
+                  },
+                  "quote": "Martha said she'd bring a lemon cake.",
+                  "utterance": 4,
+                  "who": [
+                    {
+                      "name": "Martha",
+                      "quote": "Martha",
+                      "utterance": 4
+                    }
+                  ],
+                  "when": [],
+                  "where": null,
+                  "what": {
+                    "text": "lemon cake",
+                    "quote": "lemon cake",
+                    "utterance": 4
+                  },
+                  "target": "m1",
+                  "question": null,
+                  "missing": [],
+                  "confidence": 0.9
+                },
+                {
+                  "ref": "m3",
+                  "kind": "person",
+                  "type": null,
+                  "owner": null,
+                  "cue": "none",
+                  "title": {
+                    "ko": "톰 (도서관)",
+                    "en": "Tom from the library"
+                  },
+                  "quote": "Tom from the library",
+                  "utterance": 0,
+                  "who": [
+                    {
+                      "name": "Tom",
+                      "quote": "Tom from the library",
+                      "utterance": 0
+                    }
+                  ],
+                  "when": [],
+                  "where": null,
+                  "what": null,
+                  "target": null,
+                  "question": null,
+                  "missing": [],
+                  "confidence": 0.9
+                },
+                {
+                  "ref": "m4",
+                  "kind": "person",
+                  "type": null,
+                  "owner": null,
+                  "cue": "none",
+                  "title": {
+                    "ko": "마사",
+                    "en": "Martha"
+                  },
+                  "quote": "Martha",
+                  "utterance": 3,
+                  "who": [
+                    {
+                      "name": "Martha",
+                      "quote": "Martha",
+                      "utterance": 3
+                    }
+                  ],
+                  "when": [],
+                  "where": null,
+                  "what": null,
+                  "target": null,
+                  "question": null,
+                  "missing": [],
+                  "confidence": 0.9
+                }
+              ]
+            },
+            "validation": {
+              "ok": true,
+              "rejected": 0
+            },
+            "rejected": 0
+          }
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/query",
+      "request": {
+        "text": "Where is the book club now, and who told us?"
+      },
+      "httpStatus": 200,
+      "wallMs": 55266,
+      "body": {
+        "ok": true,
+        "data": {
+          "found": true,
+          "mode": "model",
+          "route": {
+            "id": "cursor-cli",
+            "model": "claude-sonnet-5-5-low",
+            "cached": false,
+            "ms": 55257
+          },
+          "slots": {
+            "who": {
+              "state": "known",
+              "value": [
+                {
+                  "name": "Tom"
+                },
+                {
+                  "name": "Martha"
+                }
+              ],
+              "display": "Tom, Martha",
+              "uncertainty": "inferred",
+              "evidence": [
+                {
+                  "utteranceId": "utt_1",
+                  "charStart": 9,
+                  "charEnd": 29,
+                  "quote": "Tom from the library"
+                },
+                {
+                  "utteranceId": "utt_5",
+                  "charStart": 5,
+                  "charEnd": 11,
+                  "quote": "Martha"
+                }
+              ]
+            },
+            "when": {
+              "state": "ambiguous",
+              "value": {
+                "date": "2026-11-12",
+                "time": null,
+                "startIso": null,
+                "tz": "Asia/Seoul",
+                "daypart": null,
+                "flags": [
+                  "bare_weekday"
+                ],
+                "hour": 2,
+                "displayKo": "11월 12일(목) 2시 (오전/오후 확인 필요)",
+                "displayEn": "Thu, Nov 12 2:00 (AM or PM?)"
+              },
+              "display": "Thu, Nov 12 2:00 (AM or PM?)",
+              "uncertainty": "ambiguous",
+              "evidence": [
+                {
+                  "utteranceId": "utt_1",
+                  "charStart": 76,
+                  "charEnd": 89,
+                  "quote": "Thursday at 2"
+                }
+              ],
+              "candidates": [
+                {
+                  "date": "2026-11-12",
+                  "time": "14:00",
+                  "startIso": "2026-11-12T14:00:00+09:00",
+                  "labelKo": "11월 12일(목) 오후 2시",
+                  "labelEn": "Thu, Nov 12 2:00 PM"
+                },
+                {
+                  "date": "2026-11-12",
+                  "time": "02:00",
+                  "startIso": "2026-11-12T02:00:00+09:00",
+                  "labelKo": "11월 12일(목) 오전 2시",
+                  "labelEn": "Thu, Nov 12 2:00 AM"
+                }
+              ],
+              "clarification": {
+                "ko": "오전인가요, 오후인가요?",
+                "en": "Is that AM or PM?"
+              }
+            },
+            "where": {
+              "state": "known",
+              "value": {
+                "name": "Oak Street cafe"
+              },
+              "display": "Oak Street cafe",
+              "uncertainty": "inferred",
+              "evidence": [
+                {
+                  "utteranceId": "utt_3",
+                  "charStart": 26,
+                  "charEnd": 41,
+                  "quote": "Oak Street cafe"
+                }
+              ]
+            },
+            "what": {
+              "state": "known",
+              "value": {
+                "text": "Book club moved to Thursday",
+                "title": {
+                  "ko": "독서 모임 (목요일로 변경)",
+                  "en": "Book club moved to Thursday"
+                }
+              },
+              "display": "Book club moved to Thursday",
+              "uncertainty": "inferred",
+              "evidence": [
+                {
+                  "utteranceId": "utt_1",
+                  "charStart": 38,
+                  "charEnd": 90,
+                  "quote": "The book club moved from Wednesday to Thursday at 2."
+                }
+              ]
+            }
+          },
+          "caveats": [
+            "unconfirmed",
+            "time_ambiguous"
+          ],
+          "memoryId": "mem_1",
+          "matches": [
+            {
+              "memoryId": "mem_1",
+              "kind": "event",
+              "status": "candidate",
+              "summary": {
+                "ko": "독서 모임 (목요일로 변경)",
+                "en": "Book club moved to Thursday"
+              },
+              "slots": {
+                "who": "Tom, Martha",
+                "when": {
+                  "ko": "11월 12일(목) 2시 (오전/오후 확인 필요)",
+                  "en": "Thu, Nov 12 2:00 (AM or PM?)"
+                },
+                "where": "Oak Street cafe"
+              }
+            },
+            {
+              "memoryId": "mem_2",
+              "kind": "person",
+              "status": "candidate",
+              "summary": {
+                "ko": "톰 (도서관)",
+                "en": "Tom from the library"
+              },
+              "slots": {
+                "who": "Tom",
+                "when": null,
+                "where": null
+              }
+            }
+          ],
+          "sentence": {
+            "ko": "독서 모임 (목요일로 변경) — 어디: Oak Street cafe · 누구: Tom, Martha",
+            "en": "Book club moved to Thursday — Where: Oak Street cafe · Who: Tom, Martha"
+          },
+          "telemetry": {
+            "mode": "model",
+            "route": {
+              "id": "cursor-cli",
+              "model": "claude-sonnet-5-5-low",
+              "cached": false,
+              "ms": 55257
+            },
+            "modelCalls": [
+              {
+                "ok": true,
+                "route": "cursor-cli",
+                "model": "claude-sonnet-5-5-low",
+                "cached": false,
+                "ms": 55257
+              }
+            ],
+            "rawModelJson": {
+              "found": true,
+              "memoryIds": [
+                "mem_1",
+                "mem_2"
+              ],
+              "asked": [
+                "where",
+                "who"
+              ],
+              "slots": {
+                "who": {
+                  "value": "Tom from the library",
+                  "quote": "Tom from the library called",
+                  "utteranceId": "utt_1"
+                },
+                "when": null,
+                "where": {
+                  "value": "Oak Street cafe",
+                  "quote": "this time it's at the Oak Street cafe",
+                  "utteranceId": "utt_3"
+                },
+                "what": null
+              },
+              "notFoundReason": null
+            },
+            "validation": {
+              "ok": true,
+              "rejected": 0
+            },
+            "rejected": 0
+          }
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/query",
+      "request": {
+        "text": "What time is the book club on Thursday?"
+      },
+      "httpStatus": 200,
+      "wallMs": 34210,
+      "body": {
+        "ok": true,
+        "data": {
+          "found": true,
+          "mode": "model",
+          "route": {
+            "id": "cursor-cli",
+            "model": "claude-sonnet-5-5-low",
+            "cached": false,
+            "ms": 34201
+          },
+          "slots": {
+            "who": {
+              "state": "known",
+              "value": [
+                {
+                  "name": "Tom"
+                },
+                {
+                  "name": "Martha"
+                }
+              ],
+              "display": "Tom, Martha",
+              "uncertainty": "inferred",
+              "evidence": [
+                {
+                  "utteranceId": "utt_1",
+                  "charStart": 9,
+                  "charEnd": 29,
+                  "quote": "Tom from the library"
+                },
+                {
+                  "utteranceId": "utt_5",
+                  "charStart": 5,
+                  "charEnd": 11,
+                  "quote": "Martha"
+                }
+              ]
+            },
+            "when": {
+              "state": "ambiguous",
+              "value": {
+                "date": "2026-11-12",
+                "time": null,
+                "startIso": null,
+                "tz": "Asia/Seoul",
+                "daypart": null,
+                "flags": [
+                  "bare_weekday"
+                ],
+                "hour": 2,
+                "displayKo": "11월 12일(목) 2시 (오전/오후 확인 필요)",
+                "displayEn": "Thu, Nov 12 2:00 (AM or PM?)"
+              },
+              "display": "Thu, Nov 12 2:00 (AM or PM?)",
+              "uncertainty": "ambiguous",
+              "evidence": [
+                {
+                  "utteranceId": "utt_1",
+                  "charStart": 76,
+                  "charEnd": 89,
+                  "quote": "Thursday at 2"
+                }
+              ],
+              "candidates": [
+                {
+                  "date": "2026-11-12",
+                  "time": "14:00",
+                  "startIso": "2026-11-12T14:00:00+09:00",
+                  "labelKo": "11월 12일(목) 오후 2시",
+                  "labelEn": "Thu, Nov 12 2:00 PM"
+                },
+                {
+                  "date": "2026-11-12",
+                  "time": "02:00",
+                  "startIso": "2026-11-12T02:00:00+09:00",
+                  "labelKo": "11월 12일(목) 오전 2시",
+                  "labelEn": "Thu, Nov 12 2:00 AM"
+                }
+              ],
+              "clarification": {
+                "ko": "오전인가요, 오후인가요?",
+                "en": "Is that AM or PM?"
+              }
+            },
+            "where": {
+              "state": "known",
+              "value": {
+                "name": "Oak Street cafe"
+              },
+              "display": "Oak Street cafe",
+              "uncertainty": "inferred",
+              "evidence": [
+                {
+                  "utteranceId": "utt_3",
+                  "charStart": 26,
+                  "charEnd": 41,
+                  "quote": "Oak Street cafe"
+                }
+              ]
+            },
+            "what": {
+              "state": "known",
+              "value": {
+                "text": "Book club moved to Thursday",
+                "title": {
+                  "ko": "독서 모임 (목요일로 변경)",
+                  "en": "Book club moved to Thursday"
+                }
+              },
+              "display": "Book club moved to Thursday",
+              "uncertainty": "inferred",
+              "evidence": [
+                {
+                  "utteranceId": "utt_1",
+                  "charStart": 38,
+                  "charEnd": 90,
+                  "quote": "The book club moved from Wednesday to Thursday at 2."
+                }
+              ]
+            }
+          },
+          "caveats": [
+            "unconfirmed",
+            "time_ambiguous"
+          ],
+          "memoryId": "mem_1",
+          "matches": [
+            {
+              "memoryId": "mem_1",
+              "kind": "event",
+              "status": "candidate",
+              "summary": {
+                "ko": "독서 모임 (목요일로 변경)",
+                "en": "Book club moved to Thursday"
+              },
+              "slots": {
+                "who": "Tom, Martha",
+                "when": {
+                  "ko": "11월 12일(목) 2시 (오전/오후 확인 필요)",
+                  "en": "Thu, Nov 12 2:00 (AM or PM?)"
+                },
+                "where": "Oak Street cafe"
+              }
+            }
+          ],
+          "sentence": {
+            "ko": "독서 모임 (목요일로 변경) — 언제: 11월 12일(목) 2시 (오전/오후 확인 필요)",
+            "en": "Book club moved to Thursday — When: Thu, Nov 12 2:00 (AM or PM?)"
+          },
+          "clarification": {
+            "slot": "when",
+            "prompt": {
+              "ko": "오전인가요, 오후인가요?",
+              "en": "Is that AM or PM?"
+            },
+            "options": [
+              {
+                "label": "11월 12일(목) 오후 2시",
+                "labelEn": "Thu, Nov 12 2:00 PM",
+                "value": {
+                  "date": "2026-11-12",
+                  "time": "14:00",
+                  "startIso": "2026-11-12T14:00:00+09:00"
+                },
+                "uncertainty": "ambiguous",
+                "evidence": [
+                  {
+                    "utteranceId": "utt_1",
+                    "charStart": 76,
+                    "charEnd": 89,
+                    "quote": "Thursday at 2"
+                  }
+                ]
+              },
+              {
+                "label": "11월 12일(목) 오전 2시",
+                "labelEn": "Thu, Nov 12 2:00 AM",
+                "value": {
+                  "date": "2026-11-12",
+                  "time": "02:00",
+                  "startIso": "2026-11-12T02:00:00+09:00"
+                },
+                "uncertainty": "ambiguous",
+                "evidence": [
+                  {
+                    "utteranceId": "utt_1",
+                    "charStart": 76,
+                    "charEnd": 89,
+                    "quote": "Thursday at 2"
+                  }
+                ]
+              }
+            ],
+            "allowFreeInput": true,
+            "allowUnknown": true
+          },
+          "telemetry": {
+            "mode": "model",
+            "route": {
+              "id": "cursor-cli",
+              "model": "claude-sonnet-5-5-low",
+              "cached": false,
+              "ms": 34201
+            },
+            "modelCalls": [
+              {
+                "ok": true,
+                "route": "cursor-cli",
+                "model": "claude-sonnet-5-5-low",
+                "cached": false,
+                "ms": 34201
+              }
+            ],
+            "rawModelJson": {
+              "found": true,
+              "memoryIds": [
+                "mem_1"
+              ],
+              "asked": [
+                "when"
+              ],
+              "slots": {
+                "who": null,
+                "when": {
+                  "value": "Thursday at 2 (AM or PM not specified)",
+                  "quote": "The book club moved from Wednesday to Thursday at 2.",
+                  "utteranceId": "utt_1"
+                },
+                "where": null,
+                "what": null
+              },
+              "notFoundReason": null
+            },
+            "validation": {
+              "ok": true,
+              "rejected": 0
+            },
+            "rejected": 0
+          }
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/query",
+      "request": {
+        "text": "Who is bringing the cake?"
+      },
+      "httpStatus": 200,
+      "wallMs": 23553,
+      "body": {
+        "ok": true,
+        "data": {
+          "found": true,
+          "mode": "model",
+          "route": {
+            "id": "cursor-cli",
+            "model": "claude-sonnet-5-5-low",
+            "cached": false,
+            "ms": 23546
+          },
+          "slots": {
+            "who": {
+              "state": "known",
+              "value": [
+                {
+                  "name": "Martha"
+                }
+              ],
+              "display": "Martha",
+              "uncertainty": "stated",
+              "evidence": [
+                {
+                  "utteranceId": "utt_4",
+                  "charStart": 4,
+                  "charEnd": 10,
+                  "quote": "Martha"
+                }
+              ]
+            },
+            "when": {
+              "state": "unknown",
+              "uncertainty": "unknown",
+              "evidence": [],
+              "value": null,
+              "clarification": {
+                "ko": "언제인가요?",
+                "en": "When is it?"
+              }
+            },
+            "where": {
+              "state": "unknown",
+              "uncertainty": "unknown",
+              "evidence": [],
+              "value": null,
+              "clarification": {
+                "ko": "어디인가요?",
+                "en": "Where is it?"
+              }
+            },
+            "what": {
+              "state": "known",
+              "value": {
+                "text": "Martha",
+                "title": {
+                  "ko": "마사",
+                  "en": "Martha"
+                }
+              },
+              "display": "Martha",
+              "uncertainty": "stated",
+              "evidence": [
+                {
+                  "utteranceId": "utt_4",
+                  "charStart": 4,
+                  "charEnd": 10,
+                  "quote": "Martha"
+                }
+              ]
+            }
+          },
+          "caveats": [
+            "unconfirmed",
+            "single_source"
+          ],
+          "memoryId": "mem_3",
+          "matches": [
+            {
+              "memoryId": "mem_3",
+              "kind": "person",
+              "status": "candidate",
+              "summary": {
+                "ko": "마사",
+                "en": "Martha"
+              },
+              "slots": {
+                "who": "Martha",
+                "when": null,
+                "where": null
+              }
+            },
+            {
+              "memoryId": "mem_1",
+              "kind": "event",
+              "status": "candidate",
+              "summary": {
+                "ko": "독서 모임 (목요일로 변경)",
+                "en": "Book club moved to Thursday"
+              },
+              "slots": {
+                "who": "Tom, Martha",
+                "when": {
+                  "ko": "11월 12일(목) 2시 (오전/오후 확인 필요)",
+                  "en": "Thu, Nov 12 2:00 (AM or PM?)"
+                },
+                "where": "Oak Street cafe"
+              }
+            }
+          ],
+          "sentence": {
+            "ko": "마사 — 누구: Martha",
+            "en": "Martha — Who: Martha"
+          },
+          "telemetry": {
+            "mode": "model",
+            "route": {
+              "id": "cursor-cli",
+              "model": "claude-sonnet-5-5-low",
+              "cached": false,
+              "ms": 23546
+            },
+            "modelCalls": [
+              {
+                "ok": true,
+                "route": "cursor-cli",
+                "model": "claude-sonnet-5-5-low",
+                "cached": false,
+                "ms": 23546
+              }
+            ],
+            "rawModelJson": {
+              "found": true,
+              "memoryIds": [
+                "mem_3",
+                "mem_1"
+              ],
+              "asked": [
+                "who"
+              ],
+              "slots": {
+                "who": {
+                  "value": "Martha",
+                  "quote": "Yes, Martha said she'd bring a lemon cake.",
+                  "utteranceId": "utt_5"
+                },
+                "when": null,
+                "where": null,
+                "what": null
+              },
+              "notFoundReason": null
+            },
+            "validation": {
+              "ok": true,
+              "rejected": 0
+            },
+            "rejected": 0
+          }
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/query",
+      "request": {
+        "text": "What is the bus route to the cafe?"
+      },
+      "httpStatus": 200,
+      "wallMs": 22206,
+      "body": {
+        "ok": true,
+        "data": {
+          "found": true,
+          "mode": "model",
+          "route": {
+            "id": "cursor-cli",
+            "model": "claude-sonnet-5-5-low",
+            "cached": false,
+            "ms": 22201
+          },
+          "slots": {
+            "who": {
+              "state": "known",
+              "value": [
+                {
+                  "name": "Tom"
+                },
+                {
+                  "name": "Martha"
+                }
+              ],
+              "display": "Tom, Martha",
+              "uncertainty": "inferred",
+              "evidence": [
+                {
+                  "utteranceId": "utt_1",
+                  "charStart": 9,
+                  "charEnd": 29,
+                  "quote": "Tom from the library"
+                },
+                {
+                  "utteranceId": "utt_5",
+                  "charStart": 5,
+                  "charEnd": 11,
+                  "quote": "Martha"
+                }
+              ]
+            },
+            "when": {
+              "state": "ambiguous",
+              "value": {
+                "date": "2026-11-12",
+                "time": null,
+                "startIso": null,
+                "tz": "Asia/Seoul",
+                "daypart": null,
+                "flags": [
+                  "bare_weekday"
+                ],
+                "hour": 2,
+                "displayKo": "11월 12일(목) 2시 (오전/오후 확인 필요)",
+                "displayEn": "Thu, Nov 12 2:00 (AM or PM?)"
+              },
+              "display": "Thu, Nov 12 2:00 (AM or PM?)",
+              "uncertainty": "ambiguous",
+              "evidence": [
+                {
+                  "utteranceId": "utt_1",
+                  "charStart": 76,
+                  "charEnd": 89,
+                  "quote": "Thursday at 2"
+                }
+              ],
+              "candidates": [
+                {
+                  "date": "2026-11-12",
+                  "time": "14:00",
+                  "startIso": "2026-11-12T14:00:00+09:00",
+                  "labelKo": "11월 12일(목) 오후 2시",
+                  "labelEn": "Thu, Nov 12 2:00 PM"
+                },
+                {
+                  "date": "2026-11-12",
+                  "time": "02:00",
+                  "startIso": "2026-11-12T02:00:00+09:00",
+                  "labelKo": "11월 12일(목) 오전 2시",
+                  "labelEn": "Thu, Nov 12 2:00 AM"
+                }
+              ],
+              "clarification": {
+                "ko": "오전인가요, 오후인가요?",
+                "en": "Is that AM or PM?"
+              }
+            },
+            "where": {
+              "state": "known",
+              "value": {
+                "name": "Oak Street cafe"
+              },
+              "display": "Oak Street cafe",
+              "uncertainty": "inferred",
+              "evidence": [
+                {
+                  "utteranceId": "utt_3",
+                  "charStart": 26,
+                  "charEnd": 41,
+                  "quote": "Oak Street cafe"
+                }
+              ]
+            },
+            "what": {
+              "state": "known",
+              "value": {
+                "text": "Book club moved to Thursday",
+                "title": {
+                  "ko": "독서 모임 (목요일로 변경)",
+                  "en": "Book club moved to Thursday"
+                }
+              },
+              "display": "Book club moved to Thursday",
+              "uncertainty": "inferred",
+              "evidence": [
+                {
+                  "utteranceId": "utt_1",
+                  "charStart": 38,
+                  "charEnd": 90,
+                  "quote": "The book club moved from Wednesday to Thursday at 2."
+                }
+              ]
+            }
+          },
+          "caveats": [
+            "unconfirmed",
+            "time_ambiguous"
+          ],
+          "memoryId": "mem_1",
+          "matches": [
+            {
+              "memoryId": "mem_1",
+              "kind": "event",
+              "status": "candidate",
+              "summary": {
+                "ko": "독서 모임 (목요일로 변경)",
+                "en": "Book club moved to Thursday"
+              },
+              "slots": {
+                "who": "Tom, Martha",
+                "when": {
+                  "ko": "11월 12일(목) 2시 (오전/오후 확인 필요)",
+                  "en": "Thu, Nov 12 2:00 (AM or PM?)"
+                },
+                "where": "Oak Street cafe"
+              }
+            }
+          ],
+          "sentence": {
+            "ko": "독서 모임 (목요일로 변경) — 어디: Oak Street cafe",
+            "en": "Book club moved to Thursday — Where: Oak Street cafe"
+          },
+          "telemetry": {
+            "mode": "model",
+            "route": {
+              "id": "cursor-cli",
+              "model": "claude-sonnet-5-5-low",
+              "cached": false,
+              "ms": 22201
+            },
+            "modelCalls": [
+              {
+                "ok": true,
+                "route": "cursor-cli",
+                "model": "claude-sonnet-5-5-low",
+                "cached": false,
+                "ms": 22201
+              }
+            ],
+            "rawModelJson": {
+              "found": false,
+              "memoryIds": [
+                "mem_1"
+              ],
+              "asked": [
+                "where"
+              ],
+              "slots": {
+                "who": null,
+                "when": null,
+                "where": null,
+                "what": null
+              },
+              "notFoundReason": "The memories and utterances say the book club is at the Oak Street cafe. They do not mention any bus route to get there."
+            },
+            "validation": {
+              "ok": true,
+              "rejected": 0
+            },
+            "rejected": 0
+          }
+        }
+      }
+    }
+  ]
+}

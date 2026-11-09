@@ -1,0 +1,16 @@
+{
+  "id": "clinic-ko",
+  "title": "Clinic appointment (KO) - synthetic sample",
+  "lang": "ko",
+  "provenance": "synthetic",
+  "note": "SYNTHETIC. Invented people/places. Test oracle + demo sample only; the AI claim must be shown on NEW text, not on this fixture.",
+  "text": "민지: 엄마, 다음 주 화요일 오후 세 시에 김 선생님 병원 예약했어요.\n박 할머니: 응, 알겠다. 어디였지?\n민지: 주소는 나중에 문자로 보내줄게요.",
+  "expect": {
+    "now": "2026-11-09T10:30:00+09:00",
+    "event": { "startsAt": "2026-11-17T15:00:00+09:00", "where": "김 선생님 병원", "address": "unknown" },
+    "queries": [
+      { "q": "김 선생님 약속 언제야?", "expect": "2026-11-17 오후 3시" },
+      { "q": "병원 주소가 어디야?", "expect": "unknown (address never stated)" }
+    ]
+  }
+}

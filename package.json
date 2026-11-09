@@ -1,0 +1,15 @@
+{
+  "name": "ebys",
+  "version": "0.1.0",
+  "private": true,
+  "description": "EBYS: mobile-first conversation memory and phone-action assistant for older adults (c0mpiled-17 build)",
+  "type": "module",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test \"core/*.test.mjs\" \"adapters/*.test.mjs\" \"app/*.test.mjs\" \"ui/test/*.test.mjs\" \"qa/*.test.mjs\"",
+    "test:audit": "node --test acceptance-123/audit.test.mjs",
+    "check": "node --check server.mjs"
+  },
+  "license": "MIT"
+}

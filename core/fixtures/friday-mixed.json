@@ -1,0 +1,14 @@
+{
+  "id": "friday-mixed",
+  "title": "Friday no longer works (KO+EN) - synthetic sample",
+  "lang": "ko",
+  "provenance": "synthetic",
+  "note": "SYNTHETIC. Invented people. Includes an unknown speaker line. Test oracle + demo sample only.",
+  "text": "준: Mom, can we have lunch on Friday?\n박 할머니: Friday is no longer good, 금요일은 이제 안 돼. 물리치료 가야 해.\n준: 그럼 토요일 점심은 어때요?\n박 할머니: 좋아, 토요일 열두 시 반에 보자.\n알 수 없음: 내일 두 시에 약국에서 약 받아 가세요.",
+  "expect": {
+    "now": "2026-11-09T10:30:00+09:00",
+    "mustNot": ["active lunch on Friday 2026-11-13", "calendar proposal for Friday lunch"],
+    "lunch": { "startsAt": "2026-11-14T12:30:00+09:00", "supersedes": "Friday lunch", "note": "AM/PM resolved only because the same item says lunch (점심)" },
+    "pharmacy": { "date": "2026-11-10", "time": "ambiguous (two o'clock AM/PM unresolved)", "speaker": "unknown" }
+  }
+}

@@ -1,0 +1,106 @@
+TAP version 13
+# Subtest: 1 source: fabricated primary quote is rejected
+ok 1 - 1 source: fabricated primary quote is rejected
+  ---
+  duration_ms: 1.3481
+  type: 'test'
+  ...
+# Subtest: 1 source: names and places absent from their quotes are rejected
+ok 2 - 1 source: names and places absent from their quotes are rejected
+  ---
+  duration_ms: 0.3868
+  type: 'test'
+  ...
+# Subtest: 1 null: omitted who/where/time stay unknown with null values
+ok 3 - 1 null: omitted who/where/time stay unknown with null values
+  ---
+  duration_ms: 5.3539
+  type: 'test'
+  ...
+# Subtest: 1 source: every emitted evidence span matches immutable transcript
+ok 4 - 1 source: every emitted evidence span matches immutable transcript
+  ---
+  duration_ms: 3.0243
+  type: 'test'
+  ...
+# Subtest: GAP-1 query: irrelevant real quote cannot justify an invented place
+not ok 5 - GAP-1 query: irrelevant real quote cannot justify an invented place
+  ---
+  duration_ms: 4.7281
+  type: 'test'
+  location: 'C:\\Users\\User\\.aside\\u\\1\\research\\senior-jarvis-hackathon\\senior-jarvis\\acceptance-123\\audit.test.mjs:18:1'
+  failureType: 'testCodeFailure'
+  error: 'unrelated real source accepted as evidence for invented place'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'known'
+  actual: 'known'
+  operator: 'notStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///C:/Users/User/.aside/u/1/research/senior-jarvis-hackathon/senior-jarvis/acceptance-123/audit.test.mjs:18:318)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: 2 source separation: callers cannot rewrite original transcript
+ok 6 - 2 source separation: callers cannot rewrite original transcript
+  ---
+  duration_ms: 1.3524
+  type: 'test'
+  ...
+# Subtest: 2 supersede: replacement keeps prior source and reciprocal links
+ok 7 - 2 supersede: replacement keeps prior source and reciprocal links
+  ---
+  duration_ms: 2.6557
+  type: 'test'
+  ...
+# Subtest: 2 cancel: records source and prevents a new proposal
+ok 8 - 2 cancel: records source and prevents a new proposal
+  ---
+  duration_ms: 2.5501
+  type: 'test'
+  ...
+# Subtest: GAP-2 cancel: open proposal cannot be confirmed after its source is cancelled
+not ok 9 - GAP-2 cancel: open proposal cannot be confirmed after its source is cancelled
+  ---
+  duration_ms: 1.5197
+  type: 'test'
+  location: 'C:\\Users\\User\\.aside\\u\\1\\research\\senior-jarvis-hackathon\\senior-jarvis\\acceptance-123\\audit.test.mjs:22:1'
+  failureType: 'testCodeFailure'
+  error: 'proposal for cancelled memory remains confirmable'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'user_confirmed'
+  actual: 'user_confirmed'
+  operator: 'notStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///C:/Users/User/.aside/u/1/research/senior-jarvis-hackathon/senior-jarvis/acceptance-123/audit.test.mjs:22:310)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: 3 clarify: ambiguous AM/PM prevents exact start and confirmation
+ok 10 - 3 clarify: ambiguous AM/PM prevents exact start and confirmation
+  ---
+  duration_ms: 0.8682
+  type: 'test'
+  ...
+# Subtest: 3 confirm: latest revision only and edits revoke confirmation
+ok 11 - 3 confirm: latest revision only and edits revoke confirmation
+  ---
+  duration_ms: 0.8445
+  type: 'test'
+  ...
+# Subtest: 2 confirmed changes remain pending rather than silently mutating memory
+ok 12 - 2 confirmed changes remain pending rather than silently mutating memory
+  ---
+  duration_ms: 1.4405
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 10
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 909.2121

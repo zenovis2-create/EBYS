@@ -1,0 +1,434 @@
+{
+  "reviewedAt": "2026-11-09T03:44:40.028Z",
+  "producer": "sj-qa independent review of lead-produced capture",
+  "source": "C:\\Users\\User\\.aside\\u\\1\\research\\senior-jarvis-hackathon\\senior-jarvis\\media-outbox\\ebys-live-en-2026-11-09T03-38-19-926Z",
+  "output": "C:\\Users\\User\\.aside\\u\\1\\research\\senior-jarvis-hackathon\\senior-jarvis\\qa\\evidence\\capture-review-2026-11-09T03-44-40-028Z-74960",
+  "sourceFiles": [
+    {
+      "name": "api-telemetry.json",
+      "bytes": 842,
+      "sha256": "dbfdad49dcd1741941ad1475b0d5cf99daf3f6f4ca71ce992868cca1e92127a7"
+    },
+    {
+      "name": "checks-summary.json",
+      "bytes": 752,
+      "sha256": "c1a435077ad3de00d96d12925f293231cad0d77d5e38f7ed9e1acc7147ca623a"
+    },
+    {
+      "name": "ebys-live-en-2026-11-09T03-38-19-926Z.mp4",
+      "bytes": 2826009,
+      "sha256": "0e278a761bcb88050961aba035408b621e3f9188774170d7f34121402517c727"
+    },
+    {
+      "name": "manifest.json",
+      "bytes": 2607,
+      "sha256": "b028cb16d968d523251b8138f6da4c13a6744ae683fc2470600b6c3cd75a26ee"
+    },
+    {
+      "name": "timeline.json",
+      "bytes": 2563,
+      "sha256": "681cd126d770637201424c72b7a6874e039824ce35980a9f39671386a0c377b3"
+    }
+  ],
+  "manifest": {
+    "schemaVersion": 1,
+    "project": "EBYS",
+    "buildCommit": null,
+    "sourceSnapshot": {
+      "serverLoaded": {
+        "startedAt": "2026-11-09T03:37:55.625Z",
+        "sha256": "c8ff215a8c8c3f16a0e4e54d12f8302bfdcd41f91ba1beb319a74deaddc7eac1",
+        "files": 28
+      },
+      "serverOnDisk": {
+        "sha256": "c8ff215a8c8c3f16a0e4e54d12f8302bfdcd41f91ba1beb319a74deaddc7eac1",
+        "files": 28
+      },
+      "serverCurrent": true,
+      "uiOnDisk": {
+        "sha256": "d048feb88fce4a955d0caad4ebb4ae619d24a8fa15ad922b70e15626986228c6",
+        "files": 27
+      }
+    },
+    "appUrl": "http://127.0.0.1:8787/?api=live",
+    "capturedAt": "2026-11-09T03:38:20.454Z",
+    "sourceMachine": "windows-zenovis (lead senior-planner)",
+    "captureType": "headless-browser page screenshots at real timings (page pixels only, fresh profile, 390x844 CSS @2x)",
+    "relativeFile": "ebys-live-en-2026-11-09T03-38-19-926Z.mp4",
+    "sha256": "0e278a761bcb88050961aba035408b621e3f9188774170d7f34121402517c727",
+    "durationSeconds": 96.47,
+    "width": 780,
+    "height": 1688,
+    "fps": 30,
+    "audioPresent": false,
+    "syntheticData": true,
+    "containsPersonalData": false,
+    "modelWaitSegments": [
+      {
+        "atSeconds": 5.05,
+        "step": "model-extraction-start"
+      },
+      {
+        "atSeconds": 36.64,
+        "step": "model-extraction-done"
+      },
+      {
+        "atSeconds": 45.47,
+        "step": "model-query-start"
+      },
+      {
+        "atSeconds": 75.89,
+        "step": "model-query-done"
+      }
+    ],
+    "featureClaims": [
+      {
+        "name": "English default on a fresh profile",
+        "status": "verified",
+        "evidence": "timeline.json checks"
+      },
+      {
+        "name": "Real model extraction + recall on new synthetic text",
+        "status": "verified",
+        "evidence": "api-telemetry.json (mode, route, rawModelJson, validation)"
+      },
+      {
+        "name": "Source evidence (verbatim quote)",
+        "status": "verified",
+        "evidence": "timeline.json"
+      },
+      {
+        "name": "AM/PM clarification, explicit user choice",
+        "status": "verified",
+        "evidence": "timeline.json"
+      },
+      {
+        "name": "Confirmation before action",
+        "status": "verified",
+        "evidence": "timeline.json"
+      },
+      {
+        "name": "Calendar action",
+        "status": "simulated",
+        "evidence": "api-telemetry.json displayState"
+      },
+      {
+        "name": "Watch, 24h audio, glasses, safety/119",
+        "status": "roadmap",
+        "evidence": "not implemented"
+      }
+    ],
+    "rightsNotes": "Original EBYS app UI captured by the team; synthetic conversation written for this capture; no third-party media, no real people or recordings."
+  },
+  "media": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 780,
+        "height": 1688,
+        "r_frame_rate": "30/1",
+        "duration": "96.466667",
+        "side_data_list": [
+          {}
+        ]
+      }
+    ],
+    "format": {
+      "duration": "96.466667"
+    }
+  },
+  "frames": [
+    {
+      "label": "opening",
+      "seconds": 2.5,
+      "file": "opening-2.5s.png",
+      "status": "EXTRACTED_NOT_YET_VISUALLY_REVIEWED",
+      "error": null
+    },
+    {
+      "label": "source",
+      "seconds": 4.5,
+      "file": "source-4.5s.png",
+      "status": "EXTRACTED_NOT_YET_VISUALLY_REVIEWED",
+      "error": null
+    },
+    {
+      "label": "memory",
+      "seconds": 38.5,
+      "file": "memory-38.5s.png",
+      "status": "EXTRACTED_NOT_YET_VISUALLY_REVIEWED",
+      "error": null
+    },
+    {
+      "label": "evidence",
+      "seconds": 41.2,
+      "file": "evidence-41.2s.png",
+      "status": "EXTRACTED_NOT_YET_VISUALLY_REVIEWED",
+      "error": null
+    },
+    {
+      "label": "answer",
+      "seconds": 80.5,
+      "file": "answer-80.5s.png",
+      "status": "EXTRACTED_NOT_YET_VISUALLY_REVIEWED",
+      "error": null
+    },
+    {
+      "label": "clarify",
+      "seconds": 83.6,
+      "file": "clarify-83.6s.png",
+      "status": "EXTRACTED_NOT_YET_VISUALLY_REVIEWED",
+      "error": null
+    },
+    {
+      "label": "choice",
+      "seconds": 87.5,
+      "file": "choice-87.5s.png",
+      "status": "EXTRACTED_NOT_YET_VISUALLY_REVIEWED",
+      "error": null
+    },
+    {
+      "label": "confirm",
+      "seconds": 90.5,
+      "file": "confirm-90.5s.png",
+      "status": "EXTRACTED_NOT_YET_VISUALLY_REVIEWED",
+      "error": null
+    },
+    {
+      "label": "result",
+      "seconds": 94.3,
+      "file": "result-94.3s.png",
+      "status": "EXTRACTED_NOT_YET_VISUALLY_REVIEWED",
+      "error": null
+    }
+  ],
+  "integrity": {
+    "videoHashMatches": true,
+    "dimensionsMatch": true,
+    "fpsMatches": true,
+    "durationMatches": true,
+    "audioPresenceMatches": true,
+    "fullDecode": true,
+    "decodeErrors": "",
+    "captureSnapshotInternallyConsistent": true
+  },
+  "apiReview": [
+    {
+      "path": "/api/ingest",
+      "producerReportedStatus": 200,
+      "producerReportedMode": "model",
+      "producerReportedRoute": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 31518
+      },
+      "routeSummaryConsistent": true,
+      "rawModelJsonPresentFlag": true,
+      "validationOkFlag": true,
+      "originalResponseBodyPresent": false,
+      "independentModelEvidence": {
+        "status": "BLOCKED",
+        "detail": "Summary flags are not raw model JSON or validation objects; original API body absent"
+      }
+    },
+    {
+      "path": "/api/query",
+      "producerReportedStatus": 200,
+      "producerReportedMode": "model",
+      "producerReportedRoute": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 30392
+      },
+      "routeSummaryConsistent": true,
+      "rawModelJsonPresentFlag": true,
+      "validationOkFlag": true,
+      "originalResponseBodyPresent": false,
+      "independentModelEvidence": {
+        "status": "BLOCKED",
+        "detail": "Summary flags are not raw model JSON or validation objects; original API body absent"
+      }
+    }
+  ],
+  "scores": {
+    "routeSummariesConsistent": 2,
+    "modelCallsReported": 2,
+    "completeModelEvidencePassed": 0,
+    "originalResponseBodiesPresent": 0,
+    "independentHeldoutQuestions": 0,
+    "newQaModelCalls": 0,
+    "newQaActionCalls": 0,
+    "getOnlyRouteChecksPassed": 9,
+    "getOnlyRouteChecksTotal": 9
+  },
+  "timelineLatency": {
+    "extractionWallMs": 31590,
+    "queryWallMs": 30420,
+    "modelMsReported": [
+      {
+        "path": "/api/ingest",
+        "ms": 31518
+      },
+      {
+        "path": "/api/query",
+        "ms": 30392
+      }
+    ]
+  },
+  "producerChecks": {
+    "ok": true,
+    "checks": [
+      {
+        "name": "fresh profile defaults to English (no ?lang)",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "name": "live API selected, not fixture",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "name": "evidence drawer shows a verbatim quote",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "name": "answer keeps AM/PM open (no invented time)",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "name": "AM/PM not preselected",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "name": "result is labelled, never an unverified \"saved\"",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "name": "no page exceptions",
+        "ok": true,
+        "detail": ""
+      }
+    ]
+  },
+  "staticGetChecks": [
+    {
+      "method": "GET",
+      "path": "/api/runtime",
+      "startedAt": "2026-11-09T03:44:42.119Z",
+      "completedAt": "2026-11-09T03:44:42.156Z",
+      "expectedStatus": 200,
+      "httpStatus": 200,
+      "contentType": "application/json; charset=utf-8",
+      "raw": "{\"ok\":true,\"data\":{\"data\":\"synthetic\",\"defaultLang\":\"en\",\"timezone\":{\"iana\":\"Asia/Seoul\",\"label\":{\"en\":\"Seoul time\",\"ko\":\"서울 시간\"},\"utcOffset\":\"+09:00\",\"note\":{\"en\":\"EBYS stores calendar times in Seoul time (UTC+9) and always shows the zone next to the time.\",\"ko\":\"EBYS는 달력 시간을 서울 시간(UTC+9)으로 저장하고 시간 옆에 항상 표시합니다.\"}},\"calendar\":{\"kind\":\"simulated\",\"name\":\"Demo Calendar (in this app only, simulated)\",\"permission\":\"not_required\"},\"notifications\":{\"kind\":\"preview\",\"permission\":\"not_applicable\"},\"micCapture\":\"unavailable\",\"speechInput\":\"unavailable\",\"version\":\"actions-0.1.0\",\"mode\":\"simulated\",\"adapters\":[{\"id\":\"calendar.simulated\",\"kind\":\"calendar\",\"mode\":\"simulated\",\"label\":{\"ko\":\"시뮬레이션 달력 (앱 안에서만)\",\"en\":\"Simulated calendar (inside this app only)\"},\"claimStatus\":\"simulated\",\"maxVerifyLevel\":\"none\",\"canReconcile\":true,\"notes\":\"In-memory Demo Calendar. Nothing is written to any phone or account.\"},{\"id\":\"notification.preview\",\"kind\":\"notification\",\"mode\":\"simulated\",\"label\":{\"ko\":\"알림 미리보기 (실제 알림 아님)\",\"en\":\"Notification preview (not a real notification)\"},\"claimStatus\":\"simulated\",\"maxVerifyLevel\":\"none\",\"notes\":\"Pure preview list. No Notification API, no push, no server.\"}],\"faultInjection\":null,\"forbidden\":\"no tel/sms/mailto/emergency actions exist in this layer\",\"model\":{\"route\":\"cursor-cli\",\"model\":\"claude-sonnet-5-5-low\",\"healthy\":true},\"sourceSnapshot\":{\"serverLoaded\":{\"startedAt\":\"2026-11-09T03:37:55.625Z\",\"sha256\":\"c8ff215a8c8c3f16a0e4e54d12f8302bfdcd41f91ba1beb319a74deaddc7eac1\",\"files\":28},\"serverOnDisk\":{\"sha256\":\"de1eb40b1f79a5490918f00f43694f36922ac9230540718bca34cd2532aa7bee\",\"files\":28},\"serverCurrent\":false,\"uiOnDisk\":{\"sha256\":\"0844b682b2c64f321647ea753df670871184bb1da73d68f81ff3babe1b9f5703\",\"files\":27}}}}",
+      "status": "PASS"
+    },
+    {
+      "method": "GET",
+      "path": "/",
+      "startedAt": "2026-11-09T03:44:42.156Z",
+      "completedAt": "2026-11-09T03:44:42.159Z",
+      "expectedStatus": 200,
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "raw": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, viewport-fit=cover\">\n  <meta name=\"theme-color\" content=\"#13284A\">\n  <title>EBYS · Ever by your side</title>\n  <link rel=\"icon\" type=\"image/svg+xml\" href=\"assets/ebys-mark.svg\">\n  <link rel=\"apple-touch-icon\" href=\"assets/ebys-mark.svg\">\n  <link rel=\"stylesheet\" href=\"styles.css\">\n</head>\n<body>\n  <a class=\"skip\" href=\"#main\">Skip to content</a>\n  <div id=\"app\"></div>\n  <dialog id=\"evidence-dialog\" aria-label=\"Source\"></dialog>\n  <noscript>This app needs JavaScript. 이 앱은 JavaScript가 필요해요.</noscript>\n  <script type=\"module\" src=\"app.js\"></script>\n</body>\n</html>\n",
+      "status": "PASS"
+    },
+    {
+      "method": "GET",
+      "path": "/app.js",
+      "startedAt": "2026-11-09T03:44:42.159Z",
+      "completedAt": "2026-11-09T03:44:42.168Z",
+      "expectedStatus": 200,
+      "httpStatus": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "raw": "// EBYS UI entry. Static ES modules, no build. Track A app (CONTRACTS section 2).\nimport { h } from './lib/dom.js';\nimport { t, getLang, setLang } from './i18n.js';\nimport { state, app, setRenderer, rerender, go } from './store.js';\nimport { selectApi } from './services/api.js';\nimport { modelChipInfo, Btn } from './components.js';\nimport { displayStateSource } from './lib/contracts.js';\nimport { loadPrefs } from './lib/prefs.js';\nimport { Icon, BrandMark } from './lib/icons.js';\nimport { renderInput } from './screens/input.js';\nimport { renderMemories } from './screens/memories.js';\nimport { renderAsk } from './screens/ask.js';\nimport { renderProposal } from './screens/proposal.js';\nimport { renderPlans } from './screens/plans.js';\nimport { renderPrivacy } from './screens/privacy.js';\nimport { stopSpeaking, stopListening } from './lib/speech.js';\n\nconst SCREENS = { input: renderInput, memories: renderMemories, ask: renderAsk, proposal: renderProposal, plans: renderPlans, privacy: renderPrivacy };\nconst NAV = [\n  { route: 'input', key: 'nav.input', icon: 'home' },\n  { route: 'memories', key: 'nav.memory', icon: 'memories' },\n  { route: 'ask', key: 'nav.ask', icon: 'ask' },\n  { route: 'plans', key: 'nav.plans', icon: 'plans', also: ['proposal'] },\n];\n\n/** Sample vs live, in plain words. The technical route detail lives in Settings and next to results. */\nfunction ModePill() {\n  const live = app.apiKind === 'live';\n  const m = modelChipInfo();\n  const fallback = live && m.cls === 'chip-fallback';\n  const cls = !live ? 'pill-sample' : fallback ? 'pill-fallback' : 'pill-live';\n  return h('span', { class: `modepill ${cls}`, title: m.text },\n    h('span', { class: 'pill-dot', 'aria-hidden': 'true' }), t(!live ? 'mode.sample' : fallback ? 'mode.liveFallback' : 'mode.live'));\n}\n\nfunction AppBar() {\n  return h('header', { class: 'appbar' },\n    h('div', { class: 'brand', title: t('app.tagline') }, BrandMark({ size: 44 }), h('span', { class: 'wordmark' }, t('app.name'))),\n    ModePill(),\n    h('button', {\n      type: 'button', class: `iconbtn ${state.route === 'privacy' ? 'iconbtn-on' : ''}`, 'aria-label': t('settings.open'),\n      'aria-current': state.route === 'privacy' ? 'page' : null, onClick: () => go('privacy'),\n    }, Icon('settings', { size: 30 })));\n}\n\nfunction PrivacyBar() {\n  const paused = state.paused;\n  const listening = state.listening && !paused;\n  const cls = listening ? 'pb-listening' : paused ? 'pb-paused' : 'pb-off';\n  return h('div', { class: `privacybar ${cls}`, role: 'status', 'aria-live': 'polite' },\n    h('span', { class: 'pb-icon' }, Icon(listening ? 'mic' : paused ? 'pause' : 'micOff', { size: 26 })),\n    h('span', { class: 'pb-text' }, listening ? t('privacy.listening') : paused ? t('privacy.paused') : t('privacy.nomic')),\n    listening ? Btn(t('mic.stop'), () => stopListening(), { variant: 'bar' }) : null,\n    Btn(paused ? t('privacy.resume') : t('privacy.pause'), () => { state.paused = !state.paused; rerender(); }, { variant: 'bar' }));\n}\n\nfunction Nav() {\n  return h('nav', { class: 'bottomnav', 'aria-label': t('app.name') },\n    NAV.map((n) => {\n      const on = state.route === n.route || n.also?.includes(state.route);\n      return h('button', {\n        type: 'button', class: `nav-item ${on ? 'nav-on' : ''}`, 'aria-current': on ? 'page' : null, onClick: () => go(n.route),\n      }, Icon(n.icon, { size: 28, cls: 'nav-icon' }), h('span', { class: 'nav-label' }, t(n.key)));\n    }));\n}\n\nfunction render({ focus = false } = {}) {\n  // Never keep the microphone open when leaving Ask or pausing.\n  if (state.listening && (state.paused || state.route !== 'ask')) stopListening();\n  if (state.speaking && state.route === 'input') { stopSpeaking(); state.speaking = null; }\n  const root = document.getElementById('app');\n  const y = window.scrollY;\n  document.documentElement.style.setProperty('--scale', String(state.scale));\n  document.documentElement.lang = getLang();\n  const main = h('main', { id: 'main', class: `main screen-${state.route}`, tabindex: '-1' }, (SCREENS[state.route] ?? renderInput)());\n  root.replaceChildren(\n    h('div', { class: 'topstack' }, AppBar(), PrivacyBar()), main,\n    h('footer', { class: 'foot' },\n      h('p', { class: 'honesty' }, t('foot.honesty')),\n      h('p', { class: 'small' }, t('foot.dsrc', { src: displayStateSource }))),\n    Nav());\n  if (focus) {\n    window.scrollTo(0, 0);\n    document.getElementById('screen-title')?.focus({ preventScroll: true });\n  } else {\n    window.scrollTo(0, y);\n  }\n}\n\nasync function boot() {\n  const q = new URLSearchParams(location.search);\n  // Fresh storage => English. Only an explicit ?lang= or a saved choice changes it (never navigator.language).\n  const prefs = loadPrefs(location.search);\n  setLang(prefs.lang);\n  state.scale = prefs.scale;\n  app.api = selectApi(location.search);\n  app.apiKind = app.api.kind;\n  if (q.get('route') && SCREENS[q.get('route')]) state.route = q.get('route');\n  setRenderer(render);\n  render({ focus: false });\n  const rt = await app.api.runtime();\n  state.runtime = rt.ok ? rt.data : null;\n  render({ focus: false });\n}\n\nboot();\n",
+      "status": "PASS"
+    },
+    {
+      "method": "GET",
+      "path": "/styles.css",
+      "startedAt": "2026-11-09T03:44:42.168Z",
+      "completedAt": "2026-11-09T03:44:42.184Z",
+      "expectedStatus": 200,
+      "httpStatus": 200,
+      "contentType": "text/css; charset=utf-8",
+      "raw": "/* EBYS · \"Ever by your side\". Warm navy / ivory / gold companion, built for older eyes and hands.\n   Rules: 22px base x user scale, >=56px targets (64px primary), AAA (7:1) text pairs, visible focus,\n   zoom never disabled, reduced motion honoured. Colour is never the only signal: every state also has\n   an icon, a word and a border style. No web fonts are downloaded (local font stacks only). */\n:root {\n  --scale: 1;\n  /* brand */\n  --navy: #13284a;\n  --navy-deep: #0c1a33;\n  --ivory: #fbf6ec;\n  --paper: #fffdf8;\n  --sand: #f3e9d6;\n  --gold: #e2b65a;        /* decorative only (never text on ivory) */\n  --gold-on-navy: #f2c76e; /* text on navy: AAA */\n  /* text */\n  --bg: #fbf6ec;\n  --text: #1a1f2b;\n  --muted: #3c4150;\n  --line: #6b6455;\n  --rule: #d8ccb4;        /* decorative dividers only */\n  --primary: #13284a;\n  --primary-fg: #fbf6ec;\n  --link: #13284a;\n  /* states */\n  --danger: #8a1c1c;\n  --danger-bg: #fdecea;\n  --warn: #4d3300;\n  --warn-bg: #fdf0c8;\n  --ok: #10431f;\n  --ok-bg: #e3f1e6;\n  --fixture: #3d1f66;\n  --fixture-bg: #f0e8fa;\n  --model: #13284a;\n  --model-bg: #e6ecf6;\n  --fallback: #5c2300;\n  --fallback-bg: #ffe8d4;\n  --neutral: #2b2b2b;\n  --neutral-bg: #ece7dd;\n  --bar-off: #fbf6ec;\n  --bar-off-bg: #0c1a33;\n  --bar-listen-bg: #8a1c1c;\n  --focus: #c2410c;\n  /* type + sizing */\n  --font-display: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', 'Noto Serif KR', Georgia, serif;\n  --font-body: Seravek, 'Segoe UI Variable Text', 'Segoe UI', Ubuntu, Roboto, 'Noto Sans', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;\n  --tap: 2.6rem;      /* 57px at 100% */\n  --tap-primary: 2.95rem; /* 65px at 100% */\n  --radius: 18px;\n  --shadow: 0 1px 0 rgba(19, 40, 74, 0.06), 0 10px 28px -16px rgba(19, 40, 74, 0.35);\n}\n* { box-sizing: border-box; }\nhtml { font-size: calc(22px * var(--scale)); -webkit-text-size-adjust: 100%; }\nbody {\n  margin: 0; color: var(--text); font-family: var(--font-body); line-height: 1.55; overflow-wrap: anywhere;\n  background:\n    radial-gradient(120% 60% at 100% 0%, rgba(226, 182, 90, 0.16), transparent 60%),\n    radial-gradient(90% 50% at 0% 100%, rgba(19, 40, 74, 0.06), transparent 60%),\n    var(--bg);\n  background-attachment: fixed;\n}\n#app { max-width: 30rem; margin: 0 auto; min-height: 100vh; padding-bottom: calc(5.2rem + env(safe-area-inset-bottom)); }\nh1, h2, h3 { font-family: var(--font-display); color: var(--navy); line-height: 1.2; text-wrap: balance; letter-spacing: 0.005em; }\nh1 { font-size: 1.5rem; margin: 0.8rem 0 0.6rem; }\nh2 { font-size: 1.2rem; margin: 1.3rem 0 0.5rem; }\nh3 { font-size: 1.05rem; margin: 0.4rem 0; }\np { margin: 0.45rem 0; text-wrap: pretty; }\n.small { font-size: 0.82rem; color: var(--muted); }\n.lead { font-size: 1rem; }\n.main { padding: 0.4rem 1rem 0.5rem; outline: none; }\n:focus-visible { outline: 4px solid var(--focus); outline-offset: 3px; box-shadow: 0 0 0 7px var(--paper); }\nh1:focus, .main:focus { outline: none; box-shadow: none; }\n.skip { position: absolute; left: 0.5rem; top: -4rem; z-index: 100; background: var(--paper); color: var(--navy); padding: 0.6rem 1rem; border: 3px solid var(--navy); border-radius: 12px; font-weight: 700; }\n.skip:focus { top: 0.5rem; }\n.icon { flex: none; vertical-align: middle; }\n\n/* ---------- app bar ---------- */\n.topstack { position: sticky; top: 0; z-index: 25; }\n.appbar {\n  display: flex; align-items: center; gap: 0.5rem;\n  padding: calc(0.45rem + env(safe-area-inset-top)) 0.8rem 0.45rem; background: var(--navy); color: var(--ivory);\n}\n.brand { display: flex; align-items: center; gap: 0.5rem; flex: none; }\n.appbar .modepill { margin-left: auto; }\n.brandmark { flex: none; border-radius: 12px; box-shadow: 0 0 0 2px rgba(242, 199, 110, 0.35); }\n.appbar .brandmark { --mark-bg: #1c3863; }\n.brand-words { display: flex; flex-direction: column; min-width: 0; line-height: 1.05; }\n.wordmark { font-family: var(--font-display); font-weight: 700; font-size: 24px; letter-spacing: 0.16em; color: var(--ivory); white-space: nowrap; }\n.eyebrow { margin: 0 0 0.3rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-on-navy); }\n.tagline { font-size: 0.72rem; letter-spacing: 0.04em; color: var(--gold-on-navy); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }\n.modepill {\n  flex: 0 1 auto; min-width: 0; display: inline-flex; align-items: center; gap: 0.35rem;\n  font-size: 15px; font-weight: 700; line-height: 1.2; padding: 0.3rem 0.6rem; border-radius: 999px; border: 2px solid currentColor;\n}\n.pill-dot { width: 0.55rem; height: 0.55rem; border-radius: 50%; background: currentColor; flex: none; }\n.pill-sample { background: var(--fixture-bg); color: var(--fixture); border-style: dashed; }\n.pill-live { background: var(--ok-bg); color: var(--ok); }\n.pill-fallback { background: var(--fallback-bg); color: var(--fallback); border-style: dashed; }\n.iconbtn {\n  flex: none; width: var(--tap); height: var(--tap); min-width: 56px; min-height: 56px; display: grid; place-items: center;\n  border-radius: 50%; border: 2px solid rgba(251, 246, 236, 0.55); background: transparent; color: var(--ivory); cursor: pointer;\n}\n.iconbtn-on { background: var(--ivory); color: var(--navy); border-color: var(--ivory); }\n\n/* ---------- privacy strip (always visible) ---------- */\n.privacybar {\n  display: flex; align-items: center; gap: 0.5rem;\n  padding: 0.3rem 0.8rem; min-height: 3rem; font-size: 0.8rem;\n}\n.pb-off { background: var(--bar-off-bg); color: var(--bar-off); }\n.pb-listening { background: var(--bar-listen-bg); color: var(--bar-off); border-bottom: 4px double #ffffff; }\n.pb-paused { background: var(--warn-bg); color: var(--warn); border-bottom: 4px solid var(--warn); }\n.pb-icon { display: grid; place-items: center; flex: none; }\n.pb-text { flex: 1 1 auto; font-weight: 700; line-height: 1.25; min-width: 0; }\n\n/* ---------- buttons ---------- */\n.btn {\n  font: inherit; font-weight: 700; min-height: var(--tap); padding: 0.45rem 1.1rem; border-radius: 16px; cursor: pointer; text-align: center;\n  border: 3px solid var(--navy); background: var(--paper); color: var(--navy);\n  display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;\n  transition: transform 120ms ease-out, background-color 120ms ease-out;\n}\n.btn:active:not(:disabled) { transform: scale(0.98); }\n.btn-primary {\n  width: 100%; min-height: var(--tap-primary); font-size: 1.05rem; background: var(--navy); color: var(--primary-fg); border-color: var(--navy);\n  box-shadow: 0 6px 0 -2px var(--gold), var(--shadow);\n}\n.btn-secondary { background: var(--paper); color: var(--navy); }\n.btn-danger { background: var(--paper); color: var(--danger); border-color: var(--danger); border-style: double; border-width: 5px; }\n.btn-link { border: none; background: none; color: var(--link); text-decoration: underline; text-underline-offset: 0.18em; min-height: var(--tap); padding: 0.2rem 0.4rem; }\n.btn-bar { flex: none; font-size: 0.78rem; min-height: var(--tap); padding: 0 0.9rem; border-radius: 999px; background: var(--ivory); color: var(--navy); border-color: var(--ivory); }\n.pb-paused .btn-bar { background: var(--paper); color: var(--warn); border-color: var(--warn); }\n.btn-toggle { background: var(--paper); color: var(--navy); }\n.btn-toggle.btn-on { background: var(--navy); color: var(--primary-fg); }\n.btn-toggle.btn-on::before { content: '✓'; }\n.btn:disabled { background: var(--neutral-bg); color: var(--neutral); border-color: var(--line); border-style: dotted; box-shadow: none; cursor: not-allowed; }\n.stack { display: flex; flex-direction: column; gap: 0.75rem; margin: 0.9rem 0; }\n.row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 0.6rem 0; }\n.row .btn { flex: 1 1 8rem; }\n.seg { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.3rem 0 0.4rem; }\n.seg .btn { flex: 1 1 6rem; }\n\n/* ---------- forms ---------- */\n.label { display: block; font-weight: 700; margin: 1rem 0 0.25rem; color: var(--navy); }\n.field {\n  width: 100%; font: inherit; min-height: var(--tap); padding: 0.45rem 0.7rem; border: 3px solid var(--line); border-radius: 14px;\n  color: var(--text); background: var(--paper);\n}\n.field:focus-visible { border-color: var(--navy); }\ntextarea.field { min-height: 7rem; line-height: 1.45; }\n.choices { border: 2px solid var(--rule); border-radius: 14px; margin: 0.8rem 0; padding: 0.4rem 0.8rem; background: var(--paper); }\n.choices legend { font-weight: 700; padding: 0 0.4rem; color: var(--navy); }\n.check { display: flex; gap: 0.75rem; align-items: flex-start; min-height: var(--tap); padding: 0.45rem 0; cursor: pointer; }\n.check input { width: 1.7rem; height: 1.7rem; flex: none; margin-top: 0.15rem; accent-color: var(--navy); }\n.check-strong { font-weight: 700; }\n.row-time { display: flex; gap: 0.6rem; }\n.row-time .field-group { flex: 1; }\ndetails.more { margin: 0.6rem 0; border: 2px solid var(--rule); border-radius: 14px; padding: 0 0.8rem; background: var(--paper); }\ndetails.more > summary, details.card > summary { min-height: var(--tap); display: flex; align-items: center; font-weight: 700; color: var(--navy); cursor: pointer; }\n\n/* ---------- chips ---------- */\n.chips { display: flex; gap: 0.5rem; margin: 0.6rem 0; overflow-x: auto; padding-bottom: 0.2rem; }\n.chips-wrap { flex-wrap: wrap; overflow: visible; }\n.chip {\n  font: inherit; font-size: 0.92rem; min-height: var(--tap); padding: 0.3rem 1rem; border-radius: 999px; border: 2.5px solid var(--navy);\n  background: var(--paper); color: var(--navy); font-weight: 700; cursor: pointer; text-align: left; flex: none;\n}\n.chips-wrap .chip { flex: 0 1 auto; }\n.chip-on { background: var(--navy); color: var(--primary-fg); }\n.chip:disabled { background: var(--neutral-bg); color: var(--neutral); border-color: var(--line); border-style: dotted; }\n\n/* ---------- cards ---------- */\n.card { border: 2px solid var(--rule); border-radius: var(--radius); padding: 0.85rem 1rem; margin: 0.9rem 0; background: var(--paper); box-shadow: var(--shadow); }\n.card-quiet { box-shadow: none; background: var(--sand); }\n.note { background: var(--warn-bg); color: var(--warn); border: 3px solid var(--warn); border-radius: 14px; padding: 0.55rem 0.8rem; }\n.note ul, .caveats ul { margin: 0.3rem 0; padding-left: 1.2rem; }\n.note-fixture { background: var(--fixture-bg); color: var(--fixture); border: 3px dashed var(--fixture); }\n.errorbox { background: var(--danger-bg); color: var(--danger); border: 4px solid var(--danger); border-radius: 14px; padding: 0.6rem 0.85rem; margin: 0.8rem 0; }\n.errorbox .small { color: var(--danger); }\n.warn { color: var(--warn); font-weight: 700; }\n.warn-strong { color: var(--danger); font-weight: 700; }\n.ok-strong { color: var(--ok); font-weight: 700; }\n.slot-unknown-inline { color: var(--muted); border: 2px dashed var(--line); border-radius: 8px; padding: 0 0.45rem; }\n.tznote { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem; font-size: 0.85rem; color: var(--muted); margin: 0.5rem 0; padding: 0.4rem 0.6rem; border-left: 5px solid var(--gold); background: var(--paper); border-radius: 0 10px 10px 0; }\n.tznote.tz-differs { border-left-color: var(--warn); }\n.tz-dev { display: block; width: 100%; }\n\n/* ---------- home ---------- */\n.hero {\n  position: relative; overflow: hidden; margin: 0.6rem 0 0.4rem; padding: 1.1rem 1.1rem 1rem; border-radius: 26px; color: var(--ivory);\n  background: radial-gradient(140% 120% at 100% 0%, #24457a 0%, var(--navy) 55%, var(--navy-deep) 100%);\n  box-shadow: var(--shadow);\n}\n.hero::after { /* the brand's companion arc, echoed large and quiet */\n  content: ''; position: absolute; right: -3.2rem; top: -2.4rem; width: 9rem; height: 9rem; border-radius: 50%;\n  border: 0.55rem solid rgba(226, 182, 90, 0.38); border-left-color: transparent; border-bottom-color: transparent; transform: rotate(10deg); pointer-events: none;\n}\n.hero-top { display: flex; align-items: center; gap: 0.7rem; }\n.hero-title { color: var(--ivory); margin: 0; font-size: 1.55rem; }\n.hero-lead { font-size: 1rem; margin: 0.7rem 0 0.8rem; color: var(--ivory); }\n.path { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.35rem; }\n.path li { display: flex; align-items: center; gap: 0.6rem; font-weight: 700; font-size: 0.9rem; color: var(--ivory); opacity: 1; }\n.path-n { width: 1.6rem; height: 1.6rem; border-radius: 50%; display: grid; place-items: center; font-size: 0.8rem; border: 2px solid var(--gold-on-navy); color: var(--gold-on-navy); flex: none; }\n.path-now .path-n { background: var(--gold-on-navy); color: var(--navy); }\n.path-done .path-n { background: transparent; }\n.path-now { text-decoration: underline; text-decoration-color: var(--gold-on-navy); text-underline-offset: 0.25em; }\n.samples { display: flex; flex-direction: column; gap: 0.6rem; }\n.samplecard {\n  font: inherit; width: 100%; min-height: var(--tap-primary); display: flex; align-items: center; gap: 0.75rem; text-align: left; cursor: pointer;\n  padding: 0.6rem 0.9rem; border-radius: var(--radius); border: 2.5px solid var(--rule); background: var(--paper); color: var(--text); box-shadow: var(--shadow);\n  transition: transform 120ms ease-out;\n}\n.samplecard:active { transform: scale(0.99); }\n.samplecard .icon { color: var(--navy); }\n.samplecard-on { border: 4px solid var(--navy); background: var(--model-bg); }\n.samplecard-on::after { content: '✓'; margin-left: auto; font-weight: 700; color: var(--navy); font-size: 1.2rem; }\n.sc-words { display: flex; flex-direction: column; min-width: 0; }\n.sc-title { font-weight: 700; color: var(--navy); }\n.sc-tag { font-size: 0.78rem; color: var(--fixture); font-weight: 700; }\n.actionzone { margin: 1rem 0 0.4rem; padding: 0.6rem 0.9rem 0.9rem; border-radius: var(--radius); background: var(--sand); border: 2px solid var(--rule); }\n.actionzone .btn-primary { margin-top: 0.5rem; }\n\n/* ---------- memory ---------- */\n.mem-head { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; justify-content: space-between; }\n.kind-chip { font-weight: 700; font-size: 0.85rem; color: var(--navy); border: 2px solid var(--navy); border-radius: 8px; padding: 0 0.5rem; background: var(--paper); }\n.mem-summary { font-size: 1.1rem; margin: 0.5rem 0 0.3rem; }\n.mem-inactive { border-style: dashed; background: var(--neutral-bg); box-shadow: none; }\n.mem-inactive .mem-summary { text-decoration: line-through; color: var(--neutral); }\n.facts { margin: 0.3rem 0; }\n.fact { display: grid; grid-template-columns: 5.6rem 1fr; gap: 0.5rem; padding: 0.35rem 0; border-top: 1px solid var(--rule); align-items: start; }\n.fact dt { display: flex; align-items: center; gap: 0.3rem; font-weight: 700; color: var(--muted); font-size: 0.9rem; }\n.fact dd { margin: 0; font-weight: 700; }\n.mem-slot { margin: 0.2rem 0; }\n.mem-slot-label { font-weight: 700; }\n.unc { display: inline-block; font-size: 0.78rem; font-weight: 700; border: 2px solid currentColor; border-radius: 8px; padding: 0 0.4rem; background: var(--paper); white-space: nowrap; }\n.unc-stated { color: var(--ok); }\n.unc-inferred, .unc-approximate { color: var(--model); border-style: dashed; }\n.unc-ambiguous, .unc-conflicting { color: var(--warn); background: var(--warn-bg); }\n.unc-unknown { color: var(--neutral); border-style: dotted; }\n.unc-superseded { color: var(--neutral); text-decoration: line-through; }\n\n/* ---------- answer slots ---------- */\n.slots { display: grid; grid-template-columns: 1fr; gap: 0.55rem; margin: 0.6rem 0; }\n.slot { border: 2px solid var(--rule); border-left: 6px solid var(--navy); border-radius: 14px; padding: 0.45rem 0.75rem; background: var(--paper); }\n.slot-empty { border-style: dashed; border-left-style: dashed; border-left-color: var(--line); background: var(--neutral-bg); }\n.slot-label { display: flex; align-items: center; gap: 0.35rem; font-weight: 700; font-size: 0.85rem; color: var(--muted); }\n.slot-value { font-size: 1.08rem; font-weight: 700; color: var(--text); }\n.slot-unknown { color: var(--neutral); }\n.answer-sentence { font-family: var(--font-display); font-size: 1.18rem; color: var(--navy); }\n.caveats { margin: 0.6rem 0; }\n\n/* ---------- source dialog ---------- */\ndialog { width: min(30rem, 96vw); max-height: 90vh; border: 3px solid var(--navy); border-radius: 24px; padding: 0.9rem 1.1rem; color: var(--text); background: var(--paper); overflow: auto; }\ndialog::backdrop { background: rgba(12, 26, 51, 0.72); }\n.ev-list { list-style: none; padding: 0; margin: 0; }\n.ev-item { border-bottom: 2px solid var(--rule); padding: 0.7rem 0; }\n.ev-quote { margin: 0.35rem 0; padding: 0.4rem 0.7rem; border-left: 8px solid var(--gold); font-family: var(--font-display); font-weight: 700; font-size: 1.08rem; background: var(--sand); border-radius: 0 12px 12px 0; }\n.ev-line mark { background: var(--warn-bg); color: var(--text); font-weight: 700; text-decoration: underline; outline: 2px solid var(--warn); }\n.ev-ok { color: var(--ok); font-weight: 700; }\n.ev-bad { color: var(--danger); font-weight: 700; }\n.ev-speaker { font-weight: 700; color: var(--navy); }\n.transcript { padding-left: 1.4rem; }\n.utt { margin: 0.35rem 0; }\n.utt-hl { background: var(--warn-bg); outline: 3px solid var(--warn); border-radius: 6px; }\n.speaker { font-weight: 700; color: var(--navy); }\n.speaker-unknown { border-bottom: 2px dashed var(--line); }\n\n/* ---------- state badges + cards: icon + word + border style ---------- */\n.state-badge { display: inline-block; font-weight: 700; font-size: 0.9rem; padding: 0.1rem 0.6rem; border-radius: 10px; border: 3px solid currentColor; background: var(--paper); }\n.state-big .state-badge { font-size: 1.12rem; padding: 0.3rem 0.8rem; }\n.st-needs_info { color: var(--warn); border-style: dotted; background: var(--warn-bg); }\n.st-proposed { color: var(--model); border-style: dashed; }\n.st-user_confirmed { color: var(--model); border-style: solid; background: var(--model-bg); }\n.st-executing { color: var(--model); border-style: solid; }\n.st-handed_off { color: #00404a; border-style: double; border-width: 5px; background: #e0f4f6; }\n.st-completed_external { color: var(--ok); border-style: solid; border-width: 5px; background: var(--ok-bg); }\n.st-simulated_completed { color: var(--fixture); border-style: dashed; background: repeating-linear-gradient(135deg, #f3ecfb 0 10px, #e4d8f5 10px 20px); }\n.st-user_attested { color: var(--ok); border-style: dotted; background: var(--paper); }\n.st-failed { color: var(--danger); border-style: solid; border-width: 5px; background: var(--danger-bg); }\n.st-permission_denied { color: #5a2400; border-style: double; border-width: 5px; background: #ffe6d1; }\n.st-unknown_outcome, .st-verify_mismatch { color: var(--danger); border-style: dotted; border-width: 5px; background: var(--danger-bg); }\n.st-cancelled, .st-expired { color: var(--neutral); border-style: solid; background: var(--neutral-bg); text-decoration: line-through; }\n.st-superseded { color: var(--neutral); border-style: dashed; background: var(--neutral-bg); text-decoration: line-through; }\n.st-candidate { color: var(--neutral); border-style: dashed; }\n.st-none { }\n.state-badge .state-icon { text-decoration: none; display: inline-block; }\n.statecard { border-width: 4px; }\n.statecard.st-proposed, .statecard.st-needs_info, .statecard.st-candidate { background: var(--paper); text-decoration: none; }\n.statecard.st-cancelled, .statecard.st-expired, .statecard.st-superseded { text-decoration: none; }\n.statecard.st-cancelled h2, .statecard.st-cancelled h3 { text-decoration: line-through; }\n.statecard .state-badge { text-decoration: none; }\n\n/* ---------- proposal flow ---------- */\n.steps { display: flex; gap: 0.3rem; list-style: none; padding: 0; margin: 0.4rem 0 0.8rem; font-size: 15px; }\n.steps li { flex: 1; text-align: center; border: 2px solid var(--rule); border-radius: 10px; padding: 0.25rem 0.1rem; background: var(--paper); color: var(--muted); font-weight: 700; }\n.steps .step-on { background: var(--navy); color: var(--primary-fg); border-color: var(--navy); }\n.readback { margin: 0.5rem 0; }\n.rb-row { display: grid; grid-template-columns: 5.4rem 1fr; gap: 0.6rem; padding: 0.45rem 0; border-bottom: 1px solid var(--rule); align-items: baseline; }\n.rb-row dt { font-weight: 700; color: var(--muted); font-size: 0.9rem; }\n.rb-row dd { margin: 0; font-size: 1.08rem; font-weight: 700; color: var(--text); }\n.readback-sentence { font-size: 1.02rem; padding: 0.5rem 0.7rem; background: var(--sand); border-radius: 12px; }\n\n/* ---------- notification preview ---------- */\n.notif-card { border: 3px solid var(--navy); border-radius: 20px; padding: 0.6rem 0.9rem; margin: 0.5rem 0; background: var(--paper); }\n.notif-body { font-weight: 700; font-size: 1.05rem; }\n.fake-btn { flex: 1; text-align: center; border: 2px dashed var(--line); border-radius: 10px; padding: 0.3rem; }\n\n/* ---------- receipt + capabilities + settings ---------- */\n.receipt, .caps, .plain { list-style: none; padding: 0; margin: 0.4rem 0; }\n.plain li { padding: 0.2rem 0; }\n.rc { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem; padding: 0.45rem 0.6rem; border: 3px solid var(--line); border-radius: 10px; margin: 0.3rem 0; font-weight: 700; }\n.rc-verified_deleted { color: var(--ok); background: var(--ok-bg); }\n.rc-not_deleted { color: var(--danger); background: var(--danger-bg); border-width: 5px; }\n.rc-not_verified { color: var(--warn); background: var(--warn-bg); border-style: dashed; }\n.rc-not_applicable { color: var(--neutral); background: var(--neutral-bg); border-style: dotted; }\n.cap { padding: 0.45rem 0; border-bottom: 1px solid var(--rule); }\n.cap-label { display: inline-block; font-size: 0.78rem; font-weight: 700; border: 2px solid currentColor; border-radius: 8px; padding: 0 0.4rem; }\n.cap-demonstrated .cap-label { color: var(--ok); }\n.cap-unverified .cap-label { color: var(--neutral); border-style: dotted; }\n.cap-designed .cap-label { color: var(--model); border-style: dashed; }\n.cap-simulated .cap-label { color: var(--fixture); border-style: dashed; }\n.cap-roadmap .cap-label { color: var(--fallback); border-style: double; border-width: 4px; }\n.statuschip { display: inline-block; padding: 0.15rem 0.6rem; margin: 0.15rem 0; border-radius: 999px; font-size: 0.8rem; font-weight: 700; border: 2px solid currentColor; }\n.chip-model { color: var(--model); background: var(--model-bg); }\n.chip-fallback { color: var(--fallback); background: var(--fallback-bg); border-style: dashed; }\n.chip-fixture { color: var(--fixture); background: var(--fixture-bg); border-style: dashed; }\n.chip-unverified { color: var(--neutral); background: var(--neutral-bg); border-style: dotted; }\n.chip-live { color: var(--ok); background: var(--ok-bg); }\n.chip-data { color: var(--neutral); background: var(--neutral-bg); }\n.readaloud { margin: 0.5rem 0; }\n\n/* ---------- progress overlay ---------- */\n.overlay { position: fixed; inset: 0; z-index: 50; background: rgba(12, 26, 51, 0.78); display: flex; align-items: center; justify-content: center; padding: 1rem; }\n.overlay-card { background: var(--paper); color: var(--text); border-radius: 24px; padding: 1.3rem; max-width: 26rem; width: 100%; text-align: center; border: 3px solid var(--navy); }\n.prog-title { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: var(--navy); }\n.spinner { width: 3.2rem; height: 3.2rem; border: 0.45rem solid var(--sand); border-top-color: var(--gold); border-right-color: var(--navy); border-radius: 50%; margin: 0 auto 0.7rem; animation: spin 1.6s linear infinite; }\n@keyframes spin { to { transform: rotate(360deg); } }\n\n/* ---------- footer + nav ---------- */\n.foot { padding: 0.5rem 1rem 1rem; }\n.honesty { background: var(--fixture-bg); color: var(--fixture); border: 2px dashed var(--fixture); border-radius: 12px; padding: 0.45rem 0.7rem; font-weight: 700; font-size: 0.8rem; }\n.bottomnav {\n  position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 30rem; z-index: 30; display: flex;\n  background: var(--paper); border-top: 2px solid var(--navy); padding: 0.25rem 0.3rem calc(0.25rem + env(safe-area-inset-bottom));\n  box-shadow: 0 -10px 24px -18px rgba(19, 40, 74, 0.5);\n}\n.nav-item {\n  flex: 1 1 0; min-width: 0; min-height: 64px; font: inherit; font-size: 17px; /* fixed: 4 tabs must fit 390px at any text size */\n  font-weight: 700; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;\n  border: none; background: transparent; color: var(--muted); cursor: pointer; padding: 0.2rem 0.1rem; border-radius: 16px;\n}\n.nav-icon { padding: 2px 14px; border-radius: 999px; box-sizing: content-box; }\n.nav-on { color: var(--navy); }\n.nav-on .nav-icon { background: var(--navy); color: var(--gold-on-navy); }\n.nav-on .nav-label { text-decoration: underline; text-decoration-thickness: 3px; text-decoration-color: var(--gold); text-underline-offset: 4px; }\n.nav-label { white-space: nowrap; }\n\n/* ---------- motion ---------- */\n@media (prefers-reduced-motion: reduce) {\n  .spinner { animation: none; border-top-color: var(--navy); border-right-color: var(--gold); }\n  .btn, .samplecard { transition: none; }\n  .btn:active:not(:disabled), .samplecard:active { transform: none; }\n}\n",
+      "status": "PASS"
+    },
+    {
+      "method": "GET",
+      "path": "/ui/app.js",
+      "startedAt": "2026-11-09T03:44:42.184Z",
+      "completedAt": "2026-11-09T03:44:42.197Z",
+      "expectedStatus": 200,
+      "httpStatus": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "raw": "// EBYS UI entry. Static ES modules, no build. Track A app (CONTRACTS section 2).\nimport { h } from './lib/dom.js';\nimport { t, getLang, setLang } from './i18n.js';\nimport { state, app, setRenderer, rerender, go } from './store.js';\nimport { selectApi } from './services/api.js';\nimport { modelChipInfo, Btn } from './components.js';\nimport { displayStateSource } from './lib/contracts.js';\nimport { loadPrefs } from './lib/prefs.js';\nimport { Icon, BrandMark } from './lib/icons.js';\nimport { renderInput } from './screens/input.js';\nimport { renderMemories } from './screens/memories.js';\nimport { renderAsk } from './screens/ask.js';\nimport { renderProposal } from './screens/proposal.js';\nimport { renderPlans } from './screens/plans.js';\nimport { renderPrivacy } from './screens/privacy.js';\nimport { stopSpeaking, stopListening } from './lib/speech.js';\n\nconst SCREENS = { input: renderInput, memories: renderMemories, ask: renderAsk, proposal: renderProposal, plans: renderPlans, privacy: renderPrivacy };\nconst NAV = [\n  { route: 'input', key: 'nav.input', icon: 'home' },\n  { route: 'memories', key: 'nav.memory', icon: 'memories' },\n  { route: 'ask', key: 'nav.ask', icon: 'ask' },\n  { route: 'plans', key: 'nav.plans', icon: 'plans', also: ['proposal'] },\n];\n\n/** Sample vs live, in plain words. The technical route detail lives in Settings and next to results. */\nfunction ModePill() {\n  const live = app.apiKind === 'live';\n  const m = modelChipInfo();\n  const fallback = live && m.cls === 'chip-fallback';\n  const cls = !live ? 'pill-sample' : fallback ? 'pill-fallback' : 'pill-live';\n  return h('span', { class: `modepill ${cls}`, title: m.text },\n    h('span', { class: 'pill-dot', 'aria-hidden': 'true' }), t(!live ? 'mode.sample' : fallback ? 'mode.liveFallback' : 'mode.live'));\n}\n\nfunction AppBar() {\n  return h('header', { class: 'appbar' },\n    h('div', { class: 'brand', title: t('app.tagline') }, BrandMark({ size: 44 }), h('span', { class: 'wordmark' }, t('app.name'))),\n    ModePill(),\n    h('button', {\n      type: 'button', class: `iconbtn ${state.route === 'privacy' ? 'iconbtn-on' : ''}`, 'aria-label': t('settings.open'),\n      'aria-current': state.route === 'privacy' ? 'page' : null, onClick: () => go('privacy'),\n    }, Icon('settings', { size: 30 })));\n}\n\nfunction PrivacyBar() {\n  const paused = state.paused;\n  const listening = state.listening && !paused;\n  const cls = listening ? 'pb-listening' : paused ? 'pb-paused' : 'pb-off';\n  return h('div', { class: `privacybar ${cls}`, role: 'status', 'aria-live': 'polite' },\n    h('span', { class: 'pb-icon' }, Icon(listening ? 'mic' : paused ? 'pause' : 'micOff', { size: 26 })),\n    h('span', { class: 'pb-text' }, listening ? t('privacy.listening') : paused ? t('privacy.paused') : t('privacy.nomic')),\n    listening ? Btn(t('mic.stop'), () => stopListening(), { variant: 'bar' }) : null,\n    Btn(paused ? t('privacy.resume') : t('privacy.pause'), () => { state.paused = !state.paused; rerender(); }, { variant: 'bar' }));\n}\n\nfunction Nav() {\n  return h('nav', { class: 'bottomnav', 'aria-label': t('app.name') },\n    NAV.map((n) => {\n      const on = state.route === n.route || n.also?.includes(state.route);\n      return h('button', {\n        type: 'button', class: `nav-item ${on ? 'nav-on' : ''}`, 'aria-current': on ? 'page' : null, onClick: () => go(n.route),\n      }, Icon(n.icon, { size: 28, cls: 'nav-icon' }), h('span', { class: 'nav-label' }, t(n.key)));\n    }));\n}\n\nfunction render({ focus = false } = {}) {\n  // Never keep the microphone open when leaving Ask or pausing.\n  if (state.listening && (state.paused || state.route !== 'ask')) stopListening();\n  if (state.speaking && state.route === 'input') { stopSpeaking(); state.speaking = null; }\n  const root = document.getElementById('app');\n  const y = window.scrollY;\n  document.documentElement.style.setProperty('--scale', String(state.scale));\n  document.documentElement.lang = getLang();\n  const main = h('main', { id: 'main', class: `main screen-${state.route}`, tabindex: '-1' }, (SCREENS[state.route] ?? renderInput)());\n  root.replaceChildren(\n    h('div', { class: 'topstack' }, AppBar(), PrivacyBar()), main,\n    h('footer', { class: 'foot' },\n      h('p', { class: 'honesty' }, t('foot.honesty')),\n      h('p', { class: 'small' }, t('foot.dsrc', { src: displayStateSource }))),\n    Nav());\n  if (focus) {\n    window.scrollTo(0, 0);\n    document.getElementById('screen-title')?.focus({ preventScroll: true });\n  } else {\n    window.scrollTo(0, y);\n  }\n}\n\nasync function boot() {\n  const q = new URLSearchParams(location.search);\n  // Fresh storage => English. Only an explicit ?lang= or a saved choice changes it (never navigator.language).\n  const prefs = loadPrefs(location.search);\n  setLang(prefs.lang);\n  state.scale = prefs.scale;\n  app.api = selectApi(location.search);\n  app.apiKind = app.api.kind;\n  if (q.get('route') && SCREENS[q.get('route')]) state.route = q.get('route');\n  setRenderer(render);\n  render({ focus: false });\n  const rt = await app.api.runtime();\n  state.runtime = rt.ok ? rt.data : null;\n  render({ focus: false });\n}\n\nboot();\n",
+      "status": "PASS"
+    },
+    {
+      "method": "GET",
+      "path": "/ui/test/ui.test.mjs",
+      "startedAt": "2026-11-09T03:44:42.197Z",
+      "completedAt": "2026-11-09T03:44:42.214Z",
+      "expectedStatus": 404,
+      "httpStatus": 404,
+      "contentType": "text/plain",
+      "raw": "not found",
+      "status": "PASS"
+    },
+    {
+      "method": "GET",
+      "path": "/ui/tools/smoke.browser.mjs",
+      "startedAt": "2026-11-09T03:44:42.214Z",
+      "completedAt": "2026-11-09T03:44:42.229Z",
+      "expectedStatus": 404,
+      "httpStatus": 404,
+      "contentType": "text/plain",
+      "raw": "not found",
+      "status": "PASS"
+    },
+    {
+      "method": "GET",
+      "path": "/server.mjs",
+      "startedAt": "2026-11-09T03:44:42.229Z",
+      "completedAt": "2026-11-09T03:44:42.245Z",
+      "expectedStatus": 404,
+      "httpStatus": 404,
+      "contentType": "text/plain",
+      "raw": "not found",
+      "status": "PASS"
+    },
+    {
+      "method": "GET",
+      "path": "/core/core.mjs",
+      "startedAt": "2026-11-09T03:44:42.245Z",
+      "completedAt": "2026-11-09T03:44:42.260Z",
+      "expectedStatus": 404,
+      "httpStatus": 404,
+      "contentType": "text/plain",
+      "raw": "not found",
+      "status": "PASS"
+    }
+  ],
+  "disposition": "PENDING_HUMAN_FRAME_REVIEW; model raw-evidence claim BLOCKED",
+  "limitations": [
+    "Lead-produced screenshots encoded with real inter-frame timings; this is not an independently recorded continuous screen capture or physical-phone test.",
+    "Producer booleans/checks are assertions, not independently preserved response bodies or source spans.",
+    "Single capture-start sourceSnapshot lacks runtime.version and an after-run bracket; current GET runtime is separate evidence, not retroactive capture provenance.",
+    "One known lead scenario and one question are not QA held-out acceptance; unknown/relevance, stale cancellation, duplicate confirmation and errors were not exercised.",
+    "390 CSS viewport is producer-reported; video dimensions alone do not prove CSS overflow/focus/targets/zoom/reduced-motion behavior.",
+    "Calendar execution is simulated; no real-local file readback, phone calendar, OS notification, voice, watch or safety capability is certified.",
+    "96.467-second raw capture exceeds the 90-second final submission target; Mac must separately verify its edited final export."
+  ]
+}

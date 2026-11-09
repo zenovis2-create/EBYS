@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: two synthetic languages, six questions, cancellation, ambiguity, unknown and injection coverage
+ok 1 - two synthetic languages, six questions, cancellation, ambiguity, unknown and injection coverage
+  ---
+  duration_ms: 6.2314
+  type: 'test'
+  ...
+# Subtest: source-backed expected answer passes; wrong date and invented evidence fail
+ok 2 - source-backed expected answer passes; wrong date and invented evidence fail
+  ---
+  duration_ms: 2.1865
+  type: 'test'
+  ...
+# Subtest: AM/PM choice and guessed unknown speaker fail; explicit ambiguity and unknown pass
+ok 3 - AM/PM choice and guessed unknown speaker fail; explicit ambiguity and unknown pass
+  ---
+  duration_ms: 1.8069
+  type: 'test'
+  ...
+# Subtest: missing telemetry, fallback and fake model do not establish real AI
+ok 4 - missing telemetry, fallback and fake model do not establish real AI
+  ---
+  duration_ms: 0.4131
+  type: 'test'
+  ...
+# Subtest: server down produces saved BLOCKED result with zero POSTs
+ok 5 - server down produces saved BLOCKED result with zero POSTs
+  ---
+  duration_ms: 4.7894
+  type: 'test'
+  ...
+# Subtest: serial contract requests retain raw responses and report semantic failures
+ok 6 - serial contract requests retain raw responses and report semantic failures
+  ---
+  duration_ms: 4.624
+  type: 'test'
+  ...
+# Subtest: transport loss stops further POSTs and never retries ingestion
+ok 7 - transport loss stops further POSTs and never retries ingestion
+  ---
+  duration_ms: 3.1465
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 260.6128

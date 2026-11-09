@@ -1,0 +1,82 @@
+TAP version 13
+# Subtest: 1 source: fabricated primary quote is rejected
+ok 1 - 1 source: fabricated primary quote is rejected
+  ---
+  duration_ms: 0.9853
+  type: 'test'
+  ...
+# Subtest: 1 source: names and places absent from their quotes are rejected
+ok 2 - 1 source: names and places absent from their quotes are rejected
+  ---
+  duration_ms: 0.234
+  type: 'test'
+  ...
+# Subtest: 1 null: omitted who/where/time stay unknown with null values
+ok 3 - 1 null: omitted who/where/time stay unknown with null values
+  ---
+  duration_ms: 4.8074
+  type: 'test'
+  ...
+# Subtest: 1 source: every emitted evidence span matches immutable transcript
+ok 4 - 1 source: every emitted evidence span matches immutable transcript
+  ---
+  duration_ms: 3.2536
+  type: 'test'
+  ...
+# Subtest: GAP-1 query: irrelevant real quote cannot justify an invented place
+ok 5 - GAP-1 query: irrelevant real quote cannot justify an invented place
+  ---
+  duration_ms: 1.9438
+  type: 'test'
+  ...
+# Subtest: 2 source separation: callers cannot rewrite original transcript
+ok 6 - 2 source separation: callers cannot rewrite original transcript
+  ---
+  duration_ms: 1.4013
+  type: 'test'
+  ...
+# Subtest: 2 supersede: replacement keeps prior source and reciprocal links
+ok 7 - 2 supersede: replacement keeps prior source and reciprocal links
+  ---
+  duration_ms: 1.1754
+  type: 'test'
+  ...
+# Subtest: 2 cancel: records source and prevents a new proposal
+ok 8 - 2 cancel: records source and prevents a new proposal
+  ---
+  duration_ms: 1.1779
+  type: 'test'
+  ...
+# Subtest: GAP-2 cancel: open proposal cannot be confirmed after its source is cancelled
+ok 9 - GAP-2 cancel: open proposal cannot be confirmed after its source is cancelled
+  ---
+  duration_ms: 1.4596
+  type: 'test'
+  ...
+# Subtest: 3 clarify: ambiguous AM/PM prevents exact start and confirmation
+ok 10 - 3 clarify: ambiguous AM/PM prevents exact start and confirmation
+  ---
+  duration_ms: 1.4002
+  type: 'test'
+  ...
+# Subtest: 3 confirm: latest revision only and edits revoke confirmation
+ok 11 - 3 confirm: latest revision only and edits revoke confirmation
+  ---
+  duration_ms: 1.0122
+  type: 'test'
+  ...
+# Subtest: 2 confirmed changes remain pending rather than silently mutating memory
+ok 12 - 2 confirmed changes remain pending rather than silently mutating memory
+  ---
+  duration_ms: 0.6668
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 310.1827

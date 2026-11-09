@@ -1,0 +1,71 @@
+{
+  "Kind": "OFFLINE-QA-PREPARATION-NOT-RELEASE-ACCEPTANCE",
+  "RecordedAtUtc": "2026-11-09T03:38:35.3779958Z",
+  "Owner": "sj-qa",
+  "Writes": "qa/ only",
+  "NewModelCalls": 0,
+  "NewHTTPCalls": 0,
+  "NewBrowserCalls": 0,
+  "ProductEdits": 0,
+  "Suites": [
+    {
+      "Suite": "receipt-selftests",
+      "Tests": 17,
+      "Pass": 17,
+      "Fail": 0,
+      "Path": "qa\\evidence\\final-en-prep-2026-11-09\\validator-selftests.tap",
+      "SHA256": "eb90f51ffd7e37bbe1d014615e1eef438477b0f33c6cb413b302e99e87a2e46c"
+    },
+    {
+      "Suite": "GAP12-SYNTHETIC-NOT-LIVE",
+      "Tests": 12,
+      "Pass": 12,
+      "Fail": 0,
+      "Path": "qa\\evidence\\final-en-prep-2026-11-09\\gap12-synthetic.tap",
+      "SHA256": "63d43465dfa727f4234d114cadce66b1a96edbb8d174710d203bd7d1c917322a"
+    },
+    {
+      "Suite": "existing-heldout-selftests",
+      "Tests": 7,
+      "Pass": 7,
+      "Fail": 0,
+      "Path": "qa\\evidence\\final-en-prep-2026-11-09\\existing-heldout-selftests.tap",
+      "SHA256": "5891edf31aa66286cb1d1e29c579eb567a56fabf242d04812210b5d6209bcfda"
+    }
+  ],
+  "TemplateStatus": "BLOCKED",
+  "TemplateExitCode": 2,
+  "PendingFinalGates": 14,
+  "SourceHashTiming": "On-disk snapshot after offline tests, not a loaded-server or before/after release bracket",
+  "Files": [
+    {
+      "Path": "qa/FINAL-EN-READINESS.md",
+      "SHA256": "2a57e3722e44706f7c221a7cd151799f339f504e6f3aed160cc95faa6a7427b2"
+    },
+    {
+      "Path": "qa/validate-final-en-receipt.mjs",
+      "SHA256": "16adc624664264ccf9db8d762d0bba1e60bb1475ea963aaf445a853a67f6dd92"
+    },
+    {
+      "Path": "qa/final-en-receipt.test.mjs",
+      "SHA256": "f952431b8da29a83496709ffe8d0e93e930d1292a2bd06c0cb1526f30edcebeb"
+    },
+    {
+      "Path": "qa/final-en-receipt.template.json",
+      "SHA256": "ba182ab2e675f74c8a892a93b2527cbc6da8a13fb7d02695361cb3523a12d961"
+    },
+    {
+      "Path": "acceptance-123/audit.test.mjs",
+      "SHA256": "c590673cfa78f15c064256e9c9a6dc11a3aa90e720b6ad9a7c96a61009e413b2"
+    },
+    {
+      "Path": "core/core.mjs",
+      "SHA256": "aac3dbfcca5397e5b763bd80309d7a169033b9771b7d34d15cc154c4771c86c4"
+    },
+    {
+      "Path": "core/schema.mjs",
+      "SHA256": "23dec1ac56db0aeeaa53d317e4b16be6e04afe83af6909d67e26c0179cf124ec"
+    }
+  ],
+  "Readiness": "Await core/UI/actions owner handoffs and lead reload/ready signal; parent Aside owns visual E2E"
+}

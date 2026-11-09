@@ -1,0 +1,71 @@
+{
+  "Reviewer": "sj-qa",
+  "Producer": "senior-planner",
+  "Scope": "Independent review of archived capture, not new browser/model execution",
+  "Disposition": "PARTIAL_VISUAL_EVIDENCE; RAW_MODEL_BLOCKED; NOT_FINAL_ACCEPTANCE",
+  "OriginalFilesUnchanged": true,
+  "MediaHashAndDecodePass": true,
+  "StaticGetChecksPassed": 9,
+  "StaticGetChecksTotal": 9,
+  "RouteSummariesConsistent": 2,
+  "CompleteRawModelRecords": 0,
+  "ModelRecordsExpected": 2,
+  "SampledFramesReviewed": 12,
+  "Frames": [
+    {
+      "File": "answer-80.5s.png",
+      "SHA256": "d0831df4a5f4bed8a50bc9d4cde5a5e4d3439dd7e148487d117034cc027d8fe6"
+    },
+    {
+      "File": "choice-87.5s.png",
+      "SHA256": "651579ca546fff068266ccb9a8f5bdefc54608e070e2cda2cd4d2992fd1070c2"
+    },
+    {
+      "File": "clarify-83.6s.png",
+      "SHA256": "3fd83e49a73be0572fc2b2320ad4d5d2d75add319fe1d82a620ddacfc0931d90"
+    },
+    {
+      "File": "confirm-90.5s.png",
+      "SHA256": "8443f82a2d515a146f6b33cbff935a37b59c9ffcdb02a946b82d06df9161f22b"
+    },
+    {
+      "File": "detail-76.5s.png",
+      "SHA256": "d539f0d8d13f2065ed2a56a92271383412a38b1b7e1aa7d7f3c62ea649274dfb"
+    },
+    {
+      "File": "detail-84.8s.png",
+      "SHA256": "e15cb543ec2cd964fe548d08685a4e72749e857c3e9bb51f8c6545f591165ade"
+    },
+    {
+      "File": "detail-88.5s.png",
+      "SHA256": "24e1730b15b301bd3a2f2e50c64a03cc7c52c319c37b7de3b78f8390fef4a1e1"
+    },
+    {
+      "File": "evidence-41.2s.png",
+      "SHA256": "dd1951425c9a3b45f994bbae1dbbb803e19f9b79599829473278bce298ab4527"
+    },
+    {
+      "File": "memory-38.5s.png",
+      "SHA256": "3661e67bf2569899d31b545d40b415150a1b4900dc00e1c5e1ad9b39b6e287f8"
+    },
+    {
+      "File": "opening-2.5s.png",
+      "SHA256": "9c766beafd8b6dbccef53fba017cf471d532a5f43ff5171b431751dfc856f659"
+    },
+    {
+      "File": "result-94.3s.png",
+      "SHA256": "8397fd3a6746f6060dc184784ff7ae2512b60e47e6022223f1d019142d3c9f4e"
+    },
+    {
+      "File": "source-4.5s.png",
+      "SHA256": "c2b3796ea551e46f3b84fd774a438d6e1ec312bedb1d3805e0bb2ef28c36aa37"
+    }
+  ],
+  "CurrentRuntimeVersion": "actions-0.1.0",
+  "CurrentServerCurrent": false,
+  "UiHashMatchesArchivedCapture": false,
+  "NewModelCalls": 0,
+  "NewActionCalls": 0,
+  "NewBrowserControlCalls": 0,
+  "ManualReview": "REVIEW.md"
+}

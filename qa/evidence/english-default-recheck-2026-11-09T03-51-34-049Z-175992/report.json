@@ -1,0 +1,144 @@
+{
+  "producer": "sj-qa",
+  "startedAt": "2026-11-09T03:51:34.049Z",
+  "completedAt": "2026-11-09T03:51:34.075Z",
+  "runnerSha256": "a9f5a1c8ea3d96ad0c27a0abbb251540bc761f8bdef8b46ef6a8493358b076d3",
+  "scope": "Recheck 11:26 HTTP/source default failures and root routing; not a fresh browser profile execution",
+  "requests": [
+    {
+      "label": "runtime-before",
+      "path": "/api/runtime",
+      "method": "GET",
+      "requestedAt": "2026-11-09T03:51:34.051Z",
+      "transportError": "TypeError: fetch failed"
+    },
+    {
+      "label": "root-no-override",
+      "path": "/",
+      "method": "GET",
+      "requestedAt": "2026-11-09T03:51:34.068Z",
+      "transportError": "TypeError: fetch failed"
+    },
+    {
+      "label": "root-live-html",
+      "path": "/?api=live",
+      "method": "GET",
+      "requestedAt": "2026-11-09T03:51:34.069Z",
+      "transportError": "TypeError: fetch failed"
+    },
+    {
+      "label": "root-app-module",
+      "path": "/app.js",
+      "method": "GET",
+      "requestedAt": "2026-11-09T03:51:34.070Z",
+      "transportError": "TypeError: fetch failed"
+    },
+    {
+      "label": "root-styles",
+      "path": "/styles.css",
+      "method": "GET",
+      "requestedAt": "2026-11-09T03:51:34.071Z",
+      "transportError": "TypeError: fetch failed"
+    },
+    {
+      "label": "served-i18n",
+      "path": "/i18n.js",
+      "method": "GET",
+      "requestedAt": "2026-11-09T03:51:34.072Z",
+      "transportError": "TypeError: fetch failed"
+    },
+    {
+      "label": "served-preferences",
+      "path": "/lib/prefs.js",
+      "method": "GET",
+      "requestedAt": "2026-11-09T03:51:34.073Z",
+      "transportError": "TypeError: fetch failed"
+    },
+    {
+      "label": "explicit-korean-entry",
+      "path": "/?lang=ko",
+      "method": "GET",
+      "requestedAt": "2026-11-09T03:51:34.073Z",
+      "transportError": "TypeError: fetch failed"
+    },
+    {
+      "label": "explicit-fixture-entry",
+      "path": "/?api=fixture",
+      "method": "GET",
+      "requestedAt": "2026-11-09T03:51:34.074Z",
+      "transportError": "TypeError: fetch failed"
+    },
+    {
+      "label": "runtime-after",
+      "path": "/api/runtime",
+      "method": "GET",
+      "requestedAt": "2026-11-09T03:51:34.075Z",
+      "transportError": "TypeError: fetch failed"
+    }
+  ],
+  "checks": [
+    {
+      "name": "bare root redirects to live without a language override",
+      "status": "FAIL",
+      "detail": {}
+    },
+    {
+      "name": "root live entry and module assets return successful content",
+      "status": "FAIL",
+      "detail": {}
+    },
+    {
+      "name": "served HTML English default (11:26 source failure recheck)",
+      "status": "FAIL",
+      "detail": {}
+    },
+    {
+      "name": "served i18n initializes English (11:26 source failure recheck)",
+      "status": "FAIL",
+      "detail": {}
+    },
+    {
+      "name": "explicit optional Korean survives root redirect",
+      "status": "FAIL",
+      "detail": {}
+    },
+    {
+      "name": "explicit fixture remains separate and reachable",
+      "status": "FAIL",
+      "detail": {}
+    },
+    {
+      "name": "served module preference execution",
+      "status": "FAIL",
+      "detail": "Served modules unavailable"
+    },
+    {
+      "name": "runtime HTTP/version and code/UI snapshots remain current across this GET-only check",
+      "status": "FAIL",
+      "detail": {}
+    }
+  ],
+  "scores": {
+    "passed": 0,
+    "total": 8,
+    "historicalSourceFailuresNowPassed": 0,
+    "historicalSourceChecks": 2,
+    "newModelCalls": 0,
+    "newActionCalls": 0,
+    "newBrowserControlCalls": 0
+  },
+  "status": "FAIL_FOR_HTTP_SOURCE_OR_UNIT_SCOPE",
+  "freshBrowserDefault": {
+    "status": "NOT_RUN_BY_SJ_QA",
+    "owner": "parent-Aside",
+    "reason": "Existing Chrome-control rejection is not bypassed; parent owns visual E2E. Lead RESOLVED note is producer evidence, not a new QA browser run."
+  },
+  "historicalEvidence": {
+    "run": "english-first-2026-11-09T02-26-00-060Z-65628",
+    "status": "Original FAIL observations at 11:26 preserved unchanged"
+  },
+  "limitations": [
+    "No DOM mounting/module dependency execution, visual natural-copy review, live model accuracy, action/readback, accessibility or physical-device proof.",
+    "Empty-storage preference checks execute served code in Node with synthetic storage; they are not a browser or navigator-locale test."
+  ]
+}

@@ -1,0 +1,112 @@
+TAP version 13
+# Subtest: empty prepared template stays BLOCKED, never accepted
+ok 1 - empty prepared template stays BLOCKED, never accepted
+  ---
+  duration_ms: 5.4744
+  type: 'test'
+  ...
+# Subtest: complete SYNTHETIC receipt passes checker structure only, not a live evidence claim
+ok 2 - complete SYNTHETIC receipt passes checker structure only, not a live evidence claim
+  ---
+  duration_ms: 5.2812
+  type: 'test'
+  ...
+# Subtest: artifact tamper fails checksum
+ok 3 - artifact tamper fails checksum
+  ---
+  duration_ms: 2.9186
+  type: 'test'
+  ...
+# Subtest: manual English override and sample mode cannot prove English default
+ok 4 - manual English override and sample mode cannot prove English default
+  ---
+  duration_ms: 7.5956
+  type: 'test'
+  ...
+# Subtest: GAP12 cannot be 10/12 or relabelled live
+ok 5 - GAP12 cannot be 10/12 or relabelled live
+  ---
+  duration_ms: 2.5416
+  type: 'test'
+  ...
+# Subtest: GAP3 string candidates do not replace object candidate integration
+ok 6 - GAP3 string candidates do not replace object candidate integration
+  ---
+  duration_ms: 2.3799
+  type: 'test'
+  ...
+# Subtest: missing raw telemetry, fallback and model-call attribution mismatch fail
+ok 7 - missing raw telemetry, fallback and model-call attribution mismatch fail
+  ---
+  duration_ms: 6.593
+  type: 'test'
+  ...
+# Subtest: stale/changed source hash or unbracketed runtime cannot pass
+ok 8 - stale/changed source hash or unbracketed runtime cannot pass
+  ---
+  duration_ms: 6.2725
+  type: 'test'
+  ...
+# Subtest: simulated/ICS completion or wrong disk readback cannot claim real local save
+ok 9 - simulated/ICS completion or wrong disk readback cannot claim real local save
+  ---
+  duration_ms: 6.0728
+  type: 'test'
+  ...
+# Subtest: mobile overflow, tiny targets, zoom clipping or missing reduced motion fails
+ok 10 - mobile overflow, tiny targets, zoom clipping or missing reduced motion fails
+  ---
+  duration_ms: 8.0534
+  type: 'test'
+  ...
+# Subtest: lead smoke report cannot be relabelled independent QA
+ok 11 - lead smoke report cannot be relabelled independent QA
+  ---
+  duration_ms: 2.6287
+  type: 'test'
+  ...
+# Subtest: found=true for unknown still fails even with complete telemetry
+ok 12 - found=true for unknown still fails even with complete telemetry
+  ---
+  duration_ms: 2.2434
+  type: 'test'
+  ...
+# Subtest: mockup capture and non-image bytes cannot satisfy raw proof
+ok 13 - mockup capture and non-image bytes cannot satisfy raw proof
+  ---
+  duration_ms: 2.3903
+  type: 'test'
+  ...
+# Subtest: maker cannot approve own gate; absent final reviewer stays blocked
+ok 14 - maker cannot approve own gate; absent final reviewer stays blocked
+  ---
+  duration_ms: 4.1066
+  type: 'test'
+  ...
+# Subtest: runtime error response is rejected even if it contains plausible source metadata
+ok 15 - runtime error response is rejected even if it contains plausible source metadata
+  ---
+  duration_ms: 3.2036
+  type: 'test'
+  ...
+# Subtest: irrelevant raw JSON and impossible latency do not satisfy model evidence
+ok 16 - irrelevant raw JSON and impossible latency do not satisfy model evidence
+  ---
+  duration_ms: 6.4885
+  type: 'test'
+  ...
+# Subtest: telemetry cannot attribute a different response model to this call
+ok 17 - telemetry cannot attribute a different response model to this call
+  ---
+  duration_ms: 2.9878
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 17
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 336.3211

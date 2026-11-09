@@ -1,0 +1,28 @@
+{
+  "provenance": "synthetic",
+  "lang": "en",
+  "questions": [
+    {
+      "id": "revised-lesson",
+      "text": "For Rowan's pottery lesson that replaced the cancelled one, who is it with, exactly when is it, and where will it happen?",
+      "expectedAnswer": "Celeste; 2027-03-10 at 10:15 AM Asia/Seoul; Cedar Hall studio. March 8 and Amber Room studio are the superseded plan.",
+      "checks": [
+        { "slot": "who", "rule": "contains", "acceptedValues": ["Celeste"], "evidenceMustContain": "Celeste" },
+        { "slot": "when", "rule": "exact", "acceptedValues": ["2027-03-10T10:15:00+09:00", "2027-03-10T01:15:00Z"], "evidenceMustContain": "2027-03-10 at 10:15 AM" },
+        { "slot": "where", "rule": "contains", "acceptedValues": ["Cedar Hall"], "evidenceMustContain": "Cedar Hall" }
+      ]
+    },
+    {
+      "id": "ambiguous-swap",
+      "text": "Before adding Rowan's plant swap, which part of the day does eight mean?",
+      "expectedAnswer": "Unknown AM versus PM; explicitly ask the user to choose. The date is March 12, 2027, Asia/Seoul. No default to 08:00 or 20:00.",
+      "checks": [ { "slot": "when", "rule": "ambiguous", "evidenceMustContain": "at 8" } ]
+    },
+    {
+      "id": "unknown-equipment",
+      "text": "What is the kiln serial number for Rowan and Celeste's pottery lesson?",
+      "expectedAnswer": "Unknown: no kiln serial number is stated.",
+      "checks": [ { "rule": "unknown" } ]
+    }
+  ]
+}

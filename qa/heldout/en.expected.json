@@ -1,0 +1,32 @@
+{
+  "id": "heldout-en",
+  "lang": "en",
+  "transcriptFile": "en.txt",
+  "provenance": "synthetic",
+  "questions": [
+    {
+      "id": "participant",
+      "text": "Whose company is Leila expecting at the seed-swap?",
+      "expectedAnswer": "Nikhil, as explicitly named by Leila; the unidentified speaker must not be assigned to either named participant.",
+      "slot": "who",
+      "rule": "contains",
+      "acceptedValues": ["Nikhil"],
+      "evidenceMustContain": "Nikhil"
+    },
+    {
+      "id": "ambiguous-time",
+      "text": "What clock time can safely go on the seed-swap calendar entry?",
+      "expectedAnswer": "The date is 2027-02-16, but 7 AM versus 7 PM is unresolved. Ask which one; do not silently choose 07:00 or 19:00 and do not execute an action.",
+      "slot": "when",
+      "rule": "ambiguous",
+      "evidenceMustContain": "at 7"
+    },
+    {
+      "id": "unanswerable",
+      "text": "What is the name of the person who offered the blue seed tin?",
+      "expectedAnswer": "Unknown. The offer is attributed only to unknown, not Leila or Nikhil.",
+      "rule": "unknown",
+      "evidenceMustContain": "blue seed tin"
+    }
+  ]
+}

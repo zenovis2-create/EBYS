@@ -1,0 +1,435 @@
+{
+  "producer": "sj-qa",
+  "startedAt": "2026-11-09T03:53:12.820Z",
+  "completedAt": "2026-11-09T03:53:13.165Z",
+  "runnerSha256": "c1a0003074a08f90317fd12aa0f448a7091c82978e9c4c0e0f2565e67f58d135",
+  "scope": "Recheck 11:26 HTTP/source default failures and root routing; not a fresh browser profile execution",
+  "readiness": {
+    "up": true
+  },
+  "requests": [
+    {
+      "label": "runtime-before",
+      "path": "/api/runtime",
+      "method": "GET",
+      "requestedAt": "2026-11-09T03:53:12.825Z",
+      "completedAt": "2026-11-09T03:53:12.867Z",
+      "httpStatus": 200,
+      "location": null,
+      "contentType": "application/json; charset=utf-8",
+      "raw": "{\"ok\":true,\"data\":{\"data\":\"synthetic\",\"defaultLang\":\"en\",\"timezone\":{\"iana\":\"Asia/Seoul\",\"label\":{\"en\":\"Seoul time\",\"ko\":\"서울 시간\"},\"utcOffset\":\"+09:00\",\"note\":{\"en\":\"EBYS stores calendar times in Seoul time (UTC+9) and always shows the zone next to the time.\",\"ko\":\"EBYS는 달력 시간을 서울 시간(UTC+9)으로 저장하고 시간 옆에 항상 표시합니다.\"}},\"calendar\":{\"kind\":\"simulated\",\"name\":\"Demo Calendar (in this app only, simulated)\",\"permission\":\"not_required\"},\"notifications\":{\"kind\":\"preview\",\"permission\":\"not_applicable\"},\"micCapture\":\"unavailable\",\"speechInput\":\"unavailable\",\"version\":\"actions-0.1.0\",\"mode\":\"simulated\",\"adapters\":[{\"id\":\"calendar.simulated\",\"kind\":\"calendar\",\"mode\":\"simulated\",\"label\":{\"ko\":\"시뮬레이션 달력 (앱 안에서만)\",\"en\":\"Simulated calendar (inside this app only)\"},\"claimStatus\":\"simulated\",\"maxVerifyLevel\":\"none\",\"canReconcile\":true,\"notes\":\"In-memory Demo Calendar. Nothing is written to any phone or account.\"},{\"id\":\"notification.preview\",\"kind\":\"notification\",\"mode\":\"simulated\",\"label\":{\"ko\":\"알림 미리보기 (실제 알림 아님)\",\"en\":\"Notification preview (not a real notification)\"},\"claimStatus\":\"simulated\",\"maxVerifyLevel\":\"none\",\"notes\":\"Pure preview list. No Notification API, no push, no server.\"}],\"faultInjection\":null,\"forbidden\":\"no tel/sms/mailto/emergency actions exist in this layer\",\"model\":{\"route\":\"cursor-cli\",\"model\":\"claude-sonnet-5-5-low\",\"healthy\":true},\"sourceSnapshot\":{\"serverLoaded\":{\"startedAt\":\"2026-11-09T03:51:40.668Z\",\"sha256\":\"8c8e675399c3d4fe5470103e79bc281c1261f7818438eef9d223580ac6c6aeb6\",\"files\":28},\"serverOnDisk\":{\"sha256\":\"8c8e675399c3d4fe5470103e79bc281c1261f7818438eef9d223580ac6c6aeb6\",\"files\":28},\"serverCurrent\":true,\"uiOnDisk\":{\"sha256\":\"0844b682b2c64f321647ea753df670871184bb1da73d68f81ff3babe1b9f5703\",\"files\":27}}}}",
+      "body": {
+        "ok": true,
+        "data": {
+          "data": "synthetic",
+          "defaultLang": "en",
+          "timezone": {
+            "iana": "Asia/Seoul",
+            "label": {
+              "en": "Seoul time",
+              "ko": "서울 시간"
+            },
+            "utcOffset": "+09:00",
+            "note": {
+              "en": "EBYS stores calendar times in Seoul time (UTC+9) and always shows the zone next to the time.",
+              "ko": "EBYS는 달력 시간을 서울 시간(UTC+9)으로 저장하고 시간 옆에 항상 표시합니다."
+            }
+          },
+          "calendar": {
+            "kind": "simulated",
+            "name": "Demo Calendar (in this app only, simulated)",
+            "permission": "not_required"
+          },
+          "notifications": {
+            "kind": "preview",
+            "permission": "not_applicable"
+          },
+          "micCapture": "unavailable",
+          "speechInput": "unavailable",
+          "version": "actions-0.1.0",
+          "mode": "simulated",
+          "adapters": [
+            {
+              "id": "calendar.simulated",
+              "kind": "calendar",
+              "mode": "simulated",
+              "label": {
+                "ko": "시뮬레이션 달력 (앱 안에서만)",
+                "en": "Simulated calendar (inside this app only)"
+              },
+              "claimStatus": "simulated",
+              "maxVerifyLevel": "none",
+              "canReconcile": true,
+              "notes": "In-memory Demo Calendar. Nothing is written to any phone or account."
+            },
+            {
+              "id": "notification.preview",
+              "kind": "notification",
+              "mode": "simulated",
+              "label": {
+                "ko": "알림 미리보기 (실제 알림 아님)",
+                "en": "Notification preview (not a real notification)"
+              },
+              "claimStatus": "simulated",
+              "maxVerifyLevel": "none",
+              "notes": "Pure preview list. No Notification API, no push, no server."
+            }
+          ],
+          "faultInjection": null,
+          "forbidden": "no tel/sms/mailto/emergency actions exist in this layer",
+          "model": {
+            "route": "cursor-cli",
+            "model": "claude-sonnet-5-5-low",
+            "healthy": true
+          },
+          "sourceSnapshot": {
+            "serverLoaded": {
+              "startedAt": "2026-11-09T03:51:40.668Z",
+              "sha256": "8c8e675399c3d4fe5470103e79bc281c1261f7818438eef9d223580ac6c6aeb6",
+              "files": 28
+            },
+            "serverOnDisk": {
+              "sha256": "8c8e675399c3d4fe5470103e79bc281c1261f7818438eef9d223580ac6c6aeb6",
+              "files": 28
+            },
+            "serverCurrent": true,
+            "uiOnDisk": {
+              "sha256": "0844b682b2c64f321647ea753df670871184bb1da73d68f81ff3babe1b9f5703",
+              "files": 27
+            }
+          }
+        }
+      },
+      "sha256": "9e5bb0a49ab3ad19e9407251d7986bd5a14bc4e076eec9e05ae288b40266968f"
+    },
+    {
+      "label": "root-no-override",
+      "path": "/",
+      "method": "GET",
+      "requestedAt": "2026-11-09T03:53:12.868Z",
+      "completedAt": "2026-11-09T03:53:12.871Z",
+      "httpStatus": 302,
+      "location": "/?api=live",
+      "contentType": null,
+      "raw": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "root-live-html",
+      "path": "/?api=live",
+      "method": "GET",
+      "requestedAt": "2026-11-09T03:53:12.872Z",
+      "completedAt": "2026-11-09T03:53:13.059Z",
+      "httpStatus": 200,
+      "location": null,
+      "contentType": "text/html; charset=utf-8",
+      "raw": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, viewport-fit=cover\">\n  <meta name=\"theme-color\" content=\"#13284A\">\n  <title>EBYS · Ever by your side</title>\n  <link rel=\"icon\" type=\"image/svg+xml\" href=\"assets/ebys-mark.svg\">\n  <link rel=\"apple-touch-icon\" href=\"assets/ebys-mark.svg\">\n  <link rel=\"stylesheet\" href=\"styles.css\">\n</head>\n<body>\n  <a class=\"skip\" href=\"#main\">Skip to content</a>\n  <div id=\"app\"></div>\n  <dialog id=\"evidence-dialog\" aria-label=\"Source\"></dialog>\n  <noscript>This app needs JavaScript. 이 앱은 JavaScript가 필요해요.</noscript>\n  <script type=\"module\" src=\"app.js\"></script>\n</body>\n</html>\n",
+      "sha256": "607eaf997b9be3d6bf2b40002bf96a74554f5673ef5283e279b324a430f3533a"
+    },
+    {
+      "label": "root-app-module",
+      "path": "/app.js",
+      "method": "GET",
+      "requestedAt": "2026-11-09T03:53:13.059Z",
+      "completedAt": "2026-11-09T03:53:13.061Z",
+      "httpStatus": 200,
+      "location": null,
+      "contentType": "text/javascript; charset=utf-8",
+      "raw": "// EBYS UI entry. Static ES modules, no build. Track A app (CONTRACTS section 2).\nimport { h } from './lib/dom.js';\nimport { t, getLang, setLang } from './i18n.js';\nimport { state, app, setRenderer, rerender, go } from './store.js';\nimport { selectApi } from './services/api.js';\nimport { modelChipInfo, Btn } from './components.js';\nimport { displayStateSource } from './lib/contracts.js';\nimport { loadPrefs } from './lib/prefs.js';\nimport { Icon, BrandMark } from './lib/icons.js';\nimport { renderInput } from './screens/input.js';\nimport { renderMemories } from './screens/memories.js';\nimport { renderAsk } from './screens/ask.js';\nimport { renderProposal } from './screens/proposal.js';\nimport { renderPlans } from './screens/plans.js';\nimport { renderPrivacy } from './screens/privacy.js';\nimport { stopSpeaking, stopListening } from './lib/speech.js';\n\nconst SCREENS = { input: renderInput, memories: renderMemories, ask: renderAsk, proposal: renderProposal, plans: renderPlans, privacy: renderPrivacy };\nconst NAV = [\n  { route: 'input', key: 'nav.input', icon: 'home' },\n  { route: 'memories', key: 'nav.memory', icon: 'memories' },\n  { route: 'ask', key: 'nav.ask', icon: 'ask' },\n  { route: 'plans', key: 'nav.plans', icon: 'plans', also: ['proposal'] },\n];\n\n/** Sample vs live, in plain words. The technical route detail lives in Settings and next to results. */\nfunction ModePill() {\n  const live = app.apiKind === 'live';\n  const m = modelChipInfo();\n  const fallback = live && m.cls === 'chip-fallback';\n  const cls = !live ? 'pill-sample' : fallback ? 'pill-fallback' : 'pill-live';\n  return h('span', { class: `modepill ${cls}`, title: m.text },\n    h('span', { class: 'pill-dot', 'aria-hidden': 'true' }), t(!live ? 'mode.sample' : fallback ? 'mode.liveFallback' : 'mode.live'));\n}\n\nfunction AppBar() {\n  return h('header', { class: 'appbar' },\n    h('div', { class: 'brand', title: t('app.tagline') }, BrandMark({ size: 44 }), h('span', { class: 'wordmark' }, t('app.name'))),\n    ModePill(),\n    h('button', {\n      type: 'button', class: `iconbtn ${state.route === 'privacy' ? 'iconbtn-on' : ''}`, 'aria-label': t('settings.open'),\n      'aria-current': state.route === 'privacy' ? 'page' : null, onClick: () => go('privacy'),\n    }, Icon('settings', { size: 30 })));\n}\n\nfunction PrivacyBar() {\n  const paused = state.paused;\n  const listening = state.listening && !paused;\n  const cls = listening ? 'pb-listening' : paused ? 'pb-paused' : 'pb-off';\n  return h('div', { class: `privacybar ${cls}`, role: 'status', 'aria-live': 'polite' },\n    h('span', { class: 'pb-icon' }, Icon(listening ? 'mic' : paused ? 'pause' : 'micOff', { size: 26 })),\n    h('span', { class: 'pb-text' }, listening ? t('privacy.listening') : paused ? t('privacy.paused') : t('privacy.nomic')),\n    listening ? Btn(t('mic.stop'), () => stopListening(), { variant: 'bar' }) : null,\n    Btn(paused ? t('privacy.resume') : t('privacy.pause'), () => { state.paused = !state.paused; rerender(); }, { variant: 'bar' }));\n}\n\nfunction Nav() {\n  return h('nav', { class: 'bottomnav', 'aria-label': t('app.name') },\n    NAV.map((n) => {\n      const on = state.route === n.route || n.also?.includes(state.route);\n      return h('button', {\n        type: 'button', class: `nav-item ${on ? 'nav-on' : ''}`, 'aria-current': on ? 'page' : null, onClick: () => go(n.route),\n      }, Icon(n.icon, { size: 28, cls: 'nav-icon' }), h('span', { class: 'nav-label' }, t(n.key)));\n    }));\n}\n\nfunction render({ focus = false } = {}) {\n  // Never keep the microphone open when leaving Ask or pausing.\n  if (state.listening && (state.paused || state.route !== 'ask')) stopListening();\n  if (state.speaking && state.route === 'input') { stopSpeaking(); state.speaking = null; }\n  const root = document.getElementById('app');\n  const y = window.scrollY;\n  document.documentElement.style.setProperty('--scale', String(state.scale));\n  document.documentElement.lang = getLang();\n  const main = h('main', { id: 'main', class: `main screen-${state.route}`, tabindex: '-1' }, (SCREENS[state.route] ?? renderInput)());\n  root.replaceChildren(\n    h('div', { class: 'topstack' }, AppBar(), PrivacyBar()), main,\n    h('footer', { class: 'foot' },\n      h('p', { class: 'honesty' }, t('foot.honesty')),\n      h('p', { class: 'small' }, t('foot.dsrc', { src: displayStateSource }))),\n    Nav());\n  if (focus) {\n    window.scrollTo(0, 0);\n    document.getElementById('screen-title')?.focus({ preventScroll: true });\n  } else {\n    window.scrollTo(0, y);\n  }\n}\n\nasync function boot() {\n  const q = new URLSearchParams(location.search);\n  // Fresh storage => English. Only an explicit ?lang= or a saved choice changes it (never navigator.language).\n  const prefs = loadPrefs(location.search);\n  setLang(prefs.lang);\n  state.scale = prefs.scale;\n  app.api = selectApi(location.search);\n  app.apiKind = app.api.kind;\n  if (q.get('route') && SCREENS[q.get('route')]) state.route = q.get('route');\n  setRenderer(render);\n  render({ focus: false });\n  const rt = await app.api.runtime();\n  state.runtime = rt.ok ? rt.data : null;\n  render({ focus: false });\n}\n\nboot();\n",
+      "sha256": "c0fe926526cb45792e9ee77ef3678db98b922f7540e0be1469ce0985f80b96ab"
+    },
+    {
+      "label": "root-styles",
+      "path": "/styles.css",
+      "method": "GET",
+      "requestedAt": "2026-11-09T03:53:13.061Z",
+      "completedAt": "2026-11-09T03:53:13.075Z",
+      "httpStatus": 200,
+      "location": null,
+      "contentType": "text/css; charset=utf-8",
+      "raw": "/* EBYS · \"Ever by your side\". Warm navy / ivory / gold companion, built for older eyes and hands.\n   Rules: 22px base x user scale, >=56px targets (64px primary), AAA (7:1) text pairs, visible focus,\n   zoom never disabled, reduced motion honoured. Colour is never the only signal: every state also has\n   an icon, a word and a border style. No web fonts are downloaded (local font stacks only). */\n:root {\n  --scale: 1;\n  /* brand */\n  --navy: #13284a;\n  --navy-deep: #0c1a33;\n  --ivory: #fbf6ec;\n  --paper: #fffdf8;\n  --sand: #f3e9d6;\n  --gold: #e2b65a;        /* decorative only (never text on ivory) */\n  --gold-on-navy: #f2c76e; /* text on navy: AAA */\n  /* text */\n  --bg: #fbf6ec;\n  --text: #1a1f2b;\n  --muted: #3c4150;\n  --line: #6b6455;\n  --rule: #d8ccb4;        /* decorative dividers only */\n  --primary: #13284a;\n  --primary-fg: #fbf6ec;\n  --link: #13284a;\n  /* states */\n  --danger: #8a1c1c;\n  --danger-bg: #fdecea;\n  --warn: #4d3300;\n  --warn-bg: #fdf0c8;\n  --ok: #10431f;\n  --ok-bg: #e3f1e6;\n  --fixture: #3d1f66;\n  --fixture-bg: #f0e8fa;\n  --model: #13284a;\n  --model-bg: #e6ecf6;\n  --fallback: #5c2300;\n  --fallback-bg: #ffe8d4;\n  --neutral: #2b2b2b;\n  --neutral-bg: #ece7dd;\n  --bar-off: #fbf6ec;\n  --bar-off-bg: #0c1a33;\n  --bar-listen-bg: #8a1c1c;\n  --focus: #c2410c;\n  /* type + sizing */\n  --font-display: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', 'Noto Serif KR', Georgia, serif;\n  --font-body: Seravek, 'Segoe UI Variable Text', 'Segoe UI', Ubuntu, Roboto, 'Noto Sans', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;\n  --tap: 2.6rem;      /* 57px at 100% */\n  --tap-primary: 2.95rem; /* 65px at 100% */\n  --radius: 18px;\n  --shadow: 0 1px 0 rgba(19, 40, 74, 0.06), 0 10px 28px -16px rgba(19, 40, 74, 0.35);\n}\n* { box-sizing: border-box; }\nhtml { font-size: calc(22px * var(--scale)); -webkit-text-size-adjust: 100%; }\nbody {\n  margin: 0; color: var(--text); font-family: var(--font-body); line-height: 1.55; overflow-wrap: anywhere;\n  background:\n    radial-gradient(120% 60% at 100% 0%, rgba(226, 182, 90, 0.16), transparent 60%),\n    radial-gradient(90% 50% at 0% 100%, rgba(19, 40, 74, 0.06), transparent 60%),\n    var(--bg);\n  background-attachment: fixed;\n}\n#app { max-width: 30rem; margin: 0 auto; min-height: 100vh; padding-bottom: calc(5.2rem + env(safe-area-inset-bottom)); }\nh1, h2, h3 { font-family: var(--font-display); color: var(--navy); line-height: 1.2; text-wrap: balance; letter-spacing: 0.005em; }\nh1 { font-size: 1.5rem; margin: 0.8rem 0 0.6rem; }\nh2 { font-size: 1.2rem; margin: 1.3rem 0 0.5rem; }\nh3 { font-size: 1.05rem; margin: 0.4rem 0; }\np { margin: 0.45rem 0; text-wrap: pretty; }\n.small { font-size: 0.82rem; color: var(--muted); }\n.lead { font-size: 1rem; }\n.main { padding: 0.4rem 1rem 0.5rem; outline: none; }\n:focus-visible { outline: 4px solid var(--focus); outline-offset: 3px; box-shadow: 0 0 0 7px var(--paper); }\nh1:focus, .main:focus { outline: none; box-shadow: none; }\n.skip { position: absolute; left: 0.5rem; top: -4rem; z-index: 100; background: var(--paper); color: var(--navy); padding: 0.6rem 1rem; border: 3px solid var(--navy); border-radius: 12px; font-weight: 700; }\n.skip:focus { top: 0.5rem; }\n.icon { flex: none; vertical-align: middle; }\n\n/* ---------- app bar ---------- */\n.topstack { position: sticky; top: 0; z-index: 25; }\n.appbar {\n  display: flex; align-items: center; gap: 0.5rem;\n  padding: calc(0.45rem + env(safe-area-inset-top)) 0.8rem 0.45rem; background: var(--navy); color: var(--ivory);\n}\n.brand { display: flex; align-items: center; gap: 0.5rem; flex: none; }\n.appbar .modepill { margin-left: auto; }\n.brandmark { flex: none; border-radius: 12px; box-shadow: 0 0 0 2px rgba(242, 199, 110, 0.35); }\n.appbar .brandmark { --mark-bg: #1c3863; }\n.brand-words { display: flex; flex-direction: column; min-width: 0; line-height: 1.05; }\n.wordmark { font-family: var(--font-display); font-weight: 700; font-size: 24px; letter-spacing: 0.16em; color: var(--ivory); white-space: nowrap; }\n.eyebrow { margin: 0 0 0.3rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-on-navy); }\n.tagline { font-size: 0.72rem; letter-spacing: 0.04em; color: var(--gold-on-navy); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }\n.modepill {\n  flex: 0 1 auto; min-width: 0; display: inline-flex; align-items: center; gap: 0.35rem;\n  font-size: 15px; font-weight: 700; line-height: 1.2; padding: 0.3rem 0.6rem; border-radius: 999px; border: 2px solid currentColor;\n}\n.pill-dot { width: 0.55rem; height: 0.55rem; border-radius: 50%; background: currentColor; flex: none; }\n.pill-sample { background: var(--fixture-bg); color: var(--fixture); border-style: dashed; }\n.pill-live { background: var(--ok-bg); color: var(--ok); }\n.pill-fallback { background: var(--fallback-bg); color: var(--fallback); border-style: dashed; }\n.iconbtn {\n  flex: none; width: var(--tap); height: var(--tap); min-width: 56px; min-height: 56px; display: grid; place-items: center;\n  border-radius: 50%; border: 2px solid rgba(251, 246, 236, 0.55); background: transparent; color: var(--ivory); cursor: pointer;\n}\n.iconbtn-on { background: var(--ivory); color: var(--navy); border-color: var(--ivory); }\n\n/* ---------- privacy strip (always visible) ---------- */\n.privacybar {\n  display: flex; align-items: center; gap: 0.5rem;\n  padding: 0.3rem 0.8rem; min-height: 3rem; font-size: 0.8rem;\n}\n.pb-off { background: var(--bar-off-bg); color: var(--bar-off); }\n.pb-listening { background: var(--bar-listen-bg); color: var(--bar-off); border-bottom: 4px double #ffffff; }\n.pb-paused { background: var(--warn-bg); color: var(--warn); border-bottom: 4px solid var(--warn); }\n.pb-icon { display: grid; place-items: center; flex: none; }\n.pb-text { flex: 1 1 auto; font-weight: 700; line-height: 1.25; min-width: 0; }\n\n/* ---------- buttons ---------- */\n.btn {\n  font: inherit; font-weight: 700; min-height: var(--tap); padding: 0.45rem 1.1rem; border-radius: 16px; cursor: pointer; text-align: center;\n  border: 3px solid var(--navy); background: var(--paper); color: var(--navy);\n  display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;\n  transition: transform 120ms ease-out, background-color 120ms ease-out;\n}\n.btn:active:not(:disabled) { transform: scale(0.98); }\n.btn-primary {\n  width: 100%; min-height: var(--tap-primary); font-size: 1.05rem; background: var(--navy); color: var(--primary-fg); border-color: var(--navy);\n  box-shadow: 0 6px 0 -2px var(--gold), var(--shadow);\n}\n.btn-secondary { background: var(--paper); color: var(--navy); }\n.btn-danger { background: var(--paper); color: var(--danger); border-color: var(--danger); border-style: double; border-width: 5px; }\n.btn-link { border: none; background: none; color: var(--link); text-decoration: underline; text-underline-offset: 0.18em; min-height: var(--tap); padding: 0.2rem 0.4rem; }\n.btn-bar { flex: none; font-size: 0.78rem; min-height: var(--tap); padding: 0 0.9rem; border-radius: 999px; background: var(--ivory); color: var(--navy); border-color: var(--ivory); }\n.pb-paused .btn-bar { background: var(--paper); color: var(--warn); border-color: var(--warn); }\n.btn-toggle { background: var(--paper); color: var(--navy); }\n.btn-toggle.btn-on { background: var(--navy); color: var(--primary-fg); }\n.btn-toggle.btn-on::before { content: '✓'; }\n.btn:disabled { background: var(--neutral-bg); color: var(--neutral); border-color: var(--line); border-style: dotted; box-shadow: none; cursor: not-allowed; }\n.stack { display: flex; flex-direction: column; gap: 0.75rem; margin: 0.9rem 0; }\n.row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 0.6rem 0; }\n.row .btn { flex: 1 1 8rem; }\n.seg { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.3rem 0 0.4rem; }\n.seg .btn { flex: 1 1 6rem; }\n\n/* ---------- forms ---------- */\n.label { display: block; font-weight: 700; margin: 1rem 0 0.25rem; color: var(--navy); }\n.field {\n  width: 100%; font: inherit; min-height: var(--tap); padding: 0.45rem 0.7rem; border: 3px solid var(--line); border-radius: 14px;\n  color: var(--text); background: var(--paper);\n}\n.field:focus-visible { border-color: var(--navy); }\ntextarea.field { min-height: 7rem; line-height: 1.45; }\n.choices { border: 2px solid var(--rule); border-radius: 14px; margin: 0.8rem 0; padding: 0.4rem 0.8rem; background: var(--paper); }\n.choices legend { font-weight: 700; padding: 0 0.4rem; color: var(--navy); }\n.check { display: flex; gap: 0.75rem; align-items: flex-start; min-height: var(--tap); padding: 0.45rem 0; cursor: pointer; }\n.check input { width: 1.7rem; height: 1.7rem; flex: none; margin-top: 0.15rem; accent-color: var(--navy); }\n.check-strong { font-weight: 700; }\n.row-time { display: flex; gap: 0.6rem; }\n.row-time .field-group { flex: 1; }\ndetails.more { margin: 0.6rem 0; border: 2px solid var(--rule); border-radius: 14px; padding: 0 0.8rem; background: var(--paper); }\ndetails.more > summary, details.card > summary { min-height: var(--tap); display: flex; align-items: center; font-weight: 700; color: var(--navy); cursor: pointer; }\n\n/* ---------- chips ---------- */\n.chips { display: flex; gap: 0.5rem; margin: 0.6rem 0; overflow-x: auto; padding-bottom: 0.2rem; }\n.chips-wrap { flex-wrap: wrap; overflow: visible; }\n.chip {\n  font: inherit; font-size: 0.92rem; min-height: var(--tap); padding: 0.3rem 1rem; border-radius: 999px; border: 2.5px solid var(--navy);\n  background: var(--paper); color: var(--navy); font-weight: 700; cursor: pointer; text-align: left; flex: none;\n}\n.chips-wrap .chip { flex: 0 1 auto; }\n.chip-on { background: var(--navy); color: var(--primary-fg); }\n.chip:disabled { background: var(--neutral-bg); color: var(--neutral); border-color: var(--line); border-style: dotted; }\n\n/* ---------- cards ---------- */\n.card { border: 2px solid var(--rule); border-radius: var(--radius); padding: 0.85rem 1rem; margin: 0.9rem 0; background: var(--paper); box-shadow: var(--shadow); }\n.card-quiet { box-shadow: none; background: var(--sand); }\n.note { background: var(--warn-bg); color: var(--warn); border: 3px solid var(--warn); border-radius: 14px; padding: 0.55rem 0.8rem; }\n.note ul, .caveats ul { margin: 0.3rem 0; padding-left: 1.2rem; }\n.note-fixture { background: var(--fixture-bg); color: var(--fixture); border: 3px dashed var(--fixture); }\n.errorbox { background: var(--danger-bg); color: var(--danger); border: 4px solid var(--danger); border-radius: 14px; padding: 0.6rem 0.85rem; margin: 0.8rem 0; }\n.errorbox .small { color: var(--danger); }\n.warn { color: var(--warn); font-weight: 700; }\n.warn-strong { color: var(--danger); font-weight: 700; }\n.ok-strong { color: var(--ok); font-weight: 700; }\n.slot-unknown-inline { color: var(--muted); border: 2px dashed var(--line); border-radius: 8px; padding: 0 0.45rem; }\n.tznote { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem; font-size: 0.85rem; color: var(--muted); margin: 0.5rem 0; padding: 0.4rem 0.6rem; border-left: 5px solid var(--gold); background: var(--paper); border-radius: 0 10px 10px 0; }\n.tznote.tz-differs { border-left-color: var(--warn); }\n.tz-dev { display: block; width: 100%; }\n\n/* ---------- home ---------- */\n.hero {\n  position: relative; overflow: hidden; margin: 0.6rem 0 0.4rem; padding: 1.1rem 1.1rem 1rem; border-radius: 26px; color: var(--ivory);\n  background: radial-gradient(140% 120% at 100% 0%, #24457a 0%, var(--navy) 55%, var(--navy-deep) 100%);\n  box-shadow: var(--shadow);\n}\n.hero::after { /* the brand's companion arc, echoed large and quiet */\n  content: ''; position: absolute; right: -3.2rem; top: -2.4rem; width: 9rem; height: 9rem; border-radius: 50%;\n  border: 0.55rem solid rgba(226, 182, 90, 0.38); border-left-color: transparent; border-bottom-color: transparent; transform: rotate(10deg); pointer-events: none;\n}\n.hero-top { display: flex; align-items: center; gap: 0.7rem; }\n.hero-title { color: var(--ivory); margin: 0; font-size: 1.55rem; }\n.hero-lead { font-size: 1rem; margin: 0.7rem 0 0.8rem; color: var(--ivory); }\n.path { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.35rem; }\n.path li { display: flex; align-items: center; gap: 0.6rem; font-weight: 700; font-size: 0.9rem; color: var(--ivory); opacity: 1; }\n.path-n { width: 1.6rem; height: 1.6rem; border-radius: 50%; display: grid; place-items: center; font-size: 0.8rem; border: 2px solid var(--gold-on-navy); color: var(--gold-on-navy); flex: none; }\n.path-now .path-n { background: var(--gold-on-navy); color: var(--navy); }\n.path-done .path-n { background: transparent; }\n.path-now { text-decoration: underline; text-decoration-color: var(--gold-on-navy); text-underline-offset: 0.25em; }\n.samples { display: flex; flex-direction: column; gap: 0.6rem; }\n.samplecard {\n  font: inherit; width: 100%; min-height: var(--tap-primary); display: flex; align-items: center; gap: 0.75rem; text-align: left; cursor: pointer;\n  padding: 0.6rem 0.9rem; border-radius: var(--radius); border: 2.5px solid var(--rule); background: var(--paper); color: var(--text); box-shadow: var(--shadow);\n  transition: transform 120ms ease-out;\n}\n.samplecard:active { transform: scale(0.99); }\n.samplecard .icon { color: var(--navy); }\n.samplecard-on { border: 4px solid var(--navy); background: var(--model-bg); }\n.samplecard-on::after { content: '✓'; margin-left: auto; font-weight: 700; color: var(--navy); font-size: 1.2rem; }\n.sc-words { display: flex; flex-direction: column; min-width: 0; }\n.sc-title { font-weight: 700; color: var(--navy); }\n.sc-tag { font-size: 0.78rem; color: var(--fixture); font-weight: 700; }\n.actionzone { margin: 1rem 0 0.4rem; padding: 0.6rem 0.9rem 0.9rem; border-radius: var(--radius); background: var(--sand); border: 2px solid var(--rule); }\n.actionzone .btn-primary { margin-top: 0.5rem; }\n\n/* ---------- memory ---------- */\n.mem-head { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; justify-content: space-between; }\n.kind-chip { font-weight: 700; font-size: 0.85rem; color: var(--navy); border: 2px solid var(--navy); border-radius: 8px; padding: 0 0.5rem; background: var(--paper); }\n.mem-summary { font-size: 1.1rem; margin: 0.5rem 0 0.3rem; }\n.mem-inactive { border-style: dashed; background: var(--neutral-bg); box-shadow: none; }\n.mem-inactive .mem-summary { text-decoration: line-through; color: var(--neutral); }\n.facts { margin: 0.3rem 0; }\n.fact { display: grid; grid-template-columns: 5.6rem 1fr; gap: 0.5rem; padding: 0.35rem 0; border-top: 1px solid var(--rule); align-items: start; }\n.fact dt { display: flex; align-items: center; gap: 0.3rem; font-weight: 700; color: var(--muted); font-size: 0.9rem; }\n.fact dd { margin: 0; font-weight: 700; }\n.mem-slot { margin: 0.2rem 0; }\n.mem-slot-label { font-weight: 700; }\n.unc { display: inline-block; font-size: 0.78rem; font-weight: 700; border: 2px solid currentColor; border-radius: 8px; padding: 0 0.4rem; background: var(--paper); white-space: nowrap; }\n.unc-stated { color: var(--ok); }\n.unc-inferred, .unc-approximate { color: var(--model); border-style: dashed; }\n.unc-ambiguous, .unc-conflicting { color: var(--warn); background: var(--warn-bg); }\n.unc-unknown { color: var(--neutral); border-style: dotted; }\n.unc-superseded { color: var(--neutral); text-decoration: line-through; }\n\n/* ---------- answer slots ---------- */\n.slots { display: grid; grid-template-columns: 1fr; gap: 0.55rem; margin: 0.6rem 0; }\n.slot { border: 2px solid var(--rule); border-left: 6px solid var(--navy); border-radius: 14px; padding: 0.45rem 0.75rem; background: var(--paper); }\n.slot-empty { border-style: dashed; border-left-style: dashed; border-left-color: var(--line); background: var(--neutral-bg); }\n.slot-label { display: flex; align-items: center; gap: 0.35rem; font-weight: 700; font-size: 0.85rem; color: var(--muted); }\n.slot-value { font-size: 1.08rem; font-weight: 700; color: var(--text); }\n.slot-unknown { color: var(--neutral); }\n.answer-sentence { font-family: var(--font-display); font-size: 1.18rem; color: var(--navy); }\n.caveats { margin: 0.6rem 0; }\n\n/* ---------- source dialog ---------- */\ndialog { width: min(30rem, 96vw); max-height: 90vh; border: 3px solid var(--navy); border-radius: 24px; padding: 0.9rem 1.1rem; color: var(--text); background: var(--paper); overflow: auto; }\ndialog::backdrop { background: rgba(12, 26, 51, 0.72); }\n.ev-list { list-style: none; padding: 0; margin: 0; }\n.ev-item { border-bottom: 2px solid var(--rule); padding: 0.7rem 0; }\n.ev-quote { margin: 0.35rem 0; padding: 0.4rem 0.7rem; border-left: 8px solid var(--gold); font-family: var(--font-display); font-weight: 700; font-size: 1.08rem; background: var(--sand); border-radius: 0 12px 12px 0; }\n.ev-line mark { background: var(--warn-bg); color: var(--text); font-weight: 700; text-decoration: underline; outline: 2px solid var(--warn); }\n.ev-ok { color: var(--ok); font-weight: 700; }\n.ev-bad { color: var(--danger); font-weight: 700; }\n.ev-speaker { font-weight: 700; color: var(--navy); }\n.transcript { padding-left: 1.4rem; }\n.utt { margin: 0.35rem 0; }\n.utt-hl { background: var(--warn-bg); outline: 3px solid var(--warn); border-radius: 6px; }\n.speaker { font-weight: 700; color: var(--navy); }\n.speaker-unknown { border-bottom: 2px dashed var(--line); }\n\n/* ---------- state badges + cards: icon + word + border style ---------- */\n.state-badge { display: inline-block; font-weight: 700; font-size: 0.9rem; padding: 0.1rem 0.6rem; border-radius: 10px; border: 3px solid currentColor; background: var(--paper); }\n.state-big .state-badge { font-size: 1.12rem; padding: 0.3rem 0.8rem; }\n.st-needs_info { color: var(--warn); border-style: dotted; background: var(--warn-bg); }\n.st-proposed { color: var(--model); border-style: dashed; }\n.st-user_confirmed { color: var(--model); border-style: solid; background: var(--model-bg); }\n.st-executing { color: var(--model); border-style: solid; }\n.st-handed_off { color: #00404a; border-style: double; border-width: 5px; background: #e0f4f6; }\n.st-completed_external { color: var(--ok); border-style: solid; border-width: 5px; background: var(--ok-bg); }\n.st-simulated_completed { color: var(--fixture); border-style: dashed; background: repeating-linear-gradient(135deg, #f3ecfb 0 10px, #e4d8f5 10px 20px); }\n.st-user_attested { color: var(--ok); border-style: dotted; background: var(--paper); }\n.st-failed { color: var(--danger); border-style: solid; border-width: 5px; background: var(--danger-bg); }\n.st-permission_denied { color: #5a2400; border-style: double; border-width: 5px; background: #ffe6d1; }\n.st-unknown_outcome, .st-verify_mismatch { color: var(--danger); border-style: dotted; border-width: 5px; background: var(--danger-bg); }\n.st-cancelled, .st-expired { color: var(--neutral); border-style: solid; background: var(--neutral-bg); text-decoration: line-through; }\n.st-superseded { color: var(--neutral); border-style: dashed; background: var(--neutral-bg); text-decoration: line-through; }\n.st-candidate { color: var(--neutral); border-style: dashed; }\n.st-none { }\n.state-badge .state-icon { text-decoration: none; display: inline-block; }\n.statecard { border-width: 4px; }\n.statecard.st-proposed, .statecard.st-needs_info, .statecard.st-candidate { background: var(--paper); text-decoration: none; }\n.statecard.st-cancelled, .statecard.st-expired, .statecard.st-superseded { text-decoration: none; }\n.statecard.st-cancelled h2, .statecard.st-cancelled h3 { text-decoration: line-through; }\n.statecard .state-badge { text-decoration: none; }\n\n/* ---------- proposal flow ---------- */\n.steps { display: flex; gap: 0.3rem; list-style: none; padding: 0; margin: 0.4rem 0 0.8rem; font-size: 15px; }\n.steps li { flex: 1; text-align: center; border: 2px solid var(--rule); border-radius: 10px; padding: 0.25rem 0.1rem; background: var(--paper); color: var(--muted); font-weight: 700; }\n.steps .step-on { background: var(--navy); color: var(--primary-fg); border-color: var(--navy); }\n.readback { margin: 0.5rem 0; }\n.rb-row { display: grid; grid-template-columns: 5.4rem 1fr; gap: 0.6rem; padding: 0.45rem 0; border-bottom: 1px solid var(--rule); align-items: baseline; }\n.rb-row dt { font-weight: 700; color: var(--muted); font-size: 0.9rem; }\n.rb-row dd { margin: 0; font-size: 1.08rem; font-weight: 700; color: var(--text); }\n.readback-sentence { font-size: 1.02rem; padding: 0.5rem 0.7rem; background: var(--sand); border-radius: 12px; }\n\n/* ---------- notification preview ---------- */\n.notif-card { border: 3px solid var(--navy); border-radius: 20px; padding: 0.6rem 0.9rem; margin: 0.5rem 0; background: var(--paper); }\n.notif-body { font-weight: 700; font-size: 1.05rem; }\n.fake-btn { flex: 1; text-align: center; border: 2px dashed var(--line); border-radius: 10px; padding: 0.3rem; }\n\n/* ---------- receipt + capabilities + settings ---------- */\n.receipt, .caps, .plain { list-style: none; padding: 0; margin: 0.4rem 0; }\n.plain li { padding: 0.2rem 0; }\n.rc { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem; padding: 0.45rem 0.6rem; border: 3px solid var(--line); border-radius: 10px; margin: 0.3rem 0; font-weight: 700; }\n.rc-verified_deleted { color: var(--ok); background: var(--ok-bg); }\n.rc-not_deleted { color: var(--danger); background: var(--danger-bg); border-width: 5px; }\n.rc-not_verified { color: var(--warn); background: var(--warn-bg); border-style: dashed; }\n.rc-not_applicable { color: var(--neutral); background: var(--neutral-bg); border-style: dotted; }\n.cap { padding: 0.45rem 0; border-bottom: 1px solid var(--rule); }\n.cap-label { display: inline-block; font-size: 0.78rem; font-weight: 700; border: 2px solid currentColor; border-radius: 8px; padding: 0 0.4rem; }\n.cap-demonstrated .cap-label { color: var(--ok); }\n.cap-unverified .cap-label { color: var(--neutral); border-style: dotted; }\n.cap-designed .cap-label { color: var(--model); border-style: dashed; }\n.cap-simulated .cap-label { color: var(--fixture); border-style: dashed; }\n.cap-roadmap .cap-label { color: var(--fallback); border-style: double; border-width: 4px; }\n.statuschip { display: inline-block; padding: 0.15rem 0.6rem; margin: 0.15rem 0; border-radius: 999px; font-size: 0.8rem; font-weight: 700; border: 2px solid currentColor; }\n.chip-model { color: var(--model); background: var(--model-bg); }\n.chip-fallback { color: var(--fallback); background: var(--fallback-bg); border-style: dashed; }\n.chip-fixture { color: var(--fixture); background: var(--fixture-bg); border-style: dashed; }\n.chip-unverified { color: var(--neutral); background: var(--neutral-bg); border-style: dotted; }\n.chip-live { color: var(--ok); background: var(--ok-bg); }\n.chip-data { color: var(--neutral); background: var(--neutral-bg); }\n.readaloud { margin: 0.5rem 0; }\n\n/* ---------- progress overlay ---------- */\n.overlay { position: fixed; inset: 0; z-index: 50; background: rgba(12, 26, 51, 0.78); display: flex; align-items: center; justify-content: center; padding: 1rem; }\n.overlay-card { background: var(--paper); color: var(--text); border-radius: 24px; padding: 1.3rem; max-width: 26rem; width: 100%; text-align: center; border: 3px solid var(--navy); }\n.prog-title { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: var(--navy); }\n.spinner { width: 3.2rem; height: 3.2rem; border: 0.45rem solid var(--sand); border-top-color: var(--gold); border-right-color: var(--navy); border-radius: 50%; margin: 0 auto 0.7rem; animation: spin 1.6s linear infinite; }\n@keyframes spin { to { transform: rotate(360deg); } }\n\n/* ---------- footer + nav ---------- */\n.foot { padding: 0.5rem 1rem 1rem; }\n.honesty { background: var(--fixture-bg); color: var(--fixture); border: 2px dashed var(--fixture); border-radius: 12px; padding: 0.45rem 0.7rem; font-weight: 700; font-size: 0.8rem; }\n.bottomnav {\n  position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 30rem; z-index: 30; display: flex;\n  background: var(--paper); border-top: 2px solid var(--navy); padding: 0.25rem 0.3rem calc(0.25rem + env(safe-area-inset-bottom));\n  box-shadow: 0 -10px 24px -18px rgba(19, 40, 74, 0.5);\n}\n.nav-item {\n  flex: 1 1 0; min-width: 0; min-height: 64px; font: inherit; font-size: 17px; /* fixed: 4 tabs must fit 390px at any text size */\n  font-weight: 700; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;\n  border: none; background: transparent; color: var(--muted); cursor: pointer; padding: 0.2rem 0.1rem; border-radius: 16px;\n}\n.nav-icon { padding: 2px 14px; border-radius: 999px; box-sizing: content-box; }\n.nav-on { color: var(--navy); }\n.nav-on .nav-icon { background: var(--navy); color: var(--gold-on-navy); }\n.nav-on .nav-label { text-decoration: underline; text-decoration-thickness: 3px; text-decoration-color: var(--gold); text-underline-offset: 4px; }\n.nav-label { white-space: nowrap; }\n\n/* ---------- motion ---------- */\n@media (prefers-reduced-motion: reduce) {\n  .spinner { animation: none; border-top-color: var(--navy); border-right-color: var(--gold); }\n  .btn, .samplecard { transition: none; }\n  .btn:active:not(:disabled), .samplecard:active { transform: none; }\n}\n",
+      "sha256": "27cd7b5884228483c7a8d75eaf1c15d4d1f166b9d2b82aef6cb42b32cdef66cc"
+    },
+    {
+      "label": "served-i18n",
+      "path": "/i18n.js",
+      "method": "GET",
+      "requestedAt": "2026-11-09T03:53:13.076Z",
+      "completedAt": "2026-11-09T03:53:13.091Z",
+      "httpStatus": 200,
+      "location": null,
+      "contentType": "text/javascript; charset=utf-8",
+      "raw": "// EN (default) + KO strings. Keep keys identical in both; ui/test checks parity and usage.\n// English is the default for fresh storage. The browser locale is never consulted (see lib/prefs.js).\n\nlet lang = 'en';\nexport const getLang = () => lang;\nexport function setLang(l) {\n  lang = l === 'ko' ? 'ko' : 'en';\n  if (typeof document !== 'undefined') document.documentElement.lang = lang;\n}\n\nconst ko = {\n  'app.name': 'EBYS',\n  'app.tagline': '언제나 곁에',\n  'chip.data.synthetic': '합성(가짜) 데이터',\n  'chip.data.consented': '동의한 데이터',\n  'chip.api.fixture': '시연 파일 모드 · 시뮬레이션',\n  'chip.api.live': '서버 연결 모드',\n  'chip.model.title': '모델 경로',\n  'chip.model.live': '모델: {route} · {model}',\n  'chip.model.cached': '캐시된 모델 응답 · {route}',\n  'chip.model.fallback': '대체 방식(FALLBACK): 모델 없음 · 규칙 기반',\n  'chip.model.unverified': '모델 경로 미확인',\n  'chip.model.fixture': '시연 파일(FIXTURE) · 실제 모델 아님',\n  'chip.model.error': '모델 오류: {msg}',\n  'privacy.nomic': '마이크 꺼짐 · 붙여넣은 글만 분석해요',\n  'privacy.analyzing': '분석 중 · 붙여넣은 글만 사용해요',\n  'privacy.paused': '멈춤 · 새 대화를 받지 않아요',\n  'privacy.pause': '멈추기',\n  'privacy.resume': '다시 시작',\n  'privacy.open': '개인정보',\n  'nav.input': '홈',\n  'nav.memory': '기억',\n  'nav.ask': '묻기',\n  'nav.plans': '일정',\n  'nav.privacy': '개인정보',\n  'hdr.lang': 'English',\n  'hdr.langLabel': '언어를 영어로 바꾸기',\n  'hdr.size': '글자 크기',\n  'hdr.size100': '보통',\n  'hdr.size125': '크게',\n  'hdr.size150': '더 크게',\n  'foot.honesty': '합성 데이터로 만든 시연이에요. 실제 전화·문자·119는 없어요.',\n  'foot.dsrc': '상태 규칙 출처: {src}',\n  'voice.toggle': '읽어주기',\n  'voice.on': '켜짐',\n  'voice.off': '꺼짐',\n  'voice.read': '🔊 읽어주기',\n  'voice.stop': '⏹ 읽기 멈추기',\n  'voice.note': '브라우저 음성을 써요 (미검증). 글은 항상 보여요.',\n  'voice.unavailable': '이 기기에서는 읽어주기를 쓸 수 없어요. 글로 읽어 주세요.',\n  'voice.novoice': '이 기기에 한국어 음성이 없을 수 있어요. 안 들리면 글로 읽어 주세요.',\n  'voice.novoiceEn': '이 기기에 영어 음성이 없을 수 있어요. 안 들리면 글로 읽어 주세요.',\n  'mic.start': '🎤 말하기 (미검증)',\n  'mic.stop': '⏹ 듣기 멈추기',\n  'mic.note': '브라우저 음성 인식은 소리를 브라우저 회사 서버로 보낼 수 있어요. 미검증 기능이에요. 말한 내용은 글로만 들어가고, 보내기 전에 고칠 수 있어요.',\n  'mic.unsupported': '이 브라우저는 말하기를 지원하지 않아요. 글로 입력해 주세요.',\n  'mic.error': '음성 인식이 안 됐어요: {e}',\n  'mic.pausedBlock': '멈춤 상태에서는 듣지 않아요.',\n  'privacy.listening': '듣는 중 · 브라우저 음성 인식 (미검증)',\n  'rb.speakTitle': '읽어 드릴게요',\n  'rb.speakNoCalls': '실제 전화나 문자는 보내지 않아요.',\n\n  'a1.title': '대화 넣기',\n  'a1.lead': '가짜(합성) 대화를 붙여넣거나 예시를 고르세요. 마이크는 쓰지 않아요.',\n  'a1.sample1': '예시 1 · 병원 일정 (영어)',\n  'a1.sample2': '예시 2 · 도서관 약속 (영어)',\n  'a1.sample3': '예시 3 · 병원 일정 (한국어)',\n  'a1.titleLabel': '제목 (선택)',\n  'a1.textLabel': '대화 글 (한 줄에 \"말한 사람: 내용\")',\n  'a1.textHint': '새로 쓴 가짜 대화도 괜찮아요. 모델이 읽어서 기억을 만들어요.',\n  'a1.provLabel': '이 글은 어떤 글인가요?',\n  'a1.provSynthetic': '합성(가짜) 대화예요',\n  'a1.provConsented': '실제 대화이고, 말한 모든 분이 동의했어요',\n  'a1.consent': '이 글은 합성이거나, 말한 모든 분이 분석에 동의했어요.',\n  'a1.analyze': '이 대화 읽기',\n  'a1.needText': '대화 글을 먼저 넣어 주세요.',\n  'a1.needConsent': '동의 확인에 체크해 주세요.',\n  'a1.pausedBlock': '지금은 멈춤 상태라서 새 대화를 받지 않아요. 위의 \"다시 시작\"을 눌러 주세요.',\n  'a1.last': '마지막 분석',\n  'a1.lastMem': '기억 {n}개',\n  'a1.lastRej': '근거가 맞지 않아 버린 항목 {n}개',\n  'a1.lastMode.model': '모델로 분석했어요',\n  'a1.lastMode.fallback': '대체 방식(FALLBACK)으로 분석했어요 · 모델 아님',\n  'a1.lastMode.fixture': '시연 파일 결과예요 · 새 글은 읽지 못해요',\n  'a1.fixtureNoText': '시연 파일 모드는 예시만 읽을 수 있어요. 새 글을 분석하려면 주소 끝에 ?api=live 를 붙여 서버에 연결하세요.',\n  'a1.clear': '지우기',\n\n  'prog.ingest': '모델이 대화를 읽고 있어요',\n  'prog.query': '모델이 기억을 찾고 있어요',\n  'prog.propose': '일정 제안을 만들고 있어요',\n  'prog.save': '변경을 저장하고 있어요',\n  'prog.preview': '확인할 내용을 준비하고 있어요',\n  'prog.confirm': '일정을 처리하고 있어요',\n  'prog.delete': '삭제하고 있어요',\n  'prog.calm': '천천히 해도 괜찮아요. 모델 호출은 10~40초 걸릴 수 있어요.',\n  'prog.long': '조금 더 걸리고 있어요. 기다리거나 취소할 수 있어요.',\n  'prog.elapsed': '{s}초 지남',\n  'prog.cancel': '취소',\n  'prog.cancelled': '취소했어요.',\n\n  'err.title': '문제가 생겼어요',\n  'err.network': '서버에 연결하지 못했어요. 주소 끝의 ?api=live 와 서버 실행을 확인해 주세요.',\n  'err.code': '오류 코드: {code}',\n  'err.retryable': '다시 시도할 수 있어요.',\n  'err.notRetryable': '같은 방법으로는 어려워요.',\n  'err.dismiss': '닫기',\n\n  'a2.title': '기억',\n  'a2.empty': '아직 기억이 없어요. \"입력\"에서 대화를 넣어 주세요.',\n  'a2.toInput': '대화 넣으러 가기',\n  'a2.all': '전체',\n  'a2.event': '일정',\n  'a2.task': '할 일',\n  'a2.person': '사람',\n  'a2.fact': '사실',\n  'a2.superseded': '바뀐 기억',\n  'a2.changedTo': '→ 바뀜: {s}',\n  'a2.evidence': '근거 보기 · {n}',\n  'a2.noEvidence': '근거 없음',\n  'a2.propose': '일정 제안 만들기',\n  'a2.proposeTodo': '할 일 제안 만들기',\n  'a2.transcript': '대화 원문 ({n}줄)',\n  'a2.unknownSpeaker': '알 수 없는 사람',\n  'a2.rejectedNote': '근거가 원문과 맞지 않아 버린 항목: {n}',\n  'a2.refresh': '새로고침',\n  'ev.title': '근거',\n  'ev.verbatimOk': '원문과 글자가 같아요 ✔',\n  'ev.verbatimBad': '원문에서 찾지 못했어요 ⚠',\n  'ev.speaker': '말한 사람',\n  'ev.open': '대화 원문에서 보기',\n  'ev.close': '닫기',\n  'ev.none': '이 항목에는 근거가 없어서 믿을 수 없어요.',\n  'ev.unknownSource': '원문 정보를 찾지 못했어요 (인용만 보여요)',\n\n  'slot.who': '누구',\n  'slot.when': '언제',\n  'slot.where': '어디',\n  'slot.what': '무엇',\n  'slot.unknown': '모르겠어요',\n  'slot.unknownHint': '대화에 없어서 지어내지 않았어요',\n  'unc.stated': '직접 말했어요',\n  'unc.inferred': '짐작이에요',\n  'unc.approximate': '대략이에요',\n  'unc.ambiguous': '헷갈려요',\n  'unc.unknown': '모르겠어요',\n  'unc.conflicting': '말이 달라요',\n  'unc.superseded': '바뀌었어요',\n\n  'a3.title': '물어보기',\n  'a3.prompt': '무엇이 궁금하세요?',\n  'a3.placeholder': '예: 병원에 누구랑 언제 가요?',\n  'a3.send': '물어보기',\n  'a3.chips': '이렇게 물어볼 수 있어요',\n  'a3.chip1': '병원에 누구랑 언제 가요?',\n  'a3.chip2': '누가 무슨 말을 했어요?',\n  'a3.chip3': '이번 주에 할 일은 무엇인가요?',\n  'a3.chip4': '약 이름이 뭐였죠?',\n  'a3.noMemory': '먼저 \"입력\"에서 대화를 넣어야 물어볼 수 있어요.',\n  'a3.answer': '답',\n  'a3.notFound': '대화에서 찾지 못했어요. 지어내지 않을게요.',\n  'a3.clarify': '더 알아야 해요',\n  'a3.makeProposal': '일정으로 만들까요?',\n  'a3.again': '다시 물어보기',\n  'a3.slotEvidence': '근거 {n}',\n  'a3.modeFallback': '대체 방식(FALLBACK) 답이에요 · 모델 아님',\n  'a3.modeFixture': '시연 파일(FIXTURE) 답이에요 · 실제 모델 아님',\n  'a3.modeModel': '모델 답 · {route}',\n\n  'a4.title': '일정 제안',\n  'a4.noFlow': '제안이 없어요. \"기억\"이나 \"묻기\"에서 만들어 주세요.',\n  'a4.step1': '1 제안',\n  'a4.step2': '2 시간',\n  'a4.step3': '3 확인',\n  'a4.step4': '4 결과',\n  'a4.proposedNote': '아직 저장되지 않았어요. 제안일 뿐이에요.',\n  'a4.fieldTitle': '이름',\n  'a4.fieldWho': '누구',\n  'a4.fieldWhere': '어디',\n  'a4.fieldDate': '날짜',\n  'a4.fieldTime': '시간',\n  'a4.fieldAction': '할 일',\n  'a4.fieldReminders': '알림',\n  'a4.actionAppt': '일정 만들기',\n  'a4.actionTodo': '할 일 만들기',\n  'a4.why': '이렇게 제안한 근거',\n  'a4.review': '확인하러 가기',\n  'a4.edit': '고치기',\n  'a4.cancel': '이 제안 취소',\n  'a4.cancelAsk': '이 제안을 버릴까요?',\n  'a4.cancelYes': '네, 버려요',\n  'a4.cancelNo': '아니요',\n  'a4.dup': '이미 같은 일정이 있어요.',\n  'a4.dupView': '기존 일정 보기',\n  'a4.needsInfo': '시간을 더 정해야 해요.',\n  'a4.clarifyTitle': '몇 시로 할까요?',\n  'a4.clarifyLead': '오전인지 오후인지 꼭 골라 주세요. 대신 정해 드리지 않아요.',\n  'a4.candidates': '대화에서 나온 후보 (확정 아님)',\n  'a4.ampm': '오전 / 오후',\n  'a4.am': '오전',\n  'a4.pm': '오후',\n  'a4.hour': '시',\n  'a4.minute': '분',\n  'a4.reminderDay': '하루 전',\n  'a4.reminderHour': '1시간 전',\n  'a4.saveChanges': '저장하고 확인으로',\n  'a4.missingDate': '날짜를 골라 주세요',\n  'a4.missingHour': '시를 골라 주세요',\n  'a4.missingMinute': '분을 골라 주세요',\n  'a4.missingAmpm': '오전/오후를 골라 주세요',\n  'a4.unknownLater': '모르겠어요, 먼저 물어볼게요',\n  'a4.unknownLaterNote': '시간을 모르면 확정할 수 없어요. 제안은 \"정보 필요\" 상태로 남아요.',\n  'a4.confirmTitle': '이 내용이 맞나요?',\n  'a4.rbPerson': '사람',\n  'a4.rbDate': '날짜',\n  'a4.rbTime': '시간',\n  'a4.rbAction': '하는 일',\n  'a4.rbPlace': '장소',\n  'a4.noCalls': '실제 전화나 문자는 보내지 않아요.',\n  'a4.modeSim': '이 시연에서는 시뮬레이션이에요. 실제 캘린더에 저장되지 않아요.',\n  'a4.modeReal': '실제 캘린더 연결: {name}',\n  'a4.modeFile': '일정 파일로 넘겨요. 저장됐는지는 확인할 수 없어요.',\n  'a4.yes': '네, 확인해요',\n  'a4.working': '처리 중… 다시 누르지 마세요',\n  'a4.back': '고치기',\n  'a4.resultTitle': '결과',\n  'a4.verifiedAt': '확인 시각: {t}',\n  'a4.previewBasis': '아래는 미리보기 내용이에요. 확인된 저장 내용이 아니에요.',\n  'a4.readbackBasis': '캘린더에서 다시 읽은 내용이에요.',\n  'a4.retry': '다시 시도',\n  'a4.retryBlocked': '결과를 알 수 없어서 다시 시도할 수 없어요. 캘린더를 직접 확인해 주세요.',\n  'a4.checkCalendar': '캘린더에서 직접 확인해 주세요.',\n  'a4.toPlans': '일정 보기',\n  'a4.previewNotif': '알림 미리보기',\n  'a4.cancelledNote': '취소했어요. 아무것도 보내지 않았어요.',\n  'a4.cancelledInflight': '취소했지만 이미 시작된 일은 확인할 수 없어요. 캘린더를 확인해 주세요.',\n  'a4.permHint': '허용이 필요해요. 허용한 뒤 다시 시도해 주세요.',\n  'a4.proposalGone': '제안을 찾을 수 없어요.',\n  'a4.clarifyAgain': '서버가 시간이 더 필요하다고 해요. 시간을 다시 골라 주세요.',\n\n  'notif.title': '알림 미리보기',\n  'notif.note': '미리보기예요 · 실제 알림이 아니에요',\n  'notif.body': '{when} {title}',\n  'notif.ok': '확인',\n  'notif.later': '나중에',\n  'notif.at': '{label}',\n\n  'st.needs_info': '정보가 더 필요해요',\n  'st.proposed': '제안됨 · 저장 안 됨',\n  'st.user_confirmed': '확인함 · 아직 저장 확인 안 됨',\n  'st.executing': '처리 중',\n  'st.handed_off': '넘겼어요 · 저장 확인 안 됨',\n  'st.completed_external': '일정에 저장됨 (확인됨)',\n  'st.simulated_completed': '시뮬레이션 완료 · 실제 저장 아님',\n  'st.user_attested': '직접 확인했다고 하셨어요 · 시스템 확인 아님',\n  'st.failed': '실패 · 저장 안 됨',\n  'st.permission_denied': '허용이 필요해요 · 저장 안 됨',\n  'st.unknown_outcome': '결과를 알 수 없어요',\n  'st.verify_mismatch': '내용이 달라요 · 확인 필요',\n  'st.cancelled': '취소됨',\n  'st.expired': '기한이 지났어요',\n  'st.superseded': '바뀜',\n  'st.none': '',\n  'st.candidate': '후보',\n  'st.user_marked_done': '내가 완료함',\n\n  'a5.title': '일정과 할 일',\n  'a5.empty': '아직 제안한 일정이 없어요.',\n  'a5.needsAttention': '확인이 필요해요',\n  'a5.saved': '처리됨',\n  'a5.problems': '문제가 있어요',\n  'a5.closed': '취소·만료',\n  'a5.open': '열기',\n  'a5.markDone': '했어요',\n  'a5.doneByMe': '내가 완료함 (시스템 확인 아님)',\n  'a5.todoCandidates': '할 일 후보 (아직 제안 아님)',\n  'a5.untitled': '이름 없음',\n\n  'a6.title': '설정과 개인정보',\n  'a6.state': '지금 상태',\n  'a6.stored': '저장된 것',\n  'a6.stSessions': '대화 {n}개',\n  'a6.stMemories': '기억 {n}개',\n  'a6.stPlans': '제안 {n}개',\n  'a6.deleteSession': '가장 최근 대화 삭제',\n  'a6.deleteAll': '전부 삭제 (시연 데이터)',\n  'a6.confirmTitle': '정말 지울까요?',\n  'a6.confirmBody': '대화 원문, 기억, 검색 색인, 제안이 지워져요. 이미 내보낸 일정 파일이나 캘린더는 앱이 지울 수 없어요.',\n  'a6.confirmSession': '이 대화만 지우기',\n  'a6.confirmAll': '전부 지우기',\n  'a6.keep': '지우지 않을래요',\n  'a6.noSession': '지울 대화가 없어요.',\n  'a6.receipt': '삭제 확인서',\n  'a6.allVerified': '확인된 모든 곳에서 삭제됐어요.',\n  'a6.partial': '일부만 확인됐어요. 아래를 보세요.',\n  'a6.store.transcript': '대화 원문',\n  'a6.store.memories': '기억',\n  'a6.store.search_index': '검색 색인',\n  'a6.store.proposals': '일정 제안',\n  'a6.store.action_ledger': '행동 기록',\n  'a6.store.notification_queue': '알림 예약',\n  'a6.store.llm_cache': '모델 응답 캐시',\n  'a6.store.exported_file': '내보낸 일정 파일',\n  'a6.store.external_calendar': '외부 캘린더',\n  'a6.status.verified_deleted': '삭제 확인됨',\n  'a6.status.not_deleted': '삭제 안 됨',\n  'a6.status.not_verified': '확인 못 함',\n  'a6.status.not_applicable': '해당 없음',\n  'a6.runtime': '실행 정보',\n  'a6.rtData': '데이터: {v}',\n  'a6.rtCalendar': '캘린더: {v}',\n  'a6.rtNotif': '알림: {v}',\n  'a6.rtMic': '마이크: 사용 안 함',\n  'a6.rtVersion': '버전: {v}',\n  'a6.rtNone': '정보 없음',\n  'a6.caps': '할 수 있는 일 · 정직한 표시',\n  'a6.capsNote': '아래 표시를 그대로 믿어 주세요. 로드맵은 아직 작동하지 않아요.',\n  'cap.demonstrated': '시연 확인됨',\n  'cap.designed': '설계만 됨',\n  'cap.unverified': '미검증',\n  'cap.simulated': '시뮬레이션',\n  'cap.roadmap': '로드맵',\n  'cap.i1': '붙여넣은 글에서 기억 만들기 (모델 경로가 있을 때)',\n  'cap.i2': '기억마다 원문 근거와 불확실함 보기',\n  'cap.i3': '자유롭게 물어보기 (근거 없으면 모름)',\n  'cap.i4': '일정 제안 · 고치기 · 확인 · 결과 상태 구분',\n  'cap.i5': '캘린더 저장 (기본: 시뮬레이션/파일 넘기기)',\n  'cap.i6': '알림 (미리보기만)',\n  'cap.i7': '실제 마이크 듣기 · 통화 녹음',\n  'cap.i8': '2시간 요약',\n  'cap.i9': '24시간 기록',\n  'cap.i10': '스마트워치 · 안경',\n  'cap.i11': '안전·응급 (119에 전화하지 않아요, 검증되지 않았어요)',\n  'cap.i12': '삭제 확인서 (확인된 저장소만)',\n  'cap.i13': '읽어주기 (브라우저 음성, 글은 항상 표시)',\n  'cap.i14': '말하기 입력 (브라우저 지원 시에만, 선택 기능)',\n\n  'hdr.langNote': '언어는 선택이에요. 기기 언어를 따라가지 않아요.',\n  'tz.label': '시간대',\n  'tz.seoul': '서울 시간 (Asia/Seoul, UTC+9)',\n  'tz.short': '서울 시간',\n  'tz.note': '모든 시간은 서울 시간(Asia/Seoul, UTC+9)이에요. 기기의 시간대로 바꾸지 않아요.',\n  'tz.device': '이 기기의 시간대: {tz}',\n  'tz.differs': '기기 시간대와 달라요. 가기 전에 시각을 꼭 확인하세요.',\n  'caveat.speaker_unknown': '말한 사람을 알 수 없어요',\n  'caveat.unconfirmed': '아직 확인되지 않은 후보예요',\n  'caveat.single_source': '근거가 한 곳뿐이에요',\n  'caveat.time_ambiguous': '시간이 헷갈려요 (오전/오후 확인 필요)',\n  'caveat.constraint_not_appointment': '약속이 아니라 조건이나 제한이에요',\n  'caveat.change_pending_user_decision': '바뀐 내용이 있어서 직접 정해야 해요',\n  'a3.caveats': '알아 두세요',\n  'a3.options': '가능한 답 (확정 아님)',\n  'a3.mode.none': '저장된 대화가 없어요',\n  'a4.rbTz': '시간대',\n  'a4.warnings': '확인해 주세요',\n  'a4.warn.in_past': '이미 지난 시각이에요.',\n  'a4.warn.place_unknown': '장소를 알 수 없어요.',\n  'a4.warn.person_unknown': '상대를 알 수 없어요.',\n  'a4.serverNote': '서버 안내',\n  'errc.source_changed': '대화나 기억이 바뀌어서 이 제안은 더 이상 맞지 않아요. 다시 제안을 만들어 주세요.',\n  'errc.stale_preview': '확인 화면이 오래됐어요. 내용을 다시 확인해 주세요.',\n  'errc.needs_clarification': '시간이 아직 정해지지 않았어요. 오전/오후까지 골라 주세요.',\n  'errc.proposal_closed': '이 제안은 이미 끝났거나 취소됐어요.',\n  'errc.not_found': '찾을 수 없어요. 다시 시작해 주세요.',\n  'cap.speechLang': '말하기·읽어주기 언어: {l} (브라우저 지원 시에만, 미검증)',\n\n  'home.hello': '안녕하세요. EBYS예요.',\n  'home.lead': '대화에서 누가 무슨 말을 했는지 기억하고, 어디서 들었는지 그대로 보여 드려요. \"네\"라고 하시기 전에는 아무것도 일정이 되지 않아요.',\n  'home.step1': '대화 넣기',\n  'home.step2': '물어보기',\n  'home.step3': '일정 확인',\n  'home.samples': '예시로 시작하기',\n  'home.sampleTag': '합성 예시',\n  'home.own': '직접 쓰거나 붙여넣기',\n  'home.more': '제목과 출처 (선택)',\n  'home.ready': '읽을 준비가 됐어요: {title}',\n  'home.next': '다음: 기억을 확인하고 물어보세요',\n  'mode.sample': '예시 모드 · 실제 AI 아님',\n  'mode.live': '실제 AI 연결',\n  'mode.liveFallback': '연결됨 · 대체 규칙',\n  'settings.open': '설정과 개인정보',\n  'settings.title': '보기 설정',\n  'settings.lang': '언어',\n  'settings.langEn': 'English',\n  'settings.langKo': '한국어',\n  'settings.model': 'AI 경로',\n};\n\nconst en = {\n  'app.name': 'EBYS',\n  'app.tagline': 'Ever by your side',\n  'chip.data.synthetic': 'Synthetic data',\n  'chip.data.consented': 'Consented data',\n  'chip.api.fixture': 'Sample mode · SIMULATED',\n  'chip.api.live': 'Live server mode',\n  'chip.model.title': 'Model route',\n  'chip.model.live': 'Model: {route} · {model}',\n  'chip.model.cached': 'Cached model reply · {route}',\n  'chip.model.fallback': 'FALLBACK: no model · rule-based',\n  'chip.model.unverified': 'Model route unverified',\n  'chip.model.fixture': 'SAMPLE · not a real model',\n  'chip.model.error': 'Model error: {msg}',\n  'privacy.nomic': 'Microphone off · only text you paste is read',\n  'privacy.analyzing': 'Reading · only text you paste is used',\n  'privacy.paused': 'Paused · no new conversations are accepted',\n  'privacy.pause': 'Pause',\n  'privacy.resume': 'Resume',\n  'privacy.open': 'Privacy',\n  'nav.input': 'Home',\n  'nav.memory': 'Memories',\n  'nav.ask': 'Ask',\n  'nav.plans': 'Plans',\n  'nav.privacy': 'Privacy',\n  'hdr.lang': '한국어',\n  'hdr.langLabel': 'Switch language to Korean (한국어)',\n  'hdr.size': 'Text size',\n  'hdr.size100': 'Normal',\n  'hdr.size125': 'Large',\n  'hdr.size150': 'Larger',\n  'foot.honesty': 'This demo uses made-up (synthetic) data. It never makes real calls, sends real messages or calls 119.',\n  'foot.dsrc': 'State rule source: {src}',\n  'voice.toggle': 'Read aloud',\n  'voice.on': 'On',\n  'voice.off': 'Off',\n  'voice.read': '🔊 Read aloud',\n  'voice.stop': '⏹ Stop reading',\n  'voice.note': 'Uses the browser voice (unverified). The text is always shown.',\n  'voice.unavailable': 'Read-aloud is not available on this device. Please read the text.',\n  'voice.novoice': 'This device may have no Korean voice. If you hear nothing, please read the text.',\n  'voice.novoiceEn': 'This device may have no English voice. If you hear nothing, please read the text.',\n  'mic.start': '🎤 Speak (unverified)',\n  'mic.stop': '⏹ Stop listening',\n  'mic.note': 'Browser speech recognition may send your voice to the browser vendor\\'s servers. Unverified feature. Your words only become text, and you can edit before sending.',\n  'mic.unsupported': 'This browser does not support speaking. Please type.',\n  'mic.error': 'Speech recognition failed: {e}',\n  'mic.pausedBlock': 'Not listening while paused.',\n  'privacy.listening': 'Listening · browser speech recognition (unverified)',\n  'rb.speakTitle': 'Reading it out',\n  'rb.speakNoCalls': 'No real calls or messages will be sent.',\n\n  'a1.title': 'Add a conversation',\n  'a1.lead': 'Paste a made-up (synthetic) conversation or choose a sample. The microphone is not used.',\n  'a1.sample1': 'Sample 1 · clinic visit (English)',\n  'a1.sample2': 'Sample 2 · library meetup (English)',\n  'a1.sample3': 'Sample 3 · clinic visit (Korean)',\n  'a1.titleLabel': 'Title (optional)',\n  'a1.textLabel': 'Conversation (one line per speaker, like \"Nurse: Hello\")',\n  'a1.textHint': 'A conversation you write yourself works too, in English or Korean. The model reads it and builds memories.',\n  'a1.provLabel': 'What kind of text is this?',\n  'a1.provSynthetic': 'A made-up (synthetic) conversation',\n  'a1.provConsented': 'A real conversation and everyone in it consented',\n  'a1.consent': 'This text is made up, or everyone who spoke agreed to have it analyzed.',\n  'a1.analyze': 'Read this conversation',\n  'a1.needText': 'Please add conversation text first.',\n  'a1.needConsent': 'Please tick the consent box.',\n  'a1.pausedBlock': 'Paused: new conversations are not accepted. Press \"Resume\" at the top.',\n  'a1.last': 'Last analysis',\n  'a1.lastMem': '{n} memories',\n  'a1.lastRej': '{n} items dropped (evidence did not match the text)',\n  'a1.lastMode.model': 'Analyzed by a model',\n  'a1.lastMode.fallback': 'Analyzed by FALLBACK rules · not a model',\n  'a1.lastMode.fixture': 'Fixture result · cannot read new text',\n  'a1.fixtureNoText': 'Sample mode can only read the built-in samples. To analyze new text, add ?api=live to the address and connect to the server.',\n  'a1.clear': 'Clear',\n\n  'prog.ingest': 'The model is reading the conversation',\n  'prog.query': 'The model is searching memories',\n  'prog.propose': 'Preparing a proposal',\n  'prog.save': 'Saving your changes',\n  'prog.preview': 'Preparing what you will confirm',\n  'prog.confirm': 'Processing the appointment',\n  'prog.delete': 'Deleting',\n  'prog.calm': 'Take your time. The model can take 10 to 40 seconds.',\n  'prog.long': 'Taking a little longer. You can wait or cancel.',\n  'prog.elapsed': '{s} s elapsed',\n  'prog.cancel': 'Cancel',\n  'prog.cancelled': 'Cancelled.',\n\n  'err.title': 'Something went wrong',\n  'err.network': 'Could not reach the server. Check that it is running and that the address ends with ?api=live.',\n  'err.code': 'Error code: {code}',\n  'err.retryable': 'You can try again.',\n  'err.notRetryable': 'Trying the same way will not help.',\n  'err.dismiss': 'Close',\n\n  'a2.title': 'Memories',\n  'a2.empty': 'No memories yet. Add a conversation first.',\n  'a2.toInput': 'Add a conversation',\n  'a2.all': 'All',\n  'a2.event': 'Appointments',\n  'a2.task': 'To-dos',\n  'a2.person': 'People',\n  'a2.fact': 'Facts',\n  'a2.superseded': 'Changed memories',\n  'a2.changedTo': '→ changed: {s}',\n  'a2.evidence': 'See the source · {n}',\n  'a2.noEvidence': 'No evidence',\n  'a2.propose': 'Make a proposal',\n  'a2.proposeTodo': 'Make a to-do proposal',\n  'a2.transcript': 'Conversation text ({n} lines)',\n  'a2.unknownSpeaker': 'Unknown speaker',\n  'a2.rejectedNote': 'Dropped because evidence did not match the text: {n}',\n  'a2.refresh': 'Refresh',\n  'ev.title': 'Where I heard it',\n  'ev.verbatimOk': 'Matches the original text ✔',\n  'ev.verbatimBad': 'Not found in the original text ⚠',\n  'ev.speaker': 'Speaker',\n  'ev.open': 'Open in conversation',\n  'ev.close': 'Close',\n  'ev.none': 'This item has no evidence, so it cannot be trusted.',\n  'ev.unknownSource': 'Source line not available (quote only)',\n\n  'slot.who': 'Who',\n  'slot.when': 'When',\n  'slot.where': 'Where',\n  'slot.what': 'What',\n  'slot.unknown': 'Unknown',\n  'slot.unknownHint': 'Not in the conversation, so nothing was invented',\n  'unc.stated': 'Stated directly',\n  'unc.inferred': 'Inferred',\n  'unc.approximate': 'Approximate',\n  'unc.ambiguous': 'Ambiguous',\n  'unc.unknown': 'Unknown',\n  'unc.conflicting': 'Conflicting',\n  'unc.superseded': 'Superseded',\n\n  'a3.title': 'Ask',\n  'a3.prompt': 'What would you like to know?',\n  'a3.placeholder': 'e.g. Who am I seeing at the clinic, and when?',\n  'a3.send': 'Ask',\n  'a3.chips': 'You can ask things like',\n  'a3.chip1': 'Who and when is the clinic visit?',\n  'a3.chip2': 'Who said what?',\n  'a3.chip3': 'What do I need to do this week?',\n  'a3.chip4': 'What was the medicine name?',\n  'a3.noMemory': 'Add a conversation first, then you can ask about it.',\n  'a3.answer': 'Answer',\n  'a3.notFound': \"I couldn't find it in the conversation. I won't guess.\",\n  'a3.clarify': 'More information is needed',\n  'a3.makeProposal': 'Make it a plan?',\n  'a3.again': 'Ask again',\n  'a3.slotEvidence': 'Source · {n}',\n  'a3.modeFallback': 'FALLBACK answer · not a model',\n  'a3.modeFixture': 'SAMPLE answer · not a real model',\n  'a3.modeModel': 'Model answer · {route}',\n\n  'a4.title': 'Plan proposal',\n  'a4.noFlow': 'No proposal yet. Start one from \"Memories\" or \"Ask\".',\n  'a4.step1': '1 Proposal',\n  'a4.step2': '2 Time',\n  'a4.step3': '3 Confirm',\n  'a4.step4': '4 Result',\n  'a4.proposedNote': 'Not saved yet. This is only a suggestion.',\n  'a4.fieldTitle': 'Name',\n  'a4.fieldWho': 'Who',\n  'a4.fieldWhere': 'Where',\n  'a4.fieldDate': 'Date',\n  'a4.fieldTime': 'Time',\n  'a4.fieldAction': 'Action',\n  'a4.fieldReminders': 'Reminders',\n  'a4.actionAppt': 'Create appointment',\n  'a4.actionTodo': 'Create to-do',\n  'a4.why': 'Where this came from',\n  'a4.review': 'Review and confirm',\n  'a4.edit': 'Change it',\n  'a4.cancel': 'Cancel this proposal',\n  'a4.cancelAsk': 'Discard this proposal?',\n  'a4.cancelYes': 'Yes, discard',\n  'a4.cancelNo': 'No',\n  'a4.dup': 'A matching appointment already exists.',\n  'a4.dupView': 'View existing',\n  'a4.needsInfo': 'The time still needs to be set.',\n  'a4.clarifyTitle': 'What time?',\n  'a4.clarifyLead': 'Please choose AM or PM yourself. EBYS never guesses it for you.',\n  'a4.candidates': 'Candidates from the conversation (not confirmed)',\n  'a4.ampm': 'AM / PM',\n  'a4.am': 'AM',\n  'a4.pm': 'PM',\n  'a4.hour': 'Hour',\n  'a4.minute': 'Minute',\n  'a4.reminderDay': '1 day before',\n  'a4.reminderHour': '1 hour before',\n  'a4.saveChanges': 'Save and review',\n  'a4.missingDate': 'Choose a date',\n  'a4.missingHour': 'Choose an hour',\n  'a4.missingMinute': 'Choose minutes',\n  'a4.missingAmpm': 'Choose AM or PM',\n  'a4.unknownLater': \"I don't know, I'll ask first\",\n  'a4.unknownLaterNote': 'Without a time it cannot be confirmed. The proposal stays as \"needs more info\".',\n  'a4.confirmTitle': 'Is this right?',\n  'a4.rbPerson': 'Person',\n  'a4.rbDate': 'Date',\n  'a4.rbTime': 'Time',\n  'a4.rbAction': 'Action',\n  'a4.rbPlace': 'Place',\n  'a4.noCalls': 'No real calls or messages will be sent.',\n  'a4.modeSim': 'SIMULATED: nothing is saved to a real calendar.',\n  'a4.modeReal': 'Real calendar connection: {name}',\n  'a4.modeFile': 'Handed off as a calendar file. We cannot confirm it was saved.',\n  'a4.yes': 'Yes, confirm',\n  'a4.working': 'Working… please do not tap again',\n  'a4.back': 'Change it',\n  'a4.resultTitle': 'Result',\n  'a4.verifiedAt': 'Verified at: {t}',\n  'a4.previewBasis': 'Below is the preview. It is not verified saved content.',\n  'a4.readbackBasis': 'Read back from the calendar.',\n  'a4.retry': 'Try again',\n  'a4.retryBlocked': 'The outcome is unknown, so retry is disabled. Please check your calendar yourself.',\n  'a4.checkCalendar': 'Please check your calendar yourself.',\n  'a4.toPlans': 'View plans',\n  'a4.previewNotif': 'Preview notification',\n  'a4.cancelledNote': 'Cancelled. Nothing was sent.',\n  'a4.cancelledInflight': 'Cancelled, but we cannot confirm work that already started. Check your calendar.',\n  'a4.permHint': 'Permission is needed. Grant it, then try again.',\n  'a4.proposalGone': 'Proposal not found.',\n  'a4.clarifyAgain': 'The server says the time needs more detail. Please choose the time again.',\n\n  'notif.title': 'Notification preview',\n  'notif.note': 'Preview only · not a real notification',\n  'notif.body': '{when} {title}',\n  'notif.ok': 'OK',\n  'notif.later': 'Later',\n  'notif.at': '{label}',\n\n  'st.needs_info': 'Needs more info',\n  'st.proposed': 'Proposed · not saved',\n  'st.user_confirmed': 'Confirmed by you · not yet verified saved',\n  'st.executing': 'In progress',\n  'st.handed_off': 'Handed off · not verified saved',\n  'st.completed_external': 'Saved to calendar (verified)',\n  'st.simulated_completed': 'Simulated · not really saved',\n  'st.user_attested': 'You said you checked · not system-verified',\n  'st.failed': 'Failed · not saved',\n  'st.permission_denied': 'Permission needed · not saved',\n  'st.unknown_outcome': 'Outcome unknown',\n  'st.verify_mismatch': 'Content differs · check needed',\n  'st.cancelled': 'Cancelled',\n  'st.expired': 'Expired',\n  'st.superseded': 'Changed',\n  'st.none': '',\n  'st.candidate': 'Candidate',\n  'st.user_marked_done': 'Marked done by me',\n\n  'a5.title': 'Plans and to-dos',\n  'a5.empty': 'No proposals yet. Ask a question or open a memory to start one.',\n  'a5.needsAttention': 'Needs your attention',\n  'a5.saved': 'Processed',\n  'a5.problems': 'Problems',\n  'a5.closed': 'Cancelled / expired',\n  'a5.open': 'Open',\n  'a5.markDone': 'Done',\n  'a5.doneByMe': 'Marked done by me (not system-verified)',\n  'a5.todoCandidates': 'To-do candidates (not proposals yet)',\n  'a5.untitled': 'Untitled',\n\n  'a6.title': 'Settings and privacy',\n  'a6.state': 'Current state',\n  'a6.stored': 'What is stored',\n  'a6.stSessions': '{n} conversations',\n  'a6.stMemories': '{n} memories',\n  'a6.stPlans': '{n} proposals',\n  'a6.deleteSession': 'Delete the latest conversation',\n  'a6.deleteAll': 'Delete everything (demo data)',\n  'a6.confirmTitle': 'Really delete?',\n  'a6.confirmBody': 'This deletes the conversation text, memories, search index and proposals. Calendar files already exported, and real calendars, cannot be deleted by this app.',\n  'a6.confirmSession': 'Delete this conversation only',\n  'a6.confirmAll': 'Delete everything',\n  'a6.keep': 'Keep it',\n  'a6.noSession': 'No conversation to delete.',\n  'a6.receipt': 'Deletion receipt',\n  'a6.allVerified': 'Deleted everywhere we verified.',\n  'a6.partial': 'Only partly verified. See below.',\n  'a6.store.transcript': 'Conversation text',\n  'a6.store.memories': 'Memories',\n  'a6.store.search_index': 'Search index',\n  'a6.store.proposals': 'Proposals',\n  'a6.store.action_ledger': 'Action log',\n  'a6.store.notification_queue': 'Notification queue',\n  'a6.store.llm_cache': 'Model reply cache',\n  'a6.store.exported_file': 'Exported calendar file',\n  'a6.store.external_calendar': 'External calendar',\n  'a6.status.verified_deleted': 'Verified deleted',\n  'a6.status.not_deleted': 'Not deleted',\n  'a6.status.not_verified': 'Not verified',\n  'a6.status.not_applicable': 'Not applicable',\n  'a6.runtime': 'Runtime info',\n  'a6.rtData': 'Data: {v}',\n  'a6.rtCalendar': 'Calendar: {v}',\n  'a6.rtNotif': 'Notifications: {v}',\n  'a6.rtMic': 'Microphone: not used (speech input is optional and browser-only)',\n  'a6.rtVersion': 'Version: {v}',\n  'a6.rtNone': 'No info',\n  'a6.caps': 'What it can do · honest labels',\n  'a6.capsNote': 'Trust the labels as written. Roadmap items do not work yet.',\n  'cap.demonstrated': 'Demonstrated',\n  'cap.designed': 'Designed',\n  'cap.unverified': 'Unverified',\n  'cap.simulated': 'Simulated',\n  'cap.roadmap': 'Roadmap',\n  'cap.i1': 'Build memories from pasted text (when a model route exists)',\n  'cap.i2': 'See source evidence and uncertainty per memory',\n  'cap.i3': 'Free-form questions (unknown if no evidence)',\n  'cap.i4': 'Propose · edit · confirm · distinct result states',\n  'cap.i5': 'Calendar save (default: simulated / file hand-off)',\n  'cap.i6': 'Notifications (preview only)',\n  'cap.i7': 'Real microphone listening · call recording',\n  'cap.i8': '2-hour summaries',\n  'cap.i9': '24-hour recording',\n  'cap.i10': 'Smartwatch · glasses',\n  'cap.i11': 'Safety / emergency (never calls 119; not validated)',\n  'cap.i12': 'Deletion receipt (verified stores only)',\n  'cap.i13': 'Read aloud (browser voice; text always shown)',\n  'cap.i14': 'Speech input (only where the browser supports it; optional)',\n\n  'hdr.langNote': 'Language is your choice. EBYS does not follow your device language.',\n  'tz.label': 'Time zone',\n  'tz.seoul': 'Seoul time (Asia/Seoul, UTC+9)',\n  'tz.short': 'Seoul time',\n  'tz.note': 'All times are Seoul time (Asia/Seoul, UTC+9). EBYS does not convert them to your device time zone.',\n  'tz.device': 'Your device time zone: {tz}',\n  'tz.differs': 'This differs from your device. Check the clock before you go.',\n  'caveat.speaker_unknown': 'The speaker is not known',\n  'caveat.unconfirmed': 'This is an unconfirmed candidate',\n  'caveat.single_source': 'Only one place in the conversation says this',\n  'caveat.time_ambiguous': 'The time is unclear (AM or PM must be checked)',\n  'caveat.constraint_not_appointment': 'This is a condition or limit, not an appointment',\n  'caveat.change_pending_user_decision': 'Something changed, so you need to decide',\n  'a3.caveats': 'Good to know',\n  'a3.options': 'Possible answers (not confirmed)',\n  'a3.mode.none': 'No saved conversations',\n  'a4.rbTz': 'Time zone',\n  'a4.warnings': 'Please check',\n  'a4.warn.in_past': 'This time has already passed.',\n  'a4.warn.place_unknown': 'The place is not known.',\n  'a4.warn.person_unknown': 'The person is not known.',\n  'a4.serverNote': 'Note from the server',\n  'errc.source_changed': 'The conversation or memory changed, so this proposal no longer matches. Please make a new proposal.',\n  'errc.stale_preview': 'The review screen is out of date. Please check the details again.',\n  'errc.needs_clarification': 'The time is not settled yet. Please choose it, including AM or PM.',\n  'errc.proposal_closed': 'This proposal is already finished or cancelled.',\n  'errc.not_found': 'Not found. Please start again.',\n  'cap.speechLang': 'Speech and read-aloud language: {l} (only where the browser supports it; unverified)',\n\n  'home.hello': \"Hello. I'm EBYS.\",\n  'home.lead': 'I remember who said what in your conversations, and I show you exactly where I heard it. Nothing becomes a plan until you say yes.',\n  'home.step1': 'Add a conversation',\n  'home.step2': 'Ask about it',\n  'home.step3': 'Confirm a plan',\n  'home.samples': 'Start with a sample',\n  'home.sampleTag': 'Synthetic sample',\n  'home.own': 'Write or paste your own',\n  'home.more': 'Title and source (optional)',\n  'home.ready': 'Ready to read: {title}',\n  'home.next': 'Next: check the memories, then ask',\n  'mode.sample': 'Sample · not real AI',\n  'mode.live': 'Live AI',\n  'mode.liveFallback': 'Live · fallback rules',\n  'settings.open': 'Settings and privacy',\n  'settings.title': 'Display',\n  'settings.lang': 'Language',\n  'settings.langEn': 'English',\n  'settings.langKo': '한국어 (Korean)',\n  'settings.model': 'AI route',\n};\n\nexport const dictionaries = { ko, en };\n\nexport function t(key, params) {\n  const s = dictionaries[lang][key] ?? dictionaries.en[key] ?? key;\n  if (!params) return s;\n  return s.replace(/\\{(\\w+)\\}/g, (_, k) => (params[k] ?? ''));\n}\n\n/** Pick the current language from a {ko,en} object (or return a plain string unchanged). */\nexport function pick(obj) {\n  if (obj == null) return '';\n  if (typeof obj === 'string') return obj;\n  return obj[lang] ?? obj.en ?? obj.ko ?? '';\n}\n",
+      "sha256": "3983c8d37c64b65ae1e17542b339aaa33cc7efdef073a4b362ce132fd7bd416a"
+    },
+    {
+      "label": "served-preferences",
+      "path": "/lib/prefs.js",
+      "method": "GET",
+      "requestedAt": "2026-11-09T03:53:13.091Z",
+      "completedAt": "2026-11-09T03:53:13.106Z",
+      "httpStatus": 200,
+      "location": null,
+      "contentType": "text/javascript; charset=utf-8",
+      "raw": "// Display preferences only: language and text size. Never conversation data (privacy).\n// English is the default for fresh storage. The browser/OS locale (navigator.language) is deliberately NOT used,\n// and a Korean-locale browser still starts in English until the user picks Korean.\n\nconst KEY = 'ebys.prefs';\nconst getStorage = () => { try { return globalThis.localStorage ?? null; } catch { return null; } };\n\nexport function loadPrefs(search = '', storage = getStorage()) {\n  const q = new URLSearchParams(search);\n  let saved = {};\n  try { saved = JSON.parse(storage?.getItem(KEY) ?? 'null') ?? {}; } catch { saved = {}; }\n  const urlLang = q.get('lang');\n  const lang = urlLang === 'ko' || urlLang === 'en' ? urlLang : (saved.lang === 'ko' || saved.lang === 'en' ? saved.lang : 'en');\n  const urlScale = Number(q.get('scale'));\n  const scale = [1, 1.25, 1.5].includes(urlScale) ? urlScale : ([1, 1.25, 1.5].includes(saved.scale) ? saved.scale : 1);\n  return { lang, scale };\n}\n\nexport function savePrefs({ lang, scale }, storage = getStorage()) {\n  try { storage?.setItem(KEY, JSON.stringify({ lang: lang === 'ko' ? 'ko' : 'en', scale: [1, 1.25, 1.5].includes(scale) ? scale : 1 })); } catch { /* storage may be blocked */ }\n}\n",
+      "sha256": "173c25805d40e048dd3f28b6565df804d24c5c48a355bd887fce1f8322a3bb2f"
+    },
+    {
+      "label": "explicit-korean-entry",
+      "path": "/?lang=ko",
+      "method": "GET",
+      "requestedAt": "2026-11-09T03:53:13.106Z",
+      "completedAt": "2026-11-09T03:53:13.120Z",
+      "httpStatus": 302,
+      "location": "/?lang=ko&api=live",
+      "contentType": null,
+      "raw": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "explicit-fixture-entry",
+      "path": "/?api=fixture",
+      "method": "GET",
+      "requestedAt": "2026-11-09T03:53:13.120Z",
+      "completedAt": "2026-11-09T03:53:13.136Z",
+      "httpStatus": 200,
+      "location": null,
+      "contentType": "text/html; charset=utf-8",
+      "raw": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, viewport-fit=cover\">\n  <meta name=\"theme-color\" content=\"#13284A\">\n  <title>EBYS · Ever by your side</title>\n  <link rel=\"icon\" type=\"image/svg+xml\" href=\"assets/ebys-mark.svg\">\n  <link rel=\"apple-touch-icon\" href=\"assets/ebys-mark.svg\">\n  <link rel=\"stylesheet\" href=\"styles.css\">\n</head>\n<body>\n  <a class=\"skip\" href=\"#main\">Skip to content</a>\n  <div id=\"app\"></div>\n  <dialog id=\"evidence-dialog\" aria-label=\"Source\"></dialog>\n  <noscript>This app needs JavaScript. 이 앱은 JavaScript가 필요해요.</noscript>\n  <script type=\"module\" src=\"app.js\"></script>\n</body>\n</html>\n",
+      "sha256": "607eaf997b9be3d6bf2b40002bf96a74554f5673ef5283e279b324a430f3533a"
+    },
+    {
+      "label": "runtime-after",
+      "path": "/api/runtime",
+      "method": "GET",
+      "requestedAt": "2026-11-09T03:53:13.136Z",
+      "completedAt": "2026-11-09T03:53:13.163Z",
+      "httpStatus": 200,
+      "location": null,
+      "contentType": "application/json; charset=utf-8",
+      "raw": "{\"ok\":true,\"data\":{\"data\":\"synthetic\",\"defaultLang\":\"en\",\"timezone\":{\"iana\":\"Asia/Seoul\",\"label\":{\"en\":\"Seoul time\",\"ko\":\"서울 시간\"},\"utcOffset\":\"+09:00\",\"note\":{\"en\":\"EBYS stores calendar times in Seoul time (UTC+9) and always shows the zone next to the time.\",\"ko\":\"EBYS는 달력 시간을 서울 시간(UTC+9)으로 저장하고 시간 옆에 항상 표시합니다.\"}},\"calendar\":{\"kind\":\"simulated\",\"name\":\"Demo Calendar (in this app only, simulated)\",\"permission\":\"not_required\"},\"notifications\":{\"kind\":\"preview\",\"permission\":\"not_applicable\"},\"micCapture\":\"unavailable\",\"speechInput\":\"unavailable\",\"version\":\"actions-0.1.0\",\"mode\":\"simulated\",\"adapters\":[{\"id\":\"calendar.simulated\",\"kind\":\"calendar\",\"mode\":\"simulated\",\"label\":{\"ko\":\"시뮬레이션 달력 (앱 안에서만)\",\"en\":\"Simulated calendar (inside this app only)\"},\"claimStatus\":\"simulated\",\"maxVerifyLevel\":\"none\",\"canReconcile\":true,\"notes\":\"In-memory Demo Calendar. Nothing is written to any phone or account.\"},{\"id\":\"notification.preview\",\"kind\":\"notification\",\"mode\":\"simulated\",\"label\":{\"ko\":\"알림 미리보기 (실제 알림 아님)\",\"en\":\"Notification preview (not a real notification)\"},\"claimStatus\":\"simulated\",\"maxVerifyLevel\":\"none\",\"notes\":\"Pure preview list. No Notification API, no push, no server.\"}],\"faultInjection\":null,\"forbidden\":\"no tel/sms/mailto/emergency actions exist in this layer\",\"model\":{\"route\":\"cursor-cli\",\"model\":\"claude-sonnet-5-5-low\",\"healthy\":true},\"sourceSnapshot\":{\"serverLoaded\":{\"startedAt\":\"2026-11-09T03:51:40.668Z\",\"sha256\":\"8c8e675399c3d4fe5470103e79bc281c1261f7818438eef9d223580ac6c6aeb6\",\"files\":28},\"serverOnDisk\":{\"sha256\":\"8c8e675399c3d4fe5470103e79bc281c1261f7818438eef9d223580ac6c6aeb6\",\"files\":28},\"serverCurrent\":true,\"uiOnDisk\":{\"sha256\":\"0844b682b2c64f321647ea753df670871184bb1da73d68f81ff3babe1b9f5703\",\"files\":27}}}}",
+      "body": {
+        "ok": true,
+        "data": {
+          "data": "synthetic",
+          "defaultLang": "en",
+          "timezone": {
+            "iana": "Asia/Seoul",
+            "label": {
+              "en": "Seoul time",
+              "ko": "서울 시간"
+            },
+            "utcOffset": "+09:00",
+            "note": {
+              "en": "EBYS stores calendar times in Seoul time (UTC+9) and always shows the zone next to the time.",
+              "ko": "EBYS는 달력 시간을 서울 시간(UTC+9)으로 저장하고 시간 옆에 항상 표시합니다."
+            }
+          },
+          "calendar": {
+            "kind": "simulated",
+            "name": "Demo Calendar (in this app only, simulated)",
+            "permission": "not_required"
+          },
+          "notifications": {
+            "kind": "preview",
+            "permission": "not_applicable"
+          },
+          "micCapture": "unavailable",
+          "speechInput": "unavailable",
+          "version": "actions-0.1.0",
+          "mode": "simulated",
+          "adapters": [
+            {
+              "id": "calendar.simulated",
+              "kind": "calendar",
+              "mode": "simulated",
+              "label": {
+                "ko": "시뮬레이션 달력 (앱 안에서만)",
+                "en": "Simulated calendar (inside this app only)"
+              },
+              "claimStatus": "simulated",
+              "maxVerifyLevel": "none",
+              "canReconcile": true,
+              "notes": "In-memory Demo Calendar. Nothing is written to any phone or account."
+            },
+            {
+              "id": "notification.preview",
+              "kind": "notification",
+              "mode": "simulated",
+              "label": {
+                "ko": "알림 미리보기 (실제 알림 아님)",
+                "en": "Notification preview (not a real notification)"
+              },
+              "claimStatus": "simulated",
+              "maxVerifyLevel": "none",
+              "notes": "Pure preview list. No Notification API, no push, no server."
+            }
+          ],
+          "faultInjection": null,
+          "forbidden": "no tel/sms/mailto/emergency actions exist in this layer",
+          "model": {
+            "route": "cursor-cli",
+            "model": "claude-sonnet-5-5-low",
+            "healthy": true
+          },
+          "sourceSnapshot": {
+            "serverLoaded": {
+              "startedAt": "2026-11-09T03:51:40.668Z",
+              "sha256": "8c8e675399c3d4fe5470103e79bc281c1261f7818438eef9d223580ac6c6aeb6",
+              "files": 28
+            },
+            "serverOnDisk": {
+              "sha256": "8c8e675399c3d4fe5470103e79bc281c1261f7818438eef9d223580ac6c6aeb6",
+              "files": 28
+            },
+            "serverCurrent": true,
+            "uiOnDisk": {
+              "sha256": "0844b682b2c64f321647ea753df670871184bb1da73d68f81ff3babe1b9f5703",
+              "files": 27
+            }
+          }
+        }
+      },
+      "sha256": "9e5bb0a49ab3ad19e9407251d7986bd5a14bc4e076eec9e05ae288b40266968f"
+    }
+  ],
+  "checks": [
+    {
+      "name": "bare root redirects to live without a language override",
+      "status": "PASS",
+      "detail": {
+        "status": 302,
+        "location": "/?api=live"
+      }
+    },
+    {
+      "name": "root live entry and module assets return successful content",
+      "status": "PASS",
+      "detail": {
+        "html": 200,
+        "app": 200,
+        "css": 200
+      }
+    },
+    {
+      "name": "served HTML English default (11:26 source failure recheck)",
+      "status": "PASS",
+      "detail": {
+        "htmlSha256": "607eaf997b9be3d6bf2b40002bf96a74554f5673ef5283e279b324a430f3533a"
+      }
+    },
+    {
+      "name": "served i18n initializes English (11:26 source failure recheck)",
+      "status": "PASS",
+      "detail": {
+        "i18nSha256": "3983c8d37c64b65ae1e17542b339aaa33cc7efdef073a4b362ce132fd7bd416a"
+      }
+    },
+    {
+      "name": "explicit optional Korean survives root redirect",
+      "status": "PASS",
+      "detail": {
+        "status": 302,
+        "location": "/?lang=ko&api=live"
+      }
+    },
+    {
+      "name": "explicit fixture remains separate and reachable",
+      "status": "PASS",
+      "detail": {
+        "status": 200
+      }
+    },
+    {
+      "name": "pure served-module initial language is en",
+      "status": "PASS",
+      "detail": {
+        "kind": "Node module check, not browser rendering"
+      }
+    },
+    {
+      "name": "pure fresh-storage preference is en",
+      "status": "PASS",
+      "detail": {
+        "kind": "in-memory fresh-storage unit check"
+      }
+    },
+    {
+      "name": "malformed or unavailable storage keeps English",
+      "status": "PASS",
+      "detail": {
+        "kind": "synthetic storage unit check"
+      }
+    },
+    {
+      "name": "saved or explicit Korean is optional",
+      "status": "PASS",
+      "detail": {
+        "kind": "explicit-choice unit check"
+      }
+    },
+    {
+      "name": "runtime HTTP/version and code/UI snapshots remain current across this GET-only check",
+      "status": "PASS",
+      "detail": {
+        "beforeVersion": "actions-0.1.0",
+        "afterVersion": "actions-0.1.0",
+        "before": {
+          "serverLoaded": {
+            "startedAt": "2026-11-09T03:51:40.668Z",
+            "sha256": "8c8e675399c3d4fe5470103e79bc281c1261f7818438eef9d223580ac6c6aeb6",
+            "files": 28
+          },
+          "serverOnDisk": {
+            "sha256": "8c8e675399c3d4fe5470103e79bc281c1261f7818438eef9d223580ac6c6aeb6",
+            "files": 28
+          },
+          "serverCurrent": true,
+          "uiOnDisk": {
+            "sha256": "0844b682b2c64f321647ea753df670871184bb1da73d68f81ff3babe1b9f5703",
+            "files": 27
+          }
+        },
+        "after": {
+          "serverLoaded": {
+            "startedAt": "2026-11-09T03:51:40.668Z",
+            "sha256": "8c8e675399c3d4fe5470103e79bc281c1261f7818438eef9d223580ac6c6aeb6",
+            "files": 28
+          },
+          "serverOnDisk": {
+            "sha256": "8c8e675399c3d4fe5470103e79bc281c1261f7818438eef9d223580ac6c6aeb6",
+            "files": 28
+          },
+          "serverCurrent": true,
+          "uiOnDisk": {
+            "sha256": "0844b682b2c64f321647ea753df670871184bb1da73d68f81ff3babe1b9f5703",
+            "files": 27
+          }
+        }
+      }
+    }
+  ],
+  "scores": {
+    "passed": 11,
+    "total": 11,
+    "historicalSourceFailuresNowPassed": 2,
+    "historicalSourceChecks": 2,
+    "newModelCalls": 0,
+    "newActionCalls": 0,
+    "newBrowserControlCalls": 0
+  },
+  "status": "PASS_FOR_HTTP_SOURCE_AND_UNIT_SCOPE",
+  "freshBrowserDefault": {
+    "status": "NOT_RUN_BY_SJ_QA",
+    "owner": "parent-Aside",
+    "reason": "Existing Chrome-control rejection is not bypassed; parent owns visual E2E. Lead RESOLVED note is producer evidence, not a new QA browser run."
+  },
+  "historicalEvidence": {
+    "run": "english-first-2026-11-09T02-26-00-060Z-65628",
+    "status": "Original FAIL observations at 11:26 preserved unchanged"
+  },
+  "limitations": [
+    "No DOM mounting/module dependency execution, visual natural-copy review, live model accuracy, action/readback, accessibility or physical-device proof.",
+    "Empty-storage preference checks execute served code in Node with synthetic storage; they are not a browser or navigator-locale test."
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "audit": "Independent QA audit of lead-produced telemetry evidence",
+  "auditedAt": "2026-11-09T03:07:18.381Z",
+  "sourcePath": "C:\\Users\\User\\.aside\\u\\1\\research\\senior-jarvis-hackathon\\senior-jarvis\\evidence\\lead-live-en-2026-11-09T03-00-24-767Z.json",
+  "sourceSha256": "29cd85a21058c119bee36a1875b3e8234ad3ad4b94d6699c5d1516bb4e30fd68",
+  "sourceCapturedAt": "2026-11-09T03:00:24.767Z",
+  "sourceNote": "lead live English check; synthetic text, not a fixture or QA held-out; proves route/telemetry/lang default, not QA scoring",
+  "auditorSha256": "bdd9ccb94e0b2a915f263f50bf6bf6f2558a12c923957e00ff27f9ed667ee157",
+  "producer": "senior-planner (lead); not sj-qa held-out execution",
+  "independentAudit": true,
+  "scores": {
+    "telemetryPassed": 5,
+    "telemetryTotal": 5,
+    "reportedUncachedCalls": 5,
+    "snapshotChecksPassed": 4,
+    "snapshotChecksTotal": 4,
+    "newQaModelCalls": 0,
+    "newQaHttpCalls": 0
+  },
+  "telemetryStatus": "PASS",
+  "checks": [
+    {
+      "call": 1,
+      "path": "/api/ingest",
+      "question": null,
+      "metadataVerdict": {
+        "status": "PASS",
+        "detail": "Server reports model route cursor-cli; raw JSON and validation retained (provider execution still subject to lead audit)"
+      },
+      "required": {
+        "httpSuccess": true,
+        "modelMode": true,
+        "routeBinding": true,
+        "cachedBinding": true,
+        "latencyBinding": true,
+        "wallLatency": true,
+        "rawModelObject": true,
+        "validationRecorded": true,
+        "modelCallBinding": true
+      },
+      "status": "PASS",
+      "route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 66240
+      },
+      "wallMs": 66260,
+      "modelCallCount": 1,
+      "rawModelSha256": "52765969e4657668dd277e72145b4e4c5ce9d636947919e919228de6cba87fee",
+      "validation": {
+        "ok": true,
+        "rejected": 0
+      },
+      "rejected": 0
+    },
+    {
+      "call": 2,
+      "path": "/api/query",
+      "question": "Where is the book club now, and who told us?",
+      "metadataVerdict": {
+        "status": "PASS",
+        "detail": "Server reports model route cursor-cli; raw JSON and validation retained (provider execution still subject to lead audit)"
+      },
+      "required": {
+        "httpSuccess": true,
+        "modelMode": true,
+        "routeBinding": true,
+        "cachedBinding": true,
+        "latencyBinding": true,
+        "wallLatency": true,
+        "rawModelObject": true,
+        "validationRecorded": true,
+        "modelCallBinding": true
+      },
+      "status": "PASS",
+      "route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 55257
+      },
+      "wallMs": 55266,
+      "modelCallCount": 1,
+      "rawModelSha256": "e79d6af2137e325f06fea64cb699a6919bd1976eafd598c15671d4292f52c551",
+      "validation": {
+        "ok": true,
+        "rejected": 0
+      },
+      "rejected": 0
+    },
+    {
+      "call": 3,
+      "path": "/api/query",
+      "question": "What time is the book club on Thursday?",
+      "metadataVerdict": {
+        "status": "PASS",
+        "detail": "Server reports model route cursor-cli; raw JSON and validation retained (provider execution still subject to lead audit)"
+      },
+      "required": {
+        "httpSuccess": true,
+        "modelMode": true,
+        "routeBinding": true,
+        "cachedBinding": true,
+        "latencyBinding": true,
+        "wallLatency": true,
+        "rawModelObject": true,
+        "validationRecorded": true,
+        "modelCallBinding": true
+      },
+      "status": "PASS",
+      "route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 34201
+      },
+      "wallMs": 34210,
+      "modelCallCount": 1,
+      "rawModelSha256": "1a8f2d45a28515c18270548c3b21bf6275838ad4c2e77539b7cff34a0f71c3ff",
+      "validation": {
+        "ok": true,
+        "rejected": 0
+      },
+      "rejected": 0
+    },
+    {
+      "call": 4,
+      "path": "/api/query",
+      "question": "Who is bringing the cake?",
+      "metadataVerdict": {
+        "status": "PASS",
+        "detail": "Server reports model route cursor-cli; raw JSON and validation retained (provider execution still subject to lead audit)"
+      },
+      "required": {
+        "httpSuccess": true,
+        "modelMode": true,
+        "routeBinding": true,
+        "cachedBinding": true,
+        "latencyBinding": true,
+        "wallLatency": true,
+        "rawModelObject": true,
+        "validationRecorded": true,
+        "modelCallBinding": true
+      },
+      "status": "PASS",
+      "route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 23546
+      },
+      "wallMs": 23553,
+      "modelCallCount": 1,
+      "rawModelSha256": "c2ba9e44416751fb5e73f0cf452c63bb8d95748cd3c86a60049da70367efb217",
+      "validation": {
+        "ok": true,
+        "rejected": 0
+      },
+      "rejected": 0
+    },
+    {
+      "call": 5,
+      "path": "/api/query",
+      "question": "What is the bus route to the cafe?",
+      "metadataVerdict": {
+        "status": "PASS",
+        "detail": "Server reports model route cursor-cli; raw JSON and validation retained (provider execution still subject to lead audit)"
+      },
+      "required": {
+        "httpSuccess": true,
+        "modelMode": true,
+        "routeBinding": true,
+        "cachedBinding": true,
+        "latencyBinding": true,
+        "wallLatency": true,
+        "rawModelObject": true,
+        "validationRecorded": true,
+        "modelCallBinding": true
+      },
+      "status": "PASS",
+      "route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 22201
+      },
+      "wallMs": 22206,
+      "modelCallCount": 1,
+      "rawModelSha256": "aaeaee40489343dde4c28da10b4b7e0cd05b991c234e533a04c287b1a9dea5cd",
+      "validation": {
+        "ok": true,
+        "rejected": 0
+      },
+      "rejected": 0
+    }
+  ],
+  "sourceSnapshot": {
+    "serverLoaded": {
+      "startedAt": "2026-11-09T02:59:17.658Z",
+      "sha256": "e31813853092fcd41c0ed3d8c4e573e55ae143e73b67226a58babbc713e6481b",
+      "files": 28
+    },
+    "serverOnDisk": {
+      "sha256": "e31813853092fcd41c0ed3d8c4e573e55ae143e73b67226a58babbc713e6481b",
+      "files": 28
+    },
+    "serverCurrent": true,
+    "uiOnDisk": {
+      "sha256": "49dca39a37764898092267333628d090247ebe57ade5f30c15184853c9cc4d54",
+      "files": 26
+    }
+  },
+  "snapshotChecks": {
+    "loadedHash": true,
+    "diskHash": true,
+    "uiHash": true,
+    "reportedCurrentConsistent": true
+  },
+  "busUnknown": {
+    "question": "What is the bus route to the cafe?",
+    "found": true,
+    "sentence": {
+      "ko": "독서 모임 (목요일로 변경) — 어디: Oak Street cafe",
+      "en": "Book club moved to Thursday — Where: Oak Street cafe"
+    },
+    "status": "FAIL",
+    "detail": "Lead synthetic transcript contains no bus route. Stored response reports found=true and gives book-club/place context. This is not a QA-held-out rerun or independent model execution."
+  },
+  "historicalQaVerdict": {
+    "report": "2026-11-09T02-43-28-047Z-165224/scored-report-v2.json",
+    "queriesPassed": 5,
+    "queriesTotal": 6,
+    "completeModelEvidencePassed": 0,
+    "completeModelEvidenceTotal": 2,
+    "unchanged": true
+  },
+  "limitations": [
+    "Telemetry completeness/consistency audit only; not an answer-quality pass or release approval.",
+    "Source artifact is lead-produced and explicitly not QA held-out. Five audited calls cannot retroactively fill telemetry missing from historical QA calls.",
+    "validation.ok is lead instrumentation derived from result.mode in the inspected flow implementation; this audit does not independently revalidate every raw model item.",
+    "The archived sourceSnapshot is a point-in-time server report, not a before/after bracket for each call or independent loaded-module attestation.",
+    "Current server/on-disk state was not queried during this offline audit. Owner patches may have landed since capture.",
+    "Wait for sj-memory completion and lead reload/ready signal before full held-out rerun. No server control, deletion, actions, model calls or HTTP requests performed."
+  ]
+}

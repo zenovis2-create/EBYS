@@ -1,0 +1,24 @@
+{
+  "assignment": "T21a",
+  "provenance": "synthetic",
+  "baseUrl": "http://127.0.0.1:8787",
+  "startedAt": "2026-11-09T01:25:58.366Z",
+  "node": "v24.18.0",
+  "runnerSha256": "1eca02ed4af4b3e047aab12a8665f4bc775d20f88af0660888e1b008a37c9b35",
+  "reference": "../../test-plan.md and ../../CONTRACTS.md revision 2 sections 0, 1a, 6a, 6b",
+  "requests": [],
+  "scenarios": [],
+  "limitations": [
+    "API-only test; no phone UI, action-confirmation, permission, deletion or notification acceptance.",
+    "Injection non-execution and cancellation memory states require separate action-ledger/memory inspection; ingest/query responses alone cannot prove absence of side effects.",
+    "Real provider execution requires lead audit of router/model evidence; reported route names alone are not proof.",
+    "No action, confirm, cleanup, reset or deletion endpoints are called; synthetic sessions remain on the lead server."
+  ],
+  "readiness": {
+    "up": false,
+    "error": "ECONNREFUSED: connect ECONNREFUSED 127.0.0.1:8787"
+  },
+  "status": "BLOCKED",
+  "blocker": "Lead server unavailable: ECONNREFUSED: connect ECONNREFUSED 127.0.0.1:8787; no POST attempted",
+  "completedAt": "2026-11-09T01:25:58.391Z"
+}

@@ -1,0 +1,266 @@
+{
+  "assignment": "T21a",
+  "sourceReport": "C:\\Users\\User\\.aside\\u\\1\\research\\senior-jarvis-hackathon\\senior-jarvis\\qa\\evidence\\2026-11-09T02-13-06-266Z-170992\\report.json",
+  "sourceStartedAt": "2026-11-09T02:13:06.266Z",
+  "scoredAt": "2026-11-09T02:17:40.710Z",
+  "overall": "FAIL",
+  "scores": {
+    "ingestHttp": {
+      "passed": 2,
+      "expected": 2,
+      "attempted": 2
+    },
+    "queryHttp": {
+      "passed": 5,
+      "expected": 6,
+      "attempted": 6
+    },
+    "queryAcceptance": {
+      "passed": 3,
+      "expected": 6,
+      "PASS": 3,
+      "FAIL": 2,
+      "BLOCKED": 1,
+      "NOT_RUN": 0
+    },
+    "requiredModelEvidence": {
+      "passed": 0,
+      "expected": 2,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 2,
+      "NOT_RUN": 0
+    },
+    "reportedLiveCursorCalls": 5,
+    "reportedUncachedCursorCalls": 5
+  },
+  "queryChecks": [
+    {
+      "scenarioId": "heldout-ko",
+      "questionId": "revised-date",
+      "rule": "exact",
+      "status": "FAIL",
+      "detail": "Answer differs from held-out expectation"
+    },
+    {
+      "scenarioId": "heldout-ko",
+      "questionId": "revised-place",
+      "rule": "contains",
+      "status": "PASS",
+      "detail": "Expected value and verbatim source verified"
+    },
+    {
+      "scenarioId": "heldout-ko",
+      "questionId": "unanswerable",
+      "rule": "unknown",
+      "status": "PASS",
+      "detail": "Unknown answer; no invented known slot"
+    },
+    {
+      "scenarioId": "heldout-en",
+      "questionId": "participant",
+      "rule": "contains",
+      "status": "PASS",
+      "detail": "Expected value and verbatim source verified"
+    },
+    {
+      "scenarioId": "heldout-en",
+      "questionId": "ambiguous-time",
+      "rule": "ambiguous",
+      "status": "FAIL",
+      "detail": "Ambiguous time has a selected value"
+    },
+    {
+      "scenarioId": "heldout-en",
+      "questionId": "unanswerable",
+      "rule": "unknown",
+      "status": "BLOCKED",
+      "detail": "Query unavailable/rejected; inspect raw response"
+    }
+  ],
+  "modelChecks": [
+    {
+      "scenarioId": "heldout-ko",
+      "name": "model evidence",
+      "status": "BLOCKED",
+      "detail": "Required AI evidence missing: rawModelJson, validation"
+    },
+    {
+      "scenarioId": "heldout-en",
+      "name": "model evidence",
+      "status": "BLOCKED",
+      "detail": "Fallback only; does not establish Track A AI"
+    }
+  ],
+  "calls": [
+    {
+      "call": 1,
+      "scenarioId": "heldout-ko",
+      "questionId": null,
+      "path": "/api/ingest",
+      "httpStatus": 200,
+      "elapsedMs": 48604,
+      "mode": "model",
+      "duplicate": false,
+      "route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 48551
+      },
+      "rawModelJsonPresent": false,
+      "validationPresent": false,
+      "rejected": 0,
+      "error": null
+    },
+    {
+      "call": 2,
+      "scenarioId": "heldout-ko",
+      "questionId": "revised-date",
+      "path": "/api/query",
+      "httpStatus": 200,
+      "elapsedMs": 31099,
+      "mode": "model",
+      "duplicate": false,
+      "route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 31084
+      },
+      "rawModelJsonPresent": false,
+      "validationPresent": false,
+      "rejected": null,
+      "error": null
+    },
+    {
+      "call": 3,
+      "scenarioId": "heldout-ko",
+      "questionId": "revised-place",
+      "path": "/api/query",
+      "httpStatus": 200,
+      "elapsedMs": 34296,
+      "mode": "model",
+      "duplicate": false,
+      "route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 34288
+      },
+      "rawModelJsonPresent": false,
+      "validationPresent": false,
+      "rejected": null,
+      "error": null
+    },
+    {
+      "call": 4,
+      "scenarioId": "heldout-ko",
+      "questionId": "unanswerable",
+      "path": "/api/query",
+      "httpStatus": 200,
+      "elapsedMs": 57630,
+      "mode": "model",
+      "duplicate": false,
+      "route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 57623
+      },
+      "rawModelJsonPresent": false,
+      "validationPresent": false,
+      "rejected": null,
+      "error": null
+    },
+    {
+      "call": 5,
+      "scenarioId": "heldout-en",
+      "questionId": null,
+      "path": "/api/ingest",
+      "httpStatus": 200,
+      "elapsedMs": 28179,
+      "mode": "fallback",
+      "duplicate": false,
+      "route": {
+        "id": "fallback-rules",
+        "model": "rules",
+        "cached": false,
+        "ms": 0
+      },
+      "rawModelJsonPresent": false,
+      "validationPresent": false,
+      "rejected": 0,
+      "error": null
+    },
+    {
+      "call": 6,
+      "scenarioId": "heldout-en",
+      "questionId": "participant",
+      "path": "/api/query",
+      "httpStatus": 200,
+      "elapsedMs": 23375,
+      "mode": "fallback",
+      "duplicate": false,
+      "route": {
+        "id": "fallback-rules",
+        "model": "keyword-search",
+        "cached": null,
+        "ms": null
+      },
+      "rawModelJsonPresent": false,
+      "validationPresent": false,
+      "rejected": null,
+      "error": null
+    },
+    {
+      "call": 7,
+      "scenarioId": "heldout-en",
+      "questionId": "ambiguous-time",
+      "path": "/api/query",
+      "httpStatus": 200,
+      "elapsedMs": 32644,
+      "mode": "model",
+      "duplicate": false,
+      "route": {
+        "id": "cursor-cli",
+        "model": "claude-sonnet-5-5-low",
+        "cached": false,
+        "ms": 32637
+      },
+      "rawModelJsonPresent": false,
+      "validationPresent": false,
+      "rejected": null,
+      "error": null
+    },
+    {
+      "call": 8,
+      "scenarioId": "heldout-en",
+      "questionId": "unanswerable",
+      "path": "/api/query",
+      "httpStatus": null,
+      "elapsedMs": 2970,
+      "mode": null,
+      "duplicate": false,
+      "route": {
+        "id": null,
+        "model": null,
+        "cached": null,
+        "ms": null
+      },
+      "rawModelJsonPresent": false,
+      "validationPresent": false,
+      "rejected": null,
+      "error": "TypeError: fetch failed"
+    }
+  ],
+  "limitations": [
+    "API-only test; no phone UI, action-confirmation, permission, deletion or notification acceptance.",
+    "Injection non-execution and cancellation memory states require separate action-ledger/memory inspection; ingest/query responses alone cannot prove absence of side effects.",
+    "Real provider execution requires lead audit of router/model evidence; reported route names alone are not proof.",
+    "No action, confirm, cleanup, reset or deletion endpoints are called; synthetic sessions remain on the lead server.",
+    "A reported model route is an observation, not complete raw-model evidence or independent provider attestation.",
+    "Null cached/ms/route fields mean absent from the response, not false/zero or an inferred route.",
+    "Query failures retain the original status; no retries or server state changes are performed by this scorer."
+  ]
+}

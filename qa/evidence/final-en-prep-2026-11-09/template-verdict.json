@@ -1,0 +1,25 @@
+{
+  "status": "BLOCKED",
+  "errors": [],
+  "pending": [
+    "EN_DEFAULT: NOT_RUN",
+    "EN_FLOW_COPY_VOICE: NOT_RUN",
+    "LIVE_EN_HELDOUT: NOT_RUN",
+    "UNKNOWN_RELEVANCE: NOT_RUN",
+    "GAP12_SYNTHETIC: NOT_RUN",
+    "GAP3_OBJECT_CANDIDATE: NOT_RUN",
+    "CONFIRM_BINDING: NOT_RUN",
+    "LOCAL_CALENDAR_READBACK: NOT_RUN",
+    "CANCEL_IDEMPOTENCY: NOT_RUN",
+    "ERROR_HONESTY: NOT_RUN",
+    "MOBILE_390: NOT_RUN",
+    "KEYBOARD_TARGETS_ZOOM: NOT_RUN",
+    "REDUCED_MOTION: NOT_RUN",
+    "RAW_CAPTURE: NOT_RUN",
+    "Runtime before/after and independent live report not complete",
+    "Independent final receipt reviewer not recorded"
+  ],
+  "gatesPassed": 0,
+  "gatesRequired": 14,
+  "note": "Offline hash/structure/source checks only. Human reviewers still own visual truth and actual device claims. No new product execution performed."
+}
